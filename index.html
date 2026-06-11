@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日文 N5 每日練習 ─ 2026/06/11</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans TC",sans-serif;background:#f5f0eb;color:#2c2c2c;line-height:1.7}
+.hidden{display:none!important}
+
+/* Header */
+header{background:linear-gradient(135deg,#c0392b,#922b21);color:white;padding:24px 24px 0;text-align:center}
+header h1{font-size:1.6rem;letter-spacing:.08em}
+header p{font-size:.84rem;opacity:.85;margin-top:4px}
+
+/* Tabs */
+.tab-nav{display:flex;background:#922b21;justify-content:center;gap:4px;padding:10px 16px 0}
+.tab-btn{padding:10px 28px;border:none;border-radius:8px 8px 0 0;font-size:.93rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,.2);color:rgba(255,255,255,.8);transition:all .2s;font-family:inherit}
+.tab-btn.active{background:#f5f0eb;color:#c0392b}
+.tab-btn:hover:not(.active){background:rgba(255,255,255,.3)}
+
+/* Layout */
+.mode{max-width:860px;margin:0 auto;padding:28px 16px 60px}
+
+/* Cards */
+.card{background:white;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:24px 28px;margin-bottom:28px}
+.card h2{font-size:1.05rem;color:#c0392b;border-left:4px solid #c0392b;padding-left:10px;margin-bottom:16px}
+
+/* Vocab table */
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+thead tr{background:#f9e5e5}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid #ece4e4}
+th{font-weight:700;color:#922b21}
+.rd{font-size:.76rem;color:#888;display:block}
+.badge{display:inline-block;font-size:.7rem;padding:2px 7px;border-radius:999px;font-weight:700}
+.bg{background:#fde8e8;color:#c0392b}
+.bn{background:#e8f4fd;color:#2471a3}
+.bv{background:#e9f7ef;color:#1e8449}
+.ba{background:#fef9e7;color:#b7950b}
+.bw{background:#f4ecf7;color:#7d3c98}
+
+/* Section tags */
+.stag{display:inline-block;font-size:.76rem;font-weight:700;padding:2px 10px;border-radius:4px;margin-bottom:14px}
+.tmc{background:#e8f4fd;color:#2471a3}
+.tgr{background:#e9f7ef;color:#1e8449}
+.trd{background:#fef9e7;color:#b7950b}
+.tls{background:#f4ecf7;color:#7d3c98}
+
+/* Question blocks */
+.qb{margin-bottom:18px;padding-bottom:18px;border-bottom:1px dashed #ece4e4}
+.qb:last-of-type{border-bottom:none;margin-bottom:0}
+.qh{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.qn{background:#c0392b;color:white;font-size:.76rem;font-weight:700;padding:1px 8px;border-radius:4px}
+.qt{font-size:.72rem;color:#aaa}
+.qlabel{font-size:.97rem;margin-bottom:10px}
+
+/* MC options */
+.mco-row{display:flex;flex-wrap:wrap;gap:10px}
+.mco{padding:8px 18px;border:2px solid #e0d4d4;border-radius:8px;background:white;font-size:.91rem;cursor:pointer;transition:all .15s;font-family:inherit}
+.mco:hover{border-color:#c0392b;color:#c0392b}
+.mco.sel{border-color:#2471a3;background:#e8f4fd;color:#2471a3;font-weight:700}
+.mco.ok{border-color:#1e8449!important;background:#e9f7ef!important;color:#1e8449!important;font-weight:700}
+.mco.bad{border-color:#c0392b!important;background:#fde8e8!important;color:#c0392b!important}
+
+/* Dropdowns */
+select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23c0392b' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 10px center;border:2px solid #e0d4d4;border-radius:8px;padding:6px 32px 6px 10px;font-size:.91rem;cursor:pointer;min-width:170px;font-family:inherit;transition:border-color .2s}
+select:focus{outline:none;border-color:#c0392b}
+.sok{border-color:#1e8449!important;background-color:#e9f7ef!important}
+.sno{border-color:#c0392b!important;background-color:#fde8e8!important}
+
+/* Feedback inline */
+.fb{display:none;font-size:.8rem;margin-left:8px}
+.fb.ok{color:#1e8449}
+.fb.bad{color:#c0392b}
+
+/* Explanations */
+.expl{display:none;margin-top:10px;background:#f9f9f9;border-left:3px solid #c0392b;padding:9px 13px;border-radius:0 8px 8px 0;font-size:.84rem;color:#444}
+.expl strong{color:#c0392b}
+
+/* Reading */
+.passage{background:#fafaf8;border:1px solid #ece4e4;border-radius:8px;padding:18px 22px;font-size:1.03rem;line-height:2.6;margin-bottom:18px}
+.passage p{margin-bottom:4px}
+
+/* Listening */
+.li-item{display:flex;align-items:center;gap:12px;padding:9px 13px;background:#f9f9f9;border-radius:8px;margin-bottom:8px}
+.li-num{font-size:.76rem;color:#aaa;min-width:22px}
+.li-txt{flex:1;font-size:.97rem;filter:blur(5px);transition:filter .3s;user-select:none}
+.li-txt.show{filter:none}
+.playbtn{padding:5px 12px;border:none;border-radius:6px;background:#7d3c98;color:white;font-size:.78rem;cursor:pointer;font-family:inherit;white-space:nowrap}
+.playbtn:hover{opacity:.85}
+.playall{padding:9px 20px;border:none;border-radius:8px;background:#7d3c98;color:white;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit}
+.revbtn{padding:7px 16px;border:2px solid #7d3c98;border-radius:8px;background:white;color:#7d3c98;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* Buttons */
+.brow{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.bcheck{padding:10px 26px;background:#c0392b;color:white;border:none;border-radius:8px;font-size:.91rem;font-weight:700;cursor:pointer;font-family:inherit}
+.bcheck:hover{opacity:.88}
+.breset{padding:10px 22px;background:#eee;color:#444;border:none;border-radius:8px;font-size:.91rem;font-weight:700;cursor:pointer;font-family:inherit}
+.breset:hover{background:#ddd}
+
+/* Score banner */
+.sb{display:none;margin-top:12px;padding:12px 16px;border-radius:10px;font-size:.92rem;font-weight:700;text-align:center}
+.sb-great{background:#e9f7ef;color:#1a5632;border:2px solid #27ae60}
+.sb-ok{background:#fef9e7;color:#7d6608;border:2px solid #f1c40f}
+.sb-low{background:#fde8e8;color:#7b241c;border:2px solid #c0392b}
+
+/* Progress */
+.pw{margin-top:10px}
+.pbg{background:#ece4e4;border-radius:999px;height:7px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,#c0392b,#e74c3c);border-radius:999px;transition:width .5s;width:0%}
+.pl{font-size:.72rem;color:#aaa;text-align:right;margin-top:3px}
+
+/* Tips */
+.tips{padding-left:18px;font-size:.87rem;color:#555;line-height:2.3}
+
+/* ── EXAM MODE ── */
+.exam-wrap{max-width:860px;margin:0 auto;padding:28px 16px 60px}
+.exam-top{text-align:center;margin-bottom:22px}
+.exam-top h2{font-size:1.15rem;color:#2c2c2c;margin-bottom:4px}
+.exam-top p{font-size:.82rem;color:#888}
+.esec{margin-bottom:20px}
+.esec-title{font-size:.92rem;font-weight:700;background:#2c2c2c;color:white;padding:8px 16px;border-radius:8px 8px 0 0}
+.esec-sub{font-size:.8rem;color:#555;background:#f5f5f5;padding:7px 16px;border-left:1px solid #ddd;border-right:1px solid #ddd}
+.eqb{background:white;border:1px solid #ddd;padding:15px 18px;margin-bottom:2px}
+.eqb:last-child{border-radius:0 0 8px 8px}
+.eqt{font-size:.97rem;margin-bottom:11px;line-height:1.9}
+.eoo{display:flex;flex-wrap:wrap;gap:9px}
+.eo{padding:7px 16px;border:2px solid #ccc;border-radius:6px;background:white;font-size:.9rem;cursor:pointer;font-family:inherit;transition:all .15s}
+.eo:hover{border-color:#555}
+.eo.sel{border-color:#2c2c2c;background:#2c2c2c;color:white}
+.eo.ok{border-color:#27ae60!important;background:#e9f7ef!important;color:#1e8449!important;font-weight:700}
+.eo.bad{border-color:#e74c3c!important;background:#fde8e8!important;color:#c0392b!important}
+.eexpl{display:none;margin-top:9px;background:#f5f5f5;border-left:3px solid #555;padding:8px 12px;border-radius:0 6px 6px 0;font-size:.82rem;color:#444}
+.hint{display:none;margin-top:9px;background:#f0f4ff;border-left:3px solid #7d3c98;padding:9px 13px;border-radius:0 8px 8px 0;font-size:.82rem}
+.hint .hro{color:#7d3c98;font-style:italic;margin-bottom:2px}
+.hint .hzh{color:#2471a3;font-weight:600;margin-bottom:5px}
+.hint .hop{color:#555;line-height:2;border-top:1px dashed #ccd;padding-top:5px;margin-top:4px}
+.hint .hop .cor{color:#1e8449;font-weight:700}
+body.hints-on .hint{display:block}
+.hint-toggle{padding:8px 18px;border:2px solid #7d3c98;border-radius:8px;background:white;color:#7d3c98;font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:10px}
+.hint-toggle.on{background:#7d3c98;color:white}
+.ebcheck{padding:11px 30px;background:#2c2c2c;color:white;border:none;border-radius:8px;font-size:.97rem;font-weight:700;cursor:pointer;font-family:inherit}
+.ebreset{padding:11px 22px;background:#eee;color:#444;border:none;border-radius:8px;font-size:.97rem;font-weight:700;cursor:pointer;font-family:inherit}
+
+@media(max-width:540px){
+  select{min-width:140px}
+  .card{padding:16px 14px}
+  .mco,.eo{padding:7px 12px;font-size:.86rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎌 日文 N5 每日練習</h1>
+  <p>2026 年 6 月 11 日 ／ Day 1 ／ 主題：日常基礎詞彙</p>
+</header>
+
+<div class="tab-nav">
+  <button id="tb-study" class="tab-btn active" onclick="switchTab('study')">📖 學習模式</button>
+  <button id="tb-exam"  class="tab-btn"        onclick="switchTab('exam')">📝 試験モード</button>
+</div>
+
+<!-- ══════════════ STUDY MODE ══════════════ -->
+<div id="mode-study" class="mode">
+
+  <!-- 詞彙表 -->
+  <div class="card">
+    <h2>📚 今日 10 個 N5 詞彙</h2>
+    <table>
+      <thead><tr><th>詞彙</th><th>讀音</th><th>中文</th><th>詞類</th></tr></thead>
+      <tbody>
+        <tr><td>おはようございます</td><td>ohayō gozaimasu</td><td>早安（正式）</td><td><span class="badge bg">招呼語</span></td></tr>
+        <tr><td>ありがとうございます</td><td>arigatō gozaimasu</td><td>謝謝（正式）</td><td><span class="badge bg">招呼語</span></td></tr>
+        <tr><td>学校 <span class="rd">がっこう</span></td><td>gakkō</td><td>學校</td><td><span class="badge bn">名詞</span></td></tr>
+        <tr><td>水 <span class="rd">みず</span></td><td>mizu</td><td>水</td><td><span class="badge bn">名詞</span></td></tr>
+        <tr><td>友だち <span class="rd">ともだち</span></td><td>tomodachi</td><td>朋友</td><td><span class="badge bn">名詞</span></td></tr>
+        <tr><td>食べる <span class="rd">たべる</span></td><td>taberu</td><td>吃</td><td><span class="badge bv">動詞</span></td></tr>
+        <tr><td>飲む <span class="rd">のむ</span></td><td>nomu</td><td>喝</td><td><span class="badge bv">動詞</span></td></tr>
+        <tr><td>行く <span class="rd">いく</span></td><td>iku</td><td>去</td><td><span class="badge bv">動詞</span></td></tr>
+        <tr><td>おいしい</td><td>oishii</td><td>好吃的</td><td><span class="badge ba">い形容詞</span></td></tr>
+        <tr><td>ゆっくり</td><td>yukkuri</td><td>慢慢地</td><td><span class="badge bw">副詞</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- A: 單字選擇題 -->
+  <div class="card">
+    <h2>🔤 單字選擇題</h2>
+    <span class="stag tmc">詞意辨識 × 5</span>
+
+    <div class="qb" id="mc1">
+      <div class="qh"><span class="qn">1</span><span class="qt">單字選擇</span></div>
+      <div class="qlabel">「食べる」的中文意思是？</div>
+      <div class="mco-row">
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc1')">喝</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc1')">去</button>
+        <button class="mco" data-v="c" onclick="pickMC(this,'mc1')">吃</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc1')">說</button>
+      </div>
+      <div class="expl">「食べる」（たべる）＝吃。記憶訣：「食」字本身含「食物」之意。同族詞：食べもの（食物）。</div>
+    </div>
+
+    <div class="qb" id="mc2">
+      <div class="qh"><span class="qn">2</span><span class="qt">單字選擇</span></div>
+      <div class="qlabel">「ともだち」的中文意思是？</div>
+      <div class="mco-row">
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc2')">水</button>
+        <button class="mco" data-v="c" onclick="pickMC(this,'mc2')">朋友</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc2')">學校</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc2')">早安</button>
+      </div>
+      <div class="expl">「友（とも）」＝朋友，「だち（達）」為複數詞尾。漢字寫法：友達。</div>
+    </div>
+
+    <div class="qb" id="mc3">
+      <div class="qh"><span class="qn">3</span><span class="qt">單字選擇</span></div>
+      <div class="qlabel">「ゆっくり」的中文意思是？</div>
+      <div class="mco-row">
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc3')">快速地</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc3')">已經</button>
+        <button class="mco" data-v="c" onclick="pickMC(this,'mc3')">慢慢地</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc3')">很多</button>
+      </div>
+      <div class="expl">副詞「ゆっくり」表示動作緩慢或悠閒。常用：ゆっくり話してください（請說慢一點）。</div>
+    </div>
+
+    <div class="qb" id="mc4">
+      <div class="qh"><span class="qn">4</span><span class="qt">單字選擇</span></div>
+      <div class="qlabel">哪一個是「水」的日文讀音？</div>
+      <div class="mco-row">
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc4')">がっこう</button>
+        <button class="mco" data-v="c" onclick="pickMC(this,'mc4')">みず</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc4')">ともだち</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc4')">たべる</button>
+      </div>
+      <div class="expl">「水」訓讀「みず」（單獨指水）；音讀「すい」用於複合詞，如水曜日（すいようび，星期三）。</div>
+    </div>
+
+    <div class="qb" id="mc5">
+      <div class="qh"><span class="qn">5</span><span class="qt">單字選擇</span></div>
+      <div class="qlabel">哪一個是「謝謝」的日文？</div>
+      <div class="mco-row">
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc5')">こんにちは</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc5')">すみません</button>
+        <button class="mco" data-v="c" onclick="pickMC(this,'mc5')">ありがとうございます</button>
+        <button class="mco" data-v="w" onclick="pickMC(this,'mc5')">おはようございます</button>
+      </div>
+      <div class="expl">こんにちは＝你好、すみません＝不好意思、おはようございます＝早安。三個都是 N5 必學招呼語！</div>
+    </div>
+
+    <div class="brow">
+      <button class="bcheck" onclick="checkMC()">確認答案</button>
+      <button class="breset" onclick="resetMC()">重新作答</button>
+    </div>
+    <div class="pw"><div class="pbg"><div class="pf" id="mc-pf"></div></div><div class="pl" id="mc-pl">已選：0 / 5</div></div>
+    <div id="mc-sb" class="sb"></div>
+  </div>
+
+  <!-- B: 語法練習 (dropdown 10) -->
+  <div class="card">
+    <h2>✏️ 語法練習（10 題）</h2>
+    <span class="stag tgr">填空 ／ 讀音 ／ 中翻日</span>
+
+    <div class="qb" id="gq1">
+      <div class="qh"><span class="qn">1</span><span class="qt">填空</span></div>
+      <div class="qlabel">毎朝、パンを
+        <select id="gs1" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">飲みます</option>
+          <option value="c">食べます</option>
+          <option value="w">行きます</option>
+        </select>。<span class="fb" id="gf1"></span>
+      </div>
+      <div class="expl" id="ge1"><strong>正解：食べます</strong>（たべます）── パン是食物，搭配「食べる」。飲みます＝喝、行きます＝去，語意不符。</div>
+    </div>
+
+    <div class="qb" id="gq2">
+      <div class="qh"><span class="qn">2</span><span class="qt">填空</span></div>
+      <div class="qlabel">水を
+        <select id="gs2" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">食べて</option>
+          <option value="c">飲んで</option>
+          <option value="w">行って</option>
+        </select>ください。<span class="fb" id="gf2"></span>
+      </div>
+      <div class="expl" id="ge2"><strong>正解：飲んで</strong>（のんで）── 「飲む」的て形。「～てください＝請～」是 N5 必考句型。</div>
+    </div>
+
+    <div class="qb" id="gq3">
+      <div class="qh"><span class="qn">3</span><span class="qt">填空</span></div>
+      <div class="qlabel">学校へ
+        <select id="gs3" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="c">行きます</option>
+          <option value="w">食べます</option>
+          <option value="w">飲みます</option>
+        </select>。<span class="fb" id="gf3"></span>
+      </div>
+      <div class="expl" id="ge3"><strong>正解：行きます</strong>（いきます）── 助詞「へ」表移動方向，後接移動動詞「行く」。「～へ行く」是 N5 最常考句型！</div>
+    </div>
+
+    <div class="qb" id="gq4">
+      <div class="qh"><span class="qn">4</span><span class="qt">填空</span></div>
+      <div class="qlabel">このケーキは
+        <select id="gs4" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">ゆっくり</option>
+          <option value="c">おいしい</option>
+          <option value="w">みず</option>
+        </select>です。<span class="fb" id="gf4"></span>
+      </div>
+      <div class="expl" id="ge4"><strong>正解：おいしい</strong> ── い形容詞直接接「です」。ゆっくり是副詞，みず是名詞，都不可在此使用。</div>
+    </div>
+
+    <div class="qb" id="gq5">
+      <div class="qh"><span class="qn">5</span><span class="qt">讀音選擇</span></div>
+      <div class="qlabel">「学校」的正確讀音是？
+        <select id="gs5" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">がくこう</option>
+          <option value="c">がっこう</option>
+          <option value="w">がっこ</option>
+        </select><span class="fb" id="gf5"></span>
+      </div>
+      <div class="expl" id="ge5"><strong>正解：がっこう</strong>（gakkō）── 促音「っ」是常見誤讀點，「学」接「校」時音便為「がっ」。</div>
+    </div>
+
+    <div class="qb" id="gq6">
+      <div class="qh"><span class="qn">6</span><span class="qt">讀音選擇</span></div>
+      <div class="qlabel">「水」的正確讀音是？
+        <select id="gs6" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">すい</option>
+          <option value="c">みず</option>
+          <option value="w">もず</option>
+        </select><span class="fb" id="gf6"></span>
+      </div>
+      <div class="expl" id="ge6"><strong>正解：みず</strong> ── 訓讀「みず」指水本身；音讀「すい」用於水曜日、水泳等複合詞。</div>
+    </div>
+
+    <div class="qb" id="gq7">
+      <div class="qh"><span class="qn">7</span><span class="qt">讀音選擇</span></div>
+      <div class="qlabel">「友だち」的正確讀音是？
+        <select id="gs7" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">ゆうだち</option>
+          <option value="c">ともだち</option>
+          <option value="w">とんだち</option>
+        </select><span class="fb" id="gf7"></span>
+      </div>
+      <div class="expl" id="ge7"><strong>正解：ともだち</strong> ── 注意「ゆうだち」是「夕立（夏日傍晚陣雨）」，是完全不同的詞！</div>
+    </div>
+
+    <div class="qb" id="gq8">
+      <div class="qh"><span class="qn">8</span><span class="qt">中翻日</span></div>
+      <div class="qlabel">「早安」的日文是？
+        <select id="gs8" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">こんにちは</option>
+          <option value="c">おはようございます</option>
+          <option value="w">こんばんは</option>
+        </select><span class="fb" id="gf8"></span>
+      </div>
+      <div class="expl" id="ge8"><strong>正解：おはようございます</strong> ── 時間對應：おはよう（5–10時）・こんにちは（10–18時）・こんばんは（18時以後）。</div>
+    </div>
+
+    <div class="qb" id="gq9">
+      <div class="qh"><span class="qn">9</span><span class="qt">中翻日</span></div>
+      <div class="qlabel">「謝謝」的日文是？
+        <select id="gs9" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">すみません</option>
+          <option value="c">ありがとうございます</option>
+          <option value="w">どういたしまして</option>
+        </select><span class="fb" id="gf9"></span>
+      </div>
+      <div class="expl" id="ge9"><strong>正解：ありがとうございます</strong> ── すみません＝不好意思、どういたしまして＝不客氣（回應謝謝用）。</div>
+    </div>
+
+    <div class="qb" id="gq10">
+      <div class="qh"><span class="qn">10</span><span class="qt">中翻日</span></div>
+      <div class="qlabel">「請說慢一點」的日文是？
+        <select id="gs10" onchange="prog('g')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">はやく話してください。</option>
+          <option value="c">ゆっくり話してください。</option>
+          <option value="w">おいしく話してください。</option>
+        </select><span class="fb" id="gf10"></span>
+      </div>
+      <div class="expl" id="ge10"><strong>正解：ゆっくり話してください。</strong> ── 副詞「ゆっくり」修飾「話す」。考試聽力時聽不懂可以對考官說這句！</div>
+    </div>
+
+    <div class="brow">
+      <button class="bcheck" onclick="checkG()">確認答案</button>
+      <button class="breset" onclick="resetG()">重新作答</button>
+    </div>
+    <div class="pw"><div class="pbg"><div class="pf" id="g-pf"></div></div><div class="pl" id="g-pl">已作答：0 / 10</div></div>
+    <div id="g-sb" class="sb"></div>
+  </div>
+
+  <!-- C: 文章閱讀 -->
+  <div class="card">
+    <h2>📖 文章閱讀</h2>
+    <span class="stag trd">閱讀理解 × 3</span>
+
+    <div class="passage">
+      <p>わたしは　まいにち　<ruby>学校<rt>がっこう</rt></ruby>へ　いきます。</p>
+      <p><ruby>学校<rt>がっこう</rt></ruby>で　ともだちと　はなします。</p>
+      <p>ひるごはんに　パンを　たべます。　とても　おいしいです。</p>
+      <p><ruby>水<rt>みず</rt></ruby>も　のみます。</p>
+      <p>ゆっくり　たべました。　たのしかったです。</p>
+    </div>
+
+    <div class="qb" id="rq1">
+      <div class="qh"><span class="qn">1</span><span class="qt">閱讀</span></div>
+      <div class="qlabel">「わたし」はまいにちどこへいきますか？
+        <select id="rs1" onchange="prog('r')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">いえ</option>
+          <option value="c">がっこう</option>
+          <option value="w">こうえん</option>
+        </select><span class="fb" id="rf1"></span>
+      </div>
+      <div class="expl" id="re1"><strong>正解：がっこう（学校）</strong> ── 第一句「まいにち学校へいきます」即為答案。まいにち＝每天、へ＝往。</div>
+    </div>
+
+    <div class="qb" id="rq2">
+      <div class="qh"><span class="qn">2</span><span class="qt">閱讀</span></div>
+      <div class="qlabel">ひるごはんになにをたべますか？
+        <select id="rs2" onchange="prog('r')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">ケーキ</option>
+          <option value="c">パン</option>
+          <option value="w">ごはん</option>
+        </select><span class="fb" id="rf2"></span>
+      </div>
+      <div class="expl" id="re2"><strong>正解：パン</strong> ── 第三句「ひるごはんにパンをたべます」。パン（麵包）是外來語，源自葡萄牙語 pão。</div>
+    </div>
+
+    <div class="qb" id="rq3">
+      <div class="qh"><span class="qn">3</span><span class="qt">閱讀</span></div>
+      <div class="qlabel">パンはどうですか？
+        <select id="rs3" onchange="prog('r')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">まずい</option>
+          <option value="c">おいしい</option>
+          <option value="w">たかい</option>
+        </select><span class="fb" id="rf3"></span>
+      </div>
+      <div class="expl" id="re3"><strong>正解：おいしい</strong> ── 「とてもおいしいです」表示非常好吃。とても＝非常，加強形容詞語氣。</div>
+    </div>
+
+    <div class="brow">
+      <button class="bcheck" onclick="checkR()">確認答案</button>
+      <button class="breset" onclick="resetR()">重新作答</button>
+    </div>
+    <div class="pw"><div class="pbg"><div class="pf" id="r-pf"></div></div><div class="pl" id="r-pl">已作答：0 / 3</div></div>
+    <div id="r-sb" class="sb"></div>
+  </div>
+
+  <!-- D: 聽力練習 -->
+  <div class="card">
+    <h2>🎧 聽力練習</h2>
+    <span class="stag tls">聆聽理解 × 3（需開啟音量）</span>
+    <p style="font-size:.82rem;color:#888;margin-bottom:14px">點擊 ▶ 播放後，根據聽到的內容回答問題。<br>若無日語語音請點「顯示文字」確認句子內容。</p>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+      <button class="playall" onclick="playAll()">▶ 全部播放</button>
+      <button class="revbtn" onclick="toggleReveal()">👁 顯示 / 隱藏文字</button>
+    </div>
+
+    <div id="li-wrap">
+      <div class="li-item"><span class="li-num">①</span><span class="li-txt" id="lt1">おはようございます。まいにち学校へいきます。</span><button class="playbtn" onclick="sp('lt1')">▶</button></div>
+      <div class="li-item"><span class="li-num">②</span><span class="li-txt" id="lt2">学校でともだちにあいます。</span><button class="playbtn" onclick="sp('lt2')">▶</button></div>
+      <div class="li-item"><span class="li-num">③</span><span class="li-txt" id="lt3">ひるごはんに、おいしいパンをたべます。水ものみます。</span><button class="playbtn" onclick="sp('lt3')">▶</button></div>
+      <div class="li-item"><span class="li-num">④</span><span class="li-txt" id="lt4">ゆっくりたべました。ありがとうございます。</span><button class="playbtn" onclick="sp('lt4')">▶</button></div>
+    </div>
+
+    <div class="qb" id="lq1">
+      <div class="qh"><span class="qn">1</span><span class="qt">聽力</span></div>
+      <div class="qlabel">話者はまいにちどこへいきますか？
+        <select id="ls1" onchange="prog('l')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">いえ</option>
+          <option value="c">学校</option>
+          <option value="w">としょかん</option>
+        </select><span class="fb" id="lf1"></span>
+      </div>
+      <div class="expl" id="le1"><strong>正解：学校</strong> ── 句子①「まいにち学校へいきます」即為答案。</div>
+    </div>
+
+    <div class="qb" id="lq2">
+      <div class="qh"><span class="qn">2</span><span class="qt">聽力</span></div>
+      <div class="qlabel">ひるごはんになにをたべますか？
+        <select id="ls2" onchange="prog('l')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">ケーキ</option>
+          <option value="c">パン</option>
+          <option value="w">ごはん</option>
+        </select><span class="fb" id="lf2"></span>
+      </div>
+      <div class="expl" id="le2"><strong>正解：パン</strong> ── 句子③「おいしいパンをたべます」包含答案。</div>
+    </div>
+
+    <div class="qb" id="lq3">
+      <div class="qh"><span class="qn">3</span><span class="qt">聽力</span></div>
+      <div class="qlabel">どのようにたべましたか？
+        <select id="ls3" onchange="prog('l')">
+          <option value="">── 選擇 ──</option>
+          <option value="w">はやく</option>
+          <option value="c">ゆっくり</option>
+          <option value="w">たくさん</option>
+        </select><span class="fb" id="lf3"></span>
+      </div>
+      <div class="expl" id="le3"><strong>正解：ゆっくり</strong> ── 句子④「ゆっくりたべました」，副詞「ゆっくり」表示慢慢地。</div>
+    </div>
+
+    <div class="brow">
+      <button class="bcheck" onclick="checkL()">確認答案</button>
+      <button class="breset" onclick="resetL()">重新作答</button>
+    </div>
+    <div class="pw"><div class="pbg"><div class="pf" id="l-pf"></div></div><div class="pl" id="l-pl">已作答：0 / 3</div></div>
+    <div id="l-sb" class="sb"></div>
+  </div>
+
+  <!-- Tips -->
+  <div class="card">
+    <h2>💡 今日學習小貼士</h2>
+    <ul class="tips">
+      <li>每天 10 個詞彙，N5 共約 800 詞，100 天即可全部覆蓋！</li>
+      <li>招呼語要大聲朗讀，耳朵記憶比眼睛記憶更有效。</li>
+      <li>動詞 て形（食べて・飲んで・行って）是 N5 最重要語法，請特別記住。</li>
+      <li>漢字常考訓讀 vs 音讀，遇到新漢字都要查兩種讀音。</li>
+      <li>切換右上「試験モード」可用純日文環境做最終複習！</li>
+    </ul>
+  </div>
+
+</div><!-- /study mode -->
+
+
+<!-- ══════════════ EXAM MODE（全日文）══════════════ -->
+<div id="mode-exam" class="hidden">
+<div class="exam-wrap">
+
+  <div class="exam-top">
+    <h2>にほんご　のうりょく　しけん　N5</h2>
+    <p>もじ・ごい　れんしゅうもんだい　（2026年6月11日）</p>
+    <button class="hint-toggle" id="hintBtn" onclick="toggleHints()">🔤 顯示中文＋羅馬拼音</button>
+  </div>
+
+  <!-- もんだい1：よみかた -->
+  <div class="esec">
+    <div class="esec-title">もんだい１　よみかた</div>
+    <div class="esec-sub">＿＿の　ことばの　よみかたとして　もっとも　いいものを、１・２・３・４から　ひとつ　えらんで　ください。</div>
+
+    <div class="eqb" id="eq1">
+      <div class="eqt">まいあさ、<u>学校</u>へ　いきます。</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq1')">① がくこう</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq1')">② がっこう</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq1')">③ がくしょう</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq1')">④ がっこ</button>
+      </div>
+      <div class="hint">
+        <div class="hro">Maiasa, <u>gakkō</u> e ikimasu.</div>
+        <div class="hzh">每天早上，去<u>學校</u>。</div>
+        <div class="hop">
+          ① がくこう → gakukō（錯誤讀法）<br>
+          <span class="cor">② がっこう → gakkō ✓（學校）</span><br>
+          ③ がくしょう → gakushō（錯誤讀法）<br>
+          ④ がっこ → gakko（錯誤讀法）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：② がっこう　／　促音（っ）に　ちゅうい。「学」＋「校」→ がっこう。</div>
+    </div>
+
+    <div class="eqb" id="eq2">
+      <div class="eqt"><u>水</u>を　のんで　ください。</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq2')">① もず</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq2')">② すい</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq2')">③ みず</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq2')">④ みい</button>
+      </div>
+      <div class="hint">
+        <div class="hro"><u>Mizu</u> o nonde kudasai.</div>
+        <div class="hzh">請喝<u>水</u>。</div>
+        <div class="hop">
+          ① もず → mozu（錯誤讀法）<br>
+          ② すい → sui（音讀，用於複合詞如水曜日）<br>
+          <span class="cor">③ みず → mizu ✓（訓讀，正確）</span><br>
+          ④ みい → mii（錯誤讀法）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：③ みず　／　「水」は　くんよみ「みず」、おんよみ「すい」（水曜日など）。</div>
+    </div>
+
+    <div class="eqb" id="eq3">
+      <div class="eqt"><u>友だち</u>と　はなします。</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq3')">① ゆうだち</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq3')">② とんだち</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq3')">③ ともだち</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq3')">④ ともたち</button>
+      </div>
+      <div class="hint">
+        <div class="hro"><u>Tomodachi</u> to hanashimasu.</div>
+        <div class="hzh">和<u>朋友</u>說話。</div>
+        <div class="hop">
+          ① ゆうだち → yūdachi（夏日傍晚陣雨，完全不同的詞！）<br>
+          ② とんだち → tondachi（錯誤讀法）<br>
+          <span class="cor">③ ともだち → tomodachi ✓（朋友）</span><br>
+          ④ ともたち → tomotachi（錯誤讀法）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：③ ともだち　／　「友」→「とも」。「ゆうだち」は　夕立（なつの　あめ）。</div>
+    </div>
+  </div>
+
+  <!-- もんだい2：ぶんぽう -->
+  <div class="esec">
+    <div class="esec-title">もんだい２　（　）に　なにを　いれますか</div>
+    <div class="esec-sub">もっとも　いいものを、１・２・３・４から　ひとつ　えらんで　ください。</div>
+
+    <div class="eqb" id="eq4">
+      <div class="eqt">まいあさ、パンを（　）。</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq4')">① のみます</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq4')">② いきます</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq4')">③ たべます</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq4')">④ みます</button>
+      </div>
+      <div class="hint">
+        <div class="hro">Maiasa, pan o (　　).</div>
+        <div class="hzh">每天早上，（　　）麵包。</div>
+        <div class="hop">
+          ① のみます → nomimasu（喝）<br>
+          ② いきます → ikimasu（去）<br>
+          <span class="cor">③ たべます → tabemasu ✓（吃）</span><br>
+          ④ みます → mimasu（看）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：③ たべます　／　パンは　たべものなので「たべる」を　つかいます。</div>
+    </div>
+
+    <div class="eqb" id="eq5">
+      <div class="eqt">学校へ（　）ください。</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq5')">① たべて</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq5')">② のんで</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq5')">③ いって</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq5')">④ みて</button>
+      </div>
+      <div class="hint">
+        <div class="hro">Gakkō e (　　) kudasai.</div>
+        <div class="hzh">請（　　）學校。</div>
+        <div class="hop">
+          ① たべて → tabete（吃的て形）<br>
+          ② のんで → nonde（喝的て形）<br>
+          <span class="cor">③ いって → itte ✓（去的て形）</span><br>
+          ④ みて → mite（看的て形）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：③ いって　／　「～へ　いく」は　いどう。「いく」の　てけい　は　「いって」。</div>
+    </div>
+
+    <div class="eqb" id="eq6">
+      <div class="eqt">この　ケーキは（　）です。</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq6')">① みず</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq6')">② ともだち</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq6')">③ ゆっくり</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq6')">④ おいしい</button>
+      </div>
+      <div class="hint">
+        <div class="hro">Kono kēki wa (　　) desu.</div>
+        <div class="hzh">這個蛋糕（　　）。</div>
+        <div class="hop">
+          ① みず → mizu（水，名詞）<br>
+          ② ともだち → tomodachi（朋友，名詞）<br>
+          ③ ゆっくり → yukkuri（慢慢地，副詞）<br>
+          <span class="cor">④ おいしい → oishii ✓（好吃的，い形容詞）</span>
+        </div>
+      </div>
+      <div class="eexpl">こたえ：④ おいしい　／　い形容詞で　あじを　あらわします。「～は　おいしいです」は　ひんしゅつ　パターン。</div>
+    </div>
+  </div>
+
+  <!-- もんだい3：ばめん -->
+  <div class="esec">
+    <div class="esec-title">もんだい３　どれが　いいですか</div>
+    <div class="esec-sub">★の　ひとは　なんと　いいますか。もっとも　いいものを　えらんで　ください。</div>
+
+    <div class="eqb" id="eq7">
+      <div class="eqt">あさ、はじめて　ともだちに　あいました。★なんと　いいますか？</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq7')">① こんにちは</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq7')">② おはようございます</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq7')">③ こんばんは</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq7')">④ さようなら</button>
+      </div>
+      <div class="hint">
+        <div class="hro">Asa, hajimete tomodachi ni aimashita. Nan to iimasu ka?</div>
+        <div class="hzh">早上，第一次遇到朋友。要說什麼？</div>
+        <div class="hop">
+          ① こんにちは → konnichiwa（你好，白天用）<br>
+          <span class="cor">② おはようございます → ohayō gozaimasu ✓（早安）</span><br>
+          ③ こんばんは → konbanwa（晚安）<br>
+          ④ さようなら → sayōnara（再見）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：② おはようございます　／　あさの　あいさつです。</div>
+    </div>
+
+    <div class="eqb" id="eq8">
+      <div class="eqt">ともだちに　プレゼントを　もらいました。★なんと　いいますか？</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq8')">① すみません</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq8')">② ありがとうございます</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq8')">③ どういたしまして</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq8')">④ おはようございます</button>
+      </div>
+      <div class="hint">
+        <div class="hro">Tomodachi ni purezento o moraimashita. Nan to iimasu ka?</div>
+        <div class="hzh">收到朋友的禮物。要說什麼？</div>
+        <div class="hop">
+          ① すみません → sumimasen（不好意思／對不起）<br>
+          <span class="cor">② ありがとうございます → arigatō gozaimasu ✓（謝謝）</span><br>
+          ③ どういたしまして → dō itashimashite（不客氣，回應謝謝用）<br>
+          ④ おはようございます → ohayō gozaimasu（早安）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：② ありがとうございます　／　なにかを　してもらった　ときの　おれいの　ことば。</div>
+    </div>
+
+    <div class="eqb" id="eq9">
+      <div class="eqt">せんせいが　はやく　はなしています。よく　わかりません。★なんと　いいますか？</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq9')">① はやく　はなして　ください。</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq9')">② ゆっくり　はなして　ください。</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq9')">③ たくさん　はなして　ください。</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq9')">④ もういちど　みて　ください。</button>
+      </div>
+      <div class="hint">
+        <div class="hro">Sensei ga hayaku hanashite imasu. Yoku wakarimasen. Nan to iimasu ka?</div>
+        <div class="hzh">老師說話很快。聽不太懂。要說什麼？</div>
+        <div class="hop">
+          ① はやく話してください → Hayaku hanashite kudasai.（請說快一點）<br>
+          <span class="cor">② ゆっくり話してください → Yukkuri hanashite kudasai. ✓（請說慢一點）</span><br>
+          ③ たくさん話してください → Takusan hanashite kudasai.（請多說一點）<br>
+          ④ もういちど見てください → Mō ichido mite kudasai.（請再看一次）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：② ゆっくり　はなして　ください。　／　「ゆっくり」＝おそく・ていねいに。</div>
+    </div>
+  </div>
+
+  <!-- もんだい4：ごい -->
+  <div class="esec">
+    <div class="esec-title">もんだい４　もじと　ごい</div>
+    <div class="esec-sub">（　）の　ことばと　いちばん　ちかい　いみの　ものを　えらんで　ください。</div>
+
+    <div class="eqb" id="eq10">
+      <div class="eqt">（ゆっくり）あるいて　ください。</div>
+      <div class="eoo">
+        <button class="eo" data-v="w" onclick="pickE(this,'eq10')">① はやく</button>
+        <button class="eo" data-v="c" onclick="pickE(this,'eq10')">② おそく</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq10')">③ たくさん</button>
+        <button class="eo" data-v="w" onclick="pickE(this,'eq10')">④ すこし</button>
+      </div>
+      <div class="hint">
+        <div class="hro">(Yukkuri) aruite kudasai.</div>
+        <div class="hzh">請（慢慢地）走。</div>
+        <div class="hop">
+          ① はやく → hayaku（快速地）<br>
+          <span class="cor">② おそく → osoku ✓（緩慢地，「ゆっくり」的近義詞）</span><br>
+          ③ たくさん → takusan（很多）<br>
+          ④ すこし → sukoshi（一點點）
+        </div>
+      </div>
+      <div class="eexpl">こたえ：② おそく　／　「ゆっくり」は　スピードが　おそいことを　あらわします。</div>
+    </div>
+  </div>
+
+  <div class="brow">
+    <button class="ebcheck" onclick="checkE()">こたえを　かくにんする</button>
+    <button class="ebreset" onclick="resetE()">もういちど</button>
+  </div>
+  <div class="pw"><div class="pbg"><div class="pf" id="e-pf"></div></div><div class="pl" id="e-pl">こたえた：0 / 10</div></div>
+  <div id="e-sb" class="sb"></div>
+
+</div>
+</div><!-- /exam mode -->
+
+<script>
+/* ── Hint toggle ── */
+function toggleHints(){
+  const on=document.body.classList.toggle('hints-on');
+  const btn=document.getElementById('hintBtn');
+  btn.textContent=on?'🙈 隱藏中文＋羅馬拼音':'🔤 顯示中文＋羅馬拼音';
+  btn.classList.toggle('on',on);
+}
+
+/* ── Tab ── */
+function switchTab(m){
+  document.getElementById('mode-study').classList.toggle('hidden', m!=='study');
+  document.getElementById('mode-exam').classList.toggle('hidden',  m!=='exam');
+  document.getElementById('tb-study').classList.toggle('active', m==='study');
+  document.getElementById('tb-exam').classList.toggle('active',  m==='exam');
+}
+
+/* ── MC helpers ── */
+function pickMC(btn,id){
+  document.getElementById(id).querySelectorAll('.mco').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  prog('mc');
+}
+function checkMC(){
+  let s=0;
+  ['mc1','mc2','mc3','mc4','mc5'].forEach(id=>{
+    const bl=document.getElementById(id);
+    bl.querySelector('.expl').style.display='block';
+    const picked=bl.querySelector('.mco.sel');
+    if(!picked)return;
+    bl.querySelectorAll('.mco').forEach(b=>{
+      if(b.dataset.v==='c') b.classList.add('ok');
+      else if(b.classList.contains('sel')) b.classList.add('bad');
+    });
+    if(picked.dataset.v==='c') s++;
+  });
+  showSB('mc-sb',s,5);
+}
+function resetMC(){
+  ['mc1','mc2','mc3','mc4','mc5'].forEach(id=>{
+    const bl=document.getElementById(id);
+    bl.querySelectorAll('.mco').forEach(b=>b.classList.remove('sel','ok','bad'));
+    bl.querySelector('.expl').style.display='none';
+  });
+  document.getElementById('mc-sb').style.display='none';
+  prog('mc');
+}
+
+/* ── Grammar dropdown helpers ── */
+function checkG(){
+  let s=0;
+  for(let i=1;i<=10;i++){
+    const sl=document.getElementById('gs'+i);
+    const fb=document.getElementById('gf'+i);
+    const ex=document.getElementById('ge'+i);
+    if(!sl||sl.value==='')continue;
+    ex.style.display='block'; fb.style.display='inline';
+    if(sl.value==='c'){sl.className='sok';fb.textContent='✓ 正確';fb.className='fb ok';s++;}
+    else{sl.className='sno';fb.textContent='✗ 再想想';fb.className='fb bad';}
+  }
+  showSB('g-sb',s,10);
+}
+function resetG(){
+  for(let i=1;i<=10;i++){
+    const sl=document.getElementById('gs'+i);
+    const fb=document.getElementById('gf'+i);
+    const ex=document.getElementById('ge'+i);
+    if(!sl)continue;
+    sl.value='';sl.className='';fb.style.display='none';fb.textContent='';ex.style.display='none';
+  }
+  document.getElementById('g-sb').style.display='none';
+  prog('g');
+}
+
+/* ── Reading ── */
+function checkR(){
+  let s=0;
+  for(let i=1;i<=3;i++){
+    const sl=document.getElementById('rs'+i);
+    const fb=document.getElementById('rf'+i);
+    const ex=document.getElementById('re'+i);
+    if(!sl||sl.value==='')continue;
+    ex.style.display='block'; fb.style.display='inline';
+    if(sl.value==='c'){sl.className='sok';fb.textContent='✓ 正確';fb.className='fb ok';s++;}
+    else{sl.className='sno';fb.textContent='✗ 再看看';fb.className='fb bad';}
+  }
+  showSB('r-sb',s,3);
+}
+function resetR(){
+  for(let i=1;i<=3;i++){
+    const sl=document.getElementById('rs'+i);
+    const fb=document.getElementById('rf'+i);
+    const ex=document.getElementById('re'+i);
+    sl.value='';sl.className='';fb.style.display='none';ex.style.display='none';
+  }
+  document.getElementById('r-sb').style.display='none';
+  prog('r');
+}
+
+/* ── Listening ── */
+let voices=[];
+if('speechSynthesis' in window){
+  speechSynthesis.onvoiceschanged=()=>{voices=speechSynthesis.getVoices();};
+  voices=speechSynthesis.getVoices();
+}
+function sp(id){
+  if(!window.speechSynthesis)return;
+  const txt=document.getElementById(id).textContent;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(txt);
+  u.lang='ja-JP'; u.rate=0.8;
+  const jv=voices.find(v=>v.lang.startsWith('ja'));
+  if(jv)u.voice=jv;
+  speechSynthesis.speak(u);
+}
+function playAll(){
+  ['lt1','lt2','lt3','lt4'].forEach((id,i)=>setTimeout(()=>sp(id),i*3500));
+}
+let revShown=false;
+function toggleReveal(){
+  revShown=!revShown;
+  document.querySelectorAll('.li-txt').forEach(el=>el.classList.toggle('show',revShown));
+}
+function checkL(){
+  let s=0;
+  for(let i=1;i<=3;i++){
+    const sl=document.getElementById('ls'+i);
+    const fb=document.getElementById('lf'+i);
+    const ex=document.getElementById('le'+i);
+    if(!sl||sl.value==='')continue;
+    ex.style.display='block'; fb.style.display='inline';
+    if(sl.value==='c'){sl.className='sok';fb.textContent='✓ 正確';fb.className='fb ok';s++;}
+    else{sl.className='sno';fb.textContent='✗ 再聽聽';fb.className='fb bad';}
+  }
+  showSB('l-sb',s,3);
+}
+function resetL(){
+  for(let i=1;i<=3;i++){
+    const sl=document.getElementById('ls'+i);
+    const fb=document.getElementById('lf'+i);
+    const ex=document.getElementById('le'+i);
+    sl.value='';sl.className='';fb.style.display='none';ex.style.display='none';
+  }
+  document.getElementById('l-sb').style.display='none';
+  prog('l');
+}
+
+/* ── Exam mode ── */
+function pickE(btn,id){
+  document.getElementById(id).querySelectorAll('.eo').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  prog('e');
+}
+function checkE(){
+  let s=0;
+  ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'].forEach(id=>{
+    const bl=document.getElementById(id);
+    if(!bl)return;
+    bl.querySelector('.eexpl').style.display='block';
+    const picked=bl.querySelector('.eo.sel');
+    if(!picked)return;
+    bl.querySelectorAll('.eo').forEach(b=>{
+      if(b.dataset.v==='c') b.classList.add('ok');
+      else if(b.classList.contains('sel')) b.classList.add('bad');
+    });
+    if(picked.dataset.v==='c') s++;
+  });
+  showSB('e-sb',s,10);
+}
+function resetE(){
+  ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'].forEach(id=>{
+    const bl=document.getElementById(id);
+    if(!bl)return;
+    bl.querySelectorAll('.eo').forEach(b=>b.classList.remove('sel','ok','bad'));
+    bl.querySelector('.eexpl').style.display='none';
+  });
+  document.getElementById('e-sb').style.display='none';
+  prog('e');
+}
+
+/* ── Progress & score ── */
+function prog(sec){
+  if(sec==='mc'){
+    let n=0;
+    ['mc1','mc2','mc3','mc4','mc5'].forEach(id=>{if(document.getElementById(id).querySelector('.mco.sel'))n++;});
+    set('mc-pf','mc-pl',n,5,'已選');
+  } else if(sec==='g'){
+    let n=0; for(let i=1;i<=10;i++){const s=document.getElementById('gs'+i);if(s&&s.value!=='')n++;} set('g-pf','g-pl',n,10,'已作答');
+  } else if(sec==='r'){
+    let n=0; for(let i=1;i<=3;i++){const s=document.getElementById('rs'+i);if(s&&s.value!=='')n++;} set('r-pf','r-pl',n,3,'已作答');
+  } else if(sec==='l'){
+    let n=0; for(let i=1;i<=3;i++){const s=document.getElementById('ls'+i);if(s&&s.value!=='')n++;} set('l-pf','l-pl',n,3,'已作答');
+  } else if(sec==='e'){
+    const n=document.querySelectorAll('#mode-exam .eo.sel').length; set('e-pf','e-pl',n,10,'こたえた');
+  }
+}
+function set(pfId,plId,v,tot,lbl){
+  document.getElementById(pfId).style.width=(v/tot*100)+'%';
+  document.getElementById(plId).textContent=lbl+'：'+v+' / '+tot;
+}
+function showSB(id,s,tot){
+  const el=document.getElementById(id); el.style.display='block';
+  if(s===tot){el.className='sb sb-great';el.textContent='🎉 滿分！'+s+' / '+tot+' ─ 完美！繼續保持！';}
+  else if(s/tot>=0.7){el.className='sb sb-ok';el.textContent='👍 '+s+' / '+tot+' ─ 答得不錯，複習一下錯誤題目！';}
+  else{el.className='sb sb-low';el.textContent='📖 '+s+' / '+tot+' ─ 沒關係，多看詞彙表再試一次！';}
+}
+</script>
+</body>
+</html>
