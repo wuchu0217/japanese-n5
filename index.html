@@ -3,193 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N5日本語練習 - 食べ物 (2026-06-12)</title>
+<title>N5 日本語練習 - Day 166 - 家族</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#f4f4f4;color:#333;min-height:100vh}
-/* Header */
-header{background:linear-gradient(135deg,#c0392b,#922b21);color:#fff;padding:22px 20px;text-align:center}
-header h1{font-size:1.9em;letter-spacing:1px;margin-bottom:8px}
-header .meta{font-size:.9em;opacity:.88;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
-header .meta span{background:rgba(255,255,255,.15);padding:3px 10px;border-radius:20px}
-/* Tabs */
-.tab-bar{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;position:sticky;top:0;z-index:200;box-shadow:0 2px 4px rgba(0,0,0,.06)}
-.tab-btn{flex:1;padding:14px 8px;border:none;background:transparent;font-size:1em;cursor:pointer;transition:all .2s;font-weight:500}
-.tab-btn.active{background:#fdecea;color:#c0392b;border-bottom:3px solid #c0392b;font-weight:700}
-.tab-btn:hover:not(.active){background:#f9f9f9}
-/* Content */
-.tab-content{display:none;padding:20px;max-width:820px;margin:0 auto}
-.tab-content.active{display:block}
-/* Section card */
-.section{background:#fff;border-radius:14px;padding:22px;margin-bottom:22px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
-.section h2{font-size:1.15em;margin-bottom:16px;color:#c0392b;border-bottom:2px solid #fdecea;padding-bottom:8px}
-/* Vocab table */
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:#f5f5f5;color:#333;padding-bottom:80px}
+header{background:linear-gradient(135deg,#c0392b,#922b21);color:#fff;text-align:center;padding:28px 16px}
+header h1{font-size:2em;margin-bottom:6px;letter-spacing:.05em}
+header .meta{font-size:.95em;opacity:.9;letter-spacing:.05em}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;position:sticky;top:0;z-index:50}
+.tab-btn{flex:1;padding:14px;border:none;background:none;font-size:1em;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:all .2s}
+.tab-btn.active{color:#c0392b;border-bottom-color:#c0392b;font-weight:700}
+.tab-panel{display:none;padding:16px;max-width:820px;margin:0 auto}
+.tab-panel.active{display:block}
+.section{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.section h2{font-size:1.2em;margin-bottom:16px;color:#c0392b;border-left:4px solid #c0392b;padding-left:10px}
 .vocab-table{width:100%;border-collapse:collapse}
-.vocab-table th{background:#c0392b;color:#fff;padding:10px 12px;text-align:left;font-weight:600}
-.vocab-table th:first-child{border-radius:8px 0 0 0}
-.vocab-table th:last-child{border-radius:0 8px 0 0}
-.vocab-table td{padding:10px 12px;border-bottom:1px solid #f0f0f0;vertical-align:middle}
-.vocab-table tr:hover td{background:#fdecea}
-.vocab-table .kana{color:#666;font-size:.85em}
-.badge{display:inline-block;padding:2px 9px;border-radius:14px;font-size:.72em;font-weight:700;white-space:nowrap}
-.badge-noun{background:#2980b9;color:#fff}
-.badge-verb{background:#27ae60;color:#fff}
-.badge-adj-i{background:#e67e22;color:#fff}
-.badge-adv{background:#8e44ad;color:#fff}
-/* Quiz buttons */
-.mc-q{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f0f0f0}
-.mc-q:last-child{border-bottom:none;margin-bottom:0}
-.mc-q .q-text{font-weight:600;margin-bottom:10px;font-size:1em}
-.quiz-btn{display:block;width:100%;margin:5px 0;padding:10px 14px;text-align:left;border:2px solid #e0e0e0;border-radius:8px;background:#fff;cursor:pointer;font-size:.93em;transition:all .2s;color:#333}
-.quiz-btn:hover:not([disabled]){border-color:#c0392b;background:#fdecea}
-.quiz-btn.ok{background:#d5f5e3;border-color:#27ae60;color:#1a6633;font-weight:600}
-.quiz-btn.bad{background:#fdecea;border-color:#c0392b;color:#7b241c;font-weight:600}
-.quiz-btn[disabled]{cursor:default;opacity:.85}
-/* Dropdowns */
-.drop-q{margin:12px 0}
-.drop-q label{font-weight:600;display:block;margin-bottom:6px;line-height:1.5}
-.drop-q select{padding:8px 10px;border-radius:7px;border:2px solid #ccc;font-size:.92em;width:100%;max-width:340px;background:#fff;transition:border-color .2s}
-.drop-q select:focus{outline:none;border-color:#c0392b}
-.drop-q select.ok{border-color:#27ae60;background:#d5f5e3}
-.drop-q select.bad{border-color:#c0392b;background:#fdecea}
-/* Control buttons */
-.ctrl-btns{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
-.btn{padding:10px 22px;border:none;border-radius:8px;cursor:pointer;font-size:.93em;font-weight:700;transition:opacity .2s}
+.vocab-table th{background:#c0392b;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
+.vocab-table td{padding:10px 12px;border-bottom:1px solid #eee;font-size:.95em}
+.vocab-table tr:last-child td{border-bottom:none}
+.vocab-table tr:hover td{background:#fef9f9}
+.badge{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.72em;font-weight:700}
+.badge-n{background:#3498db;color:#fff}
+.badge-v{background:#27ae60;color:#fff}
+.badge-a{background:#e67e22;color:#fff}
+.badge-adv{background:#9b59b6;color:#fff}
+.question{margin-bottom:22px;padding-bottom:18px;border-bottom:1px dashed #eee}
+.question:last-child{border-bottom:none}
+.question p{font-weight:700;margin-bottom:10px;line-height:1.6}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice-btn{padding:10px 12px;border:2px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:.92em;text-align:left;transition:all .2s}
+.choice-btn:hover{border-color:#c0392b;background:#fef9f9}
+.choice-btn.selected{border-color:#c0392b;background:#fef9f9}
+.choice-btn.ok{border-color:#27ae60!important;background:#eafaf1!important;color:#1e8449;font-weight:700}
+.choice-btn.bad{border-color:#e74c3c!important;background:#fdecea!important;color:#c0392b}
+.fill-q{margin-bottom:14px;line-height:2.2;font-size:.97em}
+.fill-q select{padding:4px 8px;border:2px solid #ccc;border-radius:6px;font-size:.93em;background:#fff;cursor:pointer;transition:border-color .2s}
+.fill-q select:focus{outline:none;border-color:#c0392b}
+.fill-q select.ok{border-color:#27ae60;background:#eafaf1}
+.fill-q select.bad{border-color:#e74c3c;background:#fdecea}
+.progress-wrap{background:#eee;border-radius:10px;height:10px;margin:14px 0}
+.progress-bar{height:10px;border-radius:10px;background:linear-gradient(90deg,#c0392b,#e74c3c);width:0%;transition:width .6s}
+.score-banner{text-align:center;padding:12px 16px;border-radius:8px;font-weight:700;font-size:1.05em;display:none;margin-bottom:8px}
+.score-banner.show{display:block}
+.score-banner.good{background:#eafaf1;color:#1e8449;border:2px solid #27ae60}
+.score-banner.fair{background:#fff3e0;color:#d35400;border:2px solid #e67e22}
+.score-banner.poor{background:#fdecea;color:#c0392b;border:2px solid #e74c3c}
+.btn-row{text-align:center;margin-top:12px}
+.btn{padding:10px 22px;border:none;border-radius:8px;cursor:pointer;font-size:.93em;margin:4px;font-weight:600;transition:opacity .2s}
 .btn:hover{opacity:.85}
 .btn-check{background:#c0392b;color:#fff}
 .btn-reset{background:#7f8c8d;color:#fff}
-/* Progress */
-.progress-wrap{margin:14px 0 4px;background:#eee;border-radius:10px;height:10px;overflow:hidden}
-.progress-bar{height:100%;background:linear-gradient(90deg,#c0392b,#e74c3c);border-radius:10px;transition:width .6s ease;width:0%}
-/* Score banner */
-.score-banner{display:none;padding:12px 16px;border-radius:8px;text-align:center;font-weight:700;margin-top:10px;font-size:.95em}
-.score-banner.show{display:block}
-.score-banner.good{background:#d5f5e3;color:#1a6633;border:1px solid #82e0aa}
-.score-banner.ok-score{background:#fef9e7;color:#7d6608;border:1px solid #f9ca24}
-.score-banner.bad-score{background:#fdecea;color:#7b241c;border:1px solid #f1948a}
-/* Reading passage */
-.passage{background:#fafafa;border-left:4px solid #c0392b;padding:16px;border-radius:0 10px 10px 0;line-height:2;margin-bottom:18px;font-size:1.03em}
-.passage strong{color:#c0392b}
-/* Listening */
-.listen-item{background:#f9f9f9;border-radius:10px;padding:14px;margin:10px 0;display:flex;align-items:center;gap:14px;border:1px solid #ebebeb}
-.listen-btn{background:#c0392b;color:#fff;border:none;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:1.1em;flex-shrink:0;transition:transform .15s;display:flex;align-items:center;justify-content:center}
-.listen-btn:hover{transform:scale(1.1)}
-.listen-text-wrap .reveal-hint{font-size:.73em;color:#999;margin-top:3px}
-.listen-text{cursor:pointer;filter:blur(5px);transition:filter .35s;font-size:1.03em;line-height:1.6;user-select:none}
-.listen-text.revealed{filter:none}
-/* Test mode */
-.mondai{margin-bottom:24px}
-.mondai h3{background:linear-gradient(90deg,#922b21,#c0392b);color:#fff;padding:11px 16px;border-radius:10px 10px 0 0;font-size:.95em}
-.mondai-body{background:#fff;border:1px solid #e8e8e8;border-top:none;border-radius:0 0 10px 10px;padding:18px}
-.test-q{margin:16px 0;padding-bottom:16px;border-bottom:1px solid #f0f0f0}
-.test-q:last-child{border-bottom:none;padding-bottom:0}
-.test-q .q-text{font-weight:600;margin-bottom:10px;font-size:1em;line-height:1.6}
-.test-q .q-text u{text-decoration-color:#c0392b;text-decoration-thickness:2px}
-/* Hints */
-.hint{display:none;background:#fffde7;border:1px solid #f9ca24;border-radius:8px;padding:11px 14px;margin-top:10px;font-size:.84em;line-height:1.7;color:#555}
+.passage{line-height:2.2;padding:16px;background:#fafafa;border-radius:8px;border-left:4px solid #c0392b;margin-bottom:18px;font-size:.97em}
+.listen-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #eee;border-radius:10px;margin-bottom:10px}
+.btn-play{background:#c0392b;color:#fff;border:none;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:1.1em;flex-shrink:0;transition:transform .15s}
+.btn-play:hover{transform:scale(1.1)}
+.listen-text{flex:1;cursor:pointer;user-select:none}
+.listen-text .ltext{transition:filter .3s}
+.listen-text.blurred .ltext{filter:blur(5px)}
+.listen-text.revealed .ltext{filter:none}
+.listen-hint{font-size:.8em;color:#999;margin-top:2px}
+.mondai{margin-bottom:26px}
+.mondai h3{font-size:1.05em;color:#c0392b;margin-bottom:8px;padding:8px 12px;background:#fef9f9;border-radius:6px;border-left:3px solid #c0392b}
+.mondai .inst{color:#666;font-size:.85em;margin-bottom:12px}
+.exam-q{margin-bottom:18px;padding-bottom:16px;border-bottom:1px dashed #eee}
+.exam-q:last-child{border-bottom:none}
+.q-text{font-weight:700;margin-bottom:10px;line-height:1.7}
+.exam-choices{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.exam-btn{padding:9px 12px;border:2px solid #ddd;border-radius:7px;background:#fff;cursor:pointer;font-size:.88em;text-align:left;transition:all .2s}
+.exam-btn:hover{border-color:#c0392b;background:#fef9f9}
+.exam-btn.selected{border-color:#c0392b;background:#fef9f9}
+.exam-btn.ok{border-color:#27ae60!important;background:#eafaf1!important;color:#1e8449;font-weight:700}
+.exam-btn.bad{border-color:#e74c3c!important;background:#fdecea!important;color:#c0392b}
+.hint{display:none;margin-top:10px;padding:10px 14px;background:#fffde7;border-radius:7px;font-size:.83em;line-height:1.9;border-left:3px solid #f1c40f}
 body.hints-on .hint{display:block}
-/* Floating hint toggle */
-.hint-toggle{position:fixed;bottom:22px;right:22px;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border:none;border-radius:22px;padding:11px 18px;cursor:pointer;font-size:.88em;font-weight:700;z-index:999;box-shadow:0 3px 12px rgba(0,0,0,.22);transition:transform .2s}
-.hint-toggle:hover{transform:scale(1.05)}
-.hidden{display:none !important}
-/* Responsive */
-@media(max-width:600px){
-  .tab-btn{font-size:.82em;padding:12px 6px}
-  header h1{font-size:1.5em}
-  .vocab-table{font-size:.88em}
-}
+.hints-toggle{position:fixed;bottom:20px;right:20px;background:#2980b9;color:#fff;border:none;border-radius:24px;padding:11px 20px;cursor:pointer;font-size:.88em;z-index:100;box-shadow:0 3px 10px rgba(0,0,0,.2);transition:background .2s}
+.hints-toggle:hover{background:#1a6fa0}
+ruby rt{font-size:.65em;color:#888}
+@media(max-width:520px){.choices,.exam-choices{grid-template-columns:1fr}header h1{font-size:1.4em}}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>&#x1F1EF;&#x1F1F5; N5 日本語練習</h1>
-  <div class="meta">
-    <span>&#x1F4C5; 2026-06-12</span>
-    <span>&#x1F4C6; Day 163</span>
-    <span>&#x1F371; テーマ：食べ物（たべもの）</span>
-  </div>
+  <h1>🇯🇵 N5 日本語練習</h1>
+  <div class="meta">📅 2026年6月15日 &nbsp;|&nbsp; Day 166 &nbsp;|&nbsp; テーマ：家族</div>
 </header>
 
-<div class="tab-bar">
-  <button class="tab-btn active" onclick="switchTab('study')">&#x1F4D6; 學習模式</button>
-  <button class="tab-btn" onclick="switchTab('test')">&#x1F4DD; 試験モード</button>
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('study',this)">📖 學習模式</button>
+  <button class="tab-btn" onclick="switchTab('exam',this)">📝 試験モード</button>
 </div>
 
-<!-- ═══════════ 學習モード ═══════════ -->
-<div id="tab-study" class="tab-content active">
+<!-- ===== 學習モード ===== -->
+<div id="study" class="tab-panel active">
 
   <!-- 1. 詞彙表 -->
   <div class="section">
-    <h2>&#x1F4DA; 詞彙表</h2>
+    <h2>📚 詞彙表</h2>
     <table class="vocab-table">
-      <thead>
-        <tr><th>#</th><th>漢字</th><th>読み仮名</th><th>中文意思</th><th>品詞</th></tr>
-      </thead>
+      <thead><tr><th>漢字</th><th>読み仮名</th><th>中国語訳</th><th>品詞</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>ご飯</td><td class="kana">ごはん</td><td>飯／米飯</td><td><span class="badge badge-noun">名詞</span></td></tr>
-        <tr><td>2</td><td>パン</td><td class="kana">ぱん</td><td>麵包</td><td><span class="badge badge-noun">名詞</span></td></tr>
-        <tr><td>3</td><td>水</td><td class="kana">みず</td><td>水</td><td><span class="badge badge-noun">名詞</span></td></tr>
-        <tr><td>4</td><td>卵</td><td class="kana">たまご</td><td>雞蛋</td><td><span class="badge badge-noun">名詞</span></td></tr>
-        <tr><td>5</td><td>魚</td><td class="kana">さかな</td><td>魚</td><td><span class="badge badge-noun">名詞</span></td></tr>
-        <tr><td>6</td><td>肉</td><td class="kana">にく</td><td>肉</td><td><span class="badge badge-noun">名詞</span></td></tr>
-        <tr><td>7</td><td>食べる</td><td class="kana">たべる</td><td>吃</td><td><span class="badge badge-verb">動詞</span></td></tr>
-        <tr><td>8</td><td>飲む</td><td class="kana">のむ</td><td>喝</td><td><span class="badge badge-verb">動詞</span></td></tr>
-        <tr><td>9</td><td>おいしい</td><td class="kana">おいしい</td><td>好吃、美味</td><td><span class="badge badge-adj-i">い形容詞</span></td></tr>
-        <tr><td>10</td><td>少し</td><td class="kana">すこし</td><td>一點、稍微</td><td><span class="badge badge-adv">副詞</span></td></tr>
+        <tr><td>家族</td><td>かぞく</td><td>家庭／家人</td><td><span class="badge badge-n">名詞</span></td></tr>
+        <tr><td>父</td><td>ちち</td><td>父親（自己的）</td><td><span class="badge badge-n">名詞</span></td></tr>
+        <tr><td>母</td><td>はは</td><td>母親（自己的）</td><td><span class="badge badge-n">名詞</span></td></tr>
+        <tr><td>兄</td><td>あに</td><td>哥哥（自己的）</td><td><span class="badge badge-n">名詞</span></td></tr>
+        <tr><td>姉</td><td>あね</td><td>姊姊（自己的）</td><td><span class="badge badge-n">名詞</span></td></tr>
+        <tr><td>弟</td><td>おとうと</td><td>弟弟</td><td><span class="badge badge-n">名詞</span></td></tr>
+        <tr><td>妹</td><td>いもうと</td><td>妹妹</td><td><span class="badge badge-n">名詞</span></td></tr>
+        <tr><td>住む</td><td>すむ</td><td>居住</td><td><span class="badge badge-v">動詞</span></td></tr>
+        <tr><td>優しい</td><td>やさしい</td><td>溫柔的／親切的</td><td><span class="badge badge-a">い形容詞</span></td></tr>
+        <tr><td>一緒に</td><td>いっしょに</td><td>一起</td><td><span class="badge badge-adv">副詞</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <!-- 2. 單字選擇題 -->
   <div class="section">
-    <h2>&#x1F524; 單字選擇題</h2>
-    <div id="mc-quiz">
-
-      <div class="mc-q" data-state="">
-        <p class="q-text">1. 「水（みず）」の意味は？</p>
-        <button class="quiz-btn" data-v="w">魚（さかな）</button>
-        <button class="quiz-btn" data-v="w">肉（にく）</button>
-        <button class="quiz-btn" data-v="c">水</button>
-        <button class="quiz-btn" data-v="w">麵包</button>
+    <h2>🔤 單字選擇題</h2>
+    <div id="mc-questions">
+      <div class="question">
+        <p>1.「家族」の意味は？</p>
+        <div class="choices">
+          <button class="choice-btn" data-v="w">① 学校</button>
+          <button class="choice-btn" data-v="c">② 家庭・家人</button>
+          <button class="choice-btn" data-v="w">③ 仕事</button>
+          <button class="choice-btn" data-v="w">④ 友達</button>
+        </div>
       </div>
-
-      <div class="mc-q" data-state="">
-        <p class="q-text">2. 「おいしい」の意味は？</p>
-        <button class="quiz-btn" data-v="w">辣</button>
-        <button class="quiz-btn" data-v="w">冷たい</button>
-        <button class="quiz-btn" data-v="c">好吃、美味</button>
-        <button class="quiz-btn" data-v="w">稍微、一點</button>
+      <div class="question">
+        <p>2.「ちち」の漢字は？</p>
+        <div class="choices">
+          <button class="choice-btn" data-v="w">① 母</button>
+          <button class="choice-btn" data-v="c">② 父</button>
+          <button class="choice-btn" data-v="w">③ 兄</button>
+          <button class="choice-btn" data-v="w">④ 弟</button>
+        </div>
       </div>
-
-      <div class="mc-q" data-state="">
-        <p class="q-text">3. 「たまご」の漢字は？</p>
-        <button class="quiz-btn" data-v="w">魚</button>
-        <button class="quiz-btn" data-v="c">卵</button>
-        <button class="quiz-btn" data-v="w">肉</button>
-        <button class="quiz-btn" data-v="w">飯</button>
+      <div class="question">
+        <p>3.「住む」の意味は？</p>
+        <div class="choices">
+          <button class="choice-btn" data-v="w">① 食べる</button>
+          <button class="choice-btn" data-v="w">② 行く</button>
+          <button class="choice-btn" data-v="c">③ 居住する</button>
+          <button class="choice-btn" data-v="w">④ 帰る</button>
+        </div>
       </div>
-
-      <div class="mc-q" data-state="">
-        <p class="q-text">4. 「飲む（のむ）」の中国語は？</p>
-        <button class="quiz-btn" data-v="w">吃</button>
-        <button class="quiz-btn" data-v="w">買う</button>
-        <button class="quiz-btn" data-v="c">喝</button>
-        <button class="quiz-btn" data-v="w">做</button>
+      <div class="question">
+        <p>4.「優しい」の意味は？</p>
+        <div class="choices">
+          <button class="choice-btn" data-v="c">① 溫柔的・親切的</button>
+          <button class="choice-btn" data-v="w">② 難しい（むずかしい）</button>
+          <button class="choice-btn" data-v="w">③ 楽しい（たのしい）</button>
+          <button class="choice-btn" data-v="w">④ 大きい（おおきい）</button>
+        </div>
       </div>
-
-      <div class="mc-q" data-state="">
-        <p class="q-text">5. 「さかな」の漢字は？</p>
-        <button class="quiz-btn" data-v="w">肉</button>
-        <button class="quiz-btn" data-v="w">卵</button>
-        <button class="quiz-btn" data-v="w">飯</button>
-        <button class="quiz-btn" data-v="c">魚</button>
+      <div class="question">
+        <p>5.「いっしょに」の漢字は？</p>
+        <div class="choices">
+          <button class="choice-btn" data-v="w">① 早速に</button>
+          <button class="choice-btn" data-v="w">② 全部に</button>
+          <button class="choice-btn" data-v="c">③ 一緒に</button>
+          <button class="choice-btn" data-v="w">④ 一番に</button>
+        </div>
       </div>
-
     </div>
-    <div class="progress-wrap"><div class="progress-bar" id="mc-progress"></div></div>
+    <div class="progress-wrap"><div class="progress-bar" id="mc-bar"></div></div>
     <div class="score-banner" id="mc-score"></div>
-    <div class="ctrl-btns">
+    <div class="btn-row">
       <button class="btn btn-check" onclick="checkMC()">確認答案</button>
       <button class="btn btn-reset" onclick="resetMC()">重新作答</button>
     </div>
@@ -197,119 +177,25 @@ body.hints-on .hint{display:block}
 
   <!-- 3. 語法練習 -->
   <div class="section">
-    <h2>&#x270F;&#xFE0F; 語法練習</h2>
-    <div id="grammar-quiz">
-
-      <p style="font-size:.88em;color:#888;margin-bottom:14px">【填空 × 4 問】</p>
-      <div class="drop-q">
-        <label>1. 私は毎朝（まいあさ）___を食べます。</label>
-        <select id="g1">
-          <option value="">選択してください</option>
-          <option value="w">みず（水）</option>
-          <option value="c">ごはん（ご飯）</option>
-          <option value="w">にく（肉）</option>
-          <option value="w">すこし（少し）</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>2. のどが渇いたので、___を飲みたい。</label>
-        <select id="g2">
-          <option value="">選択してください</option>
-          <option value="c">みず（水）</option>
-          <option value="w">パン</option>
-          <option value="w">たまご（卵）</option>
-          <option value="w">にく（肉）</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>3. このステーキは___でした。とてもおいしかった！</label>
-        <select id="g3">
-          <option value="">選択してください</option>
-          <option value="w">さかな（魚）</option>
-          <option value="c">にく（肉）</option>
-          <option value="w">みず（水）</option>
-          <option value="w">たまご（卵）</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>4. ___砂糖（さとう）を入れてください。多すぎないように。</label>
-        <select id="g4">
-          <option value="">選択してください</option>
-          <option value="w">たまご</option>
-          <option value="w">パン</option>
-          <option value="c">すこし（少し）</option>
-          <option value="w">さかな</option>
-        </select>
-      </div>
-
-      <p style="font-size:.88em;color:#888;margin:14px 0">【読み方 × 3 問】</p>
-      <div class="drop-q">
-        <label>5. 「卵」の読み方は？</label>
-        <select id="g5">
-          <option value="">選択してください</option>
-          <option value="w">にく</option>
-          <option value="c">たまご</option>
-          <option value="w">さかな</option>
-          <option value="w">ごはん</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>6. 「食べる」の読み方は？</label>
-        <select id="g6">
-          <option value="">選択してください</option>
-          <option value="c">たべる</option>
-          <option value="w">のむ</option>
-          <option value="w">みる</option>
-          <option value="w">かう</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>7. 「少し」の読み方は？</label>
-        <select id="g7">
-          <option value="">選択してください</option>
-          <option value="w">おおし</option>
-          <option value="w">たくし</option>
-          <option value="c">すこし</option>
-          <option value="w">ほんし</option>
-        </select>
-      </div>
-
-      <p style="font-size:.88em;color:#888;margin:14px 0">【中文翻日語 × 3 問】</p>
-      <div class="drop-q">
-        <label>8. 「麵包」を日本語で？</label>
-        <select id="g8">
-          <option value="">選択してください</option>
-          <option value="w">ごはん</option>
-          <option value="c">パン</option>
-          <option value="w">たまご</option>
-          <option value="w">にく</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>9. 「魚（魚類）」を日本語で？</label>
-        <select id="g9">
-          <option value="">選択してください</option>
-          <option value="w">にく</option>
-          <option value="w">たまご</option>
-          <option value="c">さかな</option>
-          <option value="w">みず</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>10. 「好吃、美味」を日本語で？</label>
-        <select id="g10">
-          <option value="">選択してください</option>
-          <option value="w">からい</option>
-          <option value="w">つめたい</option>
-          <option value="c">おいしい</option>
-          <option value="w">すくない</option>
-        </select>
-      </div>
-
+    <h2>✏️ 語法練習</h2>
+    <div id="grammar-questions">
+      <p style="color:#888;font-size:.85em;margin-bottom:14px">【填空】正しい言葉を選んでください。</p>
+      <div class="fill-q">1. 私の<select id="g1"><option value="">---</option><option>母</option><option>父</option><option>兄</option><option>妹</option></select>はとても優しいです。</div>
+      <div class="fill-q">2. 兄は東京に<select id="g2"><option value="">---</option><option>住んで</option><option>食べて</option><option>行って</option><option>来て</option></select>います。</div>
+      <div class="fill-q">3. 家族<select id="g3"><option value="">---</option><option>と</option><option>を</option><option>に</option><option>が</option></select>旅行します。</div>
+      <div class="fill-q">4. 弟と<select id="g4"><option value="">---</option><option>一緒に</option><option>全部</option><option>もう</option><option>まだ</option></select>ご飯を食べます。</div>
+      <p style="color:#888;font-size:.85em;margin:14px 0">【読み方】正しい読み方を選んでください。</p>
+      <div class="fill-q">5.「妹」の読み方：<select id="g5"><option value="">---</option><option>いもうと</option><option>おとうと</option><option>あね</option><option>あに</option></select></div>
+      <div class="fill-q">6.「姉」の読み方：<select id="g6"><option value="">---</option><option>あね</option><option>あに</option><option>いもうと</option><option>おとうと</option></select></div>
+      <div class="fill-q">7.「家族」の読み方：<select id="g7"><option value="">---</option><option>かぞく</option><option>かそく</option><option>けぞく</option><option>いえぞく</option></select></div>
+      <p style="color:#888;font-size:.85em;margin:14px 0">【中翻日】中国語を日本語に訳してください。</p>
+      <div class="fill-q">8. 我的爸爸住在大阪。→ 私の<select id="g8"><option value="">---</option><option>父</option><option>母</option><option>兄</option><option>姉</option></select>は大阪に住んでいます。</div>
+      <div class="fill-q">9. 和家人一起吃飯。→ 家族と<select id="g9"><option value="">---</option><option>一緒に</option><option>全部で</option><option>もっと</option><option>まだ</option></select>ご飯を食べます。</div>
+      <div class="fill-q">10. 我哥哥很溫柔。→ 兄はとても<select id="g10"><option value="">---</option><option>優しい</option><option>難しい</option><option>楽しい</option><option>新しい</option></select>です。</div>
     </div>
-    <div class="progress-wrap"><div class="progress-bar" id="g-progress"></div></div>
-    <div class="score-banner" id="g-score"></div>
-    <div class="ctrl-btns">
+    <div class="progress-wrap"><div class="progress-bar" id="gr-bar"></div></div>
+    <div class="score-banner" id="gr-score"></div>
+    <div class="btn-row">
       <button class="btn btn-check" onclick="checkGrammar()">確認答案</button>
       <button class="btn btn-reset" onclick="resetGrammar()">重新作答</button>
     </div>
@@ -317,45 +203,24 @@ body.hints-on .hint{display:block}
 
   <!-- 4. 文章閱讀 -->
   <div class="section">
-    <h2>&#x1F4D6; 文章閱讀</h2>
+    <h2>📖 文章閱讀</h2>
     <div class="passage">
-&#12288;田中さんは毎朝（まいあさ）、<strong>ご飯</strong>と<strong>卵</strong>を<strong>食べます</strong>。そして<strong>水</strong>を<strong>飲みます</strong>。昼（ひる）は、たいてい<strong>パン</strong>か<strong>魚</strong>を食べます。田中さんは<strong>魚</strong>がとても好きで、「この<strong>魚</strong>は<strong>おいしい</strong>！」といつも言います。夜（よる）は<strong>肉</strong>を<strong>少し</strong>だけ食べて、早く（はやく）寝ます（ねます）。
+      &emsp;私の<ruby>家族<rt>かぞく</rt></ruby>は五人です。<ruby>父<rt>ちち</rt></ruby>と<ruby>母<rt>はは</rt></ruby>と<ruby>兄<rt>あに</rt></ruby>と<ruby>妹<rt>いもうと</rt></ruby>と私です。<ruby>父<rt>ちち</rt></ruby>は会社員で、とても<ruby>優<rt>やさ</rt></ruby>しいです。<ruby>母<rt>はは</rt></ruby>は料理が上手です。<ruby>兄<rt>あに</rt></ruby>は東京に<ruby>住<rt>す</rt></ruby>んでいます。<ruby>妹<rt>いもうと</rt></ruby>とは<ruby>一緒<rt>いっしょ</rt></ruby>に学校へ行きます。私は<ruby>家族<rt>かぞく</rt></ruby>が大好きです。
     </div>
-    <div id="read-quiz">
-      <div class="drop-q">
-        <label>1. 田中さんは毎朝、何を食べますか？</label>
-        <select id="r1">
-          <option value="">選択してください</option>
-          <option value="c">ご飯と卵</option>
-          <option value="w">パンと肉</option>
-          <option value="w">魚と水</option>
-          <option value="w">パンと卵</option>
-        </select>
+    <div id="reading-questions">
+      <div class="fill-q">1. 家族は何人ですか？
+        <select id="r1"><option value="">---</option><option>三人</option><option>四人</option><option>五人</option><option>六人</option></select>
       </div>
-      <div class="drop-q">
-        <label>2. 田中さんは何が大好きですか？</label>
-        <select id="r2">
-          <option value="">選択してください</option>
-          <option value="w">肉</option>
-          <option value="c">魚</option>
-          <option value="w">パン</option>
-          <option value="w">卵</option>
-        </select>
+      <div class="fill-q">2. 父はどんな人ですか？
+        <select id="r2"><option value="">---</option><option>優しい</option><option>厳しい</option><option>楽しい</option><option>新しい</option></select>
       </div>
-      <div class="drop-q">
-        <label>3. 田中さんは夜、何を食べますか？</label>
-        <select id="r3">
-          <option value="">選択してください</option>
-          <option value="w">魚を少し</option>
-          <option value="w">卵をたくさん</option>
-          <option value="c">肉を少し</option>
-          <option value="w">ご飯をたくさん</option>
-        </select>
+      <div class="fill-q">3. 兄はどこに住んでいますか？
+        <select id="r3"><option value="">---</option><option>大阪</option><option>東京</option><option>京都</option><option>名古屋</option></select>
       </div>
     </div>
-    <div class="progress-wrap"><div class="progress-bar" id="r-progress"></div></div>
-    <div class="score-banner" id="r-score"></div>
-    <div class="ctrl-btns">
+    <div class="progress-wrap"><div class="progress-bar" id="rd-bar"></div></div>
+    <div class="score-banner" id="rd-score"></div>
+    <div class="btn-row">
       <button class="btn btn-check" onclick="checkReading()">確認答案</button>
       <button class="btn btn-reset" onclick="resetReading()">重新作答</button>
     </div>
@@ -363,429 +228,356 @@ body.hints-on .hint{display:block}
 
   <!-- 5. 聽力練習 -->
   <div class="section">
-    <h2>&#x1F3A7; 聽力練習</h2>
-    <p style="font-size:.88em;color:#777;margin-bottom:14px">&#x25B6; を押して音声を再生。テキスト部分をクリックすると文字が現れます。</p>
-
-    <div class="listen-item">
-      <button class="listen-btn" onclick="speak('まいあさ、ごはんとたまごをたべます。')" title="再生">&#x25B6;</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" onclick="this.classList.toggle('revealed')">毎朝、ご飯と卵を食べます。</div>
-        <div class="reveal-hint">クリックで文字表示</div>
+    <h2>🎧 聽力練習</h2>
+    <p style="color:#888;font-size:.88em;margin-bottom:14px">▶ ボタンで音声を再生。文字部分をクリックして表示／非表示。</p>
+    <div id="listen-sentences">
+      <div class="listen-item">
+        <button class="btn-play" onclick="speak(0)">▶</button>
+        <div class="listen-text blurred" onclick="toggleBlur(this)">
+          <div class="ltext">私の家族は五人います。</div>
+          <div class="listen-hint">👆 クリックで表示</div>
+        </div>
+      </div>
+      <div class="listen-item">
+        <button class="btn-play" onclick="speak(1)">▶</button>
+        <div class="listen-text blurred" onclick="toggleBlur(this)">
+          <div class="ltext">父はとても優しいです。</div>
+          <div class="listen-hint">👆 クリックで表示</div>
+        </div>
+      </div>
+      <div class="listen-item">
+        <button class="btn-play" onclick="speak(2)">▶</button>
+        <div class="listen-text blurred" onclick="toggleBlur(this)">
+          <div class="ltext">兄は東京に住んでいます。</div>
+          <div class="listen-hint">👆 クリックで表示</div>
+        </div>
+      </div>
+      <div class="listen-item">
+        <button class="btn-play" onclick="speak(3)">▶</button>
+        <div class="listen-text blurred" onclick="toggleBlur(this)">
+          <div class="ltext">妹と一緒に学校へ行きます。</div>
+          <div class="listen-hint">👆 クリックで表示</div>
+        </div>
       </div>
     </div>
-
-    <div class="listen-item">
-      <button class="listen-btn" onclick="speak('このさかなはとてもおいしいですね。')" title="再生">&#x25B6;</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" onclick="this.classList.toggle('revealed')">この魚はとてもおいしいですね。</div>
-        <div class="reveal-hint">クリックで文字表示</div>
+    <hr style="margin:18px 0;border:none;border-top:1px dashed #ddd">
+    <div id="listen-questions">
+      <div class="fill-q">1. 家族は何人ですか？
+        <select id="l1"><option value="">---</option><option>五人</option><option>三人</option><option>四人</option><option>六人</option></select>
+      </div>
+      <div class="fill-q">2. 父はどんな人ですか？
+        <select id="l2"><option value="">---</option><option>優しい</option><option>厳しい</option><option>楽しい</option><option>難しい</option></select>
+      </div>
+      <div class="fill-q">3. 兄はどこに住んでいますか？
+        <select id="l3"><option value="">---</option><option>東京</option><option>大阪</option><option>京都</option><option>名古屋</option></select>
       </div>
     </div>
-
-    <div class="listen-item">
-      <button class="listen-btn" onclick="speak('みずをすこしのんでください。')" title="再生">&#x25B6;</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" onclick="this.classList.toggle('revealed')">水を少し飲んでください。</div>
-        <div class="reveal-hint">クリックで文字表示</div>
-      </div>
-    </div>
-
-    <div class="listen-item">
-      <button class="listen-btn" onclick="speak('パンとにくをかいました。')" title="再生">&#x25B6;</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" onclick="this.classList.toggle('revealed')">パンと肉を買いました。</div>
-        <div class="reveal-hint">クリックで文字表示</div>
-      </div>
-    </div>
-
-    <div id="listen-quiz" style="margin-top:18px">
-      <div class="drop-q">
-        <label>1. 最初の文（ぶん）で、何を食べると言いましたか？</label>
-        <select id="l1">
-          <option value="">選択してください</option>
-          <option value="c">ご飯と卵</option>
-          <option value="w">パンと肉</option>
-          <option value="w">魚と水</option>
-          <option value="w">ご飯とパン</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>2. 3番目の文は何についてですか？</label>
-        <select id="l2">
-          <option value="">選択してください</option>
-          <option value="w">ご飯を食べる</option>
-          <option value="c">水を少し飲む</option>
-          <option value="w">肉を買う</option>
-          <option value="w">卵をもらう</option>
-        </select>
-      </div>
-      <div class="drop-q">
-        <label>3. 4番目の文で、何を買いましたか？</label>
-        <select id="l3">
-          <option value="">選択してください</option>
-          <option value="w">魚と水</option>
-          <option value="w">卵と魚</option>
-          <option value="c">パンと肉</option>
-          <option value="w">ご飯と卵</option>
-        </select>
-      </div>
-    </div>
-    <div class="progress-wrap"><div class="progress-bar" id="l-progress"></div></div>
-    <div class="score-banner" id="l-score"></div>
-    <div class="ctrl-btns">
-      <button class="btn btn-check" onclick="checkListening()">確認答案</button>
-      <button class="btn btn-reset" onclick="resetListening()">重新作答</button>
+    <div class="progress-wrap"><div class="progress-bar" id="ls-bar"></div></div>
+    <div class="score-banner" id="ls-score"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkListen()">確認答案</button>
+      <button class="btn btn-reset" onclick="resetListen()">重新作答</button>
     </div>
   </div>
 
-</div><!-- /tab-study -->
+</div><!-- /study -->
 
-
-<!-- ═══════════ 試験モード ═══════════ -->
-<div id="tab-test" class="tab-content">
-
+<!-- ===== 試験モード ===== -->
+<div id="exam" class="tab-panel">
   <div class="section">
-    <p style="color:#666;font-size:.9em;margin-bottom:18px">&#x1F4CB; N5形式の試験です。各問のボタンを選んでください。右下の「顯示中文＋羅馬拼音」で解説を表示できます。</p>
+    <h2>📝 N5 試験モード（家族）</h2>
+    <p style="color:#666;font-size:.9em;margin-bottom:18px">本番形式の問題です。全問に答えてから「確認答案」を押してください。<br>右下の 🔤 ボタンで中文ヒントを表示できます。</p>
 
-    <!-- もんだい1 よみかた -->
+    <!-- もんだい1 -->
     <div class="mondai">
-      <h3>もんだい１　よみかた（読み方）</h3>
-      <div class="mondai-body">
+      <h3>もんだい１ よみかた</h3>
+      <p class="inst">＿＿のことばはどうよみますか。①②③④からいちばんいいものをひとつえらんでください。</p>
 
-        <div class="test-q" id="tq1">
-          <div class="q-text">（1）毎朝、<u>魚</u>を食べます。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq1')">にく</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq1')">たまご</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq1')">さかな</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq1')">やさい</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>さかな（sakana）＝魚<br>
-            &#x274C; にく（niku）＝肉 / たまご（tamago）＝卵 / やさい（yasai）＝野菜
-          </div>
+      <div class="exam-q">
+        <div class="q-text">1. 私の<u>家族</u>は五人です。</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="1" data-v="c">① かぞく</button>
+          <button class="exam-btn" data-g="1" data-v="w">② かそく</button>
+          <button class="exam-btn" data-g="1" data-v="w">③ いえぞく</button>
+          <button class="exam-btn" data-g="1" data-v="w">④ けぞく</button>
         </div>
+        <div class="hint"><b>家族</b> = かぞく（jiā zú）家庭<br>① かぞく = jiā zú ✓ &nbsp;② かそく ✗ &nbsp;③ いえぞく ✗ &nbsp;④ けぞく ✗</div>
+      </div>
 
-        <div class="test-q" id="tq2">
-          <div class="q-text">（2）<u>肉</u>は少しだけ食べます。</div>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq2')">にく</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq2')">さかな</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq2')">みず</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq2')">ごはん</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>にく（niku）＝肉<br>
-            &#x274C; さかな（sakana）＝魚 / みず（mizu）＝水 / ごはん（gohan）＝ご飯
-          </div>
+      <div class="exam-q">
+        <div class="q-text">2. 兄は<u>優しい</u>です。</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="2" data-v="w">① むずかしい</button>
+          <button class="exam-btn" data-g="2" data-v="c">② やさしい</button>
+          <button class="exam-btn" data-g="2" data-v="w">③ うれしい</button>
+          <button class="exam-btn" data-g="2" data-v="w">④ さびしい</button>
         </div>
+        <div class="hint"><b>優しい</b> = やさしい（wēn róu）溫柔的<br>① むずかしい = 困難的 ✗ &nbsp;② やさしい = 溫柔的 ✓ &nbsp;③ うれしい = 高興的 ✗ &nbsp;④ さびしい = 寂寞的 ✗</div>
+      </div>
 
-        <div class="test-q" id="tq3">
-          <div class="q-text">（3）<u>少し</u>待ってください。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq3')">おおし</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq3')">たくし</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq3')">すこし</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq3')">ほんし</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>すこし（sukoshi）＝少し（一點）<br>
-            &#x274C; おおし・たくし・ほんし は存在しない読み方です
-          </div>
+      <div class="exam-q">
+        <div class="q-text">3. 私には<u>姉</u>がいます。</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="3" data-v="w">① いもうと</button>
+          <button class="exam-btn" data-g="3" data-v="w">② おとうと</button>
+          <button class="exam-btn" data-g="3" data-v="w">③ あに</button>
+          <button class="exam-btn" data-g="3" data-v="c">④ あね</button>
         </div>
-
+        <div class="hint"><b>姉</b> = あね（jiě jie）姊姊<br>① いもうと = 妹妹 ✗ &nbsp;② おとうと = 弟弟 ✗ &nbsp;③ あに = 哥哥 ✗ &nbsp;④ あね = 姊姊 ✓</div>
       </div>
     </div>
 
-    <!-- もんだい2 文法穴埋め -->
+    <!-- もんだい2 -->
     <div class="mondai">
-      <h3>もんだい２　（　）に入るものを選んでください</h3>
-      <div class="mondai-body">
+      <h3>もんだい２ ぶんぽう・ぶんしょう</h3>
+      <p class="inst">（　）になにをいれますか。①②③④からいちばんいいものをひとつえらんでください。</p>
 
-        <div class="test-q" id="tq4">
-          <div class="q-text">（4）私は朝、（　）を飲みます。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq4')">ごはん</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq4')">みず</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq4')">にく</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq4')">たまご</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>みず（mizu）＝水<br>
-            &#x1F4A1; 「飲む（のむ）」は液体に使います。ごはん・にく・たまごは「食べる（たべる）」です。
-          </div>
+      <div class="exam-q">
+        <div class="q-text">4. 私は家族（　）一緒に旅行します。</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="4" data-v="c">① と</button>
+          <button class="exam-btn" data-g="4" data-v="w">② を</button>
+          <button class="exam-btn" data-g="4" data-v="w">③ が</button>
+          <button class="exam-btn" data-g="4" data-v="w">④ に</button>
         </div>
+        <div class="hint">と = 和…一起（hé～yīqǐ）<br>① と = 和～ ✓ &nbsp;② を = 受詞助詞 ✗ &nbsp;③ が = 主詞助詞 ✗ &nbsp;④ に = 方向・地點 ✗</div>
+      </div>
 
-        <div class="test-q" id="tq5">
-          <div class="q-text">（5）田中さんはさかな（　）食べます。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq5')">が</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq5')">を</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq5')">に</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq5')">で</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>を（wo/o）＝目的語助詞<br>
-            &#x1F4A1; 「食べる・飲む・見る・買う」などの前に「を」を使います。<br>
-            が（ga）主語 / に（ni）方向・時 / で（de）場所・手段
-          </div>
+      <div class="exam-q">
+        <div class="q-text">5. 兄は東京に（　）います。</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="5" data-v="w">① 行って</button>
+          <button class="exam-btn" data-g="5" data-v="c">② 住んで</button>
+          <button class="exam-btn" data-g="5" data-v="w">③ 来て</button>
+          <button class="exam-btn" data-g="5" data-v="w">④ 帰って</button>
         </div>
+        <div class="hint">住んでいます = 住んで ＋ います（正在居住）<br>① 行って = 去 ✗ &nbsp;② 住んで = 居住 ✓ &nbsp;③ 来て = 來 ✗ &nbsp;④ 帰って = 回去 ✗</div>
+      </div>
 
-        <div class="test-q" id="tq6">
-          <div class="q-text">（6）このケーキは（　）おいしいです！</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq6')">からい</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq6')">にく</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq6')">とても</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq6')">パン</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>とても（totemo）＝非常、很<br>
-            &#x1F4A1; 「とても＋形容詞」でよく使います。例：とても大きい／とても好き<br>
-            からい（karai）＝辣
-          </div>
+      <div class="exam-q">
+        <div class="q-text">6. 弟は（　）やさしいです。</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="6" data-v="w">① あまり</button>
+          <button class="exam-btn" data-g="6" data-v="w">② ちょっと</button>
+          <button class="exam-btn" data-g="6" data-v="c">③ とても</button>
+          <button class="exam-btn" data-g="6" data-v="w">④ もう</button>
         </div>
-
+        <div class="hint">とても ＋ い形容詞 = 非常～（fēi cháng）<br>① あまり = 不太（否定用）✗ &nbsp;② ちょっと = 有點 ✗ &nbsp;③ とても = 非常 ✓ &nbsp;④ もう = 已經 ✗</div>
       </div>
     </div>
 
-    <!-- もんだい3 場面 -->
+    <!-- もんだい3 -->
     <div class="mondai">
-      <h3>もんだい３　★の人は何と言いますか</h3>
-      <div class="mondai-body">
+      <h3>もんだい３ ばめん</h3>
+      <p class="inst">★の人はなんといいますか。①②③④からいちばんいいものをひとつえらんでください。</p>
 
-        <div class="test-q" id="tq7">
-          <div class="q-text">（7）レストランで食べ物がとてもおいしいです。★あなたは感想（かんそう）を言います。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq7')">からいですね。</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq7')">おいしいですね！</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq7')">まずいですね。</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq7')">つめたいですね。</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>おいしいですね！（Oishii desu ne! ＝ 很好吃呢！）<br>
-            &#x274C; からい（karai）辣 / まずい（mazui）難吃 / つめたい（tsumetai）冷
-          </div>
+      <div class="exam-q">
+        <div class="q-text">7. ★の人はお母さんを友達に紹介します。何と言いますか？</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="7" data-v="w">① お母さん、こちらは田中さんです。</button>
+          <button class="exam-btn" data-g="7" data-v="c">② これは私の母です。</button>
+          <button class="exam-btn" data-g="7" data-v="w">③ 母はいません。</button>
+          <button class="exam-btn" data-g="7" data-v="w">④ 母は優しくないです。</button>
         </div>
+        <div class="hint">自己的家人紹介給他人時：「これは私の母です。」（這是我的媽媽。）<br>「お母さん」は呼びかけ・他人の母。「母（はは）」は自分の母。</div>
+      </div>
 
-        <div class="test-q" id="tq8">
-          <div class="q-text">（8）友達に「夜ごはんは何を食べましたか？」と聞かれました。★あなたは魚を食べました。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq8')">パンを食べました。</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq8')">みずを飲みました。</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq8')">さかなを食べました。</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq8')">にくを食べました。</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>さかなを食べました。（Sakana wo tabemashita. ＝ 我吃了魚。）<br>
-            &#x1F4A1; 「〜を食べました」＝吃了〜（過去式）
-          </div>
+      <div class="exam-q">
+        <div class="q-text">8. ★の人は相手に兄弟の人数を聞きます。何と言いますか？</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="8" data-v="w">① 兄弟がいますね。</button>
+          <button class="exam-btn" data-g="8" data-v="w">② 兄弟はどこですか。</button>
+          <button class="exam-btn" data-g="8" data-v="c">③ きょうだいは何人いますか。</button>
+          <button class="exam-btn" data-g="8" data-v="w">④ きょうだいはいいですか。</button>
         </div>
+        <div class="hint">人数を聞く = 何人（なんにん）いますか<br>③「きょうだいは何人いますか」= 你有幾個兄弟姊妹？✓</div>
+      </div>
 
-        <div class="test-q" id="tq9">
-          <div class="q-text">（9）お店で量（りょう）が多すぎます。★あなたは少しだけほしいと伝えます。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq9')">たくさんください。</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq9')">すこしでいいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq9')">みずはいりません。</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq9')">ごはんをください。</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>すこしでいいです。（Sukoshi de ii desu. ＝ 一點就夠了。）<br>
-            &#x274C; たくさん（takusan）很多 / いりません（irimasen）不需要
-          </div>
+      <div class="exam-q">
+        <div class="q-text">9. ★の人は家族が大阪に住んでいることを伝えます。何と言いますか？</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="9" data-v="w">① 家族は大阪が好きです。</button>
+          <button class="exam-btn" data-g="9" data-v="c">② 家族は大阪に住んでいます。</button>
+          <button class="exam-btn" data-g="9" data-v="w">③ 家族は大阪へ行きます。</button>
+          <button class="exam-btn" data-g="9" data-v="w">④ 家族は大阪から来ます。</button>
         </div>
-
+        <div class="hint">住んでいます = 正在居住（に + 住む）<br>② 家族は大阪に住んでいます = 家人住在大阪 ✓</div>
       </div>
     </div>
 
-    <!-- もんだい4 語彙 -->
+    <!-- もんだい4 -->
     <div class="mondai">
-      <h3>もんだい４　いちばん近い意味はどれですか</h3>
-      <div class="mondai-body">
+      <h3>もんだい４ ごい</h3>
+      <p class="inst">＿＿のことばに意味がいちばんちかいものを①②③④からひとつえらんでください。</p>
 
-        <div class="test-q" id="tq10">
-          <div class="q-text">（10）この料理（りょうり）は<u>おいしい</u>です。</div>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq10')">からい</button>
-          <button class="quiz-btn" data-v="c" onclick="testAns(this,'tq10')">うまい</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq10')">つめたい</button>
-          <button class="quiz-btn" data-v="w" onclick="testAns(this,'tq10')">すくない</button>
-          <div class="hint">
-            <strong>&#x2705; 答え：</strong>うまい（umai）＝好吃（較口語、男性常用）<br>
-            &#x1F4A1; おいしい（oishii）≒ うまい（umai）同義語<br>
-            &#x274C; からい（karai）辣 / つめたい（tsumetai）冷 / すくない（sukunai）少
-          </div>
+      <div class="exam-q">
+        <div class="q-text">10.「<u>家族</u>」に意味がいちばんちかいのはどれですか？</div>
+        <div class="exam-choices">
+          <button class="exam-btn" data-g="10" data-v="w">① 友達</button>
+          <button class="exam-btn" data-g="10" data-v="c">② 家の人たち</button>
+          <button class="exam-btn" data-g="10" data-v="w">③ 先生</button>
+          <button class="exam-btn" data-g="10" data-v="w">④ 会社の人</button>
         </div>
-
+        <div class="hint">家族（かぞく）= 家庭成員、家人<br>② 家の人たち = 家裡的人 ✓（最接近的意思）</div>
       </div>
     </div>
 
-    <div class="progress-wrap"><div class="progress-bar" id="test-progress"></div></div>
-    <div class="score-banner" id="test-score"></div>
-    <div class="ctrl-btns">
-      <button class="btn btn-reset" onclick="resetTest()">重新作答</button>
+    <div class="progress-wrap"><div class="progress-bar" id="ex-bar"></div></div>
+    <div class="score-banner" id="ex-score"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkExam()">確認答案</button>
+      <button class="btn btn-reset" onclick="resetExam()">重新作答</button>
     </div>
   </div>
+</div><!-- /exam -->
 
-</div><!-- /tab-test -->
-
-<!-- Floating hint toggle -->
-<button class="hint-toggle hidden" id="hint-toggle-btn" onclick="toggleHints()">&#x1F524; 顯示中文＋羅馬拼音</button>
+<button class="hints-toggle" id="hints-btn" onclick="toggleHints()">🔤 顯示中文＋羅馬拼音</button>
 
 <script>
-// ── Tab Switching ──────────────────────────────────────
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(function(b, i) {
-    b.classList.toggle('active', (tab==='study' && i===0) || (tab==='test' && i===1));
-  });
-  document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
-  document.getElementById('tab-' + tab).classList.add('active');
-  document.getElementById('hint-toggle-btn').classList.toggle('hidden', tab !== 'test');
+const listenTexts=[
+  "私の家族は五人います。",
+  "父はとても優しいです。",
+  "兄は東京に住んでいます。",
+  "妹と一緒に学校へ行きます。"
+];
+
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
 }
 
-// ── Score banner ───────────────────────────────────────
-function showScore(barId, scoreId, correct, total) {
-  var pct = total ? Math.round(correct / total * 100) : 0;
-  document.getElementById(barId).style.width = pct + '%';
-  var sb = document.getElementById(scoreId);
-  var cls, msg;
-  if (pct >= 80) { cls = 'good'; msg = 'すばらしい！'; }
-  else if (pct >= 60) { cls = 'ok-score'; msg = 'よくできました！'; }
-  else { cls = 'bad-score'; msg = 'もう一度練習しましょう！'; }
-  sb.className = 'score-banner show ' + cls;
-  sb.textContent = correct + ' / ' + total + ' 正解 (' + pct + '%)  ' + msg;
+function speak(idx){
+  if(!window.speechSynthesis){alert('このブラウザはTTSに対応していません。');return;}
+  const u=new SpeechSynthesisUtterance(listenTexts[idx]);
+  u.lang='ja-JP';u.rate=0.85;
+  speechSynthesis.cancel();speechSynthesis.speak(u);
 }
 
-// ── Multiple Choice ────────────────────────────────────
-document.querySelectorAll('#mc-quiz .mc-q').forEach(function(q) {
-  q.querySelectorAll('.quiz-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      if (this.disabled) return;
-      q.dataset.state = this.dataset.v === 'c' ? 'correct' : 'wrong';
-      q.querySelectorAll('.quiz-btn').forEach(function(b) {
-        b.disabled = true;
-        if (b.dataset.v === 'c') b.classList.add('ok');
-      });
-      if (this.dataset.v !== 'c') this.classList.add('bad');
-    });
+function toggleBlur(el){
+  el.classList.toggle('blurred');
+  el.classList.toggle('revealed');
+}
+
+function toggleHints(){
+  document.body.classList.toggle('hints-on');
+  document.getElementById('hints-btn').textContent=
+    document.body.classList.contains('hints-on')?'🙈 隱藏提示':'🔤 顯示中文＋羅馬拼音';
+}
+
+document.querySelectorAll('#mc-questions .choice-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    this.closest('.question').querySelectorAll('.choice-btn').forEach(b=>b.classList.remove('selected'));
+    this.classList.add('selected');
   });
 });
 
-function checkMC() {
-  var qs = document.querySelectorAll('#mc-quiz .mc-q');
-  var correct = 0;
-  qs.forEach(function(q) {
-    if (q.dataset.state === 'correct') correct++;
-    q.querySelectorAll('.quiz-btn').forEach(function(b) {
-      b.disabled = true;
-      if (b.dataset.v === 'c') b.classList.add('ok');
+function checkMC(){
+  let correct=0;
+  document.querySelectorAll('#mc-questions .question').forEach(q=>{
+    const btns=q.querySelectorAll('.choice-btn');
+    let picked=false;
+    btns.forEach(b=>{
+      if(b.classList.contains('selected')){
+        picked=true;
+        b.classList.add(b.dataset.v==='c'?'ok':'bad');
+        if(b.dataset.v==='c')correct++;
+      }
     });
+    if(!picked)btns.forEach(b=>{if(b.dataset.v==='c')b.classList.add('ok');});
   });
-  showScore('mc-progress', 'mc-score', correct, qs.length);
+  document.getElementById('mc-bar').style.width=(correct/5*100)+'%';
+  showScore('mc-score',correct,5);
 }
-function resetMC() {
-  document.querySelectorAll('#mc-quiz .mc-q').forEach(function(q) {
-    q.dataset.state = '';
-    q.querySelectorAll('.quiz-btn').forEach(function(b) {
-      b.classList.remove('ok','bad'); b.disabled = false;
+function resetMC(){
+  document.querySelectorAll('#mc-questions .choice-btn').forEach(b=>b.classList.remove('ok','bad','selected'));
+  document.getElementById('mc-bar').style.width='0%';hideScore('mc-score');
+}
+
+const gAns={g1:'母',g2:'住んで',g3:'と',g4:'一緒に',g5:'いもうと',g6:'あね',g7:'かぞく',g8:'父',g9:'一緒に',g10:'優しい'};
+function checkGrammar(){
+  let c=0;
+  for(let i=1;i<=10;i++){
+    const s=document.getElementById('g'+i);
+    s.classList.remove('ok','bad');
+    if(s.value===gAns['g'+i]){s.classList.add('ok');c++;}
+    else if(s.value)s.classList.add('bad');
+  }
+  document.getElementById('gr-bar').style.width=(c/10*100)+'%';
+  showScore('gr-score',c,10);
+}
+function resetGrammar(){
+  for(let i=1;i<=10;i++){const s=document.getElementById('g'+i);s.value='';s.classList.remove('ok','bad');}
+  document.getElementById('gr-bar').style.width='0%';hideScore('gr-score');
+}
+
+const rAns={r1:'五人',r2:'優しい',r3:'東京'};
+function checkReading(){
+  let c=0;
+  for(let k in rAns){
+    const s=document.getElementById(k);s.classList.remove('ok','bad');
+    if(s.value===rAns[k]){s.classList.add('ok');c++;}
+    else if(s.value)s.classList.add('bad');
+  }
+  document.getElementById('rd-bar').style.width=(c/3*100)+'%';
+  showScore('rd-score',c,3);
+}
+function resetReading(){
+  ['r1','r2','r3'].forEach(k=>{const s=document.getElementById(k);s.value='';s.classList.remove('ok','bad');});
+  document.getElementById('rd-bar').style.width='0%';hideScore('rd-score');
+}
+
+const lAns={l1:'五人',l2:'優しい',l3:'東京'};
+function checkListen(){
+  let c=0;
+  for(let k in lAns){
+    const s=document.getElementById(k);s.classList.remove('ok','bad');
+    if(s.value===lAns[k]){s.classList.add('ok');c++;}
+    else if(s.value)s.classList.add('bad');
+  }
+  document.getElementById('ls-bar').style.width=(c/3*100)+'%';
+  showScore('ls-score',c,3);
+}
+function resetListen(){
+  ['l1','l2','l3'].forEach(k=>{const s=document.getElementById(k);s.value='';s.classList.remove('ok','bad');});
+  document.getElementById('ls-bar').style.width='0%';hideScore('ls-score');
+}
+
+document.querySelectorAll('.exam-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll(`.exam-btn[data-g="${this.dataset.g}"]`).forEach(b=>b.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+function checkExam(){
+  let c=0;
+  for(let i=1;i<=10;i++){
+    document.querySelectorAll(`.exam-btn[data-g="${i}"]`).forEach(btn=>{
+      if(btn.classList.contains('selected')){
+        btn.classList.add(btn.dataset.v==='c'?'ok':'bad');
+        if(btn.dataset.v==='c')c++;
+      } else if(btn.dataset.v==='c'){
+        btn.classList.add('ok');
+      }
     });
-  });
-  document.getElementById('mc-progress').style.width = '0%';
-  document.getElementById('mc-score').className = 'score-banner';
+  }
+  document.getElementById('ex-bar').style.width=(c/10*100)+'%';
+  showScore('ex-score',c,10);
+}
+function resetExam(){
+  document.querySelectorAll('.exam-btn').forEach(b=>b.classList.remove('ok','bad','selected'));
+  document.getElementById('ex-bar').style.width='0%';hideScore('ex-score');
 }
 
-// ── Grammar ────────────────────────────────────────────
-var gIds = ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'];
-function checkGrammar() {
-  var correct = 0;
-  gIds.forEach(function(id) {
-    var sel = document.getElementById(id);
-    sel.classList.remove('ok','bad');
-    if (!sel.value) { sel.disabled = true; return; }
-    if (sel.value === 'c') { sel.classList.add('ok'); correct++; }
-    else sel.classList.add('bad');
-    sel.disabled = true;
-  });
-  showScore('g-progress', 'g-score', correct, gIds.length);
+function showScore(id,c,t){
+  const el=document.getElementById(id),p=Math.round(c/t*100);
+  el.textContent=`${c}/${t} 正解 (${p}%)  ${p>=80?'🎉 素晴らしい！':p>=60?'👍 もう少し！':'📚 もっと練習しよう！'}`;
+  el.className='score-banner show '+(p>=80?'good':p>=60?'fair':'poor');
 }
-function resetGrammar() {
-  gIds.forEach(function(id) {
-    var sel = document.getElementById(id);
-    sel.value = ''; sel.classList.remove('ok','bad'); sel.disabled = false;
-  });
-  document.getElementById('g-progress').style.width = '0%';
-  document.getElementById('g-score').className = 'score-banner';
-}
-
-// ── Reading ────────────────────────────────────────────
-var rIds = ['r1','r2','r3'];
-function checkReading() {
-  var correct = 0;
-  rIds.forEach(function(id) {
-    var sel = document.getElementById(id);
-    sel.classList.remove('ok','bad');
-    if (!sel.value) { sel.disabled = true; return; }
-    if (sel.value === 'c') { sel.classList.add('ok'); correct++; }
-    else sel.classList.add('bad');
-    sel.disabled = true;
-  });
-  showScore('r-progress', 'r-score', correct, rIds.length);
-}
-function resetReading() {
-  rIds.forEach(function(id) {
-    var sel = document.getElementById(id);
-    sel.value = ''; sel.classList.remove('ok','bad'); sel.disabled = false;
-  });
-  document.getElementById('r-progress').style.width = '0%';
-  document.getElementById('r-score').className = 'score-banner';
-}
-
-// ── Listening TTS ──────────────────────────────────────
-function speak(text) {
-  if (!window.speechSynthesis) { alert('お使いのブラウザはTTSに対応していません。'); return; }
-  var u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP'; u.rate = 0.88; u.pitch = 1;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
-}
-var lIds = ['l1','l2','l3'];
-function checkListening() {
-  var correct = 0;
-  lIds.forEach(function(id) {
-    var sel = document.getElementById(id);
-    sel.classList.remove('ok','bad');
-    if (!sel.value) { sel.disabled = true; return; }
-    if (sel.value === 'c') { sel.classList.add('ok'); correct++; }
-    else sel.classList.add('bad');
-    sel.disabled = true;
-  });
-  showScore('l-progress', 'l-score', correct, lIds.length);
-}
-function resetListening() {
-  lIds.forEach(function(id) {
-    var sel = document.getElementById(id);
-    sel.value = ''; sel.classList.remove('ok','bad'); sel.disabled = false;
-  });
-  document.getElementById('l-progress').style.width = '0%';
-  document.getElementById('l-score').className = 'score-banner';
-  document.querySelectorAll('.listen-text').forEach(function(t) { t.classList.remove('revealed'); });
-  if (window.speechSynthesis) speechSynthesis.cancel();
-}
-
-// ── Test Mode ──────────────────────────────────────────
-var testState = {};
-function testAns(btn, qId) {
-  if (testState[qId]) return;
-  testState[qId] = btn.dataset.v === 'c' ? 'correct' : 'wrong';
-  var q = document.getElementById(qId);
-  q.querySelectorAll('.quiz-btn').forEach(function(b) {
-    b.disabled = true;
-    if (b.dataset.v === 'c') b.classList.add('ok');
-  });
-  if (btn.dataset.v !== 'c') btn.classList.add('bad');
-  var answered = Object.keys(testState).length;
-  var correct = 0;
-  Object.keys(testState).forEach(function(k) { if (testState[k]==='correct') correct++; });
-  showScore('test-progress', 'test-score', correct, answered);
-}
-function resetTest() {
-  testState = {};
-  document.querySelectorAll('[id^="tq"] .quiz-btn').forEach(function(btn) {
-    btn.classList.remove('ok','bad'); btn.disabled = false;
-  });
-  document.getElementById('test-progress').style.width = '0%';
-  document.getElementById('test-score').className = 'score-banner';
-  document.body.classList.remove('hints-on');
-  document.getElementById('hint-toggle-btn').textContent = '🔤 顯示中文＋羅馬拼音';
-}
-
-// ── Hint Toggle ────────────────────────────────────────
-function toggleHints() {
-  document.body.classList.toggle('hints-on');
-  var on = document.body.classList.contains('hints-on');
-  document.getElementById('hint-toggle-btn').textContent = on ? '🔤 隱藏提示' : '🔤 顯示中文＋羅馬拼音';
+function hideScore(id){
+  const el=document.getElementById(id);el.className='score-banner';el.textContent='';
 }
 </script>
 </body>
