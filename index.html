@@ -1,730 +1,1072 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N5 日本語練習 - 家具</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; }
-body.hints-on .hint { display: block !important; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本語N5 - 衣類 | 2026-06-23 Day 174</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', 'Noto Sans JP', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
 
-header {
-  background: linear-gradient(135deg, #c0392b, #922b21);
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-header h1 { font-size: 1.8em; margin-bottom: 8px; }
-header p { font-size: 0.95em; opacity: 0.9; }
+    header {
+      background: linear-gradient(135deg, #c0392b, #922b21);
+      color: #fff;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 2em; margin-bottom: 6px; letter-spacing: 1px; }
+    header .meta { font-size: 0.95em; opacity: 0.9; }
+    header .meta span { margin: 0 10px; }
 
-.tabs { display: flex; background: #fff; border-bottom: 2px solid #e0e0e0; position: sticky; top: 0; z-index: 50; }
-.tab-btn { flex: 1; padding: 14px; border: none; background: none; cursor: pointer; font-size: 1em; color: #666; transition: all 0.2s; }
-.tab-btn.active { color: #c0392b; border-bottom: 3px solid #c0392b; font-weight: bold; }
+    .tabs {
+      display: flex;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 14px 10px;
+      border: none;
+      background: none;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 500;
+    }
+    .tab-btn:hover:not(.active) { background: #f8f8f8; }
+    .tab-btn.active {
+      background: linear-gradient(135deg, #c0392b, #922b21);
+      color: #fff;
+      font-weight: 700;
+    }
 
-.section { background: white; margin: 16px; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.section h2 { font-size: 1.2em; margin-bottom: 16px; color: #c0392b; }
+    .tab-content { display: none; max-width: 820px; margin: 20px auto; padding: 0 16px 50px; }
+    .tab-content.active { display: block; }
 
-.hidden { display: none !important; }
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .section h2 {
+      font-size: 1.2em;
+      color: #c0392b;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
+    }
 
-.vocab-table { width: 100%; border-collapse: collapse; }
-.vocab-table th { background: #c0392b; color: white; padding: 10px; text-align: left; }
-.vocab-table td { padding: 10px; border-bottom: 1px solid #eee; }
-.vocab-table tr:nth-child(even) { background: #fafafa; }
-.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75em; font-weight: bold; }
-.badge.noun { background: #3498db; color: white; }
-.badge.verb { background: #2ecc71; color: white; }
-.badge.adj  { background: #e67e22; color: white; }
-.badge.adv  { background: #9b59b6; color: white; }
+    .vocab-table { width: 100%; border-collapse: collapse; }
+    .vocab-table th {
+      background: #922b21;
+      color: #fff;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 0.88em;
+    }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95em;
+      vertical-align: middle;
+    }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table tr:hover td { background: #fef9f9; }
+    .vocab-table .kanji { font-size: 1.1em; font-weight: 700; }
+    .vocab-table .reading { color: #777; font-size: 0.82em; display: block; margin-top: 2px; }
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 0.74em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge-greeting { background: #fde8e8; color: #c0392b; }
+    .badge-noun     { background: #e8f4fd; color: #1a6fa8; }
+    .badge-verb     { background: #e8fde8; color: #1a8a3c; }
+    .badge-adj      { background: #fdf3e8; color: #d4820a; }
+    .badge-adv      { background: #f0e8fd; color: #7b2d8b; }
 
-.quiz-item { margin-bottom: 20px; }
-.quiz-item p { margin-bottom: 8px; font-weight: 500; line-height: 1.6; }
-.choices { display: flex; flex-wrap: wrap; gap: 8px; }
-.choice-btn { padding: 10px 16px; border: 2px solid #ddd; border-radius: 8px; background: white; cursor: pointer; transition: all 0.2s; font-size: 0.95em; }
-.choice-btn:hover { border-color: #c0392b; }
-.choice-btn.ok { background: #d5f5e3; border-color: #2ecc71; }
-.choice-btn.bad { background: #fadbd8; border-color: #e74c3c; }
+    .q-block { margin-bottom: 22px; }
+    .q-block .q-text { font-weight: 600; margin-bottom: 10px; line-height: 1.5; }
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .choice-btn {
+      padding: 10px 14px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      font-size: 0.93em;
+    }
+    .choice-btn:hover { border-color: #c0392b; background: #fef9f9; }
+    .choice-btn.selected { border-color: #c0392b; background: #fef2f2; }
+    .choice-btn.ok  { border-color: #27ae60 !important; background: #eafaf1 !important; color: #1e8449; font-weight: 700; }
+    .choice-btn.bad { border-color: #e74c3c !important; background: #fef2f2 !important; color: #c0392b; font-weight: 700; }
 
-select { padding: 6px 10px; border: 2px solid #ddd; border-radius: 6px; background: white; font-size: 0.95em; cursor: pointer; }
-select.ok  { border-color: #2ecc71; background: #d5f5e3; }
-select.bad { border-color: #e74c3c; background: #fadbd8; }
+    .q-dropdown { margin-bottom: 16px; }
+    .q-dropdown .q-text { margin-bottom: 6px; font-size: 0.95em; line-height: 1.5; }
+    .q-dropdown select {
+      padding: 8px 12px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.9em;
+      min-width: 180px;
+      cursor: pointer;
+      background: #fff;
+    }
+    .q-dropdown select.ok  { border-color: #27ae60; background: #eafaf1; }
+    .q-dropdown select.bad { border-color: #e74c3c; background: #fef2f2; }
+    .q-label {
+      display: inline-block;
+      font-size: 0.8em;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+    .q-label.ok  { background: #eafaf1; color: #1e8449; }
+    .q-label.bad { background: #fef2f2; color: #c0392b; }
 
-.progress-wrap { margin: 12px 0; }
-.progress-bar-bg { background: #eee; border-radius: 10px; height: 10px; }
-.progress-bar { background: #c0392b; height: 10px; border-radius: 10px; width: 0; transition: width 0.4s; }
+    .passage {
+      background: #fef9f9;
+      border-left: 4px solid #c0392b;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      line-height: 2.2;
+      font-size: 1em;
+    }
 
-.btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95em; margin: 4px; }
-.btn-primary   { background: #c0392b; color: white; }
-.btn-secondary { background: #ecf0f1; color: #333; }
-.btn:hover { opacity: 0.85; }
+    .listen-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 14px;
+      background: #fef9f9;
+      border-radius: 8px;
+      border: 1px solid #f5e0e0;
+    }
+    .play-btn {
+      padding: 8px 16px;
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.88em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .play-btn:hover { background: #922b21; }
+    .listen-text-wrap { flex: 1; }
+    .listen-text {
+      cursor: pointer;
+      filter: blur(5px);
+      transition: filter 0.3s;
+      font-size: 1em;
+      user-select: none;
+    }
+    .listen-text.revealed { filter: none; }
+    .blur-hint { font-size: 0.74em; color: #aaa; margin-top: 4px; }
 
-.score-banner { display: none; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; margin-top: 12px; }
-.score-banner.show { display: block; }
-.score-banner.good { background: #d5f5e3; color: #1e8449; }
-.score-banner.mid  { background: #fef9e7; color: #9a7d0a; }
-.score-banner.low  { background: #fadbd8; color: #922b21; }
+    .progress-wrap {
+      margin: 14px 0 8px;
+      background: #f0f0f0;
+      border-radius: 10px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #c0392b, #e74c3c);
+      border-radius: 10px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
 
-.reading-text { background: #f9f9f9; border-left: 4px solid #c0392b; padding: 16px; border-radius: 0 8px 8px 0; margin-bottom: 16px; line-height: 1.9; font-size: 1.05em; }
+    .score-banner {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1em;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .score-banner.show { display: block; }
+    .score-banner.good { background: #eafaf1; color: #1e8449; border: 2px solid #27ae60; }
+    .score-banner.fair { background: #fef8e8; color: #d4820a; border: 2px solid #f39c12; }
+    .score-banner.poor { background: #fef2f2; color: #c0392b; border: 2px solid #e74c3c; }
 
-.listen-item { background: #f9f9f9; border-radius: 8px; padding: 14px; margin-bottom: 12px; }
-.listen-text { filter: blur(4px); cursor: pointer; transition: filter 0.3s; user-select: none; margin-top: 8px; font-size: 1.05em; }
-.listen-text.show { filter: none; }
+    .btn-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95em;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .btn-primary   { background: #c0392b; color: #fff; }
+    .btn-primary:hover { background: #922b21; }
+    .btn-secondary { background: #f0f0f0; color: #555; }
+    .btn-secondary:hover { background: #e0e0e0; }
 
-.hint { display: none; margin-top: 8px; padding: 8px 12px; background: #fff8e1; border-radius: 6px; font-size: 0.85em; color: #555; line-height: 1.6; }
+    .exam-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .exam-section h2 { font-size: 1.05em; font-weight: 700; color: #333; margin-bottom: 4px; }
+    .exam-section .sub-title { font-size: 0.82em; color: #888; margin-bottom: 18px; line-height: 1.5; }
 
-.hint-toggle { position: fixed; bottom: 20px; right: 20px; padding: 12px 18px; background: #2c3e50; color: white; border: none; border-radius: 30px; cursor: pointer; font-size: 0.9em; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 100; }
+    .hint-toggle { display: flex; justify-content: flex-end; margin-bottom: 16px; }
+    .hint-toggle-btn {
+      padding: 8px 18px;
+      border: 2px solid #c0392b;
+      background: #fff;
+      color: #c0392b;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85em;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .hint-toggle-btn:hover { background: #fef2f2; }
+    .hint-toggle-btn.on { background: #c0392b; color: #fff; }
 
-@media (max-width: 600px) {
-  .section { margin: 8px; padding: 14px; }
-  .choices { flex-direction: column; }
-}
-</style>
+    .hint {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fef9f9;
+      border: 1px solid #f5e0e0;
+      border-radius: 6px;
+      font-size: 0.8em;
+      color: #666;
+      line-height: 1.7;
+    }
+    body.hints-on .hint { display: block; }
+
+    .exam-q { margin-bottom: 22px; }
+    .exam-q .q-num { font-weight: 700; font-size: 0.88em; color: #922b21; margin-bottom: 5px; }
+    .exam-q .q-text { font-weight: 600; margin-bottom: 10px; line-height: 1.6; }
+    .exam-choices { display: grid; gap: 7px; }
+    .exam-choice {
+      padding: 10px 14px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.93em;
+      transition: all 0.2s;
+      text-align: left;
+    }
+    .exam-choice:hover { border-color: #c0392b; background: #fef9f9; }
+    .exam-choice.selected { border-color: #c0392b; background: #fef2f2; }
+    .exam-choice.ok  { border-color: #27ae60 !important; background: #eafaf1 !important; color: #1e8449; font-weight: 700; }
+    .exam-choice.bad { border-color: #e74c3c !important; background: #fef2f2 !important; color: #c0392b; font-weight: 700; }
+
+    .hidden { display: none !important; }
+    .exam-footer { max-width: 820px; margin: 0 auto; padding: 0 16px 40px; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4em; }
+      header .meta span { display: block; margin: 2px 0; }
+      .choices { grid-template-columns: 1fr; }
+      .btn-row { flex-direction: column; }
+      .listen-item { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>🇯🇵 N5 日本語練習</h1>
-  <p>2026年6月22日 ｜ Day 173 ｜ テーマ：家具（かぐ）</p>
+  <h1>&#x1F1EF;&#x1F1F5; 日本語 N5 練習</h1>
+  <div class="meta">
+    <span>&#x1F4C5; 2026-06-23</span>
+    <span>|</span>
+    <span>&#x1F4C6; Day 174</span>
+    <span>|</span>
+    <span>&#x1F455; テーマ：衣類</span>
+  </div>
 </header>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('study')">📖 學習模式</button>
-  <button class="tab-btn" onclick="switchTab('exam')">📝 試験モード</button>
+  <button class="tab-btn active" id="btn-study" onclick="switchTab('study')">&#x1F4D6; 學習模式</button>
+  <button class="tab-btn" id="btn-exam" onclick="switchTab('exam')">&#x1F4DD; 試験モード</button>
 </div>
 
 <!-- ========== 學習模式 ========== -->
-<div id="study-mode">
+<div id="tab-study" class="tab-content active">
 
-<!-- 1. 詞彙表 -->
-<div class="section">
-  <h2>📚 詞彙表</h2>
-  <table class="vocab-table">
-    <thead>
-      <tr><th>#</th><th>漢字 / 語</th><th>読み仮名</th><th>中国語訳</th><th>品詞</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>机</td><td>つくえ</td><td>書桌</td><td><span class="badge noun">名詞</span></td></tr>
-      <tr><td>2</td><td>椅子</td><td>いす</td><td>椅子</td><td><span class="badge noun">名詞</span></td></tr>
-      <tr><td>3</td><td>ベッド</td><td>ベッド</td><td>床</td><td><span class="badge noun">名詞</span></td></tr>
-      <tr><td>4</td><td>テーブル</td><td>テーブル</td><td>桌子</td><td><span class="badge noun">名詞</span></td></tr>
-      <tr><td>5</td><td>棚</td><td>たな</td><td>架子／書架</td><td><span class="badge noun">名詞</span></td></tr>
-      <tr><td>6</td><td>冷蔵庫</td><td>れいぞうこ</td><td>冰箱</td><td><span class="badge noun">名詞</span></td></tr>
-      <tr><td>7</td><td>置く</td><td>おく</td><td>放置／擺放</td><td><span class="badge verb">動詞</span></td></tr>
-      <tr><td>8</td><td>使う</td><td>つかう</td><td>使用</td><td><span class="badge verb">動詞</span></td></tr>
-      <tr><td>9</td><td>重い</td><td>おもい</td><td>重的</td><td><span class="badge adj">い形容詞</span></td></tr>
-      <tr><td>10</td><td>もう</td><td>もう</td><td>已經／再</td><td><span class="badge adv">副詞</span></td></tr>
-    </tbody>
-  </table>
-</div>
+  <!-- 1. 詞彙表 -->
+  <div class="section">
+    <h2>&#x1F4DA; 詞彙表</h2>
+    <table class="vocab-table">
+      <thead>
+        <tr>
+          <th>漢字／語</th>
+          <th>読み方</th>
+          <th>中国語訳</th>
+          <th>品詞</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="kanji">すみません</span><span class="reading">sumimasen</span></td>
+          <td>すみません</td>
+          <td>不好意思／打擾了</td>
+          <td><span class="badge badge-greeting">招呼語</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">服（ふく）</span><span class="reading">fuku</span></td>
+          <td>ふく</td>
+          <td>衣服</td>
+          <td><span class="badge badge-noun">名詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">シャツ</span><span class="reading">shatsu</span></td>
+          <td>シャツ</td>
+          <td>襯衫</td>
+          <td><span class="badge badge-noun">名詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">靴（くつ）</span><span class="reading">kutsu</span></td>
+          <td>くつ</td>
+          <td>鞋子</td>
+          <td><span class="badge badge-noun">名詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">帽子（ぼうし）</span><span class="reading">boushi</span></td>
+          <td>ぼうし</td>
+          <td>帽子</td>
+          <td><span class="badge badge-noun">名詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">コート</span><span class="reading">kooto</span></td>
+          <td>コート</td>
+          <td>外套</td>
+          <td><span class="badge badge-noun">名詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">着る（きる）</span><span class="reading">kiru</span></td>
+          <td>きる</td>
+          <td>穿（上身）</td>
+          <td><span class="badge badge-verb">動詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">履く（はく）</span><span class="reading">haku</span></td>
+          <td>はく</td>
+          <td>穿（下身／鞋）</td>
+          <td><span class="badge badge-verb">動詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">かわいい</span><span class="reading">kawaii</span></td>
+          <td>かわいい</td>
+          <td>可愛</td>
+          <td><span class="badge badge-adj">い形容詞</span></td>
+        </tr>
+        <tr>
+          <td><span class="kanji">もう</span><span class="reading">mou</span></td>
+          <td>もう</td>
+          <td>已經／再</td>
+          <td><span class="badge badge-adv">副詞</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<!-- 2. 單字選擇題 -->
-<div class="section">
-  <h2>🔤 單字選擇題</h2>
-  <div id="word-quiz">
-    <div class="quiz-item" id="wq1">
-      <p>1.「机」の読み方はどれですか？</p>
+  <!-- 2. 單字選擇題 -->
+  <div class="section">
+    <h2>&#x1F524; 單字選擇題</h2>
+
+    <div class="q-block" id="vq1">
+      <div class="q-text">１．「帽子」の読み方はどれですか？</div>
       <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq1')">いす</button>
-        <button class="choice-btn" data-v="c" onclick="choiceAns(this,'wq1')">つくえ</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq1')">たな</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq1')">おもい</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq1')">a) ぼうじ</button>
+        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq1')">b) ぼうし</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq1')">c) もし</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq1')">d) ぼうお</button>
       </div>
     </div>
-    <div class="quiz-item" id="wq2">
-      <p>2.「冷蔵庫」は中国語でなんですか？</p>
+
+    <div class="q-block" id="vq2">
+      <div class="q-text">２．「靴」の読み方はどれですか？</div>
       <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq2')">書桌</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq2')">椅子</button>
-        <button class="choice-btn" data-v="c" onclick="choiceAns(this,'wq2')">冰箱</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq2')">架子</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq2')">a) くち</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq2')">b) くし</button>
+        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq2')">c) くつ</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq2')">d) くも</button>
       </div>
     </div>
-    <div class="quiz-item" id="wq3">
-      <p>3.「重い」の意味はどれですか？</p>
+
+    <div class="q-block" id="vq3">
+      <div class="q-text">３．「着る」の意味はどれですか？</div>
       <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq3')">使用</button>
-        <button class="choice-btn" data-v="c" onclick="choiceAns(this,'wq3')">重的</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq3')">已經</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq3')">床</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq3')">a) 穿（下身）</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq3')">b) 脱ぐ</button>
+        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq3')">c) 穿（上身）</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq3')">d) 買う</button>
       </div>
     </div>
-    <div class="quiz-item" id="wq4">
-      <p>4.「置く」の意味はどれですか？</p>
+
+    <div class="q-block" id="vq4">
+      <div class="q-text">４．「コート」の中国語訳はどれですか？</div>
       <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq4')">桌子</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq4')">使用</button>
-        <button class="choice-btn" data-v="c" onclick="choiceAns(this,'wq4')">放置／擺放</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq4')">重的</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq4')">a) 鞋子</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq4')">b) 帽子</button>
+        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq4')">c) 外套</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq4')">d) 衣服</button>
       </div>
     </div>
-    <div class="quiz-item" id="wq5">
-      <p>5.「もう」の意味はどれですか？</p>
+
+    <div class="q-block" id="vq5">
+      <div class="q-text">５．「かわいい」の意味はどれですか？</div>
       <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq5')">床</button>
-        <button class="choice-btn" data-v="c" onclick="choiceAns(this,'wq5')">已經／再</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq5')">冰箱</button>
-        <button class="choice-btn" data-v="w" onclick="choiceAns(this,'wq5')">書桌</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq5')">a) 大きい</button>
+        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq5')">b) 可愛</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq5')">c) 暑い</button>
+        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq5')">d) 新しい</button>
       </div>
     </div>
-  </div>
-  <div class="progress-wrap">
-    <div class="progress-bar-bg"><div class="progress-bar" id="wq-bar"></div></div>
-  </div>
-  <button class="btn btn-primary" onclick="checkWordQuiz()">確認答案</button>
-  <button class="btn btn-secondary" onclick="resetWordQuiz()">重新作答</button>
-  <div class="score-banner" id="wq-score"></div>
-</div>
 
-<!-- 3. 語法練習 -->
-<div class="section">
-  <h2>✏️ 語法練習</h2>
-  <div id="grammar-quiz">
-    <div class="quiz-item">
-      <p>1.（填空）机の上に本を（　）ください。</p>
-      <select id="gq1" data-ans="おいて">
-        <option value="">選んでください</option>
-        <option value="おいて">おいて</option>
-        <option value="つかって">つかって</option>
-        <option value="みて">みて</option>
-        <option value="きいて">きいて</option>
-      </select>
+    <div class="progress-wrap"><div class="progress-bar" id="vocab-bar"></div></div>
+    <div class="score-banner" id="vocab-score"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkVocab()">確認答案</button>
+      <button class="btn btn-secondary" onclick="resetVocab()">重新作答</button>
     </div>
-    <div class="quiz-item">
-      <p>2.（填空）このベッドは（　）です。</p>
-      <select id="gq2" data-ans="おもい">
-        <option value="">選んでください</option>
-        <option value="おもい">おもい</option>
-        <option value="はやい">はやい</option>
-        <option value="たかい">たかい</option>
-        <option value="あおい">あおい</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>3.（填空）毎日コンピューターを（　）います。</p>
-      <select id="gq3" data-ans="つかって">
-        <option value="">選んでください</option>
-        <option value="つかって">つかって</option>
-        <option value="おいて">おいて</option>
-        <option value="みて">みて</option>
-        <option value="きて">きて</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>4.（填空）食べ物を（　）に入れます。</p>
-      <select id="gq4" data-ans="れいぞうこ">
-        <option value="">選んでください</option>
-        <option value="れいぞうこ">れいぞうこ</option>
-        <option value="つくえ">つくえ</option>
-        <option value="テーブル">テーブル</option>
-        <option value="たな">たな</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>5.（読み）「棚」の読み方は？</p>
-      <select id="gq5" data-ans="たな">
-        <option value="">選んでください</option>
-        <option value="たな">たな</option>
-        <option value="いす">いす</option>
-        <option value="つくえ">つくえ</option>
-        <option value="もの">もの</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>6.（読み）「椅子」の読み方は？</p>
-      <select id="gq6" data-ans="いす">
-        <option value="">選んでください</option>
-        <option value="いす">いす</option>
-        <option value="つくえ">つくえ</option>
-        <option value="たな">たな</option>
-        <option value="おもい">おもい</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>7.（読み）「重い」の読み方は？</p>
-      <select id="gq7" data-ans="おもい">
-        <option value="">選んでください</option>
-        <option value="おもい">おもい</option>
-        <option value="はやい">はやい</option>
-        <option value="おおい">おおい</option>
-        <option value="よい">よい</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>8.（中翻日）「我把書放在書桌上。」→ どれですか？</p>
-      <select id="gq8" data-ans="つくえ">
-        <option value="">選んでください</option>
-        <option value="つくえ">つくえの上に本をおきます。</option>
-        <option value="いす">いすの上に本をおきます。</option>
-        <option value="たな">たなの上に本をおきます。</option>
-        <option value="ベッド">ベッドの上に本をおきます。</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>9.（中翻日）「冰箱裡面有蔬菜。」→ どれですか？</p>
-      <select id="gq9" data-ans="れいぞうこ">
-        <option value="">選んでください</option>
-        <option value="れいぞうこ">れいぞうこの中に野菜があります。</option>
-        <option value="テーブル">テーブルの中に野菜があります。</option>
-        <option value="つくえ">つくえの中に野菜があります。</option>
-        <option value="たな">たなの中に野菜があります。</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>10.（中翻日）「我已經用過這張桌子了。」→ （　）に入るのは？</p>
-      <select id="gq10" data-ans="もう">
-        <option value="">選んでください</option>
-        <option value="もう">もうこのテーブルをつかいました。</option>
-        <option value="まだ">まだこのテーブルをつかいました。</option>
-        <option value="また">またこのテーブルをつかいました。</option>
-        <option value="とても">とてもこのテーブルをつかいました。</option>
-      </select>
-    </div>
-  </div>
-  <div class="progress-wrap">
-    <div class="progress-bar-bg"><div class="progress-bar" id="gq-bar"></div></div>
-  </div>
-  <button class="btn btn-primary" onclick="checkGrammarQuiz()">確認答案</button>
-  <button class="btn btn-secondary" onclick="resetGrammarQuiz()">重新作答</button>
-  <div class="score-banner" id="gq-score"></div>
-</div>
-
-<!-- 4. 文章閱讀 -->
-<div class="section">
-  <h2>📖 文章閱讀</h2>
-  <div class="reading-text">
-    わたしの部屋には机と椅子とベッドがあります。机の上にランプがあります。棚には本がたくさんあります。台所には冷蔵庫があります。冷蔵庫の中に野菜と牛乳を置いています。ベッドは少し重いです。でも、もう新しいベッドを買いました。毎日この部屋を使っています。とても好きな部屋です。
-  </div>
-  <div id="reading-quiz">
-    <div class="quiz-item">
-      <p>1. 机の上に何がありますか？</p>
-      <select id="rq1" data-ans="a">
-        <option value="">選んでください</option>
-        <option value="a">ランプ</option>
-        <option value="b">本</option>
-        <option value="c">野菜</option>
-        <option value="d">牛乳</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>2. 冷蔵庫の中に何がありますか？</p>
-      <select id="rq2" data-ans="c">
-        <option value="">選んでください</option>
-        <option value="a">本とランプ</option>
-        <option value="b">机と椅子</option>
-        <option value="c">野菜と牛乳</option>
-        <option value="d">テーブルと棚</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>3. ベッドについて正しいのはどれですか？</p>
-      <select id="rq3" data-ans="b">
-        <option value="">選んでください</option>
-        <option value="a">ベッドは軽いです</option>
-        <option value="b">もう新しいベッドを買いました</option>
-        <option value="c">ベッドは台所にあります</option>
-        <option value="d">ベッドはありません</option>
-      </select>
-    </div>
-  </div>
-  <div class="progress-wrap">
-    <div class="progress-bar-bg"><div class="progress-bar" id="rq-bar"></div></div>
-  </div>
-  <button class="btn btn-primary" onclick="checkReadingQuiz()">確認答案</button>
-  <button class="btn btn-secondary" onclick="resetReadingQuiz()">重新作答</button>
-  <div class="score-banner" id="rq-score"></div>
-</div>
-
-<!-- 5. 聽力練習 -->
-<div class="section">
-  <h2>🎧 聽力練習</h2>
-  <p style="margin-bottom:12px;color:#666;font-size:0.9em;">▶ ボタンで音声再生。テキストをクリックすると表示されます。</p>
-
-  <div class="listen-item">
-    <button class="btn btn-primary" onclick="speak('つくえの うえに ほんを おいて ください。')">▶ 聴く 1</button>
-    <div class="listen-text" onclick="this.classList.toggle('show')">机の上に本を置いてください。</div>
-  </div>
-  <div class="listen-item">
-    <button class="btn btn-primary" onclick="speak('れいぞうこの なかに やさいが あります。')">▶ 聴く 2</button>
-    <div class="listen-text" onclick="this.classList.toggle('show')">冷蔵庫の中に野菜があります。</div>
-  </div>
-  <div class="listen-item">
-    <button class="btn btn-primary" onclick="speak('この ベッドは とても おもい です。')">▶ 聴く 3</button>
-    <div class="listen-text" onclick="this.classList.toggle('show')">このベッドはとても重いです。</div>
-  </div>
-  <div class="listen-item">
-    <button class="btn btn-primary" onclick="speak('もう あたらしい テーブルを かいました。')">▶ 聴く 4</button>
-    <div class="listen-text" onclick="this.classList.toggle('show')">もう新しいテーブルを買いました。</div>
   </div>
 
-  <div id="listen-quiz" style="margin-top:20px;">
-    <div class="quiz-item">
-      <p>1.「聴く 1」の文で、本はどこに置きますか？</p>
-      <select id="lq1" data-ans="a">
-        <option value="">選んでください</option>
-        <option value="a">机の上</option>
-        <option value="b">棚の上</option>
-        <option value="c">テーブルの上</option>
-        <option value="d">椅子の上</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>2.「聴く 2」の文で、冷蔵庫の中に何がありますか？</p>
-      <select id="lq2" data-ans="b">
-        <option value="">選んでください</option>
-        <option value="a">牛乳</option>
-        <option value="b">野菜</option>
-        <option value="c">本</option>
-        <option value="d">テーブル</option>
-      </select>
-    </div>
-    <div class="quiz-item">
-      <p>3.「聴く 4」の文で、何を買いましたか？</p>
-      <select id="lq3" data-ans="c">
-        <option value="">選んでください</option>
-        <option value="a">新しい椅子</option>
-        <option value="b">新しい棚</option>
-        <option value="c">新しいテーブル</option>
-        <option value="d">新しいベッド</option>
-      </select>
-    </div>
-  </div>
-  <div class="progress-wrap">
-    <div class="progress-bar-bg"><div class="progress-bar" id="lq-bar"></div></div>
-  </div>
-  <button class="btn btn-primary" onclick="checkListenQuiz()">確認答案</button>
-  <button class="btn btn-secondary" onclick="resetListenQuiz()">重新作答</button>
-  <div class="score-banner" id="lq-score"></div>
-</div>
+  <!-- 3. 語法練習 -->
+  <div class="section">
+    <h2>&#x270F;&#xFE0F; 語法練習</h2>
 
-</div><!-- end study-mode -->
+    <p style="font-size:0.84em;color:#888;margin-bottom:14px;">【填空】正しい答えを選んでください。</p>
+
+    <div class="q-dropdown" id="gq1">
+      <div class="q-text">１．毎日シャツを（　）います。<span class="q-label" id="gq1-lbl"></span></div>
+      <select id="gq1-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">着て</option>
+        <option value="w">履いて</option>
+        <option value="w">かぶって</option>
+        <option value="w">買って</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="gq2">
+      <div class="q-text">２．学校に行くとき、靴を（　）います。<span class="q-label" id="gq2-lbl"></span></div>
+      <select id="gq2-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">着て</option>
+        <option value="c">履いて</option>
+        <option value="w">かぶって</option>
+        <option value="w">見て</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="gq3">
+      <div class="q-text">３．頭に帽子を（　）。<span class="q-label" id="gq3-lbl"></span></div>
+      <select id="gq3-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">着ます</option>
+        <option value="w">履きます</option>
+        <option value="c">かぶります</option>
+        <option value="w">買います</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="gq4">
+      <div class="q-text">４．（　）、このコートはいくらですか。<span class="q-label" id="gq4-lbl"></span></div>
+      <select id="gq4-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">すみません</option>
+        <option value="w">ありがとう</option>
+        <option value="w">おはよう</option>
+        <option value="w">さようなら</option>
+      </select>
+    </div>
+
+    <p style="font-size:0.84em;color:#888;margin:18px 0 14px;">【読み方】正しい読み方を選んでください。</p>
+
+    <div class="q-dropdown" id="gq5">
+      <div class="q-text">５．「服」の読み方は？<span class="q-label" id="gq5-lbl"></span></div>
+      <select id="gq5-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">ふく</option>
+        <option value="w">ぼく</option>
+        <option value="w">ふう</option>
+        <option value="w">ふき</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="gq6">
+      <div class="q-text">６．「靴」の読み方は？<span class="q-label" id="gq6-lbl"></span></div>
+      <select id="gq6-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">くつ</option>
+        <option value="w">くち</option>
+        <option value="w">くし</option>
+        <option value="w">くも</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="gq7">
+      <div class="q-text">７．「帽子」の読み方は？<span class="q-label" id="gq7-lbl"></span></div>
+      <select id="gq7-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">ぼうし</option>
+        <option value="w">もし</option>
+        <option value="w">ぼうじ</option>
+        <option value="w">ぼうこ</option>
+      </select>
+    </div>
+
+    <p style="font-size:0.84em;color:#888;margin:18px 0 14px;">【中翻日】中国語を日本語に翻訳してください。</p>
+
+    <div class="q-dropdown" id="gq8">
+      <div class="q-text">８．「可愛」を日本語で？<span class="q-label" id="gq8-lbl"></span></div>
+      <select id="gq8-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">かわいい</option>
+        <option value="w">あたらしい</option>
+        <option value="w">おおきい</option>
+        <option value="w">たかい</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="gq9">
+      <div class="q-text">９．「已經」を日本語で？<span class="q-label" id="gq9-lbl"></span></div>
+      <select id="gq9-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">もう</option>
+        <option value="w">まだ</option>
+        <option value="w">また</option>
+        <option value="w">もっと</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="gq10">
+      <div class="q-text">１０．「穿鞋子」を日本語で？<span class="q-label" id="gq10-lbl"></span></div>
+      <select id="gq10-sel" onchange="updateGrammarProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">靴を着る</option>
+        <option value="c">靴を履く</option>
+        <option value="w">靴をかぶる</option>
+        <option value="w">靴を買う</option>
+      </select>
+    </div>
+
+    <div class="progress-wrap"><div class="progress-bar" id="grammar-bar"></div></div>
+    <div class="score-banner" id="grammar-score"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkGrammar()">確認答案</button>
+      <button class="btn btn-secondary" onclick="resetGrammar()">重新作答</button>
+    </div>
+  </div>
+
+  <!-- 4. 文章閱讀 -->
+  <div class="section">
+    <h2>&#x1F4D6; 文章閱讀</h2>
+    <div class="passage">
+      今日、田中さんは新しい<strong>服</strong>を買いに行きました。まず、赤い<strong>シャツ</strong>を見つけました。「<strong>すみません</strong>、このシャツは<strong>かわいい</strong>ですね。いくらですか？」と田中さんは言いました。店の人は値段を教えてくれました。つぎに、<strong>コート</strong>と<strong>靴</strong>も買いました。<strong>帽子</strong>は<strong>もう</strong>持っています。家に帰って、田中さんはシャツを<strong>着て</strong>、靴を<strong>履いて</strong>、帽子をかぶりました。<strong>もう</strong>外出する準備ができました。
+    </div>
+
+    <div class="q-dropdown" id="rq1">
+      <div class="q-text">１．田中さんは何を買いましたか？<span class="q-label" id="rq1-lbl"></span></div>
+      <select id="rq1-sel" onchange="updateReadingProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">シャツだけ</option>
+        <option value="c">シャツとコートと靴</option>
+        <option value="w">帽子と靴</option>
+        <option value="w">コートだけ</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="rq2">
+      <div class="q-text">２．シャツはどんな色ですか？<span class="q-label" id="rq2-lbl"></span></div>
+      <select id="rq2-sel" onchange="updateReadingProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">白</option>
+        <option value="c">赤</option>
+        <option value="w">青</option>
+        <option value="w">黒</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="rq3">
+      <div class="q-text">３．帽子についてどんな情報がありますか？<span class="q-label" id="rq3-lbl"></span></div>
+      <select id="rq3-sel" onchange="updateReadingProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">帽子は高かった</option>
+        <option value="c">帽子はもう持っている</option>
+        <option value="w">帽子を買った</option>
+        <option value="w">帽子はかわいい</option>
+      </select>
+    </div>
+
+    <div class="progress-wrap"><div class="progress-bar" id="reading-bar"></div></div>
+    <div class="score-banner" id="reading-score"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkReading()">確認答案</button>
+      <button class="btn btn-secondary" onclick="resetReading()">重新作答</button>
+    </div>
+  </div>
+
+  <!-- 5. 聽力練習 -->
+  <div class="section">
+    <h2>&#x1F3A7; 聽力練習</h2>
+    <p style="font-size:0.84em;color:#888;margin-bottom:14px;">&#x25B6; ボタンで音声を再生し、文字をクリックして答え合わせをしてください。</p>
+
+    <div class="listen-item">
+      <button class="play-btn" onclick="speak('新しい服を着ます。')">&#x25B6; 再生</button>
+      <div class="listen-text-wrap">
+        <div class="listen-text" id="lt1" onclick="toggleBlur('lt1')">新しい服を着ます。</div>
+        <div class="blur-hint">クリックで文字を表示／隠す</div>
+      </div>
+    </div>
+
+    <div class="listen-item">
+      <button class="play-btn" onclick="speak('この帽子はかわいいですね。')">&#x25B6; 再生</button>
+      <div class="listen-text-wrap">
+        <div class="listen-text" id="lt2" onclick="toggleBlur('lt2')">この帽子はかわいいですね。</div>
+        <div class="blur-hint">クリックで文字を表示／隠す</div>
+      </div>
+    </div>
+
+    <div class="listen-item">
+      <button class="play-btn" onclick="speak('靴を履いて、学校に行きます。')">&#x25B6; 再生</button>
+      <div class="listen-text-wrap">
+        <div class="listen-text" id="lt3" onclick="toggleBlur('lt3')">靴を履いて、学校に行きます。</div>
+        <div class="blur-hint">クリックで文字を表示／隠す</div>
+      </div>
+    </div>
+
+    <div class="listen-item">
+      <button class="play-btn" onclick="speak('すみません、このコートはいくらですか。')">&#x25B6; 再生</button>
+      <div class="listen-text-wrap">
+        <div class="listen-text" id="lt4" onclick="toggleBlur('lt4')">すみません、このコートはいくらですか。</div>
+        <div class="blur-hint">クリックで文字を表示／隠す</div>
+      </div>
+    </div>
+
+    <div class="q-dropdown" id="lq1">
+      <div class="q-text">１．文①で、何を着ますか？<span class="q-label" id="lq1-lbl"></span></div>
+      <select id="lq1-sel" onchange="updateListeningProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">コート</option>
+        <option value="c">新しい服</option>
+        <option value="w">帽子</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="lq2">
+      <div class="q-text">２．文②で、帽子はどうですか？<span class="q-label" id="lq2-lbl"></span></div>
+      <select id="lq2-sel" onchange="updateListeningProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="w">たかい</option>
+        <option value="w">おおきい</option>
+        <option value="c">かわいい</option>
+      </select>
+    </div>
+
+    <div class="q-dropdown" id="lq3">
+      <div class="q-text">３．文③で、靴を履いてどこへ行きますか？<span class="q-label" id="lq3-lbl"></span></div>
+      <select id="lq3-sel" onchange="updateListeningProgress()">
+        <option value="">-- 選択 --</option>
+        <option value="c">学校</option>
+        <option value="w">家</option>
+        <option value="w">店</option>
+      </select>
+    </div>
+
+    <div class="progress-wrap"><div class="progress-bar" id="listening-bar"></div></div>
+    <div class="score-banner" id="listening-score"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkListening()">確認答案</button>
+      <button class="btn btn-secondary" onclick="resetListening()">重新作答</button>
+    </div>
+  </div>
+
+</div><!-- /tab-study -->
 
 <!-- ========== 試験モード ========== -->
-<div id="exam-mode" class="hidden">
+<div id="tab-exam" class="tab-content">
 
-<div class="section">
-  <h2>もんだい１ よみかた</h2>
-  <p style="color:#666;font-size:0.9em;margin-bottom:16px;">＿＿のことばはどう よみますか。1〜4から いちばん いい ものを えらんでください。</p>
+  <div class="hint-toggle">
+    <button class="hint-toggle-btn" id="hint-btn" onclick="toggleHints()">&#x1F524; 顯示中文＋羅馬拼音</button>
+  </div>
 
-  <div class="exam-question" id="eq1">
-    <p>1. 机の 上に ノートが あります。</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq1')">1. いす</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq1')">2. つくえ</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq1')">3. たな</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq1')">4. おく</button>
+  <!-- もんだい1 -->
+  <div class="exam-section">
+    <h2>もんだい１　よみかた</h2>
+    <div class="sub-title">＿＿のことばはひらがなでどうかきますか。１・２・３・４からいちばんいいものをえらんでください。</div>
+
+    <div class="exam-q" id="eq1">
+      <div class="q-num">問１</div>
+      <div class="q-text">田中さんは白い<u>服</u>を着ています。</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq1')">１　ふき</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq1')">２　ふく</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq1')">３　ぼく</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq1')">４　ふい</button>
+      </div>
+      <div class="hint">
+        <strong>ふく (fuku)</strong> ／ 衣服<br>
+        １ ふき(fuki)&times;　２ ふく(fuku)&#x2713;　３ ぼく(boku)&times;　４ ふい(fui)&times;
+      </div>
     </div>
-    <div class="hint">
-      <strong>ヒント：</strong>desk／書桌 (shū zhuō)<br>
-      1. いす (i-su) 椅子 ｜ 2. つくえ (tsu-ku-e) 書桌 ✓ ｜ 3. たな (ta-na) 架子 ｜ 4. おく (o-ku) 放置
+
+    <div class="exam-q" id="eq2">
+      <div class="q-num">問２</div>
+      <div class="q-text">新しい<u>靴</u>を買いました。</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq2')">１　くち</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq2')">２　くし</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq2')">３　くつ</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq2')">４　くも</button>
+      </div>
+      <div class="hint">
+        <strong>くつ (kutsu)</strong> ／ 鞋子<br>
+        １ くち(kuchi)&times;　２ くし(kushi)&times;　３ くつ(kutsu)&#x2713;　４ くも(kumo)&times;
+      </div>
+    </div>
+
+    <div class="exam-q" id="eq3">
+      <div class="q-num">問３</div>
+      <div class="q-text">赤い<u>帽子</u>をかぶっています。</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq3')">１　ぼうじ</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq3')">２　ぼうし</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq3')">３　もし</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq3')">４　ぼうこ</button>
+      </div>
+      <div class="hint">
+        <strong>ぼうし (boushi)</strong> ／ 帽子<br>
+        １ ぼうじ(bouji)&times;　２ ぼうし(boushi)&#x2713;　３ もし(moshi)&times;　４ ぼうこ(bouko)&times;
+      </div>
     </div>
   </div>
 
-  <div class="exam-question" id="eq2">
-    <p>2. このベッドは 重い です。</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq2')">1. はやい</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq2')">2. たかい</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq2')">3. おもい</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq2')">4. おおい</button>
+  <!-- もんだい2 -->
+  <div class="exam-section">
+    <h2>もんだい２　ぶんぽう穴埋め</h2>
+    <div class="sub-title">（　）に入るものを１・２・３・４からいちばんいいものをえらんでください。</div>
+
+    <div class="exam-q" id="eq4">
+      <div class="q-num">問４</div>
+      <div class="q-text">毎日シャツを（　）います。</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq4')">１　履いて</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq4')">２　かぶって</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq4')">３　着て</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq4')">４　買って</button>
+      </div>
+      <div class="hint">
+        <strong>着て (kite)</strong> ／ 穿著（上身）<br>
+        １ 履いて(haite) 穿鞋&times;　２ かぶって(kabutte) 戴帽&times;　３ 着て(kite) 穿衣&#x2713;　４ 買って(katte) 買&times;
+      </div>
     </div>
-    <div class="hint">
-      <strong>ヒント：</strong>heavy／重的 (zhòng de)<br>
-      1. はやい (ha-ya-i) 快 ｜ 2. たかい (ta-ka-i) 高／貴 ｜ 3. おもい (o-mo-i) 重 ✓ ｜ 4. おおい (o-o-i) 多
+
+    <div class="exam-q" id="eq5">
+      <div class="q-num">問５</div>
+      <div class="q-text">（　）、このコートはいくらですか。</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq5')">１　ありがとう</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq5')">２　すみません</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq5')">３　おはよう</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq5')">４　さようなら</button>
+      </div>
+      <div class="hint">
+        <strong>すみません (sumimasen)</strong> ／ 不好意思（向店員搭話用）<br>
+        １ arigatou 謝謝&times;　２ sumimasen 不好意思&#x2713;　３ ohayou 早安&times;　４ sayounara 再見&times;
+      </div>
+    </div>
+
+    <div class="exam-q" id="eq6">
+      <div class="q-num">問６</div>
+      <div class="q-text">（　）家に帰る時間です。早く帰りましょう。</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq6')">１　まだ</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq6')">２　もう</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq6')">３　また</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq6')">４　もっと</button>
+      </div>
+      <div class="hint">
+        <strong>もう (mou)</strong> ／ 已經（表示時間到了）<br>
+        １ mada 還沒&times;　２ mou 已經&#x2713;　３ mata 又&times;　４ motto 更多&times;
+      </div>
     </div>
   </div>
 
-  <div class="exam-question" id="eq3">
-    <p>3. 棚に 本を 置きます。</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq3')">1. つくえ</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq3')">2. たな</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq3')">3. いす</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq3')">4. まど</button>
-    </div>
-    <div class="hint">
-      <strong>ヒント：</strong>shelf／架子 (jià zi)<br>
-      1. つくえ 書桌 ｜ 2. たな (ta-na) 架子 ✓ ｜ 3. いす 椅子 ｜ 4. まど (ma-do) 窗戶
-    </div>
-  </div>
-</div>
+  <!-- もんだい3 -->
+  <div class="exam-section">
+    <h2>もんだい３　場面</h2>
+    <div class="sub-title">&#x2605;のひとはなんといいますか。１・２・３・４からいちばんいいものをえらんでください。</div>
 
-<div class="section">
-  <h2>もんだい２ 文法穴埋め</h2>
-  <p style="color:#666;font-size:0.9em;margin-bottom:16px;">（　）に 何を 入れますか。1〜4から いちばん いい ものを えらんでください。</p>
+    <div class="exam-q" id="eq7">
+      <div class="q-num">問７</div>
+      <div class="q-text">&#x2605; デパートで、店員さんに声をかけたいです。何と言いますか？</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq7')">１　ありがとうございます</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq7')">２　すみません</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq7')">３　おはようございます</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq7')">４　さようなら</button>
+      </div>
+      <div class="hint">
+        <strong>すみません (sumimasen)</strong> ／ 不好意思（呼叫店員的招呼語）<br>
+        １ arigatou gozaimasu 謝謝&times;　２ sumimasen 不好意思&#x2713;　３ ohayou gozaimasu 早安&times;　４ sayounara 再見&times;
+      </div>
+    </div>
 
-  <div class="exam-question" id="eq4">
-    <p>4. 食べ物を れいぞうこ（　）入れます。</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq4')">1. を</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq4')">2. が</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq4')">3. に</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq4')">4. で</button>
+    <div class="exam-q" id="eq8">
+      <div class="q-num">問８</div>
+      <div class="q-text">&#x2605; 友だちの新しい服がとてもきれいです。何と言いますか？</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq8')">１　かわいいですね</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq8')">２　おいしいですね</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq8')">３　はやいですね</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq8')">４　たのしいですね</button>
+      </div>
+      <div class="hint">
+        <strong>かわいいですね (kawaii desu ne)</strong> ／ 好可愛喔<br>
+        １ kawaii desu ne 好可愛&#x2713;　２ oishii desu ne 好好吃&times;　３ hayai desu ne 好快&times;　４ tanoshii desu ne 好開心&times;
+      </div>
     </div>
-    <div class="hint">
-      <strong>ヒント：</strong>「〜に入れる」= put into〜／放入〜 (fàng rù)<br>
-      1. を 受詞 ｜ 2. が 主語 ｜ 3. に 方向・場所 ✓ ｜ 4. で 手段
-    </div>
-  </div>
 
-  <div class="exam-question" id="eq5">
-    <p>5. （　）新しい椅子を 買いました。</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq5')">1. もう</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq5')">2. まだ</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq5')">3. また</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq5')">4. いつも</button>
-    </div>
-    <div class="hint">
-      <strong>ヒント：</strong>「もう〜ました」= already〜／已經 (yǐ jīng)<br>
-      1. もう (mo-u) 已經 ✓ ｜ 2. まだ (ma-da) 還沒 ｜ 3. また (ma-ta) 又 ｜ 4. いつも (i-tsu-mo) 總是
-    </div>
-  </div>
-
-  <div class="exam-question" id="eq6">
-    <p>6. この テーブルを 毎日 （　）います。</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq6')">1. おいて</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq6')">2. つかって</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq6')">3. みて</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq6')">4. きいて</button>
-    </div>
-    <div class="hint">
-      <strong>ヒント：</strong>「使う」= to use／使用 (shǐ yòng)<br>
-      1. おいて 放置 ｜ 2. つかって (tsu-ka-t-te) 使用 ✓ ｜ 3. みて 看 ｜ 4. きいて 聽
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>もんだい３ 場面</h2>
-  <p style="color:#666;font-size:0.9em;margin-bottom:16px;">★の ひとは なんと いいますか。1〜4から いちばん いい ものを えらんでください。</p>
-
-  <div class="exam-question" id="eq7">
-    <p>7. 部屋に 入ります。椅子に 座りたいです。友だちに 頼みます。★</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq7')">1. 椅子を 食べてください。</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq7')">2. 椅子を 持ってきてください。</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq7')">3. 椅子を 買いました。</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq7')">4. 椅子が あります。</button>
-    </div>
-    <div class="hint">
-      <strong>ヒント：</strong>「〜てください」= Please〜／請〜 (qǐng)<br>
-      2. 持ってきてください (mot-te-ki-te ku-da-sa-i) 請帶來 ✓
+    <div class="exam-q" id="eq9">
+      <div class="q-num">問９</div>
+      <div class="q-text">&#x2605; もう５時です。「時間なので帰ります」と伝えたいです。何と言いますか？</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq9')">１　まだ帰ります</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq9')">２　もう帰ります</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq9')">３　また帰ります</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq9')">４　もっと帰ります</button>
+      </div>
+      <div class="hint">
+        <strong>もう帰ります (mou kaerimasu)</strong> ／ 我已經要回去了<br>
+        １ mada 還是&times;　２ mou 已經&#x2713;　３ mata 又&times;　４ motto 更&times;
+      </div>
     </div>
   </div>
 
-  <div class="exam-question" id="eq8">
-    <p>8. 机の 上に 荷物を 置きたい。友だちに 許可を もらいます。★</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq8')">1. 机を 買っても いいですか。</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq8')">2. 机の 上に 置いても いいですか。</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq8')">3. 机の 上に 本が あります。</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq8')">4. 机を 使いました。</button>
+  <!-- もんだい4 -->
+  <div class="exam-section">
+    <h2>もんだい４　語彙</h2>
+    <div class="sub-title">（　）のことばに意味がいちばんちかいものをえらんでください。</div>
+
+    <div class="exam-q" id="eq10">
+      <div class="q-num">問１０</div>
+      <div class="q-text">この人形は（かわいい）ですね。</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq10')">１　こわい</button>
+        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq10')">２　かわいらしい</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq10')">３　うるさい</button>
+        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq10')">４　さびしい</button>
+      </div>
+      <div class="hint">
+        <strong>かわいらしい (kawairashii)</strong> ／ 可愛らしい<br>
+        １ kowai 可怕&times;　２ kawairashii 可愛&#x2713;　３ urusai 吵鬧&times;　４ sabishii 寂寞&times;
+      </div>
     </div>
-    <div class="hint">
-      <strong>ヒント：</strong>「〜てもいいですか」= May I〜？／可以〜嗎？(kě yǐ ... ma)<br>
-      2. 机の上に置いてもいいですか ✓ 可以放在書桌上嗎？
+  </div>
+
+  <div class="exam-footer">
+    <div class="progress-wrap"><div class="progress-bar" id="exam-bar"></div></div>
+    <div class="score-banner" id="exam-score"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkExam()">確認答案</button>
+      <button class="btn btn-secondary" onclick="resetExam()">重新作答</button>
     </div>
   </div>
 
-  <div class="exam-question" id="eq9">
-    <p>9. 友だちの 冷蔵庫は とても 大きいです。すごいと 思います。★</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq9')">1. 冷蔵庫が 小さいですね。</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq9')">2. 冷蔵庫を 食べますね。</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq9')">3. 冷蔵庫が 大きいですね。</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq9')">4. 冷蔵庫が ありませんね。</button>
-    </div>
-    <div class="hint">
-      <strong>ヒント：</strong>「〜ですね」同感表現／〜呢 (ne)<br>
-      3. 冷蔵庫が大きいですね (re-i-zo-u-ko ga o-o-ki-i de-su ne) 冰箱很大呢 ✓
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>もんだい４ 語彙</h2>
-  <p style="color:#666;font-size:0.9em;margin-bottom:16px;">＿＿のことばと いちばん ちかい いみの ものを 1〜4から えらんでください。</p>
-
-  <div class="exam-question" id="eq10">
-    <p>10. 荷物を 棚の 上に <u>置きました</u>。</p>
-    <div class="choices">
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq10')">1. もって いきました</button>
-      <button class="choice-btn" data-v="c" onclick="examAns(this,'eq10')">2. のせました</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq10')">3. かいました</button>
-      <button class="choice-btn" data-v="w" onclick="examAns(this,'eq10')">4. つかいました</button>
-    </div>
-    <div class="hint">
-      <strong>ヒント：</strong>「置く」≒「のせる」= to place on／放上去 (fàng shàng qù)<br>
-      1. もっていく 帶走 ｜ 2. のせる (no-se-ru) 放上 ✓ ｜ 3. かう 買 ｜ 4. つかう 使用
-    </div>
-  </div>
-</div>
-
-<div class="section" style="text-align:center;">
-  <button class="btn btn-primary" onclick="checkAllExam()">全部確認</button>
-  <button class="btn btn-secondary" onclick="resetAllExam()">重新作答</button>
-  <div class="score-banner" id="exam-score"></div>
-</div>
-
-</div><!-- end exam-mode -->
-
-<button class="hint-toggle" id="hint-btn" onclick="toggleHints()">🔤 顯示中文＋羅馬拼音</button>
+</div><!-- /tab-exam -->
 
 <script>
-function switchTab(mode) {
-  document.getElementById('study-mode').classList.toggle('hidden', mode !== 'study');
-  document.getElementById('exam-mode').classList.toggle('hidden', mode !== 'exam');
-  document.querySelectorAll('.tab-btn').forEach((b, i) => {
-    b.classList.toggle('active', (i === 0 && mode === 'study') || (i === 1 && mode === 'exam'));
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('btn-' + tab).classList.add('active');
+}
+
+function pickChoice(btn, blockId) {
+  const block = document.getElementById(blockId);
+  block.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateVocabProgress();
+}
+
+function checkVocab() {
+  const qs = ['vq1','vq2','vq3','vq4','vq5'];
+  let correct = 0;
+  qs.forEach(id => {
+    const block = document.getElementById(id);
+    const sel = block.querySelector('.choice-btn.selected');
+    if (!sel) return;
+    block.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('ok','bad'));
+    if (sel.dataset.v === 'c') { sel.classList.add('ok'); correct++; }
+    else {
+      sel.classList.add('bad');
+      block.querySelectorAll('.choice-btn').forEach(b => { if (b.dataset.v === 'c') b.classList.add('ok'); });
+    }
   });
+  document.getElementById('vocab-bar').style.width = '100%';
+  showScore('vocab-score', correct, qs.length);
 }
 
-function choiceAns(btn, qid) {
-  const parent = document.getElementById(qid);
-  if (parent.dataset.answered) return;
-  btn.classList.add(btn.dataset.v === 'c' ? 'ok' : 'bad');
-  if (btn.dataset.v !== 'c') parent.querySelectorAll('[data-v="c"]').forEach(b => b.classList.add('ok'));
-  parent.dataset.answered = '1';
+function resetVocab() {
+  ['vq1','vq2','vq3','vq4','vq5'].forEach(id => {
+    document.getElementById(id).querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected','ok','bad'));
+  });
+  document.getElementById('vocab-bar').style.width = '0%';
+  clearScore('vocab-score');
 }
 
-function examAns(btn, qid) { choiceAns(btn, qid); }
-
-function updateBar(id, correct, total) {
-  document.getElementById(id).style.width = Math.round(correct / total * 100) + '%';
+function updateVocabProgress() {
+  const qs = ['vq1','vq2','vq3','vq4','vq5'];
+  const n = qs.filter(id => document.getElementById(id).querySelector('.choice-btn.selected')).length;
+  document.getElementById('vocab-bar').style.width = (n / qs.length * 100) + '%';
 }
+
+function checkDropdowns(ids, barId, scoreId) {
+  let correct = 0;
+  ids.forEach(id => {
+    const sel = document.getElementById(id + '-sel');
+    const lbl = document.getElementById(id + '-lbl');
+    sel.classList.remove('ok','bad'); lbl.classList.remove('ok','bad'); lbl.textContent = '';
+    if (!sel.value) return;
+    if (sel.value === 'c') { sel.classList.add('ok'); lbl.classList.add('ok'); lbl.textContent = '✓ 正解'; correct++; }
+    else { sel.classList.add('bad'); lbl.classList.add('bad'); lbl.textContent = '✗ 不正解'; }
+  });
+  document.getElementById(barId).style.width = '100%';
+  showScore(scoreId, correct, ids.length);
+}
+
+function resetDropdowns(ids, barId, scoreId) {
+  ids.forEach(id => {
+    const sel = document.getElementById(id + '-sel');
+    const lbl = document.getElementById(id + '-lbl');
+    sel.value = ''; sel.classList.remove('ok','bad');
+    lbl.textContent = ''; lbl.classList.remove('ok','bad');
+  });
+  document.getElementById(barId).style.width = '0%';
+  clearScore(scoreId);
+}
+
+function updateDropdownProgress(ids, barId) {
+  const n = ids.filter(id => document.getElementById(id + '-sel').value !== '').length;
+  document.getElementById(barId).style.width = (n / ids.length * 100) + '%';
+}
+
+const grammarIds   = ['gq1','gq2','gq3','gq4','gq5','gq6','gq7','gq8','gq9','gq10'];
+const readingIds   = ['rq1','rq2','rq3'];
+const listeningIds = ['lq1','lq2','lq3'];
+
+function checkGrammar()          { checkDropdowns(grammarIds,   'grammar-bar',   'grammar-score');   }
+function resetGrammar()          { resetDropdowns(grammarIds,   'grammar-bar',   'grammar-score');   }
+function updateGrammarProgress() { updateDropdownProgress(grammarIds,   'grammar-bar');              }
+
+function checkReading()          { checkDropdowns(readingIds,   'reading-bar',   'reading-score');   }
+function resetReading()          { resetDropdowns(readingIds,   'reading-bar',   'reading-score');   }
+function updateReadingProgress() { updateDropdownProgress(readingIds,   'reading-bar');              }
+
+function checkListening()           { checkDropdowns(listeningIds, 'listening-bar', 'listening-score'); }
+function resetListening()           { resetDropdowns(listeningIds, 'listening-bar', 'listening-score'); }
+function updateListeningProgress()  { updateDropdownProgress(listeningIds, 'listening-bar');            }
 
 function showScore(id, correct, total) {
   const el = document.getElementById(id);
   const pct = Math.round(correct / total * 100);
-  const tier = pct >= 80 ? 'good' : pct >= 50 ? 'mid' : 'low';
-  const icon = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '💪';
-  const msg  = pct >= 80 ? 'すばらしい！' : pct >= 50 ? 'もう少し！' : 'もう一度練習しよう！';
-  el.className = `score-banner show ${tier}`;
-  el.textContent = `${icon} ${correct}/${total}点 (${pct}%) — ${msg}`;
+  el.textContent = 'スコア: ' + correct + ' / ' + total + '（' + pct + '%）';
+  el.className = 'score-banner show ' + (pct >= 80 ? 'good' : pct >= 60 ? 'fair' : 'poor');
 }
-
-function checkWordQuiz() {
-  const ids = ['wq1','wq2','wq3','wq4','wq5'];
-  let correct = 0;
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el.dataset.answered) {
-      el.querySelectorAll('[data-v="c"]').forEach(b => b.classList.add('ok'));
-      el.dataset.answered = '1';
-    }
-    if (el.querySelector('.ok')) correct++;
-  });
-  updateBar('wq-bar', correct, ids.length);
-  showScore('wq-score', correct, ids.length);
-}
-
-function checkGrammarQuiz() {
-  let correct = 0;
-  for (let i = 1; i <= 10; i++) {
-    const sel = document.getElementById('gq' + i);
-    if (sel.value === sel.dataset.ans) { sel.classList.add('ok'); correct++; }
-    else sel.classList.add('bad');
-  }
-  updateBar('gq-bar', correct, 10);
-  showScore('gq-score', correct, 10);
-}
-
-function checkReadingQuiz() {
-  let correct = 0;
-  ['rq1','rq2','rq3'].forEach(id => {
-    const sel = document.getElementById(id);
-    if (sel.value === sel.dataset.ans) { sel.classList.add('ok'); correct++; }
-    else sel.classList.add('bad');
-  });
-  updateBar('rq-bar', correct, 3);
-  showScore('rq-score', correct, 3);
-}
-
-function checkListenQuiz() {
-  let correct = 0;
-  ['lq1','lq2','lq3'].forEach(id => {
-    const sel = document.getElementById(id);
-    if (sel.value === sel.dataset.ans) { sel.classList.add('ok'); correct++; }
-    else sel.classList.add('bad');
-  });
-  updateBar('lq-bar', correct, 3);
-  showScore('lq-score', correct, 3);
-}
-
-function checkAllExam() {
-  const ids = ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'];
-  let correct = 0;
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el.dataset.answered) {
-      el.querySelectorAll('[data-v="c"]').forEach(b => b.classList.add('ok'));
-      el.dataset.answered = '1';
-    }
-    if (el.querySelector('.ok')) correct++;
-  });
-  showScore('exam-score', correct, ids.length);
-}
-
-function resetWordQuiz() {
-  ['wq1','wq2','wq3','wq4','wq5'].forEach(id => {
-    const el = document.getElementById(id);
-    el.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('ok','bad'));
-    delete el.dataset.answered;
-  });
-  document.getElementById('wq-bar').style.width = '0';
-  document.getElementById('wq-score').className = 'score-banner';
-}
-
-function resetGrammarQuiz() {
-  for (let i = 1; i <= 10; i++) {
-    const sel = document.getElementById('gq' + i);
-    sel.value = ''; sel.classList.remove('ok','bad');
-  }
-  document.getElementById('gq-bar').style.width = '0';
-  document.getElementById('gq-score').className = 'score-banner';
-}
-
-function resetReadingQuiz() {
-  ['rq1','rq2','rq3'].forEach(id => {
-    const sel = document.getElementById(id);
-    sel.value = ''; sel.classList.remove('ok','bad');
-  });
-  document.getElementById('rq-bar').style.width = '0';
-  document.getElementById('rq-score').className = 'score-banner';
-}
-
-function resetListenQuiz() {
-  ['lq1','lq2','lq3'].forEach(id => {
-    const sel = document.getElementById(id);
-    sel.value = ''; sel.classList.remove('ok','bad');
-  });
-  document.getElementById('lq-bar').style.width = '0';
-  document.getElementById('lq-score').className = 'score-banner';
-}
-
-function resetAllExam() {
-  ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'].forEach(id => {
-    const el = document.getElementById(id);
-    el.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('ok','bad'));
-    delete el.dataset.answered;
-  });
-  document.getElementById('exam-score').className = 'score-banner';
+function clearScore(id) {
+  const el = document.getElementById(id);
+  el.className = 'score-banner'; el.textContent = '';
 }
 
 function speak(text) {
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.85;
+  if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.85;
   window.speechSynthesis.speak(u);
+}
+
+function toggleBlur(id) { document.getElementById(id).classList.toggle('revealed'); }
+
+function pickExam(btn, blockId) {
+  const block = document.getElementById(blockId);
+  block.querySelectorAll('.exam-choice').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateExamProgress();
+}
+
+function checkExam() {
+  const qs = ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'];
+  let correct = 0;
+  qs.forEach(id => {
+    const block = document.getElementById(id);
+    const sel = block.querySelector('.exam-choice.selected');
+    if (!sel) return;
+    block.querySelectorAll('.exam-choice').forEach(b => b.classList.remove('ok','bad'));
+    if (sel.dataset.v === 'c') { sel.classList.add('ok'); correct++; }
+    else {
+      sel.classList.add('bad');
+      block.querySelectorAll('.exam-choice').forEach(b => { if (b.dataset.v === 'c') b.classList.add('ok'); });
+    }
+  });
+  document.getElementById('exam-bar').style.width = '100%';
+  showScore('exam-score', correct, qs.length);
+}
+
+function resetExam() {
+  ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'].forEach(id => {
+    document.getElementById(id).querySelectorAll('.exam-choice').forEach(b => b.classList.remove('selected','ok','bad'));
+  });
+  document.getElementById('exam-bar').style.width = '0%';
+  clearScore('exam-score');
+}
+
+function updateExamProgress() {
+  const qs = ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'];
+  const n = qs.filter(id => document.getElementById(id).querySelector('.exam-choice.selected')).length;
+  document.getElementById('exam-bar').style.width = (n / qs.length * 100) + '%';
 }
 
 function toggleHints() {
   document.body.classList.toggle('hints-on');
-  document.getElementById('hint-btn').textContent =
-    document.body.classList.contains('hints-on') ? '🔤 隱藏中文＋羅馬拼音' : '🔤 顯示中文＋羅馬拼音';
+  const btn = document.getElementById('hint-btn');
+  const on = document.body.classList.contains('hints-on');
+  btn.classList.toggle('on', on);
+  btn.textContent = on ? '🔤 隱藏提示' : '🔤 顯示中文＋羅馬拼音';
 }
 </script>
+
 </body>
 </html>
