@@ -1,1072 +1,710 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日本語N5 - 衣類 | 2026-06-23 Day 174</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', 'Noto Sans JP', sans-serif;
-      background: #f0f2f5;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(135deg, #c0392b, #922b21);
-      color: #fff;
-      padding: 24px 20px;
-      text-align: center;
-    }
-    header h1 { font-size: 2em; margin-bottom: 6px; letter-spacing: 1px; }
-    header .meta { font-size: 0.95em; opacity: 0.9; }
-    header .meta span { margin: 0 10px; }
-
-    .tabs {
-      display: flex;
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .tab-btn {
-      flex: 1;
-      padding: 14px 10px;
-      border: none;
-      background: none;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      font-weight: 500;
-    }
-    .tab-btn:hover:not(.active) { background: #f8f8f8; }
-    .tab-btn.active {
-      background: linear-gradient(135deg, #c0392b, #922b21);
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .tab-content { display: none; max-width: 820px; margin: 20px auto; padding: 0 16px 50px; }
-    .tab-content.active { display: block; }
-
-    .section {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .section h2 {
-      font-size: 1.2em;
-      color: #c0392b;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #f0f0f0;
-    }
-
-    .vocab-table { width: 100%; border-collapse: collapse; }
-    .vocab-table th {
-      background: #922b21;
-      color: #fff;
-      padding: 10px 12px;
-      text-align: left;
-      font-size: 0.88em;
-    }
-    .vocab-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 0.95em;
-      vertical-align: middle;
-    }
-    .vocab-table tr:last-child td { border-bottom: none; }
-    .vocab-table tr:hover td { background: #fef9f9; }
-    .vocab-table .kanji { font-size: 1.1em; font-weight: 700; }
-    .vocab-table .reading { color: #777; font-size: 0.82em; display: block; margin-top: 2px; }
-    .badge {
-      display: inline-block;
-      padding: 3px 9px;
-      border-radius: 12px;
-      font-size: 0.74em;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .badge-greeting { background: #fde8e8; color: #c0392b; }
-    .badge-noun     { background: #e8f4fd; color: #1a6fa8; }
-    .badge-verb     { background: #e8fde8; color: #1a8a3c; }
-    .badge-adj      { background: #fdf3e8; color: #d4820a; }
-    .badge-adv      { background: #f0e8fd; color: #7b2d8b; }
-
-    .q-block { margin-bottom: 22px; }
-    .q-block .q-text { font-weight: 600; margin-bottom: 10px; line-height: 1.5; }
-    .choices {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .choice-btn {
-      padding: 10px 14px;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      background: #fff;
-      cursor: pointer;
-      text-align: left;
-      transition: all 0.2s;
-      font-size: 0.93em;
-    }
-    .choice-btn:hover { border-color: #c0392b; background: #fef9f9; }
-    .choice-btn.selected { border-color: #c0392b; background: #fef2f2; }
-    .choice-btn.ok  { border-color: #27ae60 !important; background: #eafaf1 !important; color: #1e8449; font-weight: 700; }
-    .choice-btn.bad { border-color: #e74c3c !important; background: #fef2f2 !important; color: #c0392b; font-weight: 700; }
-
-    .q-dropdown { margin-bottom: 16px; }
-    .q-dropdown .q-text { margin-bottom: 6px; font-size: 0.95em; line-height: 1.5; }
-    .q-dropdown select {
-      padding: 8px 12px;
-      border: 2px solid #ddd;
-      border-radius: 6px;
-      font-size: 0.9em;
-      min-width: 180px;
-      cursor: pointer;
-      background: #fff;
-    }
-    .q-dropdown select.ok  { border-color: #27ae60; background: #eafaf1; }
-    .q-dropdown select.bad { border-color: #e74c3c; background: #fef2f2; }
-    .q-label {
-      display: inline-block;
-      font-size: 0.8em;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 4px;
-      margin-left: 8px;
-    }
-    .q-label.ok  { background: #eafaf1; color: #1e8449; }
-    .q-label.bad { background: #fef2f2; color: #c0392b; }
-
-    .passage {
-      background: #fef9f9;
-      border-left: 4px solid #c0392b;
-      padding: 16px 20px;
-      border-radius: 0 8px 8px 0;
-      margin-bottom: 20px;
-      line-height: 2.2;
-      font-size: 1em;
-    }
-
-    .listen-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 14px;
-      padding: 14px;
-      background: #fef9f9;
-      border-radius: 8px;
-      border: 1px solid #f5e0e0;
-    }
-    .play-btn {
-      padding: 8px 16px;
-      background: #c0392b;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.88em;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: background 0.2s;
-    }
-    .play-btn:hover { background: #922b21; }
-    .listen-text-wrap { flex: 1; }
-    .listen-text {
-      cursor: pointer;
-      filter: blur(5px);
-      transition: filter 0.3s;
-      font-size: 1em;
-      user-select: none;
-    }
-    .listen-text.revealed { filter: none; }
-    .blur-hint { font-size: 0.74em; color: #aaa; margin-top: 4px; }
-
-    .progress-wrap {
-      margin: 14px 0 8px;
-      background: #f0f0f0;
-      border-radius: 10px;
-      height: 8px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, #c0392b, #e74c3c);
-      border-radius: 10px;
-      transition: width 0.4s ease;
-      width: 0%;
-    }
-
-    .score-banner {
-      display: none;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1em;
-      text-align: center;
-      margin: 10px 0;
-    }
-    .score-banner.show { display: block; }
-    .score-banner.good { background: #eafaf1; color: #1e8449; border: 2px solid #27ae60; }
-    .score-banner.fair { background: #fef8e8; color: #d4820a; border: 2px solid #f39c12; }
-    .score-banner.poor { background: #fef2f2; color: #c0392b; border: 2px solid #e74c3c; }
-
-    .btn-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
-    .btn {
-      padding: 10px 22px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.95em;
-      font-weight: 700;
-      transition: all 0.2s;
-    }
-    .btn-primary   { background: #c0392b; color: #fff; }
-    .btn-primary:hover { background: #922b21; }
-    .btn-secondary { background: #f0f0f0; color: #555; }
-    .btn-secondary:hover { background: #e0e0e0; }
-
-    .exam-section {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .exam-section h2 { font-size: 1.05em; font-weight: 700; color: #333; margin-bottom: 4px; }
-    .exam-section .sub-title { font-size: 0.82em; color: #888; margin-bottom: 18px; line-height: 1.5; }
-
-    .hint-toggle { display: flex; justify-content: flex-end; margin-bottom: 16px; }
-    .hint-toggle-btn {
-      padding: 8px 18px;
-      border: 2px solid #c0392b;
-      background: #fff;
-      color: #c0392b;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85em;
-      font-weight: 700;
-      transition: all 0.2s;
-    }
-    .hint-toggle-btn:hover { background: #fef2f2; }
-    .hint-toggle-btn.on { background: #c0392b; color: #fff; }
-
-    .hint {
-      display: none;
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: #fef9f9;
-      border: 1px solid #f5e0e0;
-      border-radius: 6px;
-      font-size: 0.8em;
-      color: #666;
-      line-height: 1.7;
-    }
-    body.hints-on .hint { display: block; }
-
-    .exam-q { margin-bottom: 22px; }
-    .exam-q .q-num { font-weight: 700; font-size: 0.88em; color: #922b21; margin-bottom: 5px; }
-    .exam-q .q-text { font-weight: 600; margin-bottom: 10px; line-height: 1.6; }
-    .exam-choices { display: grid; gap: 7px; }
-    .exam-choice {
-      padding: 10px 14px;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 0.93em;
-      transition: all 0.2s;
-      text-align: left;
-    }
-    .exam-choice:hover { border-color: #c0392b; background: #fef9f9; }
-    .exam-choice.selected { border-color: #c0392b; background: #fef2f2; }
-    .exam-choice.ok  { border-color: #27ae60 !important; background: #eafaf1 !important; color: #1e8449; font-weight: 700; }
-    .exam-choice.bad { border-color: #e74c3c !important; background: #fef2f2 !important; color: #c0392b; font-weight: 700; }
-
-    .hidden { display: none !important; }
-    .exam-footer { max-width: 820px; margin: 0 auto; padding: 0 16px 40px; }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.4em; }
-      header .meta span { display: block; margin: 2px 0; }
-      .choices { grid-template-columns: 1fr; }
-      .btn-row { flex-direction: column; }
-      .listen-item { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N5日語練習 — 天気 | 2026-07-08</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI','Noto Sans JP',sans-serif;background:#f4f4f4;color:#333}
+header{background:linear-gradient(135deg,#c0392b,#922b21);color:#fff;padding:1.2rem 1.5rem;text-align:center}
+header h1{font-size:1.5rem;margin-bottom:.3rem}
+header p{font-size:.88rem;opacity:.88}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;position:sticky;top:0;z-index:10}
+.tab-btn{flex:1;padding:.75rem;border:none;background:none;cursor:pointer;font-size:.95rem;color:#666;border-bottom:3px solid transparent;transition:.2s}
+.tab-btn.active{color:#c0392b;border-bottom-color:#c0392b;font-weight:700}
+.content{padding:1rem;max-width:820px;margin:0 auto}
+.hidden{display:none!important}
+section{background:#fff;border-radius:10px;padding:1.2rem;margin-bottom:1.2rem;box-shadow:0 1px 5px rgba(0,0,0,.09)}
+section h2{font-size:1.05rem;color:#922b21;margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:1px solid #f5d5d5}
+.vocab-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.vocab-table th{background:#fdf2f2;color:#922b21;padding:.45rem .6rem;border:1px solid #f0c0c0;text-align:center}
+.vocab-table td{padding:.45rem .6rem;border:1px solid #eee;text-align:center}
+.vocab-table tr:hover{background:#fafafa}
+.badge{display:inline-block;padding:.12rem .45rem;border-radius:12px;font-size:.73rem;font-weight:700}
+.bn{background:#e8f4fd;color:#1a6fa8}
+.bv{background:#e9f7ef;color:#1a8040}
+.bi{background:#fef9e7;color:#c27b0a}
+.ba{background:#f3eef8;color:#7030a0}
+.quiz-q{margin-bottom:1rem}
+.quiz-q p{font-weight:700;margin-bottom:.5rem}
+.opts{display:flex;flex-wrap:wrap;gap:.45rem}
+.opt-btn{padding:.38rem .8rem;border:2px solid #ddd;border-radius:7px;background:#fff;cursor:pointer;font-size:.88rem;transition:.15s;text-align:left}
+.opt-btn:hover:not(.ok):not(.bad){border-color:#c0392b;color:#c0392b}
+.opt-btn.ok{border-color:#27ae60;background:#eafaf1;color:#1e8449;font-weight:700}
+.opt-btn.bad{border-color:#e74c3c;background:#fdf2f2;color:#c0392b}
+.dq{margin-bottom:.75rem;line-height:2}
+.dq select{border:2px solid #ddd;border-radius:5px;padding:.18rem .4rem;font-size:.88rem;margin:0 .15rem;background:#fff;cursor:pointer;max-width:100%}
+.dq select.ok{border-color:#27ae60;background:#eafaf1}
+.dq select.bad{border-color:#e74c3c;background:#fdf2f2}
+.btn-row{display:flex;gap:.5rem;margin-top:.85rem;flex-wrap:wrap}
+.btn{padding:.4rem 1rem;border:none;border-radius:7px;cursor:pointer;font-size:.88rem;font-weight:700}
+.btn-check{background:#c0392b;color:#fff}
+.btn-reset{background:#ecf0f1;color:#555}
+.btn:hover{opacity:.88}
+.progress-wrap{margin-top:.7rem;background:#eee;border-radius:4px;height:8px;overflow:hidden}
+.progress-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,#e74c3c,#c0392b);width:0%;transition:width .4s}
+.score-banner{margin-top:.45rem;font-weight:700;font-size:.95rem;color:#922b21;min-height:1.2rem}
+.tts-card{display:flex;align-items:center;gap:.8rem;margin-bottom:.75rem;padding:.65rem .8rem;background:#fdf2f2;border-radius:8px;border-left:4px solid #c0392b}
+.tts-play{background:#c0392b;color:#fff;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1rem;flex-shrink:0;transition:.15s}
+.tts-play:hover{background:#922b21}
+.blur-txt{filter:blur(4px);cursor:pointer;transition:filter .25s;user-select:none;font-size:.9rem}
+.blur-txt.on{filter:none}
+.exam-ctrl{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
+.hint-toggle{padding:.38rem .9rem;border:2px solid #c0392b;border-radius:20px;background:none;color:#c0392b;cursor:pointer;font-size:.83rem;font-weight:600;transition:.2s}
+.hint-toggle.active{background:#c0392b;color:#fff}
+.mondai{background:#fff;border-radius:10px;padding:1rem 1.1rem;margin-bottom:1rem;box-shadow:0 1px 5px rgba(0,0,0,.09)}
+.mondai h3{color:#922b21;font-size:1rem;margin-bottom:.35rem}
+.mondai .instruct{font-size:.8rem;color:#777;margin-bottom:.85rem}
+.exam-q{margin-bottom:1.1rem}
+.exam-q .qt{font-weight:700;margin-bottom:.5rem;line-height:1.7}
+.exam-q .qt u{text-decoration:underline;font-weight:700}
+.hint{display:none;background:#fffbeb;border-left:3px solid #f39c12;padding:.4rem .65rem;border-radius:5px;margin-top:.5rem;font-size:.8rem;color:#7d6608;line-height:1.6}
+body.hints-on .hint{display:block}
+@media(max-width:500px){.opts{flex-direction:column}.opt-btn{width:100%}}
+</style>
 </head>
 <body>
 
 <header>
-  <h1>&#x1F1EF;&#x1F1F5; 日本語 N5 練習</h1>
-  <div class="meta">
-    <span>&#x1F4C5; 2026-06-23</span>
-    <span>|</span>
-    <span>&#x1F4C6; Day 174</span>
-    <span>|</span>
-    <span>&#x1F455; テーマ：衣類</span>
-  </div>
+  <h1>🌤 日本語 N5 練習</h1>
+  <p>📅 2026年07月08日 &nbsp;|&nbsp; Day 189 &nbsp;|&nbsp; テーマ：天気 ☀️🌧️</p>
 </header>
 
 <div class="tabs">
-  <button class="tab-btn active" id="btn-study" onclick="switchTab('study')">&#x1F4D6; 學習模式</button>
-  <button class="tab-btn" id="btn-exam" onclick="switchTab('exam')">&#x1F4DD; 試験モード</button>
+  <button class="tab-btn active" onclick="showTab('study')">📖 學習模式</button>
+  <button class="tab-btn" onclick="showTab('exam')">📝 試験モード</button>
 </div>
 
-<!-- ========== 學習模式 ========== -->
-<div id="tab-study" class="tab-content active">
+<div class="content">
 
-  <!-- 1. 詞彙表 -->
-  <div class="section">
-    <h2>&#x1F4DA; 詞彙表</h2>
-    <table class="vocab-table">
-      <thead>
-        <tr>
-          <th>漢字／語</th>
-          <th>読み方</th>
-          <th>中国語訳</th>
-          <th>品詞</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="kanji">すみません</span><span class="reading">sumimasen</span></td>
-          <td>すみません</td>
-          <td>不好意思／打擾了</td>
-          <td><span class="badge badge-greeting">招呼語</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">服（ふく）</span><span class="reading">fuku</span></td>
-          <td>ふく</td>
-          <td>衣服</td>
-          <td><span class="badge badge-noun">名詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">シャツ</span><span class="reading">shatsu</span></td>
-          <td>シャツ</td>
-          <td>襯衫</td>
-          <td><span class="badge badge-noun">名詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">靴（くつ）</span><span class="reading">kutsu</span></td>
-          <td>くつ</td>
-          <td>鞋子</td>
-          <td><span class="badge badge-noun">名詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">帽子（ぼうし）</span><span class="reading">boushi</span></td>
-          <td>ぼうし</td>
-          <td>帽子</td>
-          <td><span class="badge badge-noun">名詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">コート</span><span class="reading">kooto</span></td>
-          <td>コート</td>
-          <td>外套</td>
-          <td><span class="badge badge-noun">名詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">着る（きる）</span><span class="reading">kiru</span></td>
-          <td>きる</td>
-          <td>穿（上身）</td>
-          <td><span class="badge badge-verb">動詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">履く（はく）</span><span class="reading">haku</span></td>
-          <td>はく</td>
-          <td>穿（下身／鞋）</td>
-          <td><span class="badge badge-verb">動詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">かわいい</span><span class="reading">kawaii</span></td>
-          <td>かわいい</td>
-          <td>可愛</td>
-          <td><span class="badge badge-adj">い形容詞</span></td>
-        </tr>
-        <tr>
-          <td><span class="kanji">もう</span><span class="reading">mou</span></td>
-          <td>もう</td>
-          <td>已經／再</td>
-          <td><span class="badge badge-adv">副詞</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<!-- ==================== 學習模式 ==================== -->
+<div id="tab-study">
 
-  <!-- 2. 單字選擇題 -->
-  <div class="section">
-    <h2>&#x1F524; 單字選擇題</h2>
+<!-- S1: 詞彙表 -->
+<section>
+  <h2>📚 詞彙表</h2>
+  <table class="vocab-table">
+    <thead>
+      <tr><th>漢字</th><th>読み仮名</th><th>中国語訳</th><th>品詞</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>天気</td><td>てんき</td><td>天氣</td><td><span class="badge bn">名詞</span></td></tr>
+      <tr><td>晴れ</td><td>はれ</td><td>晴天</td><td><span class="badge bn">名詞</span></td></tr>
+      <tr><td>曇り</td><td>くもり</td><td>陰天</td><td><span class="badge bn">名詞</span></td></tr>
+      <tr><td>雨</td><td>あめ</td><td>雨</td><td><span class="badge bn">名詞</span></td></tr>
+      <tr><td>雪</td><td>ゆき</td><td>雪</td><td><span class="badge bn">名詞</span></td></tr>
+      <tr><td>寒い</td><td>さむい</td><td>寒冷的</td><td><span class="badge bi">い形容詞</span></td></tr>
+      <tr><td>暑い</td><td>あつい</td><td>炎熱的</td><td><span class="badge bi">い形容詞</span></td></tr>
+      <tr><td>涼しい</td><td>すずしい</td><td>涼爽的</td><td><span class="badge bi">い形容詞</span></td></tr>
+      <tr><td>降る</td><td>ふる</td><td>降（雨・雪）</td><td><span class="badge bv">動詞</span></td></tr>
+      <tr><td>時々</td><td>ときどき</td><td>有時候</td><td><span class="badge ba">副詞</span></td></tr>
+    </tbody>
+  </table>
+</section>
 
-    <div class="q-block" id="vq1">
-      <div class="q-text">１．「帽子」の読み方はどれですか？</div>
-      <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq1')">a) ぼうじ</button>
-        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq1')">b) ぼうし</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq1')">c) もし</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq1')">d) ぼうお</button>
+<!-- S2: 單字選擇題 -->
+<section>
+  <h2>🔤 單字選擇題</h2>
+  <div id="s2">
+    <div class="quiz-q" id="s2q1-div">
+      <p>1. 「てんき」の漢字は何ですか？</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'s2q1')">天気</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q1')">電気</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q1')">点気</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q1')">大気</button>
       </div>
     </div>
-
-    <div class="q-block" id="vq2">
-      <div class="q-text">２．「靴」の読み方はどれですか？</div>
-      <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq2')">a) くち</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq2')">b) くし</button>
-        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq2')">c) くつ</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq2')">d) くも</button>
+    <div class="quiz-q" id="s2q2-div">
+      <p>2. 「雨」の読み方は何ですか？</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'s2q2')">あめ</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q2')">あき</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q2')">うめ</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q2')">あさ</button>
       </div>
     </div>
-
-    <div class="q-block" id="vq3">
-      <div class="q-text">３．「着る」の意味はどれですか？</div>
-      <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq3')">a) 穿（下身）</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq3')">b) 脱ぐ</button>
-        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq3')">c) 穿（上身）</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq3')">d) 買う</button>
+    <div class="quiz-q" id="s2q3-div">
+      <p>3. 「さむい」の意味は何ですか？</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'s2q3')">寒冷的</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q3')">炎熱的</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q3')">涼爽的</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q3')">溫暖的</button>
       </div>
     </div>
-
-    <div class="q-block" id="vq4">
-      <div class="q-text">４．「コート」の中国語訳はどれですか？</div>
-      <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq4')">a) 鞋子</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq4')">b) 帽子</button>
-        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq4')">c) 外套</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq4')">d) 衣服</button>
+    <div class="quiz-q" id="s2q4-div">
+      <p>4. 「時々」の意味は何ですか？</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'s2q4')">有時候</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q4')">一直</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q4')">從不</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q4')">馬上</button>
       </div>
     </div>
-
-    <div class="q-block" id="vq5">
-      <div class="q-text">５．「かわいい」の意味はどれですか？</div>
-      <div class="choices">
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq5')">a) 大きい</button>
-        <button class="choice-btn" data-v="c" onclick="pickChoice(this,'vq5')">b) 可愛</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq5')">c) 暑い</button>
-        <button class="choice-btn" data-v="w" onclick="pickChoice(this,'vq5')">d) 新しい</button>
+    <div class="quiz-q" id="s2q5-div">
+      <p>5. 「降る」の読み方は何ですか？</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'s2q5')">ふる</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q5')">おりる</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q5')">くだる</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'s2q5')">のる</button>
       </div>
-    </div>
-
-    <div class="progress-wrap"><div class="progress-bar" id="vocab-bar"></div></div>
-    <div class="score-banner" id="vocab-score"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="checkVocab()">確認答案</button>
-      <button class="btn btn-secondary" onclick="resetVocab()">重新作答</button>
     </div>
   </div>
+  <div class="btn-row">
+    <button class="btn btn-check" onclick="checkS2()">確認答案</button>
+    <button class="btn btn-reset" onclick="resetS2()">重新作答</button>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="s2-bar"></div></div>
+  <div class="score-banner" id="s2-score"></div>
+</section>
 
-  <!-- 3. 語法練習 -->
-  <div class="section">
-    <h2>&#x270F;&#xFE0F; 語法練習</h2>
-
-    <p style="font-size:0.84em;color:#888;margin-bottom:14px;">【填空】正しい答えを選んでください。</p>
-
-    <div class="q-dropdown" id="gq1">
-      <div class="q-text">１．毎日シャツを（　）います。<span class="q-label" id="gq1-lbl"></span></div>
-      <select id="gq1-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">着て</option>
-        <option value="w">履いて</option>
-        <option value="w">かぶって</option>
-        <option value="w">買って</option>
+<!-- S3: 語法練習 -->
+<section>
+  <h2>✏️ 語法練習</h2>
+  <div id="s3">
+    <div class="dq">1. 今日の
+      <select id="s3q1">
+        <option value="">選択</option>
+        <option value="天気">天気</option>
+        <option value="電気">電気</option>
+        <option value="空気">空気</option>
+        <option value="雰囲気">雰囲気</option>
+      </select>
+      はどうですか？
+    </div>
+    <div class="dq">2. 外は
+      <select id="s3q2">
+        <option value="">選択</option>
+        <option value="さむい">さむい</option>
+        <option value="あつい">あつい</option>
+        <option value="すずしい">すずしい</option>
+        <option value="いい">いい</option>
+      </select>
+      から、コートを着てください。
+    </div>
+    <div class="dq">3. 雨が
+      <select id="s3q3">
+        <option value="">選択</option>
+        <option value="降って">降って</option>
+        <option value="来て">来て</option>
+        <option value="行って">行って</option>
+        <option value="して">して</option>
+      </select>
+      います。
+    </div>
+    <div class="dq">4. 今日は
+      <select id="s3q4">
+        <option value="">選択</option>
+        <option value="時々">時々</option>
+        <option value="いつも">いつも</option>
+        <option value="ぜんぜん">ぜんぜん</option>
+        <option value="もっと">もっと</option>
+      </select>
+      晴れたり曇ったりします。
+    </div>
+    <div class="dq">5. 「雪」の読み方は
+      <select id="s3q5">
+        <option value="">選択</option>
+        <option value="ゆき">ゆき</option>
+        <option value="さむ">さむ</option>
+        <option value="あめ">あめ</option>
+        <option value="くも">くも</option>
+      </select>
+      です。
+    </div>
+    <div class="dq">6. 「天気」の読み方は
+      <select id="s3q6">
+        <option value="">選択</option>
+        <option value="てんき">てんき</option>
+        <option value="でんき">でんき</option>
+        <option value="てっき">てっき</option>
+        <option value="てんぎ">てんぎ</option>
+      </select>
+      です。
+    </div>
+    <div class="dq">7. 「曇り」の読み方は
+      <select id="s3q7">
+        <option value="">選択</option>
+        <option value="くもり">くもり</option>
+        <option value="はれ">はれ</option>
+        <option value="ゆき">ゆき</option>
+        <option value="あめ">あめ</option>
+      </select>
+      です。
+    </div>
+    <div class="dq">8. 今天天氣如何？→
+      <select id="s3q8">
+        <option value="">選択</option>
+        <option value="今日の天気はどうですか？">今日の天気はどうですか？</option>
+        <option value="今日の天気がいいです。">今日の天気がいいです。</option>
+        <option value="天気が好きです。">天気が好きです。</option>
+        <option value="天気はよくないです。">天気はよくないです。</option>
       </select>
     </div>
-
-    <div class="q-dropdown" id="gq2">
-      <div class="q-text">２．学校に行くとき、靴を（　）います。<span class="q-label" id="gq2-lbl"></span></div>
-      <select id="gq2-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">着て</option>
-        <option value="c">履いて</option>
-        <option value="w">かぶって</option>
-        <option value="w">見て</option>
+    <div class="dq">9. 下雨了。→
+      <select id="s3q9">
+        <option value="">選択</option>
+        <option value="雨が降っています。">雨が降っています。</option>
+        <option value="雨が好きです。">雨が好きです。</option>
+        <option value="雨ではありません。">雨ではありません。</option>
+        <option value="雨が来ます。">雨が来ます。</option>
       </select>
     </div>
-
-    <div class="q-dropdown" id="gq3">
-      <div class="q-text">３．頭に帽子を（　）。<span class="q-label" id="gq3-lbl"></span></div>
-      <select id="gq3-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">着ます</option>
-        <option value="w">履きます</option>
-        <option value="c">かぶります</option>
-        <option value="w">買います</option>
+    <div class="dq">10. 今天很涼爽。→
+      <select id="s3q10">
+        <option value="">選択</option>
+        <option value="今日は涼しいです。">今日は涼しいです。</option>
+        <option value="今日は暑いです。">今日は暑いです。</option>
+        <option value="今日は寒いです。">今日は寒いです。</option>
+        <option value="今日はいいです。">今日はいいです。</option>
       </select>
-    </div>
-
-    <div class="q-dropdown" id="gq4">
-      <div class="q-text">４．（　）、このコートはいくらですか。<span class="q-label" id="gq4-lbl"></span></div>
-      <select id="gq4-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">すみません</option>
-        <option value="w">ありがとう</option>
-        <option value="w">おはよう</option>
-        <option value="w">さようなら</option>
-      </select>
-    </div>
-
-    <p style="font-size:0.84em;color:#888;margin:18px 0 14px;">【読み方】正しい読み方を選んでください。</p>
-
-    <div class="q-dropdown" id="gq5">
-      <div class="q-text">５．「服」の読み方は？<span class="q-label" id="gq5-lbl"></span></div>
-      <select id="gq5-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">ふく</option>
-        <option value="w">ぼく</option>
-        <option value="w">ふう</option>
-        <option value="w">ふき</option>
-      </select>
-    </div>
-
-    <div class="q-dropdown" id="gq6">
-      <div class="q-text">６．「靴」の読み方は？<span class="q-label" id="gq6-lbl"></span></div>
-      <select id="gq6-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">くつ</option>
-        <option value="w">くち</option>
-        <option value="w">くし</option>
-        <option value="w">くも</option>
-      </select>
-    </div>
-
-    <div class="q-dropdown" id="gq7">
-      <div class="q-text">７．「帽子」の読み方は？<span class="q-label" id="gq7-lbl"></span></div>
-      <select id="gq7-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">ぼうし</option>
-        <option value="w">もし</option>
-        <option value="w">ぼうじ</option>
-        <option value="w">ぼうこ</option>
-      </select>
-    </div>
-
-    <p style="font-size:0.84em;color:#888;margin:18px 0 14px;">【中翻日】中国語を日本語に翻訳してください。</p>
-
-    <div class="q-dropdown" id="gq8">
-      <div class="q-text">８．「可愛」を日本語で？<span class="q-label" id="gq8-lbl"></span></div>
-      <select id="gq8-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">かわいい</option>
-        <option value="w">あたらしい</option>
-        <option value="w">おおきい</option>
-        <option value="w">たかい</option>
-      </select>
-    </div>
-
-    <div class="q-dropdown" id="gq9">
-      <div class="q-text">９．「已經」を日本語で？<span class="q-label" id="gq9-lbl"></span></div>
-      <select id="gq9-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">もう</option>
-        <option value="w">まだ</option>
-        <option value="w">また</option>
-        <option value="w">もっと</option>
-      </select>
-    </div>
-
-    <div class="q-dropdown" id="gq10">
-      <div class="q-text">１０．「穿鞋子」を日本語で？<span class="q-label" id="gq10-lbl"></span></div>
-      <select id="gq10-sel" onchange="updateGrammarProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">靴を着る</option>
-        <option value="c">靴を履く</option>
-        <option value="w">靴をかぶる</option>
-        <option value="w">靴を買う</option>
-      </select>
-    </div>
-
-    <div class="progress-wrap"><div class="progress-bar" id="grammar-bar"></div></div>
-    <div class="score-banner" id="grammar-score"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="checkGrammar()">確認答案</button>
-      <button class="btn btn-secondary" onclick="resetGrammar()">重新作答</button>
     </div>
   </div>
+  <div class="btn-row">
+    <button class="btn btn-check" onclick="checkS3()">確認答案</button>
+    <button class="btn btn-reset" onclick="resetS3()">重新作答</button>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="s3-bar"></div></div>
+  <div class="score-banner" id="s3-score"></div>
+</section>
 
-  <!-- 4. 文章閱讀 -->
-  <div class="section">
-    <h2>&#x1F4D6; 文章閱讀</h2>
-    <div class="passage">
-      今日、田中さんは新しい<strong>服</strong>を買いに行きました。まず、赤い<strong>シャツ</strong>を見つけました。「<strong>すみません</strong>、このシャツは<strong>かわいい</strong>ですね。いくらですか？」と田中さんは言いました。店の人は値段を教えてくれました。つぎに、<strong>コート</strong>と<strong>靴</strong>も買いました。<strong>帽子</strong>は<strong>もう</strong>持っています。家に帰って、田中さんはシャツを<strong>着て</strong>、靴を<strong>履いて</strong>、帽子をかぶりました。<strong>もう</strong>外出する準備ができました。
-    </div>
-
-    <div class="q-dropdown" id="rq1">
-      <div class="q-text">１．田中さんは何を買いましたか？<span class="q-label" id="rq1-lbl"></span></div>
-      <select id="rq1-sel" onchange="updateReadingProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">シャツだけ</option>
-        <option value="c">シャツとコートと靴</option>
-        <option value="w">帽子と靴</option>
-        <option value="w">コートだけ</option>
+<!-- S4: 文章閱讀 -->
+<section>
+  <h2>📖 文章閱讀</h2>
+  <div style="background:#fdf2f2;border-radius:8px;padding:.9rem 1rem;margin-bottom:.9rem;line-height:2;font-size:.93rem">
+    今日の<strong>天気</strong>は<strong>晴れ</strong>です。でも、午後は<strong>時々</strong><strong>曇り</strong>になるかもしれません。朝はとても<strong>涼しい</strong>ですが、昼は少し<strong>暑い</strong>です。明日は<strong>雨</strong>が<strong>降る</strong>かもしれませんから、傘を持っていってください。
+  </div>
+  <div id="s4">
+    <div class="dq">1. 今日の朝の天気はどうですか？
+      <select id="s4q1">
+        <option value="">選択</option>
+        <option value="涼しい">涼しい</option>
+        <option value="暑い">暑い</option>
+        <option value="寒い">寒い</option>
+        <option value="曇り">曇り</option>
       </select>
     </div>
-
-    <div class="q-dropdown" id="rq2">
-      <div class="q-text">２．シャツはどんな色ですか？<span class="q-label" id="rq2-lbl"></span></div>
-      <select id="rq2-sel" onchange="updateReadingProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">白</option>
-        <option value="c">赤</option>
-        <option value="w">青</option>
-        <option value="w">黒</option>
+    <div class="dq">2. 午後はどんな天気になるかもしれませんか？
+      <select id="s4q2">
+        <option value="">選択</option>
+        <option value="時々曇り">時々曇り</option>
+        <option value="晴れ">晴れ</option>
+        <option value="雪">雪</option>
+        <option value="涼しい">涼しい</option>
       </select>
     </div>
-
-    <div class="q-dropdown" id="rq3">
-      <div class="q-text">３．帽子についてどんな情報がありますか？<span class="q-label" id="rq3-lbl"></span></div>
-      <select id="rq3-sel" onchange="updateReadingProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">帽子は高かった</option>
-        <option value="c">帽子はもう持っている</option>
-        <option value="w">帽子を買った</option>
-        <option value="w">帽子はかわいい</option>
+    <div class="dq">3. 明日はどうなるかもしれませんか？
+      <select id="s4q3">
+        <option value="">選択</option>
+        <option value="雨が降る">雨が降る</option>
+        <option value="晴れる">晴れる</option>
+        <option value="雪が降る">雪が降る</option>
+        <option value="涼しくなる">涼しくなる</option>
       </select>
-    </div>
-
-    <div class="progress-wrap"><div class="progress-bar" id="reading-bar"></div></div>
-    <div class="score-banner" id="reading-score"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="checkReading()">確認答案</button>
-      <button class="btn btn-secondary" onclick="resetReading()">重新作答</button>
     </div>
   </div>
+  <div class="btn-row">
+    <button class="btn btn-check" onclick="checkS4()">確認答案</button>
+    <button class="btn btn-reset" onclick="resetS4()">重新作答</button>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="s4-bar"></div></div>
+  <div class="score-banner" id="s4-score"></div>
+</section>
 
-  <!-- 5. 聽力練習 -->
-  <div class="section">
-    <h2>&#x1F3A7; 聽力練習</h2>
-    <p style="font-size:0.84em;color:#888;margin-bottom:14px;">&#x25B6; ボタンで音声を再生し、文字をクリックして答え合わせをしてください。</p>
-
-    <div class="listen-item">
-      <button class="play-btn" onclick="speak('新しい服を着ます。')">&#x25B6; 再生</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" id="lt1" onclick="toggleBlur('lt1')">新しい服を着ます。</div>
-        <div class="blur-hint">クリックで文字を表示／隠す</div>
-      </div>
+<!-- S5: 聽力練習 -->
+<section>
+  <h2>🎧 聽力練習</h2>
+  <p style="font-size:.82rem;color:#888;margin-bottom:.8rem">▶ ボタンで再生 / テキストをクリックで表示切替</p>
+  <div>
+    <div class="tts-card">
+      <button class="tts-play" onclick="speak('今日の天気はとてもいいです。')">▶</button>
+      <span class="blur-txt" onclick="this.classList.toggle('on')">今日の天気はとてもいいです。</span>
     </div>
-
-    <div class="listen-item">
-      <button class="play-btn" onclick="speak('この帽子はかわいいですね。')">&#x25B6; 再生</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" id="lt2" onclick="toggleBlur('lt2')">この帽子はかわいいですね。</div>
-        <div class="blur-hint">クリックで文字を表示／隠す</div>
-      </div>
+    <div class="tts-card">
+      <button class="tts-play" onclick="speak('外は寒いですから、コートを着てください。')">▶</button>
+      <span class="blur-txt" onclick="this.classList.toggle('on')">外は寒いですから、コートを着てください。</span>
     </div>
-
-    <div class="listen-item">
-      <button class="play-btn" onclick="speak('靴を履いて、学校に行きます。')">&#x25B6; 再生</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" id="lt3" onclick="toggleBlur('lt3')">靴を履いて、学校に行きます。</div>
-        <div class="blur-hint">クリックで文字を表示／隠す</div>
-      </div>
+    <div class="tts-card">
+      <button class="tts-play" onclick="speak('雨が降っています。傘を持ってきてください。')">▶</button>
+      <span class="blur-txt" onclick="this.classList.toggle('on')">雨が降っています。傘を持ってきてください。</span>
     </div>
-
-    <div class="listen-item">
-      <button class="play-btn" onclick="speak('すみません、このコートはいくらですか。')">&#x25B6; 再生</button>
-      <div class="listen-text-wrap">
-        <div class="listen-text" id="lt4" onclick="toggleBlur('lt4')">すみません、このコートはいくらですか。</div>
-        <div class="blur-hint">クリックで文字を表示／隠す</div>
-      </div>
-    </div>
-
-    <div class="q-dropdown" id="lq1">
-      <div class="q-text">１．文①で、何を着ますか？<span class="q-label" id="lq1-lbl"></span></div>
-      <select id="lq1-sel" onchange="updateListeningProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">コート</option>
-        <option value="c">新しい服</option>
-        <option value="w">帽子</option>
-      </select>
-    </div>
-
-    <div class="q-dropdown" id="lq2">
-      <div class="q-text">２．文②で、帽子はどうですか？<span class="q-label" id="lq2-lbl"></span></div>
-      <select id="lq2-sel" onchange="updateListeningProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="w">たかい</option>
-        <option value="w">おおきい</option>
-        <option value="c">かわいい</option>
-      </select>
-    </div>
-
-    <div class="q-dropdown" id="lq3">
-      <div class="q-text">３．文③で、靴を履いてどこへ行きますか？<span class="q-label" id="lq3-lbl"></span></div>
-      <select id="lq3-sel" onchange="updateListeningProgress()">
-        <option value="">-- 選択 --</option>
-        <option value="c">学校</option>
-        <option value="w">家</option>
-        <option value="w">店</option>
-      </select>
-    </div>
-
-    <div class="progress-wrap"><div class="progress-bar" id="listening-bar"></div></div>
-    <div class="score-banner" id="listening-score"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="checkListening()">確認答案</button>
-      <button class="btn btn-secondary" onclick="resetListening()">重新作答</button>
+    <div class="tts-card">
+      <button class="tts-play" onclick="speak('今日は時々曇りますが、暑いです。')">▶</button>
+      <span class="blur-txt" onclick="this.classList.toggle('on')">今日は時々曇りますが、暑いです。</span>
     </div>
   </div>
+  <div id="s5" style="margin-top:.9rem">
+    <div class="dq">1. 最初の文で、今日の天気はどうですか？
+      <select id="s5q1">
+        <option value="">選択</option>
+        <option value="いい">いい</option>
+        <option value="わるい">わるい</option>
+        <option value="さむい">さむい</option>
+        <option value="くもり">くもり</option>
+      </select>
+    </div>
+    <div class="dq">2. 二番目の文で、なぜコートが必要ですか？
+      <select id="s5q2">
+        <option value="">選択</option>
+        <option value="さむいから">さむいから</option>
+        <option value="あついから">あついから</option>
+        <option value="あめだから">あめだから</option>
+        <option value="ゆきだから">ゆきだから</option>
+      </select>
+    </div>
+    <div class="dq">3. 三番目の文で、なぜ傘を持っていきますか？
+      <select id="s5q3">
+        <option value="">選択</option>
+        <option value="雨が降っているから">雨が降っているから</option>
+        <option value="暑いから">暑いから</option>
+        <option value="晴れているから">晴れているから</option>
+        <option value="寒いから">寒いから</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-check" onclick="checkS5()">確認答案</button>
+    <button class="btn btn-reset" onclick="resetS5()">重新作答</button>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="s5-bar"></div></div>
+  <div class="score-banner" id="s5-score"></div>
+</section>
 
 </div><!-- /tab-study -->
 
-<!-- ========== 試験モード ========== -->
-<div id="tab-exam" class="tab-content">
+<!-- ==================== 試験モード ==================== -->
+<div id="tab-exam" class="hidden">
 
-  <div class="hint-toggle">
-    <button class="hint-toggle-btn" id="hint-btn" onclick="toggleHints()">&#x1F524; 顯示中文＋羅馬拼音</button>
+  <div class="exam-ctrl">
+    <button class="hint-toggle" id="hint-btn" onclick="toggleHints()">🔤 顯示中文＋羅馬拼音</button>
   </div>
 
   <!-- もんだい1 -->
-  <div class="exam-section">
-    <h2>もんだい１　よみかた</h2>
-    <div class="sub-title">＿＿のことばはひらがなでどうかきますか。１・２・３・４からいちばんいいものをえらんでください。</div>
+  <div class="mondai">
+    <h3>もんだい１　よみかた</h3>
+    <p class="instruct">＿＿のことばは どうよみますか。１・２・３・４から いちばんいいものを ひとつ えらんでください。</p>
 
-    <div class="exam-q" id="eq1">
-      <div class="q-num">問１</div>
-      <div class="q-text">田中さんは白い<u>服</u>を着ています。</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq1')">１　ふき</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq1')">２　ふく</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq1')">３　ぼく</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq1')">４　ふい</button>
+    <div class="exam-q" id="eq1-div">
+      <p class="qt">（1）今日は<u>天気</u>がいいですね。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq1')">1. てんき</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq1')">2. でんき</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq1')">3. てっき</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq1')">4. てんぎ</button>
       </div>
       <div class="hint">
-        <strong>ふく (fuku)</strong> ／ 衣服<br>
-        １ ふき(fuki)&times;　２ ふく(fuku)&#x2713;　３ ぼく(boku)&times;　４ ふい(fui)&times;
+        ✅ 正解：1. てんき (tenki) ＝ 天氣<br>
+        2. でんき (denki) ＝ 電氣　3. てっき (tekki) ＝ 鐵器　4. てんぎ (tengi) ＝ 無此詞
       </div>
     </div>
 
-    <div class="exam-q" id="eq2">
-      <div class="q-num">問２</div>
-      <div class="q-text">新しい<u>靴</u>を買いました。</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq2')">１　くち</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq2')">２　くし</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq2')">３　くつ</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq2')">４　くも</button>
+    <div class="exam-q" id="eq2-div">
+      <p class="qt">（2）<u>雪</u>が降っています。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq2')">1. ゆき</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq2')">2. あめ</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq2')">3. くも</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq2')">4. かぜ</button>
       </div>
       <div class="hint">
-        <strong>くつ (kutsu)</strong> ／ 鞋子<br>
-        １ くち(kuchi)&times;　２ くし(kushi)&times;　３ くつ(kutsu)&#x2713;　４ くも(kumo)&times;
+        ✅ 正解：1. ゆき (yuki) ＝ 雪<br>
+        2. あめ (ame) ＝ 雨　3. くも (kumo) ＝ 雲　4. かぜ (kaze) ＝ 風
       </div>
     </div>
 
-    <div class="exam-q" id="eq3">
-      <div class="q-num">問３</div>
-      <div class="q-text">赤い<u>帽子</u>をかぶっています。</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq3')">１　ぼうじ</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq3')">２　ぼうし</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq3')">３　もし</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq3')">４　ぼうこ</button>
+    <div class="exam-q" id="eq3-div">
+      <p class="qt">（3）今日は<u>暑い</u>ですね。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq3')">1. あつい</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq3')">2. さむい</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq3')">3. すずしい</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq3')">4. あたたかい</button>
       </div>
       <div class="hint">
-        <strong>ぼうし (boushi)</strong> ／ 帽子<br>
-        １ ぼうじ(bouji)&times;　２ ぼうし(boushi)&#x2713;　３ もし(moshi)&times;　４ ぼうこ(bouko)&times;
+        ✅ 正解：1. あつい (atsui) ＝ 炎熱的<br>
+        2. さむい (samui) ＝ 寒冷的　3. すずしい (suzushii) ＝ 涼爽的　4. あたたかい (atatakai) ＝ 溫暖的
       </div>
     </div>
   </div>
 
   <!-- もんだい2 -->
-  <div class="exam-section">
-    <h2>もんだい２　ぶんぽう穴埋め</h2>
-    <div class="sub-title">（　）に入るものを１・２・３・４からいちばんいいものをえらんでください。</div>
+  <div class="mondai">
+    <h3>もんだい２　文法穴埋め</h3>
+    <p class="instruct">（　）に なにを いれますか。１・２・３・４から いちばんいいものを ひとつ えらんでください。</p>
 
-    <div class="exam-q" id="eq4">
-      <div class="q-num">問４</div>
-      <div class="q-text">毎日シャツを（　）います。</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq4')">１　履いて</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq4')">２　かぶって</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq4')">３　着て</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq4')">４　買って</button>
+    <div class="exam-q" id="eq4-div">
+      <p class="qt">（4）今日は（　）が降っています。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq4')">1. あめ</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq4')">2. かぜ</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq4')">3. てんき</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq4')">4. はれ</button>
       </div>
       <div class="hint">
-        <strong>着て (kite)</strong> ／ 穿著（上身）<br>
-        １ 履いて(haite) 穿鞋&times;　２ かぶって(kabutte) 戴帽&times;　３ 着て(kite) 穿衣&#x2713;　４ 買って(katte) 買&times;
+        ✅ 正解：1. あめ (ame) ＝ 雨（「降る」と組み合わせて使う）<br>
+        2. かぜ (kaze) ＝ 風　3. てんき (tenki) ＝ 天氣　4. はれ (hare) ＝ 晴天
       </div>
     </div>
 
-    <div class="exam-q" id="eq5">
-      <div class="q-num">問５</div>
-      <div class="q-text">（　）、このコートはいくらですか。</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq5')">１　ありがとう</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq5')">２　すみません</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq5')">３　おはよう</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq5')">４　さようなら</button>
+    <div class="exam-q" id="eq5-div">
+      <p class="qt">（5）外は（　）から、上着を着てください。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq5')">1. さむい</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq5')">2. あつい</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq5')">3. すずしい</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq5')">4. あたたかい</button>
       </div>
       <div class="hint">
-        <strong>すみません (sumimasen)</strong> ／ 不好意思（向店員搭話用）<br>
-        １ arigatou 謝謝&times;　２ sumimasen 不好意思&#x2713;　３ ohayou 早安&times;　４ sayounara 再見&times;
+        ✅ 正解：1. さむい (samui) ＝ 寒冷，所以需要穿上衣<br>
+        2. あつい (atsui) ＝ 炎熱　3. すずしい (suzushii) ＝ 涼爽　4. あたたかい (atatakai) ＝ 溫暖
       </div>
     </div>
 
-    <div class="exam-q" id="eq6">
-      <div class="q-num">問６</div>
-      <div class="q-text">（　）家に帰る時間です。早く帰りましょう。</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq6')">１　まだ</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq6')">２　もう</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq6')">３　また</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq6')">４　もっと</button>
+    <div class="exam-q" id="eq6-div">
+      <p class="qt">（6）今日は（　）晴れたり曇ったりします。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq6')">1. ときどき</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq6')">2. いつも</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq6')">3. ぜんぜん</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq6')">4. もっと</button>
       </div>
       <div class="hint">
-        <strong>もう (mou)</strong> ／ 已經（表示時間到了）<br>
-        １ mada 還沒&times;　２ mou 已經&#x2713;　３ mata 又&times;　４ motto 更多&times;
+        ✅ 正解：1. ときどき (tokidoki) ＝ 有時候<br>
+        2. いつも (itsumo) ＝ 總是　3. ぜんぜん (zenzen) ＝ 完全不　4. もっと (motto) ＝ 更加
       </div>
     </div>
   </div>
 
   <!-- もんだい3 -->
-  <div class="exam-section">
-    <h2>もんだい３　場面</h2>
-    <div class="sub-title">&#x2605;のひとはなんといいますか。１・２・３・４からいちばんいいものをえらんでください。</div>
+  <div class="mondai">
+    <h3>もんだい３　場面</h3>
+    <p class="instruct">★の ひとは なんと いいますか。１・２・３・４から いちばんいいものを ひとつ えらんでください。</p>
 
-    <div class="exam-q" id="eq7">
-      <div class="q-num">問７</div>
-      <div class="q-text">&#x2605; デパートで、店員さんに声をかけたいです。何と言いますか？</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq7')">１　ありがとうございます</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq7')">２　すみません</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq7')">３　おはようございます</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq7')">４　さようなら</button>
+    <div class="exam-q" id="eq7-div">
+      <p class="qt">（7）★友達に今日の天気を聞きたいです。何と言いますか？</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq7')">1. 今日の天気はどうですか？</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq7')">2. 天気が好きです。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq7')">3. 雨が降ります。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq7')">4. 晴れてください。</button>
       </div>
       <div class="hint">
-        <strong>すみません (sumimasen)</strong> ／ 不好意思（呼叫店員的招呼語）<br>
-        １ arigatou gozaimasu 謝謝&times;　２ sumimasen 不好意思&#x2713;　３ ohayou gozaimasu 早安&times;　４ sayounara 再見&times;
+        ✅ 正解：1. Kyō no tenki wa dō desu ka? ＝ 今天天氣怎麼樣？<br>
+        2. (tenki ga suki desu) 我喜歡天氣　3. (ame ga furimasu) 會下雨　4. (harete kudasai) 請放晴（不自然）
       </div>
     </div>
 
-    <div class="exam-q" id="eq8">
-      <div class="q-num">問８</div>
-      <div class="q-text">&#x2605; 友だちの新しい服がとてもきれいです。何と言いますか？</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq8')">１　かわいいですね</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq8')">２　おいしいですね</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq8')">３　はやいですね</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq8')">４　たのしいですね</button>
+    <div class="exam-q" id="eq8-div">
+      <p class="qt">（8）★外が寒いです。友達にコートを持ってくるように伝えたいです。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq8')">1. 外は寒いですから、コートを持ってきてください。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq8')">2. コートはどこですか。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq8')">3. 寒くないです。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq8')">4. コートが好きです。</button>
       </div>
       <div class="hint">
-        <strong>かわいいですね (kawaii desu ne)</strong> ／ 好可愛喔<br>
-        １ kawaii desu ne 好可愛&#x2713;　２ oishii desu ne 好好吃&times;　３ hayai desu ne 好快&times;　４ tanoshii desu ne 好開心&times;
+        ✅ 正解：1. Soto wa samui desu kara, kōto wo motte kite kudasai. ＝ 外面很冷，請帶外套來。<br>
+        2. (kōto wa doko desu ka) 外套在哪裡？　3. (samuku nai desu) 不冷　4. (kōto ga suki desu) 我喜歡外套
       </div>
     </div>
 
-    <div class="exam-q" id="eq9">
-      <div class="q-num">問９</div>
-      <div class="q-text">&#x2605; もう５時です。「時間なので帰ります」と伝えたいです。何と言いますか？</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq9')">１　まだ帰ります</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq9')">２　もう帰ります</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq9')">３　また帰ります</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq9')">４　もっと帰ります</button>
+    <div class="exam-q" id="eq9-div">
+      <p class="qt">（9）★今日は晴れています。嬉しいです。何と言いますか？</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq9')">1. 今日は晴れていて、いいですね！</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq9')">2. 今日は雨ですね。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq9')">3. 天気が好きじゃないです。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq9')">4. 曇りですね。</button>
       </div>
       <div class="hint">
-        <strong>もう帰ります (mou kaerimasu)</strong> ／ 我已經要回去了<br>
-        １ mada 還是&times;　２ mou 已經&#x2713;　３ mata 又&times;　４ motto 更&times;
+        ✅ 正解：1. Kyō wa harete ite, ii desu ne! ＝ 今天放晴，真好！<br>
+        2. (kyō wa ame desu ne) 今天下雨呢　3. (tenki ga suki janai desu) 我不喜歡天氣　4. (kumori desu ne) 是陰天呢
       </div>
     </div>
   </div>
 
   <!-- もんだい4 -->
-  <div class="exam-section">
-    <h2>もんだい４　語彙</h2>
-    <div class="sub-title">（　）のことばに意味がいちばんちかいものをえらんでください。</div>
+  <div class="mondai">
+    <h3>もんだい４　語彙</h3>
+    <p class="instruct">＿＿のことばに いちばん ちかい いみの ものを １・２・３・４から ひとつ えらんでください。</p>
 
-    <div class="exam-q" id="eq10">
-      <div class="q-num">問１０</div>
-      <div class="q-text">この人形は（かわいい）ですね。</div>
-      <div class="exam-choices">
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq10')">１　こわい</button>
-        <button class="exam-choice" data-v="c" onclick="pickExam(this,'eq10')">２　かわいらしい</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq10')">３　うるさい</button>
-        <button class="exam-choice" data-v="w" onclick="pickExam(this,'eq10')">４　さびしい</button>
+    <div class="exam-q" id="eq10-div">
+      <p class="qt">（10）今日の外は<u>さむい</u>です。</p>
+      <div class="opts">
+        <button class="opt-btn" data-v="c" onclick="pickOpt(this,'eq10')">1. 体が冷たく感じます。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq10')">2. 体が熱く感じます。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq10')">3. 体が涼しく感じます。</button>
+        <button class="opt-btn" data-v="w" onclick="pickOpt(this,'eq10')">4. 体が暖かく感じます。</button>
       </div>
       <div class="hint">
-        <strong>かわいらしい (kawairashii)</strong> ／ 可愛らしい<br>
-        １ kowai 可怕&times;　２ kawairashii 可愛&#x2713;　３ urusai 吵鬧&times;　４ sabishii 寂寞&times;
+        ✅ 正解：1. 体が冷たく感じます (karada ga tsumetaku kanjimasu) ＝ 身體感覺冷冷的<br>
+        「さむい」= 寒冷，與「冷たく感じる」最接近<br>
+        2. (atsuku) 熱的　3. (suzushiku) 涼爽的　4. (atatakaku) 溫暖的
       </div>
     </div>
   </div>
 
-  <div class="exam-footer">
-    <div class="progress-wrap"><div class="progress-bar" id="exam-bar"></div></div>
-    <div class="score-banner" id="exam-score"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="checkExam()">確認答案</button>
-      <button class="btn btn-secondary" onclick="resetExam()">重新作答</button>
-    </div>
+  <div class="btn-row">
+    <button class="btn btn-check" onclick="checkExam()">確認答案</button>
+    <button class="btn btn-reset" onclick="resetExam()">重新作答</button>
   </div>
+  <div class="progress-wrap"><div class="progress-bar" id="exam-bar"></div></div>
+  <div class="score-banner" id="exam-score"></div>
 
 </div><!-- /tab-exam -->
+</div><!-- /content -->
 
 <script>
-function switchTab(tab) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  document.getElementById('btn-' + tab).classList.add('active');
+function showTab(tab) {
+  var isStudy = tab === 'study';
+  document.getElementById('tab-study').classList.toggle('hidden', !isStudy);
+  document.getElementById('tab-exam').classList.toggle('hidden', isStudy);
+  var btns = document.querySelectorAll('.tab-btn');
+  btns[0].classList.toggle('active', isStudy);
+  btns[1].classList.toggle('active', !isStudy);
 }
 
-function pickChoice(btn, blockId) {
-  const block = document.getElementById(blockId);
-  block.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  updateVocabProgress();
+var answered = {};
+function pickOpt(btn, qid) {
+  if (answered[qid]) return;
+  var parent = btn.closest('.quiz-q') || btn.closest('.exam-q');
+  parent.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('ok','bad'); });
+  if (btn.dataset.v === 'c') {
+    btn.classList.add('ok');
+    answered[qid] = 'c';
+  } else {
+    btn.classList.add('bad');
+    parent.querySelectorAll('.opt-btn').forEach(function(b){ if(b.dataset.v==='c') b.classList.add('ok'); });
+    answered[qid] = 'w';
+  }
 }
 
-function checkVocab() {
-  const qs = ['vq1','vq2','vq3','vq4','vq5'];
-  let correct = 0;
-  qs.forEach(id => {
-    const block = document.getElementById(id);
-    const sel = block.querySelector('.choice-btn.selected');
-    if (!sel) return;
-    block.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('ok','bad'));
-    if (sel.dataset.v === 'c') { sel.classList.add('ok'); correct++; }
-    else {
-      sel.classList.add('bad');
-      block.querySelectorAll('.choice-btn').forEach(b => { if (b.dataset.v === 'c') b.classList.add('ok'); });
+var s2qids = ['s2q1','s2q2','s2q3','s2q4','s2q5'];
+function checkS2() {
+  var correct = 0;
+  document.querySelectorAll('#s2 .quiz-q').forEach(function(q,i){
+    var qid = s2qids[i];
+    if (!answered[qid]) {
+      q.querySelectorAll('[data-v="c"]').forEach(function(b){ b.classList.add('ok'); });
+      answered[qid] = 'w';
     }
+    if (answered[qid] === 'c') correct++;
   });
-  document.getElementById('vocab-bar').style.width = '100%';
-  showScore('vocab-score', correct, qs.length);
+  setResult('s2-bar','s2-score',correct,5);
+}
+function resetS2() {
+  s2qids.forEach(function(id){ delete answered[id]; });
+  document.querySelectorAll('#s2 .opt-btn').forEach(function(b){ b.classList.remove('ok','bad'); });
+  setResult('s2-bar','s2-score',0,0,true);
 }
 
-function resetVocab() {
-  ['vq1','vq2','vq3','vq4','vq5'].forEach(id => {
-    document.getElementById(id).querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected','ok','bad'));
+var s3ans = {
+  s3q1:'天気', s3q2:'さむい', s3q3:'降って', s3q4:'時々',
+  s3q5:'ゆき', s3q6:'てんき', s3q7:'くもり',
+  s3q8:'今日の天気はどうですか？', s3q9:'雨が降っています。', s3q10:'今日は涼しいです。'
+};
+function checkS3() {
+  var correct = 0;
+  Object.keys(s3ans).forEach(function(id){
+    var sel = document.getElementById(id);
+    sel.classList.remove('ok','bad');
+    if (sel.value === s3ans[id]) { sel.classList.add('ok'); correct++; }
+    else sel.classList.add('bad');
   });
-  document.getElementById('vocab-bar').style.width = '0%';
-  clearScore('vocab-score');
+  setResult('s3-bar','s3-score',correct,10);
 }
-
-function updateVocabProgress() {
-  const qs = ['vq1','vq2','vq3','vq4','vq5'];
-  const n = qs.filter(id => document.getElementById(id).querySelector('.choice-btn.selected')).length;
-  document.getElementById('vocab-bar').style.width = (n / qs.length * 100) + '%';
-}
-
-function checkDropdowns(ids, barId, scoreId) {
-  let correct = 0;
-  ids.forEach(id => {
-    const sel = document.getElementById(id + '-sel');
-    const lbl = document.getElementById(id + '-lbl');
-    sel.classList.remove('ok','bad'); lbl.classList.remove('ok','bad'); lbl.textContent = '';
-    if (!sel.value) return;
-    if (sel.value === 'c') { sel.classList.add('ok'); lbl.classList.add('ok'); lbl.textContent = '✓ 正解'; correct++; }
-    else { sel.classList.add('bad'); lbl.classList.add('bad'); lbl.textContent = '✗ 不正解'; }
+function resetS3() {
+  Object.keys(s3ans).forEach(function(id){
+    var sel = document.getElementById(id);
+    sel.value = '';
+    sel.classList.remove('ok','bad');
   });
-  document.getElementById(barId).style.width = '100%';
-  showScore(scoreId, correct, ids.length);
+  setResult('s3-bar','s3-score',0,0,true);
 }
 
-function resetDropdowns(ids, barId, scoreId) {
-  ids.forEach(id => {
-    const sel = document.getElementById(id + '-sel');
-    const lbl = document.getElementById(id + '-lbl');
-    sel.value = ''; sel.classList.remove('ok','bad');
-    lbl.textContent = ''; lbl.classList.remove('ok','bad');
+var s4ans = { s4q1:'涼しい', s4q2:'時々曇り', s4q3:'雨が降る' };
+function checkS4() {
+  var correct = 0;
+  Object.keys(s4ans).forEach(function(id){
+    var sel = document.getElementById(id);
+    sel.classList.remove('ok','bad');
+    if (sel.value === s4ans[id]) { sel.classList.add('ok'); correct++; }
+    else sel.classList.add('bad');
   });
-  document.getElementById(barId).style.width = '0%';
-  clearScore(scoreId);
+  setResult('s4-bar','s4-score',correct,3);
+}
+function resetS4() {
+  Object.keys(s4ans).forEach(function(id){
+    var sel = document.getElementById(id);
+    sel.value = '';
+    sel.classList.remove('ok','bad');
+  });
+  setResult('s4-bar','s4-score',0,0,true);
 }
 
-function updateDropdownProgress(ids, barId) {
-  const n = ids.filter(id => document.getElementById(id + '-sel').value !== '').length;
-  document.getElementById(barId).style.width = (n / ids.length * 100) + '%';
+var s5ans = { s5q1:'いい', s5q2:'さむいから', s5q3:'雨が降っているから' };
+function checkS5() {
+  var correct = 0;
+  Object.keys(s5ans).forEach(function(id){
+    var sel = document.getElementById(id);
+    sel.classList.remove('ok','bad');
+    if (sel.value === s5ans[id]) { sel.classList.add('ok'); correct++; }
+    else sel.classList.add('bad');
+  });
+  setResult('s5-bar','s5-score',correct,3);
 }
-
-const grammarIds   = ['gq1','gq2','gq3','gq4','gq5','gq6','gq7','gq8','gq9','gq10'];
-const readingIds   = ['rq1','rq2','rq3'];
-const listeningIds = ['lq1','lq2','lq3'];
-
-function checkGrammar()          { checkDropdowns(grammarIds,   'grammar-bar',   'grammar-score');   }
-function resetGrammar()          { resetDropdowns(grammarIds,   'grammar-bar',   'grammar-score');   }
-function updateGrammarProgress() { updateDropdownProgress(grammarIds,   'grammar-bar');              }
-
-function checkReading()          { checkDropdowns(readingIds,   'reading-bar',   'reading-score');   }
-function resetReading()          { resetDropdowns(readingIds,   'reading-bar',   'reading-score');   }
-function updateReadingProgress() { updateDropdownProgress(readingIds,   'reading-bar');              }
-
-function checkListening()           { checkDropdowns(listeningIds, 'listening-bar', 'listening-score'); }
-function resetListening()           { resetDropdowns(listeningIds, 'listening-bar', 'listening-score'); }
-function updateListeningProgress()  { updateDropdownProgress(listeningIds, 'listening-bar');            }
-
-function showScore(id, correct, total) {
-  const el = document.getElementById(id);
-  const pct = Math.round(correct / total * 100);
-  el.textContent = 'スコア: ' + correct + ' / ' + total + '（' + pct + '%）';
-  el.className = 'score-banner show ' + (pct >= 80 ? 'good' : pct >= 60 ? 'fair' : 'poor');
-}
-function clearScore(id) {
-  const el = document.getElementById(id);
-  el.className = 'score-banner'; el.textContent = '';
+function resetS5() {
+  Object.keys(s5ans).forEach(function(id){
+    var sel = document.getElementById(id);
+    sel.value = '';
+    sel.classList.remove('ok','bad');
+  });
+  setResult('s5-bar','s5-score',0,0,true);
 }
 
 function speak(text) {
-  if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP'; u.rate = 0.85;
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP';
+  u.rate = 0.88;
   window.speechSynthesis.speak(u);
-}
-
-function toggleBlur(id) { document.getElementById(id).classList.toggle('revealed'); }
-
-function pickExam(btn, blockId) {
-  const block = document.getElementById(blockId);
-  block.querySelectorAll('.exam-choice').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  updateExamProgress();
-}
-
-function checkExam() {
-  const qs = ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'];
-  let correct = 0;
-  qs.forEach(id => {
-    const block = document.getElementById(id);
-    const sel = block.querySelector('.exam-choice.selected');
-    if (!sel) return;
-    block.querySelectorAll('.exam-choice').forEach(b => b.classList.remove('ok','bad'));
-    if (sel.dataset.v === 'c') { sel.classList.add('ok'); correct++; }
-    else {
-      sel.classList.add('bad');
-      block.querySelectorAll('.exam-choice').forEach(b => { if (b.dataset.v === 'c') b.classList.add('ok'); });
-    }
-  });
-  document.getElementById('exam-bar').style.width = '100%';
-  showScore('exam-score', correct, qs.length);
-}
-
-function resetExam() {
-  ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'].forEach(id => {
-    document.getElementById(id).querySelectorAll('.exam-choice').forEach(b => b.classList.remove('selected','ok','bad'));
-  });
-  document.getElementById('exam-bar').style.width = '0%';
-  clearScore('exam-score');
-}
-
-function updateExamProgress() {
-  const qs = ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'];
-  const n = qs.filter(id => document.getElementById(id).querySelector('.exam-choice.selected')).length;
-  document.getElementById('exam-bar').style.width = (n / qs.length * 100) + '%';
 }
 
 function toggleHints() {
   document.body.classList.toggle('hints-on');
-  const btn = document.getElementById('hint-btn');
-  const on = document.body.classList.contains('hints-on');
-  btn.classList.toggle('on', on);
-  btn.textContent = on ? '🔤 隱藏提示' : '🔤 顯示中文＋羅馬拼音';
+  document.getElementById('hint-btn').classList.toggle('active', document.body.classList.contains('hints-on'));
+}
+
+var eqids = ['eq1','eq2','eq3','eq4','eq5','eq6','eq7','eq8','eq9','eq10'];
+function checkExam() {
+  var correct = 0;
+  eqids.forEach(function(qid){
+    var div = document.getElementById(qid+'-div');
+    if (!div) return;
+    if (!answered[qid]) {
+      div.querySelectorAll('[data-v="c"]').forEach(function(b){ b.classList.add('ok'); });
+      answered[qid] = 'w';
+    }
+    if (answered[qid] === 'c') correct++;
+  });
+  setResult('exam-bar','exam-score',correct,10);
+}
+function resetExam() {
+  eqids.forEach(function(qid){
+    delete answered[qid];
+    var div = document.getElementById(qid+'-div');
+    if (div) div.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('ok','bad'); });
+  });
+  setResult('exam-bar','exam-score',0,0,true);
+}
+
+function setResult(barId,scoreId,correct,total,clear) {
+  document.getElementById(barId).style.width = clear ? '0%' : (correct/total*100)+'%';
+  document.getElementById(scoreId).textContent = clear ? '' : ('得点：'+correct+' / '+total);
 }
 </script>
-
 </body>
 </html>
