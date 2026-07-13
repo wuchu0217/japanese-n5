@@ -2,686 +2,607 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N5日本語 Day 191 - 学校</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>N5練習 Day 194 – 衣類</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans JP','Meiryo',sans-serif;background:#f5f5f5;color:#333;min-height:100vh}
-header{background:linear-gradient(135deg,#c0392b,#922b21);color:#fff;padding:22px 20px;text-align:center}
-header h1{font-size:1.8rem;margin-bottom:6px}
-header .meta{font-size:.95rem;opacity:.9;letter-spacing:.03em}
-.tabs{display:flex;justify-content:center;gap:12px;padding:14px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12);position:sticky;top:0;z-index:100}
-.tab-btn{padding:10px 28px;border:2px solid #c0392b;background:#fff;color:#c0392b;border-radius:25px;cursor:pointer;font-size:1rem;font-weight:700;transition:all .2s}
-.tab-btn.active{background:#c0392b;color:#fff}
-.tab-btn:hover:not(.active){background:#fdecea}
-.panel{display:none;padding:20px;max-width:920px;margin:0 auto}
-.panel.active{display:block}
-.section{background:#fff;border-radius:12px;padding:22px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.sec-title{font-size:1.15rem;font-weight:700;color:#922b21;border-bottom:2px solid #fdecea;padding-bottom:8px;margin-bottom:16px}
-.vt{width:100%;border-collapse:collapse}
-.vt th{background:#922b21;color:#fff;padding:9px 11px;text-align:left;font-size:.9rem}
-.vt td{padding:9px 11px;border-bottom:1px solid #f0e8e8;vertical-align:middle}
-.vt tr:hover td{background:#fdf8f8}
-.vt .kj{font-size:1.05rem;font-weight:700}
-.vt .kn{color:#777;font-size:.82rem;display:block}
-.badge{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.72rem;font-weight:700;white-space:nowrap}
-.bn{background:#d5e8d4;color:#1a7741}
-.bv{background:#dae8fc;color:#1a5fa6}
-.bi{background:#fff3cd;color:#a04000}
-.ba{background:#e8d5e8;color:#6b2e8e}
-.qblock{margin-bottom:20px}
-.qblock p{margin-bottom:10px;font-weight:600;line-height:1.5}
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.cb{padding:10px 13px;border:2px solid #ddd;background:#fff;border-radius:8px;cursor:pointer;text-align:left;font-size:.93rem;transition:all .2s;line-height:1.4}
-.cb:hover:not(:disabled){border-color:#c0392b;background:#fdecea}
-.cb.ok{background:#d5e8d4;border-color:#27ae60;color:#1a5c33}
-.cb.bad{background:#fdecea;border-color:#c0392b;color:#922b21}
-.cb:disabled{cursor:not-allowed;opacity:.85}
-.fsel{border:1px solid #ccc;border-radius:5px;padding:4px 8px;font-size:.93rem;cursor:pointer;background:#fff}
-.fsel.ok{border-color:#27ae60;background:#d5e8d4}
-.fsel.bad{border-color:#c0392b;background:#fdecea}
-.btn-c{background:#c0392b;color:#fff;border:none;padding:9px 22px;border-radius:8px;cursor:pointer;font-size:.95rem;margin-right:8px;margin-top:12px}
-.btn-r{background:#888;color:#fff;border:none;padding:9px 22px;border-radius:8px;cursor:pointer;font-size:.95rem;margin-top:12px}
-.btn-c:hover{background:#922b21}.btn-r:hover{background:#666}
-.pw{background:#eee;border-radius:8px;height:10px;margin-top:12px;overflow:hidden}
-.pb{height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);width:0%;transition:width .5s ease;border-radius:8px}
-.sb{display:none;text-align:center;padding:11px;border-radius:8px;margin-top:11px;font-size:1.05rem;font-weight:700}
-.sb.show{display:block}
-.sb.perfect{background:#d5e8d4;color:#1a5c33}
-.sb.good{background:#fff3cd;color:#a04000}
-.sb.poor{background:#fdecea;color:#922b21}
-.passage{background:#fdf8f0;border-left:4px solid #c0392b;padding:16px;margin-bottom:16px;border-radius:0 8px 8px 0;line-height:2;font-size:.98rem}
-.li{display:flex;align-items:center;gap:12px;margin-bottom:11px;padding:12px;background:#f8f9fa;border-radius:8px}
-.tts{background:#c0392b;color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:background .2s}
-.tts:hover{background:#922b21}
-.tts-wrap{flex:1}
-.tts-text{font-size:.97rem;filter:blur(5px);cursor:pointer;transition:filter .3s;user-select:none;display:inline-block}
-.tts-text.revealed{filter:none}
-.tts-hint{font-size:.72rem;color:#aaa;margin-top:2px}
-.esec{background:#fff;border-radius:12px;padding:22px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.esec-title{font-size:.95rem;font-weight:700;color:#fff;background:#922b21;padding:7px 16px;border-radius:8px;margin-bottom:16px;display:inline-block}
-.hint{display:none;font-size:.78rem;color:#666;margin-top:7px;padding:6px 10px;background:#f9f9f9;border-radius:5px;line-height:1.6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Sans',Meiryo,'Noto Sans JP',sans-serif;background:#f5f5f5;color:#333;min-height:100vh}
+header{background:linear-gradient(135deg,#c0392b 0%,#922b21 100%);color:#fff;padding:22px 16px;text-align:center}
+header h1{font-size:1.7rem;margin-bottom:6px;letter-spacing:.05em}
+header p{font-size:.92rem;opacity:.88}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;position:sticky;top:0;z-index:10}
+.tab-btn{flex:1;padding:14px 8px;border:none;background:none;cursor:pointer;font-size:1rem;color:#666;transition:.2s;border-bottom:3px solid transparent}
+.tab-btn.active{color:#c0392b;border-bottom:3px solid #c0392b;font-weight:700}
+.tab-content{display:none;padding:14px}
+.tab-content.active{display:block}
+.card{background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.1)}
+.card h2{font-size:1.1rem;margin-bottom:13px;color:#c0392b;padding-bottom:6px;border-bottom:2px solid #f5e6e6}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{background:#c0392b;color:#fff;padding:9px 8px;text-align:left}
+td{padding:8px;border-bottom:1px solid #eee;vertical-align:middle}
+tr:hover td{background:#fef9f9}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.73rem;color:#fff}
+.badge-g{background:#c0392b}
+.badge-n{background:#2980b9}
+.badge-v{background:#27ae60}
+.badge-i{background:#e67e22}
+.badge-ad{background:#8e44ad}
+.q-block{margin-bottom:16px}
+.q-text{font-weight:600;margin-bottom:8px;line-height:1.5}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choice-btn{padding:9px 16px;border:2px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:.9rem;transition:.15s}
+.choice-btn:hover{border-color:#c0392b;background:#fff5f5}
+.choice-btn.ok{background:#d4edda;border-color:#28a745;color:#155724;font-weight:700}
+.choice-btn.bad{background:#f8d7da;border-color:#dc3545;color:#721c24}
+select{padding:7px 10px;border:2px solid #ddd;border-radius:7px;font-size:.9rem;background:#fff;cursor:pointer}
+select:focus{outline:none;border-color:#c0392b}
+select.ok{border-color:#28a745;background:#d4edda}
+select.bad{border-color:#dc3545;background:#f8d7da}
+.btn{padding:9px 18px;border:none;border-radius:7px;cursor:pointer;font-size:.9rem;margin:4px;font-weight:600;transition:.15s}
+.btn-check{background:#c0392b;color:#fff}
+.btn-check:hover{background:#a93226}
+.btn-reset{background:#6c757d;color:#fff}
+.btn-reset:hover{background:#5a6268}
+.progress-bar{height:8px;background:#eee;border-radius:4px;margin:12px 0 8px}
+.progress-fill{height:100%;background:linear-gradient(90deg,#c0392b,#e74c3c);border-radius:4px;transition:.4s width}
+.score-banner{display:none;padding:12px 16px;border-radius:8px;margin-top:8px;font-weight:700;text-align:center;font-size:1rem}
+.score-banner.show{display:block}
+.score-banner.good{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+.score-banner.bad{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+.reading-text{background:#fffbf0;border-left:4px solid #c0392b;padding:14px;border-radius:6px;line-height:1.9;margin-bottom:14px;font-size:.95rem}
+.listen-item{background:#f0f4ff;border-radius:9px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.listen-text{flex:1;filter:blur(5px);cursor:pointer;transition:.2s;font-size:.97rem;user-select:none}
+.listen-text.revealed{filter:none}
+.tts-btn{background:#2980b9;color:#fff;border:none;padding:8px 14px;border-radius:7px;cursor:pointer;font-size:.85rem;white-space:nowrap;flex-shrink:0}
+.tts-btn:hover{background:#2471a3}
+.mondai{margin-bottom:20px}
+.mondai-title{font-size:1rem;font-weight:700;color:#c0392b;margin-bottom:10px;padding:8px 12px;background:#fff5f5;border-radius:7px}
+.q-item{margin-bottom:12px;background:#f9f9f9;padding:12px;border-radius:9px;border:1px solid #eee}
+.q-num{font-weight:600;margin-bottom:8px;line-height:1.6;font-size:.93rem}
+.test-choices{display:flex;flex-direction:column;gap:7px;margin-top:8px}
+.tc-btn{padding:8px 12px;border:2px solid #ddd;border-radius:7px;background:#fff;cursor:pointer;font-size:.87rem;text-align:left;transition:.15s;line-height:1.4}
+.tc-btn:hover{border-color:#c0392b;background:#fff5f5}
+.tc-btn.ok{background:#d4edda;border-color:#28a745;color:#155724;font-weight:700}
+.tc-btn.bad{background:#f8d7da;border-color:#dc3545;color:#721c24}
+.hint{display:none;margin-top:10px;padding:10px 12px;background:#fffde7;border-radius:6px;font-size:.82rem;color:#555;line-height:1.7;border:1px solid #fff3cd}
 body.hints-on .hint{display:block}
-.hint-toggle{position:fixed;bottom:20px;right:20px;background:#922b21;color:#fff;border:none;padding:10px 18px;border-radius:25px;cursor:pointer;font-size:.88rem;box-shadow:0 3px 10px rgba(0,0,0,.3);z-index:200;display:none}
-.hint-toggle:hover{background:#c0392b}
-@media(max-width:600px){
-  .choices{grid-template-columns:1fr}
-  header h1{font-size:1.3rem}
-  .tabs{gap:8px}
-  .tab-btn{padding:8px 16px;font-size:.9rem}
-}
+.hint-toggle{background:#f39c12;color:#fff;border:none;padding:9px 18px;border-radius:7px;cursor:pointer;font-size:.9rem;margin-bottom:16px;font-weight:600;transition:.15s;width:100%}
+.hint-toggle:hover{background:#d68910}
+.section-note{font-size:.82rem;color:#888;margin-bottom:10px;padding:4px 0}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🎌 日本語 N5 練習</h1>
-  <div class="meta">📅 2026年07月10日 &nbsp;｜&nbsp; Day 191 &nbsp;｜&nbsp; テーマ：学校 🏫</div>
+  <h1>&#x1F1EF;&#x1F1F5; &#x65E5;&#x672C;&#x8A9E; N5 &#x7DF4;&#x7FD2;</h1>
+  <p>2026-07-13 &nbsp;|&nbsp; Day 194 &nbsp;|&nbsp; &#x30C6;&#x30FC;&#x30DE;&#xFF1A;<strong>&#x8863;&#x985E;</strong>&#xFF08;&#x3044;&#x308B;&#x3044;&#xFF09;</p>
 </header>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('study')">📖 學習模式</button>
-  <button class="tab-btn" onclick="switchTab('exam')">📝 試験モード</button>
+  <button class="tab-btn active" onclick="switchTab('study',this)">&#x1F4D6; &#x5B78;&#x7FD2;&#x6A21;&#x5F0F;</button>
+  <button class="tab-btn" onclick="switchTab('test',this)">&#x1F4DD; &#x8A66;&#x9A13;&#x30E2;&#x30FC;&#x30C9;</button>
 </div>
 
-<!-- ===== 學習モード ===== -->
-<div id="panel-study" class="panel active">
+<!-- STUDY MODE -->
+<div id="tab-study" class="tab-content active">
 
-  <!-- 1. 詞彙表 -->
-  <div class="section">
-    <div class="sec-title">📚 詞彙表</div>
-    <table class="vt">
-      <thead>
-        <tr><th>#</th><th>漢字</th><th>読み仮名</th><th>中国語訳</th><th>品詞</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td class="kj">学校<span class="kn">がっこう</span></td><td>がっこう</td><td>學校</td><td><span class="badge bn">名詞</span></td></tr>
-        <tr><td>2</td><td class="kj">先生<span class="kn">せんせい</span></td><td>せんせい</td><td>老師</td><td><span class="badge bn">名詞</span></td></tr>
-        <tr><td>3</td><td class="kj">学生<span class="kn">がくせい</span></td><td>がくせい</td><td>學生</td><td><span class="badge bn">名詞</span></td></tr>
-        <tr><td>4</td><td class="kj">教室<span class="kn">きょうしつ</span></td><td>きょうしつ</td><td>教室</td><td><span class="badge bn">名詞</span></td></tr>
-        <tr><td>5</td><td class="kj">勉強する<span class="kn">べんきょうする</span></td><td>べんきょうする</td><td>學習</td><td><span class="badge bv">動詞</span></td></tr>
-        <tr><td>6</td><td class="kj">教える<span class="kn">おしえる</span></td><td>おしえる</td><td>教導</td><td><span class="badge bv">動詞</span></td></tr>
-        <tr><td>7</td><td class="kj">本<span class="kn">ほん</span></td><td>ほん</td><td>書本</td><td><span class="badge bn">名詞</span></td></tr>
-        <tr><td>8</td><td class="kj">えんぴつ<span class="kn">えんぴつ</span></td><td>えんぴつ</td><td>鉛筆</td><td><span class="badge bn">名詞</span></td></tr>
-        <tr><td>9</td><td class="kj">むずかしい<span class="kn">むずかしい</span></td><td>むずかしい</td><td>困難的</td><td><span class="badge bi">い形容詞</span></td></tr>
-        <tr><td>10</td><td class="kj">よく<span class="kn">よく</span></td><td>よく</td><td>常常・好好地</td><td><span class="badge ba">副詞</span></td></tr>
-      </tbody>
-    </table>
+<!-- 1. Vocabulary -->
+<div class="card">
+  <h2>&#x1F4DA; &#x8A5E;&#x5F59;&#x8868;</h2>
+  <table>
+    <tr><th>#</th><th>&#x8A9E;&#x5F59;</th><th>&#x8AAD;&#x307F;&#x4EEE;&#x540D; / &#x30ED;&#x30FC;&#x30DE;&#x5B57;</th><th>&#x4E2D;&#x56FD;&#x8A9E;&#x8A33;</th><th>&#x54C1;&#x8A5E;</th></tr>
+    <tr><td>1</td><td>&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;</td><td>sumimasen</td><td>&#x4E0D;&#x597D;&#x610F;&#x601D;&#xFF0F;&#x6253;&#x64FE;&#x4E00;&#x4E0B;</td><td><span class="badge badge-g">&#x62DB;&#x547C;&#x8A9E;</span></td></tr>
+    <tr><td>2</td><td>&#x670D;&#xFF08;&#x3075;&#x304F;&#xFF09;</td><td>fuku</td><td>&#x8863;&#x670D;</td><td><span class="badge badge-n">&#x540D;&#x8A5E;</span></td></tr>
+    <tr><td>3</td><td>&#x30B7;&#x30E3;&#x30C4;</td><td>shatsu</td><td>&#x896F;&#x886B;</td><td><span class="badge badge-n">&#x540D;&#x8A5E;</span></td></tr>
+    <tr><td>4</td><td>&#x30BA;&#x30DC;&#x30F3;</td><td>zubon</td><td>&#x8932;&#x5B50;</td><td><span class="badge badge-n">&#x540D;&#x8A5E;</span></td></tr>
+    <tr><td>5</td><td>&#x9774;&#xFF08;&#x304F;&#x3064;&#xFF09;</td><td>kutsu</td><td>&#x978B;&#x5B50;</td><td><span class="badge badge-n">&#x540D;&#x8A5E;</span></td></tr>
+    <tr><td>6</td><td>&#x5E3D;&#x5B50;&#xFF08;&#x307C;&#x3046;&#x3057;&#xFF09;</td><td>boushi</td><td>&#x5E3D;&#x5B50;</td><td><span class="badge badge-n">&#x540D;&#x8A5E;</span></td></tr>
+    <tr><td>7</td><td>&#x7740;&#x308B;&#xFF08;&#x304D;&#x308B;&#xFF09;</td><td>kiru</td><td>&#x7A7F;&#xFF08;&#x4E0A;&#x8863;&#xFF09;</td><td><span class="badge badge-v">&#x52D5;&#x8A5E;</span></td></tr>
+    <tr><td>8</td><td>&#x8131;&#x3050;&#xFF08;&#x306C;&#x3050;&#xFF09;</td><td>nugu</td><td>&#x812B;&#xFF08;&#x8863;&#x670D;&#xFF0F;&#x978B;&#xFF09;</td><td><span class="badge badge-v">&#x52D5;&#x8A5E;</span></td></tr>
+    <tr><td>9</td><td>&#x65B0;&#x3057;&#x3044;&#xFF08;&#x3042;&#x305F;&#x3089;&#x3057;&#x3044;&#xFF09;</td><td>atarashii</td><td>&#x65B0;&#x7684;</td><td><span class="badge badge-i">&#x3044;&#x5F62;&#x5BB9;&#x8A5E;</span></td></tr>
+    <tr><td>10</td><td>&#x3068;&#x3066;&#x3082;</td><td>totemo</td><td>&#x975E;&#x5E38;</td><td><span class="badge badge-ad">&#x526F;&#x8A5E;</span></td></tr>
+  </table>
+</div>
+
+<!-- 2. MCQ -->
+<div class="card">
+  <h2>&#x1F524; &#x55AE;&#x5B57;&#x9078;&#x64C7;&#x984C;</h2>
+  <div id="mcq-area">
+    <div class="q-block" id="mcq1">
+      <div class="q-text">1. &#x300C;&#x670D;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;&#x3069;&#x308C;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="c" onclick="mcqClick(this,1)">&#x3075;&#x304F;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,1)">&#x304B;&#x307F;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,1)">&#x304F;&#x3061;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,1)">&#x3066;</button>
+      </div>
+    </div>
+    <div class="q-block" id="mcq2">
+      <div class="q-text">2. &#x300C;&#x65B0;&#x3057;&#x3044;&#x300D;&#x306E;&#x4E2D;&#x56FD;&#x8A9E;&#x8A33;&#x306F;&#x3069;&#x308C;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,2)">&#x8208;&#x7684;</button>
+        <button class="choice-btn" data-v="c" onclick="mcqClick(this,2)">&#x65B0;&#x7684;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,2)">&#x5927;&#x7684;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,2)">&#x5C0F;&#x7684;</button>
+      </div>
+    </div>
+    <div class="q-block" id="mcq3">
+      <div class="q-text">3. &#x300C;&#x7740;&#x308B;&#x300D;&#x306E;&#x610F;&#x5473;&#x306F;&#x3069;&#x308C;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,3)">&#x812B;&#x8863;&#x670D;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,3)">&#x8CB7;&#x3046;</button>
+        <button class="choice-btn" data-v="c" onclick="mcqClick(this,3)">&#x7A7F;&#xFF08;&#x4E0A;&#x8863;&#xFF09;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,3)">&#x98DF;&#x3079;&#x308B;</button>
+      </div>
+    </div>
+    <div class="q-block" id="mcq4">
+      <div class="q-text">4. &#x300C;&#x9774;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;&#x3069;&#x308C;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,4)">&#x3075;&#x304F;</button>
+        <button class="choice-btn" data-v="c" onclick="mcqClick(this,4)">&#x304F;&#x3064;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,4)">&#x307C;&#x3046;&#x3057;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,4)">&#x30B7;&#x30E3;&#x30C4;</button>
+      </div>
+    </div>
+    <div class="q-block" id="mcq5">
+      <div class="q-text">5. &#x300C;&#x3068;&#x3066;&#x3082;&#x300D;&#x306E;&#x610F;&#x5473;&#x306F;&#x3069;&#x308C;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,5)">&#x3042;&#x307E;&#x308A;&#xFF08;&#x4E0D;&#x592A;&#xFF09;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,5)">&#x3059;&#x3053;&#x3057;&#xFF08;&#x4E00;&#x9EDE;&#xFF09;</button>
+        <button class="choice-btn" data-v="w" onclick="mcqClick(this,5)">&#x305F;&#x3076;&#x3093;&#xFF08;&#x53EF;&#x80FD;&#xFF09;</button>
+        <button class="choice-btn" data-v="c" onclick="mcqClick(this,5)">&#x975E;&#x5E38;</button>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="mcq-prog" style="width:0%"></div></div>
+  <button class="btn btn-check" onclick="checkMCQ()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+  <button class="btn btn-reset" onclick="resetMCQ()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+  <div class="score-banner" id="mcq-score"></div>
+</div>
+
+<!-- 3. Grammar -->
+<div class="card">
+  <h2>&#x270F;&#xFE0F; &#x8A9E;&#x6CD5;&#x7DF4;&#x7FD2;</h2>
+  <div id="grammar-area">
+    <div class="section-note">&#x25B6; &#x586B;&#x7A7A;&#xFF081&#x20134;&#xFF09;</div>
+    <div class="q-block">
+      <div class="q-text">1. &#x308F;&#x305F;&#x3057;&#x306F;&#x6BCE;&#x671D;&#x30B7;&#x30E3;&#x30C4;&#x3092;___&#x3002;</div>
+      <select id="g1" data-ans="&#x7740;&#x307E;&#x3059;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x7740;&#x307E;&#x3059;</option><option>&#x8131;&#x304E;&#x307E;&#x3059;</option><option>&#x8CB7;&#x3044;&#x307E;&#x3059;</option><option>&#x58F2;&#x308A;&#x307E;&#x3059;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">2. &#x5BB6;&#x306B;&#x5E30;&#x3063;&#x305F;&#x3089;&#x3001;&#x304F;&#x3064;&#x3092;___&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</div>
+      <select id="g2" data-ans="&#x8131;&#x3044;&#x3066;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x8131;&#x3044;&#x3066;</option><option>&#x7740;&#x3066;</option><option>&#x8CB7;&#x3063;&#x3066;</option><option>&#x58F2;&#x3063;&#x3066;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">3. &#x3053;&#x306E;&#x5E3D;&#x5B50;&#x306F;&#x3068;&#x3066;&#x3082;___&#x3067;&#x3059;&#x3002;</div>
+      <select id="g3" data-ans="&#x65B0;&#x3057;&#x3044;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x65B0;&#x3057;&#x3044;</option><option>&#x53E4;&#x3044;</option><option>&#x5927;&#x304D;&#x3044;</option><option>&#x5C0F;&#x3055;&#x3044;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">4. ___&#x3001;&#x3053;&#x306E;&#x670D;&#x306E;&#x30B5;&#x30A4;&#x30BA;&#x306F;&#x3042;&#x308A;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <select id="g4" data-ans="&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;</option><option>&#x3042;&#x308A;&#x304C;&#x3068;&#x3046;</option><option>&#x304A;&#x306F;&#x3088;&#x3046;</option><option>&#x3055;&#x3088;&#x3046;&#x306A;&#x3089;</option>
+      </select>
+    </div>
+    <div class="section-note">&#x25B6; &#x8AAD;&#x307F;&#xFF085&#x20137;&#xFF09;</div>
+    <div class="q-block">
+      <div class="q-text">5. &#x300C;&#x9774;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;&#xFF1F;</div>
+      <select id="g5" data-ans="&#x304F;&#x3064;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x304F;&#x3064;</option><option>&#x3075;&#x304F;</option><option>&#x307C;&#x3046;&#x3057;</option><option>&#x304B;&#x3070;&#x3093;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">6. &#x300C;&#x5E3D;&#x5B50;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;&#xFF1F;</div>
+      <select id="g6" data-ans="&#x307C;&#x3046;&#x3057;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x307C;&#x3046;&#x3057;</option><option>&#x3075;&#x304F;</option><option>&#x304F;&#x3064;</option><option>&#x30B7;&#x30E3;&#x30C4;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">7. &#x300C;&#x670D;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;&#xFF1F;</div>
+      <select id="g7" data-ans="&#x3075;&#x304F;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x3075;&#x304F;</option><option>&#x304F;&#x3064;</option><option>&#x3066;</option><option>&#x3081;</option>
+      </select>
+    </div>
+    <div class="section-note">&#x25B6; &#x4E2D;&#x7FFB;&#x65E5;&#xFF088&#x201310;&#xFF09;</div>
+    <div class="q-block">
+      <div class="q-text">8. &#x300C;&#x975E;&#x5E38;&#x65B0;&#x7684;&#x896F;&#x886B;&#x300D;&#x3092;&#x65E5;&#x672C;&#x8A9E;&#x306B;&#x3059;&#x308B;&#x3068;&#xFF1F;</div>
+      <select id="g8" data-ans="&#x3068;&#x3066;&#x3082;&#x65B0;&#x3057;&#x3044;&#x30B7;&#x30E3;&#x30C4;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x3068;&#x3066;&#x3082;&#x65B0;&#x3057;&#x3044;&#x30B7;&#x30E3;&#x30C4;</option><option>&#x3059;&#x3053;&#x3057;&#x53E4;&#x3044;&#x30B7;&#x30E3;&#x30C4;</option><option>&#x3068;&#x3066;&#x3082;&#x5927;&#x304D;&#x3044;&#x30B7;&#x30E3;&#x30C4;</option><option>&#x3068;&#x3066;&#x3082;&#x5C0F;&#x3055;&#x3044;&#x30B7;&#x30E3;&#x30C4;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">9. &#x300C;&#x8ACB;&#x7A7F;&#x9019;&#x4EF6;&#x8863;&#x670D;&#x300D;&#x3092;&#x65E5;&#x672C;&#x8A9E;&#x306B;&#x3059;&#x308B;&#x3068;&#xFF1F;</div>
+      <select id="g9" data-ans="&#x3053;&#x306E;&#x670D;&#x3092;&#x7740;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x3053;&#x306E;&#x670D;&#x3092;&#x7740;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option><option>&#x3053;&#x306E;&#x670D;&#x3092;&#x8131;&#x3044;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;</option><option>&#x3053;&#x306E;&#x670D;&#x3092;&#x8CB7;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option><option>&#x3053;&#x306E;&#x670D;&#x3092;&#x58F2;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">10. &#x300C;&#x812B;&#x6389;&#x978B;&#x5B50;&#x300D;&#x3092;&#x65E5;&#x672C;&#x8A9E;&#x306B;&#x3059;&#x308B;&#x3068;&#xFF1F;</div>
+      <select id="g10" data-ans="&#x304F;&#x3064;&#x3092;&#x8131;&#x3050;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x304F;&#x3064;&#x3092;&#x8131;&#x3050;</option><option>&#x304F;&#x3064;&#x3092;&#x7740;&#x308B;</option><option>&#x304F;&#x3064;&#x3092;&#x8CB7;&#x3046;</option><option>&#x304F;&#x3064;&#x3092;&#x58F2;&#x308B;</option>
+      </select>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="g-prog" style="width:0%"></div></div>
+  <button class="btn btn-check" onclick="checkGrammar()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+  <button class="btn btn-reset" onclick="resetGrammar()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+  <div class="score-banner" id="g-score"></div>
+</div>
+
+<!-- 4. Reading -->
+<div class="card">
+  <h2>&#x1F4D6; &#x6587;&#x7AE0;&#x9605;&#x8B80;</h2>
+  <div class="reading-text">
+    <ruby>&#x4ECA;&#x65E5;<rt>&#x304D;&#x3087;&#x3046;</rt></ruby>&#x3001;&#x308F;&#x305F;&#x3057;&#x306F;<ruby>&#x65B0;<rt>&#x3042;&#x305F;&#x3089;</rt></ruby>&#x3057;&#x3044;<ruby>&#x670D;<rt>&#x3075;&#x304F;</rt></ruby>&#x3092;<ruby>&#x8CB7;<rt>&#x304B;</rt></ruby>&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;<ruby>&#x767D;<rt>&#x3057;&#x308D;</rt></ruby>&#x3044;&#x30B7;&#x30E3;&#x30C4;&#x3068;&#x30BA;&#x30DC;&#x30F3;&#x3067;&#x3059;&#x3002;<ruby>&#x5E97;&#x54E1;<rt>&#x3066;&#x3093;&#x3044;&#x3093;</rt></ruby>&#x3055;&#x3093;&#x306B;&#x300C;&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;&#x3001;&#x3053;&#x306E;&#x30B7;&#x30E3;&#x30C4;&#x306E;&#x30B5;&#x30A4;&#x30BA;&#x306F;&#x3042;&#x308A;&#x307E;&#x3059;&#x304B;&#xFF1F;&#x300D;&#x3068;<ruby>&#x8046;<rt>&#x304D;</rt></ruby>&#x304D;&#x307E;&#x3057;&#x305F;&#x3002;<ruby>&#x5BB6;<rt>&#x3044;&#x3048;</rt></ruby>&#x306B;<ruby>&#x5E30;<rt>&#x304B;&#x3048;</rt></ruby>&#x3063;&#x3066;&#x304B;&#x3089;&#x3001;<ruby>&#x7384;&#x95A2;<rt>&#x3052;&#x3093;&#x304B;&#x3093;</rt></ruby>&#x3067;<ruby>&#x9774;<rt>&#x304F;&#x3064;</rt></ruby>&#x3092;<ruby>&#x8131;<rt>&#x306C;</rt></ruby>&#x3044;&#x3067;&#x3001;<ruby>&#x90E8;&#x5C4B;<rt>&#x3078;&#x3084;</rt></ruby>&#x306B;<ruby>&#x5165;<rt>&#x306F;&#x3044;</rt></ruby>&#x308A;&#x307E;&#x3057;&#x305F;&#x3002;<ruby>&#x5E3D;&#x5B50;<rt>&#x307C;&#x3046;&#x3057;</rt></ruby>&#x3082;<ruby>&#x8131;<rt>&#x306C;</rt></ruby>&#x304E;&#x307E;&#x3057;&#x305F;&#x3002;&#x305D;&#x308C;&#x304B;&#x3089;&#x3001;&#x305D;&#x306E;<ruby>&#x65B0;<rt>&#x3042;&#x305F;&#x3089;</rt></ruby>&#x3057;&#x3044;<ruby>&#x670D;<rt>&#x3075;&#x304F;</rt></ruby>&#x3092;<ruby>&#x7740;<rt>&#x304D;</rt></ruby>&#x3066;&#x307F;&#x307E;&#x3057;&#x305F;&#x3002;&#x3068;&#x3066;&#x3082;&#x3088;&#x304B;&#x3063;&#x305F;&#x3067;&#x3059;&#x3002;
+  </div>
+  <div id="reading-qs">
+    <div class="q-block">
+      <div class="q-text">1. &#x308F;&#x305F;&#x3057;&#x306F;&#x4F55;&#x3092;&#x8CB7;&#x3044;&#x307E;&#x3057;&#x305F;&#x304B;&#xFF1F;</div>
+      <select id="r1" data-ans="&#x767D;&#x3044;&#x30B7;&#x30E3;&#x30C4;&#x3068;&#x30BA;&#x30DC;&#x30F3;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x767D;&#x3044;&#x30B7;&#x30E3;&#x30C4;&#x3068;&#x30BA;&#x30DC;&#x30F3;</option><option>&#x304F;&#x3064;&#x3068;&#x5E3D;&#x5B50;</option><option>&#x30BA;&#x30DC;&#x30F3;&#x3068;&#x5E3D;&#x5B50;</option><option>&#x30B7;&#x30E3;&#x30C4;&#x3068;&#x304F;&#x3064;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">2. &#x5E97;&#x54E1;&#x3055;&#x3093;&#x306B;&#x4F55;&#x3092;&#x8046;&#x304D;&#x307E;&#x3057;&#x305F;&#x304B;&#xFF1F;</div>
+      <select id="r2" data-ans="&#x30B7;&#x30E3;&#x30C4;&#x306E;&#x30B5;&#x30A4;&#x30BA;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x30B7;&#x30E3;&#x30C4;&#x306E;&#x30B5;&#x30A4;&#x30BA;</option><option>&#x30BA;&#x30DC;&#x30F3;&#x306E;&#x8272;</option><option>&#x304F;&#x3064;&#x306E;&#x5024;&#x6BB5;</option><option>&#x5E3D;&#x5B50;&#x306E;&#x5F62;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">3. &#x5BB6;&#x306B;&#x5E30;&#x3063;&#x3066;&#x304B;&#x3089;&#x3001;&#x6700;&#x521D;&#x306B;&#x4F55;&#x3092;&#x3057;&#x307E;&#x3057;&#x305F;&#x304B;&#xFF1F;</div>
+      <select id="r3" data-ans="&#x304F;&#x3064;&#x3092;&#x8131;&#x3044;&#x3060;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x304F;&#x3064;&#x3092;&#x8131;&#x3044;&#x3060;</option><option>&#x65B0;&#x3057;&#x3044;&#x670D;&#x3092;&#x7740;&#x3066;&#x307F;&#x305F;</option><option>&#x5E3D;&#x5B50;&#x3092;&#x8131;&#x3044;&#x3060;</option><option>&#x3054;&#x98EF;&#x3092;&#x98DF;&#x3079;&#x305F;</option>
+      </select>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="r-prog" style="width:0%"></div></div>
+  <button class="btn btn-check" onclick="checkReading()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+  <button class="btn btn-reset" onclick="resetReading()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+  <div class="score-banner" id="r-score"></div>
+</div>
+
+<!-- 5. Listening -->
+<div class="card">
+  <h2>&#x1F3A7; &#x807D;&#x529B;&#x7DF4;&#x7FD2;</h2>
+  <p class="section-note">&#x25B6; &#x30DC;&#x30BF;&#x30F3;&#x3067;&#x97F3;&#x58F0;&#x518D;&#x751F;&#x3002;&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x3092;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3059;&#x308B;&#x3068;&#x8868;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+  <div id="listen-area">
+    <div class="listen-item">
+      <button class="tts-btn" onclick="speak('この服はとても新しいです。')">&#x25B6; 1</button>
+      <div class="listen-text" onclick="this.classList.toggle('revealed')" title="&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3067;&#x8868;&#x793A;">&#x3053;&#x306E;&#x670D;&#x306F;&#x3068;&#x3066;&#x3082;&#x65B0;&#x3057;&#x3044;&#x3067;&#x3059;&#x3002;</div>
+    </div>
+    <div class="listen-item">
+      <button class="tts-btn" onclick="speak('すみません、このズボンのサイズはありますか？')">&#x25B6; 2</button>
+      <div class="listen-text" onclick="this.classList.toggle('revealed')" title="&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3067;&#x8868;&#x793A;">&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;&#x3001;&#x3053;&#x306E;&#x30BA;&#x30DC;&#x30F3;&#x306E;&#x30B5;&#x30A4;&#x30BA;&#x306F;&#x3042;&#x308A;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+    </div>
+    <div class="listen-item">
+      <button class="tts-btn" onclick="speak('玄関でくつを脱いでください。')">&#x25B6; 3</button>
+      <div class="listen-text" onclick="this.classList.toggle('revealed')" title="&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3067;&#x8868;&#x793A;">&#x7384;&#x95A2;&#x3067;&#x304F;&#x3064;&#x3092;&#x8131;&#x3044;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</div>
+    </div>
+    <div class="listen-item">
+      <button class="tts-btn" onclick="speak('彼女はとてもかわいい帽子をかぶっています。')">&#x25B6; 4</button>
+      <div class="listen-text" onclick="this.classList.toggle('revealed')" title="&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3067;&#x8868;&#x793A;">&#x5F7C;&#x5973;&#x306F;&#x3068;&#x3066;&#x3082;&#x304B;&#x308F;&#x3044;&#x3044;&#x5E3D;&#x5B50;&#x3092;&#x304B;&#x3076;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</div>
+    </div>
+  </div>
+  <div id="listen-qs" style="margin-top:14px">
+    <div class="q-block">
+      <div class="q-text">1. &#x6587;&#x2460;&#xFF1A;&#x3053;&#x306E;&#x670D;&#x306F;&#x3069;&#x3093;&#x306A;&#x670D;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <select id="l1" data-ans="&#x3068;&#x3066;&#x3082;&#x65B0;&#x3057;&#x3044;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x3068;&#x3066;&#x3082;&#x65B0;&#x3057;&#x3044;</option><option>&#x3068;&#x3066;&#x3082;&#x53E4;&#x3044;</option><option>&#x3068;&#x3066;&#x3082;&#x5927;&#x304D;&#x3044;</option><option>&#x3068;&#x3066;&#x3082;&#x5C0F;&#x3055;&#x3044;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">2. &#x6587;&#x2461;&#xFF1A;&#x4F55;&#x306E;&#x30B5;&#x30A4;&#x30BA;&#x3092;&#x8046;&#x3044;&#x3066;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <select id="l2" data-ans="&#x30BA;&#x30DC;&#x30F3;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x30BA;&#x30DC;&#x30F3;</option><option>&#x30B7;&#x30E3;&#x30C4;</option><option>&#x304F;&#x3064;</option><option>&#x5E3D;&#x5B50;</option>
+      </select>
+    </div>
+    <div class="q-block">
+      <div class="q-text">3. &#x6587;&#x2462;&#xFF1A;&#x3069;&#x3053;&#x3067;&#x304F;&#x3064;&#x3092;&#x8131;&#x304E;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <select id="l3" data-ans="&#x7384;&#x95A2;">
+        <option value="">&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</option>
+        <option>&#x7384;&#x95A2;</option><option>&#x90E8;&#x5C4B;</option><option>&#x5B66;&#x6821;</option><option>&#x304A;&#x5E97;</option>
+      </select>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="l-prog" style="width:0%"></div></div>
+  <button class="btn btn-check" onclick="checkListen()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+  <button class="btn btn-reset" onclick="resetListen()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+  <div class="score-banner" id="l-score"></div>
+</div>
+
+</div><!-- /tab-study -->
+
+<!-- TEST MODE -->
+<div id="tab-test" class="tab-content">
+<div class="card">
+  <button class="hint-toggle" id="hint-btn" onclick="toggleHints()">&#x1F524; &#x986F;&#x793A;&#x4E2D;&#x6587;&#xFF0B;&#x30ED;&#x30FC;&#x30DE;&#x62FC;&#x97F3;</button>
+
+  <!-- mondai 1 -->
+  <div class="mondai">
+    <div class="mondai-title">&#x3082;&#x3093;&#x3060;&#x3044;1&#x3000;&#x3088;&#x307F;&#x304B;&#x305F;&#xFF08;&#x6F22;&#x5B57;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x3092;&#x9078;&#x3093;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF09;</div>
+
+    <div class="q-item">
+      <div class="q-num">&#xFF081&#xFF09;&#x3042;&#x306E;<u>&#x5E3D;&#x5B50;</u>&#x306F;&#x304B;&#x308F;&#x3044;&#x3044;&#x3067;&#x3059;&#x306D;&#x3002;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x307C;&#x3046;&#x305A;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2461; &#x307C;&#x3046;&#x3057;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2462; &#x3082;&#x3046;&#x3057;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x3082;&#x3046;&#x305A;</button>
+      </div>
+      <div class="hint">&#x1F524; &#x5E3D;&#x5B50; = b&#x14D;shi&#xFF08;&#x307C;&#x3046;&#x3057;&#xFF09;= &#x5E3D;&#x5B50;<br>&#x2460;&#x307C;&#x3046;&#x305A; bozu&#x3000;&#x2461;&#x307C;&#x3046;&#x3057; b&#x14D;shi &#x2705;&#x3000;&#x2462;&#x3082;&#x3046;&#x3057; m&#x14D;shi&#x3000;&#x2463;&#x3082;&#x3046;&#x305A; m&#x14D;zu</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">&#xFF082&#xFF09;&#x3053;&#x306E;<u>&#x670D;</u>&#x306F;&#x3068;&#x3066;&#x3082;&#x3059;&#x3066;&#x304D;&#x3067;&#x3059;&#x3002;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x306F;&#x304F;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2461; &#x304D;&#x308B;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2462; &#x3075;&#x304F;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x3081;&#x304F;</button>
+      </div>
+      <div class="hint">&#x1F524; &#x670D; = fuku&#xFF08;&#x3075;&#x304F;&#xFF09;= &#x8863;&#x670D;<br>&#x2460;&#x306F;&#x304F; haku&#x3000;&#x2461;&#x304D;&#x308B; kiru&#x3000;&#x2462;&#x3075;&#x304F; fuku &#x2705;&#x3000;&#x2463;&#x3081;&#x304F; meku</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">&#xFF083&#xFF09;<u>&#x9774;</u>&#x3092;&#x8131;&#x3044;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2460; &#x304F;&#x3064;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2461; &#x304F;&#x305A;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2462; &#x3050;&#x3064;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x3050;&#x305A;</button>
+      </div>
+      <div class="hint">&#x1F524; &#x9774; = kutsu&#xFF08;&#x304F;&#x3064;&#xFF09;= &#x978B;&#x5B50;<br>&#x2460;&#x304F;&#x3064; kutsu &#x2705;&#x3000;&#x2461;&#x304F;&#x305A; kuzu&#x3000;&#x2462;&#x3050;&#x3064; gutsu&#x3000;&#x2463;&#x3050;&#x305A; guzu</div>
+    </div>
   </div>
 
-  <!-- 2. 單字選擇題 -->
-  <div class="section" id="sec-vocab">
-    <div class="sec-title">🔤 單字選擇題</div>
+  <!-- mondai 2 -->
+  <div class="mondai">
+    <div class="mondai-title">&#x3082;&#x3093;&#x3060;&#x3044;2&#x3000;&#x6587;&#x6CD5;&#x7A74;&#x57CB;&#x3081;&#xFF08;&#xFF08;&#x3000;&#xFF09;&#x306B;&#x5165;&#x308B;&#x3082;&#x306E;&#x3092;&#x9078;&#x3093;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF09;</div>
 
-    <div class="qblock">
-      <p>Q1. 「学校」の意味は？</p>
-      <div class="choices" data-group="q1">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">書本</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">老師</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">學校</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">教室</button>
+    <div class="q-item">
+      <div class="q-num">&#xFF081&#xFF09;&#x30B7;&#x30E3;&#x30C4;&#xFF08;&#x3000;&#xFF09;&#x7740;&#x307E;&#x3059;&#x3002;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x304C;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2461; &#x3092;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2462; &#x306B;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x3067;</button>
       </div>
+      <div class="hint">&#x1F524; &#x300C;&#x301C;&#x3092;&#x7740;&#x308B;&#x300D;= &#x7A7F;&#x301C;&#xFF08;&#x3092; = &#x76EE;&#x7684;&#x8A9E;&#x306E;&#x52A9;&#x8A5E;&#xFF09;<br>&#x2460;&#x304C; ga&#xFF08;&#x4E3B;&#x8A9E;&#xFF09;&#x2461;&#x3092; wo &#x2705;&#xFF08;&#x76EE;&#x7684;&#x8A9E;&#xFF09;&#x2462;&#x306B; ni&#xFF08;&#x65B9;&#x5411;&#xFF09;&#x2463;&#x3067; de&#xFF08;&#x5834;&#x6240;&#xFF09;</div>
     </div>
 
-    <div class="qblock">
-      <p>Q2. 「老師」を日本語で言うと？</p>
-      <div class="choices" data-group="q2">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">がくせい</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">せんせい</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">きょうしつ</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">ほん</button>
+    <div class="q-item">
+      <div class="q-num">&#xFF082&#xFF09;&#x3053;&#x308C;&#x306F;&#x3068;&#x3066;&#x3082;&#xFF08;&#x3000;&#xFF09;&#x30B7;&#x30E3;&#x30C4;&#x3067;&#x3059;&#x3002;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2460; &#x65B0;&#x3057;&#x3044;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2461; &#x65B0;&#x3057;&#x304F;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2462; &#x65B0;&#x3057;&#x3044;&#x306A;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x65B0;&#x3057;&#x3044;&#x306B;</button>
       </div>
+      <div class="hint">&#x1F524; &#x3044;&#x5F62;&#x5BB9;&#x8A5E;&#x306F;&#x540D;&#x8A5E;&#x3092;&#x76F4;&#x63A5;&#x4FEE;&#x98FE;&#x2192;&#x300C;&#x65B0;&#x3057;&#x3044;&#xFF08;atarashii&#xFF09;&#xFF0B;&#x540D;&#x8A5E;&#x300D;<br>&#x2460;&#x65B0;&#x3057;&#x3044; atarashii &#x2705;&#x3000;&#x2461;&#x65B0;&#x3057;&#x304F; atarashiku&#xFF08;&#x526F;&#x8A5E;&#x5F62;&#xFF09;</div>
     </div>
 
-    <div class="qblock">
-      <p>Q3. 「べんきょうする」はどの漢字ですか？</p>
-      <div class="choices" data-group="q3">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">教える</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">教室</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">先生</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">勉強する</button>
+    <div class="q-item">
+      <div class="q-num">&#xFF083&#xFF09;&#xFF08;&#x3000;&#xFF09;&#x3001;&#x3053;&#x306E;&#x30BA;&#x30DC;&#x30F3;&#x306F;&#x3044;&#x304F;&#x3089;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x3042;&#x308A;&#x304C;&#x3068;&#x3046;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2461; &#x3055;&#x3088;&#x3046;&#x306A;&#x3089;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2462; &#x3059;&#x307F;&#x307E;&#x305B;&#x3093;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x304A;&#x306F;&#x3088;&#x3046;</button>
       </div>
+      <div class="hint">&#x1F524; &#x300C;&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;&#x300D;= sumimasen = &#x4E0D;&#x597D;&#x610F;&#x601D;&#xFF08;&#x304A;&#x5E97;&#x3067;&#x58F0;&#x304B;&#x3051;&#xFF09;<br>&#x2460;&#x3042;&#x308A;&#x304C;&#x3068;&#x3046; arigat&#x14D;&#x3000;&#x2461;&#x3055;&#x3088;&#x3046;&#x306A;&#x3089; say&#x14D;nara&#x3000;&#x2462;&#x3059;&#x307F;&#x307E;&#x305B;&#x3093; sumimasen &#x2705;&#x3000;&#x2463;&#x304A;&#x306F;&#x3088;&#x3046; ohay&#x14D;</div>
     </div>
-
-    <div class="qblock">
-      <p>Q4. 「むずかしい」の意味は？</p>
-      <div class="choices" data-group="q4">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">容易的</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">有趣的</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">困難的</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">常常</button>
-      </div>
-    </div>
-
-    <div class="qblock">
-      <p>Q5. 「教室」の読み方は？</p>
-      <div class="choices" data-group="q5">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">おしえしつ</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">きょうしつ</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">きょうしき</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">おしえる</button>
-      </div>
-    </div>
-
-    <button class="btn-c" onclick="checkChoiceSection('sec-vocab','vp','vs')">確認答案</button>
-    <button class="btn-r" onclick="resetChoiceSection('sec-vocab','vp','vs')">重新作答</button>
-    <div class="pw"><div class="pb" id="vp"></div></div>
-    <div class="sb" id="vs"></div>
   </div>
 
-  <!-- 3. 語法練習 -->
-  <div class="section">
-    <div class="sec-title">✏️ 語法練習</div>
-    <p style="margin-bottom:14px;color:#777;font-size:.88rem">正しい答えをドロップダウンから選んでください。（填空×4・読み×3・中翻日×3）</p>
+  <!-- mondai 3 -->
+  <div class="mondai">
+    <div class="mondai-title">&#x3082;&#x3093;&#x3060;&#x3044;3&#x3000;&#x5834;&#x9762;&#xFF08;&#x2605;&#x306E;&#x4EBA;&#x306F;&#x4F55;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF09;</div>
 
-    <div class="qblock">
-      <p>Q1（填空）わたしは まいにち 学校へ
-        <select class="fsel" id="gq1">
-          <option value="">選択…</option>
-          <option value="c">行き</option>
-          <option value="w">食べ</option>
-          <option value="w">見</option>
-          <option value="w">来</option>
-        </select>ます。</p>
+    <div class="q-item">
+      <div class="q-num">&#xFF081&#xFF09;&#x3042;&#x306A;&#x305F;&#x306F;&#x304A;&#x5E97;&#x3067;&#x9774;&#x306E;&#x30B5;&#x30A4;&#x30BA;&#x3092;&#x78BA;&#x8A8D;&#x3057;&#x305F;&#x3044;&#x3067;&#x3059;&#x3002;&#x2605; &#x306A;&#x3093;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x3042;&#x308A;&#x304C;&#x3068;&#x3046;&#x3054;&#x3056;&#x3044;&#x307E;&#x3059;&#x3002;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2461; &#x3059;&#x307F;&#x307E;&#x305B;&#x3093;&#x3001;&#x3053;&#x306E;&#x304F;&#x3064;&#x306E;&#x30B5;&#x30A4;&#x30BA;&#x306F;&#x3042;&#x308A;&#x307E;&#x3059;&#x304B;&#xFF1F;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2462; &#x304F;&#x3064;&#x3092;&#x8131;&#x3044;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x3053;&#x306E;&#x670D;&#x306F;&#x3068;&#x3066;&#x3082;&#x65B0;&#x3057;&#x3044;&#x3067;&#x3059;&#x3002;</button>
+      </div>
+      <div class="hint">&#x1F524; &#x304A;&#x5E97;&#x3067;&#x58F0;&#x304B;&#x3051;&#x2192;&#x300C;&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;&#x300D;&#x3067;&#x59CB;&#x3081;&#x308B;<br>&#x2461; sumimasen, kono kutsu no saizu wa arimasu ka? = &#x4E0D;&#x597D;&#x610F;&#x601D;&#xFF0C;&#x6709;&#x9019;&#x96D9;&#x978B;&#x7684;&#x5C3ŗ;&#x5BF8;&#x55CE;&#xFF1F; &#x2705;</div>
     </div>
 
-    <div class="qblock">
-      <p>Q2（填空）先生は えいごを
-        <select class="fsel" id="gq2">
-          <option value="">選択…</option>
-          <option value="c">教えて</option>
-          <option value="w">食べて</option>
-          <option value="w">飲んで</option>
-          <option value="w">遊んで</option>
-        </select>います。</p>
+    <div class="q-item">
+      <div class="q-num">&#xFF082&#xFF09;&#x53CB;&#x9054;&#x306E;&#x65B0;&#x3057;&#x3044;&#x5E3D;&#x5B50;&#x3092;&#x898B;&#x3066;&#x3001;&#x3068;&#x3066;&#x3082;&#x304B;&#x308F;&#x3044;&#x3044;&#x3068;&#x601D;&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;&#x2605; &#x306A;&#x3093;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x305D;&#x306E;&#x5E3D;&#x5B50;&#x3092;&#x8131;&#x3044;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2461; &#x305D;&#x306E;&#x5E3D;&#x5B50;&#x306F;&#x3044;&#x304F;&#x3089;&#x3067;&#x3059;&#x304B;&#xFF1F;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2462; &#x305D;&#x306E;&#x5E3D;&#x5B50;&#x3001;&#x3068;&#x3066;&#x3082;&#x304B;&#x308F;&#x3044;&#x3044;&#x3067;&#x3059;&#x306D;&#xFF01;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x305D;&#x306E;&#x5E3D;&#x5B50;&#x306F;&#x3069;&#x3053;&#x306B;&#x3042;&#x308A;&#x307E;&#x3059;&#x304B;&#xFF1F;</button>
+      </div>
+      <div class="hint">&#x1F524; &#x611F;&#x60F3;&#x3092;&#x4F1D;&#x3048;&#x308B;&#x2192;&#x300C;&#x3068;&#x3066;&#x3082;&#xFF0B;&#x5F62;&#x5BB9;&#x8A5E;&#xFF0B;&#x3067;&#x3059;&#x306D;&#x300D;<br>&#x2462; sono boushi, totemo kawaii desu ne! = &#x90A3;&#x9802;&#x5E3D;&#x5B50;&#x975E;&#x5E38;&#x53EF;&#x611B;&#x5462;&#xFF01; &#x2705;</div>
     </div>
 
-    <div class="qblock">
-      <p>Q3（填空）この問題は とても
-        <select class="fsel" id="gq3">
-          <option value="">選択…</option>
-          <option value="w">たかい</option>
-          <option value="c">むずかしい</option>
-          <option value="w">おいしい</option>
-          <option value="w">あたらしい</option>
-        </select>です。</p>
+    <div class="q-item">
+      <div class="q-num">&#xFF083&#xFF09;&#x304A;&#x3046;&#x3061;&#x306B;&#x6765;&#x305F;&#x304A;&#x5BA2;&#x3055;&#x3093;&#x306B;&#x3001;&#x304F;&#x3064;&#x3092;&#x8131;&#x3044;&#x3067;&#x307B;&#x3057;&#x3044;&#x3067;&#x3059;&#x3002;&#x2605; &#x306A;&#x3093;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x304F;&#x3064;&#x3092;&#x7740;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2461; &#x304F;&#x3064;&#x3092;&#x8131;&#x3044;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2462; &#x304F;&#x3064;&#x3092;&#x8CB7;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x304F;&#x3064;&#x3092;&#x58F2;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</button>
+      </div>
+      <div class="hint">&#x1F524; &#x8131;&#x3050;&#xFF08;nugu&#xFF09;&#x2192; &#x8131;&#x3044;&#x3067;&#xFF08;nuite&#xFF09;&#x2192; &#x300C;&#x301C;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x300D; = please do<br>&#x2461; kutsu wo nuite kudasai = &#x8ACB;&#x812B;&#x978B; &#x2705;</div>
     </div>
-
-    <div class="qblock">
-      <p>Q4（填空）学生は まいにち
-        <select class="fsel" id="gq4">
-          <option value="">選択…</option>
-          <option value="w">あそび</option>
-          <option value="w">ごはん</option>
-          <option value="c">べんきょう</option>
-          <option value="w">ねむり</option>
-        </select>します。</p>
-    </div>
-
-    <div class="qblock">
-      <p>Q5（読み）「学校」の読み方は？
-        <select class="fsel" id="gq5">
-          <option value="">選択…</option>
-          <option value="c">がっこう</option>
-          <option value="w">かっこう</option>
-          <option value="w">がこう</option>
-          <option value="w">かこう</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q6（読み）「先生」の読み方は？
-        <select class="fsel" id="gq6">
-          <option value="">選択…</option>
-          <option value="w">さきせい</option>
-          <option value="c">せんせい</option>
-          <option value="w">せんそう</option>
-          <option value="w">さんせい</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q7（読み）「教室」の読み方は？
-        <select class="fsel" id="gq7">
-          <option value="">選択…</option>
-          <option value="c">きょうしつ</option>
-          <option value="w">きょうしき</option>
-          <option value="w">きょうしゅ</option>
-          <option value="w">おしえる</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q8（中翻日）「書本」を日本語で書くと？
-        <select class="fsel" id="gq8">
-          <option value="">選択…</option>
-          <option value="c">本</option>
-          <option value="w">えんぴつ</option>
-          <option value="w">先生</option>
-          <option value="w">学生</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q9（中翻日）「鉛筆」を日本語で書くと？
-        <select class="fsel" id="gq9">
-          <option value="">選択…</option>
-          <option value="w">学校</option>
-          <option value="w">本</option>
-          <option value="c">えんぴつ</option>
-          <option value="w">教室</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q10（中翻日）「常常」を日本語で言うと？
-        <select class="fsel" id="gq10">
-          <option value="">選択…</option>
-          <option value="w">むずかしい</option>
-          <option value="c">よく</option>
-          <option value="w">たのしい</option>
-          <option value="w">おおい</option>
-        </select></p>
-    </div>
-
-    <button class="btn-c" onclick="checkDropSection(['gq1','gq2','gq3','gq4','gq5','gq6','gq7','gq8','gq9','gq10'],'gp','gs')">確認答案</button>
-    <button class="btn-r" onclick="resetDropSection(['gq1','gq2','gq3','gq4','gq5','gq6','gq7','gq8','gq9','gq10'],'gp','gs')">重新作答</button>
-    <div class="pw"><div class="pb" id="gp"></div></div>
-    <div class="sb" id="gs"></div>
   </div>
 
-  <!-- 4. 文章閱讀 -->
-  <div class="section">
-    <div class="sec-title">📖 文章閱讀</div>
-    <div class="passage">
-      わたしは まいにち <strong>学校</strong>へ いきます。<strong>先生</strong>は えいごを <strong>教えて</strong>います。<strong>教室</strong>には <strong>学生</strong>が じゅうにん います。わたしは <strong>えんぴつ</strong>と <strong>本</strong>を もっています。まいにち <strong>勉強します</strong>。日本語は <strong>むずかしい</strong>ですが、<strong>よく</strong> れんしゅうします。
-    </div>
+  <!-- mondai 4 -->
+  <div class="mondai">
+    <div class="mondai-title">&#x3082;&#x3093;&#x3060;&#x3044;4&#x3000;&#x8A9E;&#x5F59;&#xFF08;&#xFF3F;&#xFF3F;&#x306E;&#x8A00;&#x8449;&#x306B;&#x3044;&#x3061;&#x3070;&#x3093;&#x8FBA;&#x3044;&#x610F;&#x5473;&#x306E;&#x3082;&#x306E;&#x3092;&#x9078;&#x3093;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF09;</div>
 
-    <div class="qblock">
-      <p>Q1. だれが えいごを おしえますか？
-        <select class="fsel" id="rq1">
-          <option value="">選択…</option>
-          <option value="c">先生</option>
-          <option value="w">学生</option>
-          <option value="w">わたし</option>
-          <option value="w">ともだち</option>
-        </select></p>
+    <div class="q-item">
+      <div class="q-num">&#xFF081&#xFF09;&#x3053;&#x306E;&#x30B7;&#x30E3;&#x30C4;&#x306F;&#x3068;&#x3066;&#x3082;<u>&#x3042;&#x305F;&#x3089;&#x3057;&#x3044;</u>&#x3067;&#x3059;&#x3002;</div>
+      <div class="test-choices">
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2460; &#x3075;&#x308B;&#x3044;&#xFF08;&#x820B;&#x7684;&#xFF09;</button>
+        <button class="tc-btn" data-v="c" onclick="testClick(this)">&#x2461; &#x30CB;&#x30E5;&#x30FC;&#xFF08;new&#xFF09;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2462; &#x304A;&#x304A;&#x304D;&#x3044;&#xFF08;&#x5927;&#x7684;&#xFF09;</button>
+        <button class="tc-btn" data-v="w" onclick="testClick(this)">&#x2463; &#x3061;&#x3044;&#x3055;&#x3044;&#xFF08;&#x5C0F;&#x7684;&#xFF09;</button>
+      </div>
+      <div class="hint">&#x1F524; &#x65B0;&#x3057;&#x3044;&#xFF08;atarashii&#xFF09;= &#x65B0;&#x7684;&#x3002;&#x6700;&#x8FBA;&#x8FD1;&#x7684;&#x662F;&#x300C;&#x30CB;&#x30E5;&#x30FC;&#xFF08;new&#xFF09;&#x300D;<br>&#x2460;&#x3075;&#x308B;&#x3044; furui&#xFF08;&#x820B;&#xFF09;&#x3000;&#x2461;&#x30CB;&#x30E5;&#x30FC; ny&#x16B; = new &#x2705;&#x3000;&#x2462;&#x304A;&#x304A;&#x304D;&#x3044; &#x14D;kii&#xFF08;&#x5927;&#xFF09;&#x3000;&#x2463;&#x3061;&#x3044;&#x3055;&#x3044; ch&#x12B;sai&#xFF08;&#x5C0F;&#xFF09;</div>
     </div>
-
-    <div class="qblock">
-      <p>Q2. わたしは なにを もっていますか？
-        <select class="fsel" id="rq2">
-          <option value="">選択…</option>
-          <option value="w">ほんと かばん</option>
-          <option value="c">えんぴつと 本</option>
-          <option value="w">えんぴつと かばん</option>
-          <option value="w">本と ペン</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q3. 日本語は どうですか？
-        <select class="fsel" id="rq3">
-          <option value="">選択…</option>
-          <option value="w">やさしい</option>
-          <option value="w">たのしい</option>
-          <option value="c">むずかしい</option>
-          <option value="w">おいしい</option>
-        </select></p>
-    </div>
-
-    <button class="btn-c" onclick="checkDropSection(['rq1','rq2','rq3'],'rp','rs')">確認答案</button>
-    <button class="btn-r" onclick="resetDropSection(['rq1','rq2','rq3'],'rp','rs')">重新作答</button>
-    <div class="pw"><div class="pb" id="rp"></div></div>
-    <div class="sb" id="rs"></div>
   </div>
 
-  <!-- 5. 聽力練習 -->
-  <div class="section">
-    <div class="sec-title">🎧 聽力練習</div>
-    <p style="margin-bottom:14px;color:#777;font-size:.88rem">▶ ボタンで音声を再生。テキストをクリックで表示/非表示。</p>
-
-    <div class="li">
-      <button class="tts" onclick="speak('学校へ　いきます。')">▶</button>
-      <div class="tts-wrap">
-        <div class="tts-text" onclick="this.classList.toggle('revealed')">学校へ　いきます。</div>
-        <div class="tts-hint">クリックで表示</div>
-      </div>
-    </div>
-
-    <div class="li">
-      <button class="tts" onclick="speak('先生は　教室に　います。')">▶</button>
-      <div class="tts-wrap">
-        <div class="tts-text" onclick="this.classList.toggle('revealed')">先生は　教室に　います。</div>
-        <div class="tts-hint">クリックで表示</div>
-      </div>
-    </div>
-
-    <div class="li">
-      <button class="tts" onclick="speak('えんぴつで　勉強します。')">▶</button>
-      <div class="tts-wrap">
-        <div class="tts-text" onclick="this.classList.toggle('revealed')">えんぴつで　勉強します。</div>
-        <div class="tts-hint">クリックで表示</div>
-      </div>
-    </div>
-
-    <div class="li">
-      <button class="tts" onclick="speak('日本語は　むずかしいです。')">▶</button>
-      <div class="tts-wrap">
-        <div class="tts-text" onclick="this.classList.toggle('revealed')">日本語は　むずかしいです。</div>
-        <div class="tts-hint">クリックで表示</div>
-      </div>
-    </div>
-
-    <hr style="margin:16px 0;border:none;border-top:1px solid #f0e8e8">
-
-    <div class="qblock">
-      <p>Q1. どこへ いきますか？
-        <select class="fsel" id="lq1">
-          <option value="">選択…</option>
-          <option value="c">学校</option>
-          <option value="w">教室</option>
-          <option value="w">うち</option>
-          <option value="w">えき</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q2. 先生は どこに いますか？
-        <select class="fsel" id="lq2">
-          <option value="">選択…</option>
-          <option value="w">学校</option>
-          <option value="c">教室</option>
-          <option value="w">うち</option>
-          <option value="w">えき</option>
-        </select></p>
-    </div>
-
-    <div class="qblock">
-      <p>Q3. 日本語は どうですか？
-        <select class="fsel" id="lq3">
-          <option value="">選択…</option>
-          <option value="w">やさしい</option>
-          <option value="c">むずかしい</option>
-          <option value="w">たのしい</option>
-          <option value="w">おいしい</option>
-        </select></p>
-    </div>
-
-    <button class="btn-c" onclick="checkDropSection(['lq1','lq2','lq3'],'lp','ls')">確認答案</button>
-    <button class="btn-r" onclick="resetDropSection(['lq1','lq2','lq3'],'lp','ls')">重新作答</button>
-    <div class="pw"><div class="pb" id="lp"></div></div>
-    <div class="sb" id="ls"></div>
-  </div>
-
-</div><!-- /panel-study -->
-
-
-<!-- ===== 試験モード ===== -->
-<div id="panel-exam" class="panel">
-
-  <!-- もんだい1 よみかた -->
-  <div class="esec" id="esec1">
-    <div class="esec-title">もんだい１　よみかた</div>
-    <p style="margin-bottom:12px;color:#777;font-size:.88rem">つぎのことばの　よみかたを　えらんでください。</p>
-
-    <div class="qblock">
-      <p>1.　<strong>学校</strong></p>
-      <div class="choices" data-group="eq1">
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（１）がっこう</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（２）かっこう</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（３）がこう</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）かこう</button>
-      </div>
-      <div class="hint">ローマ字: gakkō ／ 中国語: 學校<br>（１）ga-k-kō ✓　（２）ka-k-kō　（３）ga-kō　（４）ka-kō</div>
-    </div>
-
-    <div class="qblock">
-      <p>2.　<strong>先生</strong></p>
-      <div class="choices" data-group="eq2">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（１）さきせい</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（２）せんせい</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（３）せんそう</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）さんせい</button>
-      </div>
-      <div class="hint">ローマ字: sensei ／ 中国語: 老師<br>（１）sa-ki-sei　（２）sen-sei ✓　（３）sen-sō　（４）san-sei</div>
-    </div>
-
-    <div class="qblock">
-      <p>3.　<strong>教室</strong></p>
-      <div class="choices" data-group="eq3">
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（１）きょうしつ</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（２）きょうしき</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（３）きょうしゅ</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）おしえる</button>
-      </div>
-      <div class="hint">ローマ字: kyōshitsu ／ 中国語: 教室<br>（１）kyō-shi-tsu ✓　（２）kyō-shi-ki　（３）kyō-shu　（４）o-shi-e-ru</div>
-    </div>
-
-    <button class="btn-c" onclick="checkChoiceSection('esec1','e1p','e1s')">確認答案</button>
-    <button class="btn-r" onclick="resetChoiceSection('esec1','e1p','e1s')">重新作答</button>
-    <div class="pw"><div class="pb" id="e1p"></div></div>
-    <div class="sb" id="e1s"></div>
-  </div>
-
-  <!-- もんだい2 文法 -->
-  <div class="esec" id="esec2">
-    <div class="esec-title">もんだい２　ぶんぽう</div>
-    <p style="margin-bottom:12px;color:#777;font-size:.88rem">（　）に　はいる　ものを　えらんでください。</p>
-
-    <div class="qblock">
-      <p>4.　わたしは　学校（　）行きます。</p>
-      <div class="choices" data-group="eq4">
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（１）へ</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（２）が</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（３）を</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）と</button>
-      </div>
-      <div class="hint">中国語: 我去學校。方向助詞「へ」= toward/to<br>（１）he（方向）✓　（２）ga（主格）　（３）wo（目的格）　（４）to（和）</div>
-    </div>
-
-    <div class="qblock">
-      <p>5.　先生が　えいごを（　）います。</p>
-      <div class="choices" data-group="eq5">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（１）食べて</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（２）教えて</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（３）飲んで</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）見て</button>
-      </div>
-      <div class="hint">中国語: 老師在教英文。<br>（１）ta-be-te（吃）　（２）o-shi-e-te ✓（教）　（３）non-de（喝）　（４）mi-te（看）</div>
-    </div>
-
-    <div class="qblock">
-      <p>6.　この問題は　とても（　）です。</p>
-      <div class="choices" data-group="eq6">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（１）おいしい</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（２）たかい</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（３）むずかしい</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）あたらしい</button>
-      </div>
-      <div class="hint">中国語: 這道題非常難。<br>（１）好吃　（２）貴　（３）難 ✓　（４）新的</div>
-    </div>
-
-    <button class="btn-c" onclick="checkChoiceSection('esec2','e2p','e2s')">確認答案</button>
-    <button class="btn-r" onclick="resetChoiceSection('esec2','e2p','e2s')">重新作答</button>
-    <div class="pw"><div class="pb" id="e2p"></div></div>
-    <div class="sb" id="e2s"></div>
-  </div>
-
-  <!-- もんだい3 場面 -->
-  <div class="esec" id="esec3">
-    <div class="esec-title">もんだい３　ばめん</div>
-    <p style="margin-bottom:12px;color:#777;font-size:.88rem">★の人は　なんと　いいますか？</p>
-
-    <div class="qblock">
-      <p>7.　授業が　わかりません。★は　先生に　もう一度　説明してもらいたいです。</p>
-      <div class="choices" data-group="eq7">
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（１）すみません、もう一度　おねがいします。</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（２）さようなら。</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（３）いただきます。</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）おはようございます。</button>
-      </div>
-      <div class="hint">中国語: 不好意思，請再說一遍。<br>（１）su-mi-ma-sen, mō i-chi-do o-ne-ga-i-shi-ma-su ✓　（２）再見　（３）我要開動了　（４）早上好</div>
-    </div>
-
-    <div class="qblock">
-      <p>8.　★は　ともだちの　えんぴつを　かりたいです。</p>
-      <div class="choices" data-group="eq8">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（１）えんぴつを　ください。</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（２）えんぴつが　すきです。</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（３）えんぴつを　かしてください。</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）えんぴつを　ありがとう。</button>
-      </div>
-      <div class="hint">中国語: 請借我鉛筆。<br>（１）給我　（２）我喜歡　（３）ka-shi-te ku-da-sa-i ✓（借我）　（４）謝謝</div>
-    </div>
-
-    <div class="qblock">
-      <p>9.　★は　学校に　はじめて　きました。じこしょうかいを　します。</p>
-      <div class="choices" data-group="eq9">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（１）また　きてください。</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（２）はじめまして、よろしく　おねがいします。</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（３）ただいま。</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）いってきます。</button>
-      </div>
-      <div class="hint">中国語: 初次見面，請多關照。<br>（１）歡迎再來　（２）ha-ji-me-ma-shi-te ✓　（３）我回來了　（４）我出門了</div>
-    </div>
-
-    <button class="btn-c" onclick="checkChoiceSection('esec3','e3p','e3s')">確認答案</button>
-    <button class="btn-r" onclick="resetChoiceSection('esec3','e3p','e3s')">重新作答</button>
-    <div class="pw"><div class="pb" id="e3p"></div></div>
-    <div class="sb" id="e3s"></div>
-  </div>
-
-  <!-- もんだい4 語彙 -->
-  <div class="esec" id="esec4">
-    <div class="esec-title">もんだい４　ごい</div>
-    <p style="margin-bottom:12px;color:#777;font-size:.88rem">＿＿のことばに　いちばん　ちかい　いみの　ものを　えらんでください。</p>
-
-    <div class="qblock">
-      <p>10.　この問題は　<u>むずかしい</u>です。</p>
-      <div class="choices" data-group="eq10">
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（１）やさしい</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（２）たのしい</button>
-        <button class="cb" data-v="c" onclick="pickChoice(this)">（３）かんたんでない</button>
-        <button class="cb" data-v="w" onclick="pickChoice(this)">（４）おもしろい</button>
-      </div>
-      <div class="hint">むずかしい = 困難的（muzukashii）<br>（１）容易的　（２）好玩的　（３）不簡單 ✓ ≒ むずかしい　（４）有趣的</div>
-    </div>
-
-    <button class="btn-c" onclick="checkChoiceSection('esec4','e4p','e4s')">確認答案</button>
-    <button class="btn-r" onclick="resetChoiceSection('esec4','e4p','e4s')">重新作答</button>
-    <div class="pw"><div class="pb" id="e4p"></div></div>
-    <div class="sb" id="e4s"></div>
-  </div>
-
-</div><!-- /panel-exam -->
-
-<button class="hint-toggle" id="hint-toggle" onclick="toggleHints()">🔤 顯示中文＋羅馬拼音</button>
+  <div class="progress-bar"><div class="progress-fill" id="test-prog" style="width:0%"></div></div>
+  <button class="btn btn-check" onclick="checkTest()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+  <button class="btn btn-reset" onclick="resetTest()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+  <div class="score-banner" id="test-score"></div>
+</div>
+</div><!-- /tab-test -->
 
 <script>
-function switchTab(tab) {
-  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
-  document.getElementById('panel-'+tab).classList.add('active');
-  document.querySelectorAll('.tab-btn')[tab==='study'?0:1].classList.add('active');
-  document.getElementById('hint-toggle').style.display = tab==='exam'?'block':'none';
+function switchTab(t,el){
+  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active')});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('tab-'+t).classList.add('active');
+  el.classList.add('active');
 }
 
-function toggleHints() {
-  document.body.classList.toggle('hints-on');
-  document.getElementById('hint-toggle').textContent =
-    document.body.classList.contains('hints-on') ? '🔤 隱藏提示' : '🔤 顯示中文＋羅馬拼音';
-}
-
-function speak(text) {
-  if (!window.speechSynthesis) { alert('このブラウザは音声合成に対応していません。'); return; }
-  window.speechSynthesis.cancel();
-  var u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ja-JP';
-  u.rate = 0.85;
-  window.speechSynthesis.speak(u);
-}
-
-function pickChoice(btn) {
-  if (btn.disabled) return;
-  var container = btn.closest('[data-group]');
-  var allBtns = container.querySelectorAll('.cb');
-  var isCorrect = btn.getAttribute('data-v') === 'c';
-  if (isCorrect) {
-    btn.classList.add('ok');
-  } else {
-    btn.classList.add('bad');
-    allBtns.forEach(function(b){ if (b.getAttribute('data-v')==='c') b.classList.add('ok'); });
-  }
-  allBtns.forEach(function(b){ b.disabled = true; });
-}
-
-function showScore(correct, total, pbId, sbId) {
-  var pct = Math.round(correct / total * 100);
-  document.getElementById(pbId).style.width = pct + '%';
-  var sb = document.getElementById(sbId);
-  sb.className = 'sb show ' + (pct===100?'perfect':pct>=60?'good':'poor');
-  sb.textContent = pct===100
-    ? '🎉 満点！ '+correct+'/'+total+' 正解！素晴らしい！'
-    : pct>=60
-      ? '👍 '+correct+'/'+total+' 正解（'+pct+'%）もう少し頑張ろう！'
-      : '📚 '+correct+'/'+total+' 正解（'+pct+'%）もっと練習しよう！';
-}
-
-function checkChoiceSection(secId, pbId, sbId) {
-  var sec = document.getElementById(secId);
-  var groups = sec.querySelectorAll('[data-group]');
-  var correct = 0;
-  var total = groups.length;
-  groups.forEach(function(g) {
-    var allBtns = g.querySelectorAll('.cb');
-    var hasOk = Array.from(allBtns).some(function(b){return b.classList.contains('ok');});
-    var hasBad = Array.from(allBtns).some(function(b){return b.classList.contains('bad');});
-    if (!hasOk && !hasBad) {
-      allBtns.forEach(function(b){
-        if (b.getAttribute('data-v')==='c') b.classList.add('ok');
-        b.disabled = true;
-      });
-    } else if (hasOk && !hasBad) {
-      correct++;
-    }
+var mcqDone={};
+function mcqClick(btn,q){
+  if(mcqDone.hasOwnProperty(q))return;
+  btn.closest('.q-block').querySelectorAll('.choice-btn').forEach(function(b){
+    if(b.dataset.v==='c')b.classList.add('ok');
+    else if(b===btn)b.classList.add('bad');
   });
-  showScore(correct, total, pbId, sbId);
+  mcqDone[q]=(btn.dataset.v==='c');
+  document.getElementById('mcq-prog').style.width=(Object.keys(mcqDone).length/5*100)+'%';
+}
+function checkMCQ(){
+  var c=Object.values(mcqDone).filter(Boolean).length;
+  var sb=document.getElementById('mcq-score');
+  sb.textContent='スコア: '+c+'/5 ('+Math.round(c/5*100)+'%)  '+(c>=4?'すばらしい！':c>=3?'もう少し！':'もう一度！');
+  sb.className='score-banner show '+(c>=4?'good':'bad');
+}
+function resetMCQ(){
+  mcqDone={};
+  document.querySelectorAll('#mcq-area .choice-btn').forEach(function(b){b.classList.remove('ok','bad')});
+  document.getElementById('mcq-prog').style.width='0%';
+  document.getElementById('mcq-score').className='score-banner';
 }
 
-function resetChoiceSection(secId, pbId, sbId) {
-  var sec = document.getElementById(secId);
-  sec.querySelectorAll('.cb').forEach(function(b){
-    b.classList.remove('ok','bad');
-    b.disabled = false;
+var G_IDS=['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'];
+function checkGrammar(){
+  var c=0,d=0;
+  G_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    el.classList.remove('ok','bad');
+    if(el.value){d++;if(el.value===el.dataset.ans){el.classList.add('ok');c++;}else el.classList.add('bad');}
   });
-  document.getElementById(pbId).style.width = '0%';
-  document.getElementById(sbId).className = 'sb';
+  document.getElementById('g-prog').style.width=(d/10*100)+'%';
+  var sb=document.getElementById('g-score');
+  sb.textContent='スコア: '+c+'/10 ('+Math.round(c/10*100)+'%)  '+(c>=8?'すばらしい！':c>=6?'もう少し！':'もう一度！');
+  sb.className='score-banner show '+(c>=7?'good':'bad');
+}
+function resetGrammar(){
+  G_IDS.forEach(function(id){var el=document.getElementById(id);el.value='';el.classList.remove('ok','bad')});
+  document.getElementById('g-prog').style.width='0%';
+  document.getElementById('g-score').className='score-banner';
 }
 
-function checkDropSection(ids, pbId, sbId) {
-  var correct = 0;
-  ids.forEach(function(id) {
-    var s = document.getElementById(id);
-    if (!s) return;
-    s.classList.remove('ok','bad');
-    if (s.value==='c') { s.classList.add('ok'); correct++; }
-    else if (s.value) { s.classList.add('bad'); }
+var R_IDS=['r1','r2','r3'];
+function checkReading(){
+  var c=0,d=0;
+  R_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    el.classList.remove('ok','bad');
+    if(el.value){d++;if(el.value===el.dataset.ans){el.classList.add('ok');c++;}else el.classList.add('bad');}
   });
-  showScore(correct, ids.length, pbId, sbId);
+  document.getElementById('r-prog').style.width=(d/3*100)+'%';
+  var sb=document.getElementById('r-score');
+  sb.textContent='スコア: '+c+'/3 ('+Math.round(c/3*100)+'%)  '+(c===3?'パーフェクト！':c>=2?'もう少し！':'もう一度！');
+  sb.className='score-banner show '+(c>=2?'good':'bad');
+}
+function resetReading(){
+  R_IDS.forEach(function(id){var el=document.getElementById(id);el.value='';el.classList.remove('ok','bad')});
+  document.getElementById('r-prog').style.width='0%';
+  document.getElementById('r-score').className='score-banner';
 }
 
-function resetDropSection(ids, pbId, sbId) {
-  ids.forEach(function(id) {
-    var s = document.getElementById(id);
-    if (!s) return;
-    s.value = '';
-    s.classList.remove('ok','bad');
+function speak(text){
+  if(!window.speechSynthesis)return;
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang='ja-JP';u.rate=0.85;u.pitch=1.0;
+  speechSynthesis.cancel();speechSynthesis.speak(u);
+}
+var L_IDS=['l1','l2','l3'];
+function checkListen(){
+  var c=0,d=0;
+  L_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    el.classList.remove('ok','bad');
+    if(el.value){d++;if(el.value===el.dataset.ans){el.classList.add('ok');c++;}else el.classList.add('bad');}
   });
-  document.getElementById(pbId).style.width = '0%';
-  document.getElementById(sbId).className = 'sb';
+  document.getElementById('l-prog').style.width=(d/3*100)+'%';
+  var sb=document.getElementById('l-score');
+  sb.textContent='スコア: '+c+'/3 ('+Math.round(c/3*100)+'%)  '+(c===3?'パーフェクト！':c>=2?'もう少し！':'もう一度！');
+  sb.className='score-banner show '+(c>=2?'good':'bad');
+}
+function resetListen(){
+  L_IDS.forEach(function(id){var el=document.getElementById(id);el.value='';el.classList.remove('ok','bad')});
+  document.getElementById('l-prog').style.width='0%';
+  document.getElementById('l-score').className='score-banner';
+}
+
+function testClick(btn){
+  var par=btn.closest('.q-item');
+  if(par.dataset.done)return;
+  par.dataset.done='1';
+  par.dataset.correct=(btn.dataset.v==='c')?'1':'0';
+  par.querySelectorAll('.tc-btn').forEach(function(b){
+    if(b.dataset.v==='c')b.classList.add('ok');
+    else if(b===btn)b.classList.add('bad');
+  });
+  var total=document.querySelectorAll('#tab-test .q-item').length;
+  var done=document.querySelectorAll('#tab-test .q-item[data-done]').length;
+  document.getElementById('test-prog').style.width=(done/total*100)+'%';
+}
+function checkTest(){
+  var total=document.querySelectorAll('#tab-test .q-item').length;
+  var c=0;
+  document.querySelectorAll('#tab-test .q-item[data-done]').forEach(function(par){
+    if(par.dataset.correct==='1')c++;
+  });
+  var sb=document.getElementById('test-score');
+  sb.textContent='スコア: '+c+'/'+total+' ('+Math.round(c/total*100)+'%)  '+(c>=total*0.8?'合格！':c>=total*0.6?'もう少し！':'がんばって！');
+  sb.className='score-banner show '+(c>=Math.ceil(total*0.6)?'good':'bad');
+}
+function resetTest(){
+  document.querySelectorAll('#tab-test .q-item').forEach(function(par){
+    delete par.dataset.done;delete par.dataset.correct;
+    par.querySelectorAll('.tc-btn').forEach(function(b){b.classList.remove('ok','bad')});
+  });
+  document.getElementById('test-prog').style.width='0%';
+  document.getElementById('test-score').className='score-banner';
+}
+function toggleHints(){
+  var on=document.body.classList.toggle('hints-on');
+  document.getElementById('hint-btn').textContent=on?'ヒント非表示':'顯示中文＋ローマ拼音';
 }
 </script>
-
 </body>
 </html>
