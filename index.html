@@ -1,825 +1,720 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>N5日本語練習 - Day 198 - い形容詞</title>
-  <style>
-    :root {
-      --r1: #c0392b;
-      --r2: #922b21;
-      --ok: #27ae60;
-      --bad: #e74c3c;
-      --bi: #e67e22;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; color: #333; }
-
-    header {
-      background: linear-gradient(135deg, var(--r1), var(--r2));
-      color: white; padding: 22px; text-align: center;
-    }
-    header h1 { font-size: 1.9em; margin-bottom: 6px; letter-spacing: 1px; }
-    header .meta { font-size: 0.92em; opacity: 0.92; }
-
-    .tabs { display: flex; background: #fff; border-bottom: 2px solid #ddd; position: sticky; top: 0; z-index: 10; }
-    .tab-btn {
-      flex: 1; padding: 14px; border: none; background: transparent;
-      cursor: pointer; font-size: 1.05em; font-weight: bold; color: #777;
-      transition: all 0.2s; border-bottom: 3px solid transparent;
-    }
-    .tab-btn.active { color: var(--r1); border-bottom-color: var(--r1); }
-    .tab-btn:hover { background: #fff5f5; }
-
-    .content { max-width: 900px; margin: 0 auto; padding: 20px; }
-    .hidden { display: none !important; }
-
-    .section {
-      background: #fff; border-radius: 12px; padding: 22px;
-      margin-bottom: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
-    .section h2 {
-      font-size: 1.15em; color: var(--r1); margin-bottom: 16px;
-      padding-bottom: 10px; border-bottom: 2px solid #fde8e8;
-    }
-
-    /* Vocabulary table */
-    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.96em; }
-    .vocab-table th {
-      background: linear-gradient(135deg, var(--r1), var(--r2));
-      color: white; padding: 10px 12px; text-align: left;
-    }
-    .vocab-table td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
-    .vocab-table tr:hover td { background: #fff8f8; }
-    .kanji { font-size: 1.1em; font-weight: bold; }
-    .kana { color: #666; font-size: 0.88em; }
-    .romaji { color: #888; font-size: 0.85em; font-style: italic; }
-    .zh { color: #444; }
-    .badge { display: inline-block; padding: 2px 9px; border-radius: 12px; font-size: 0.73em; font-weight: bold; color: #fff; background: var(--bi); }
-
-    /* Quiz */
-    .q-block { margin-bottom: 18px; padding: 15px; border: 1px solid #eee; border-radius: 10px; background: #fafafa; }
-    .q-text { font-size: 1em; margin-bottom: 10px; font-weight: bold; color: #333; }
-    .quiz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
-    .quiz-btn {
-      padding: 10px 14px; border: 2px solid #ddd; border-radius: 8px;
-      background: white; cursor: pointer; text-align: left;
-      transition: all 0.2s; font-size: 0.92em; line-height: 1.4;
-    }
-    .quiz-btn:hover { border-color: var(--r1); background: #fff0f0; }
-    .quiz-btn.ok { border-color: var(--ok) !important; background: #eafaf1 !important; color: var(--ok); font-weight: bold; }
-    .quiz-btn.bad { border-color: var(--bad) !important; background: #fdedec !important; color: var(--bad); }
-    .quiz-btn:disabled { cursor: default; }
-
-    /* Dropdown */
-    select {
-      padding: 7px 12px; border: 2px solid #ccc; border-radius: 7px;
-      font-size: 0.9em; cursor: pointer; background: white; color: #333;
-      min-width: 180px;
-    }
-    select.ok { border-color: var(--ok); background: #eafaf1; color: var(--ok); font-weight: bold; }
-    select.bad { border-color: var(--bad); background: #fdedec; color: var(--bad); }
-
-    /* Progress + score */
-    .prog-wrap { background: #eee; border-radius: 10px; height: 10px; margin: 14px 0 8px; }
-    .prog-bar { background: linear-gradient(90deg, var(--r1), var(--r2)); height: 10px; border-radius: 10px; transition: width 0.4s; width: 0%; }
-    .score-banner {
-      text-align: center; padding: 10px 16px; border-radius: 8px;
-      font-weight: bold; margin: 8px 0; display: none;
-    }
-    .score-banner.show { display: block; }
-    .score-good { background: #eafaf1; color: var(--ok); border: 1px solid #a9dfbf; }
-    .score-bad  { background: #fdedec; color: var(--bad); border: 1px solid #f5c6c6; }
-
-    /* Buttons */
-    .btn { padding: 9px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 0.94em; font-weight: bold; margin: 4px; transition: all 0.2s; }
-    .btn-primary { background: var(--r1); color: white; }
-    .btn-primary:hover { background: var(--r2); }
-    .btn-secondary { background: #eee; color: #444; }
-    .btn-secondary:hover { background: #ddd; }
-
-    /* Listening */
-    .listen-item {
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px; margin-bottom: 12px;
-      border: 1px solid #eee; border-radius: 10px; background: #fafafa;
-    }
-    .play-btn {
-      padding: 8px 16px; background: var(--r1); color: white; border: none;
-      border-radius: 7px; cursor: pointer; font-size: 0.9em; white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .play-btn:hover { background: var(--r2); }
-    .listen-text {
-      flex: 1; font-size: 1.05em; filter: blur(5px);
-      cursor: pointer; transition: filter 0.3s; user-select: none;
-    }
-    .listen-text.revealed { filter: none; }
-    .reveal-btn {
-      padding: 6px 12px; background: #eee; border: none;
-      border-radius: 7px; cursor: pointer; font-size: 0.88em; flex-shrink: 0;
-    }
-    .reveal-btn:hover { background: #ddd; }
-
-    /* Test mode hints */
-    .hint-toggle-btn {
-      padding: 10px 22px; background: #f39c12; color: white; border: none;
-      border-radius: 8px; cursor: pointer; font-size: 0.95em; font-weight: bold;
-      margin-bottom: 18px; transition: background 0.2s;
-    }
-    .hint-toggle-btn:hover { background: #e67e22; }
-    .hint {
-      display: none; margin-top: 10px; padding: 10px 12px;
-      background: #fffbeb; border-radius: 7px; font-size: 0.83em;
-      color: #666; border-left: 3px solid #f39c12; line-height: 1.7;
-    }
-    body.hints-on .hint { display: block; }
-
-    .mondai-section {
-      background: #fff; border-radius: 12px; padding: 20px;
-      margin-bottom: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
-    .mondai-title {
-      font-size: 1em; font-weight: bold; color: var(--r1);
-      margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #fde8e8;
-    }
-
-    .note { font-size: 0.88em; color: #888; margin-bottom: 14px; }
-
-    @media (max-width: 600px) {
-      .quiz-grid { grid-template-columns: 1fr; }
-      header h1 { font-size: 1.5em; }
-      .listen-item { flex-wrap: wrap; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本語N5 - 數字 | 2026-07-20</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:#f5f5f5;color:#333}
+.header{background:linear-gradient(135deg,#c0392b,#922b21);color:#fff;padding:22px;text-align:center}
+.header h1{font-size:1.9em;margin-bottom:6px;letter-spacing:1px}
+.header .meta{font-size:.9em;opacity:.85;letter-spacing:.5px}
+.tabs{display:flex;background:#fff;border-bottom:2px solid #ddd;position:sticky;top:0;z-index:50}
+.tab-btn{flex:1;padding:14px;font-size:1em;cursor:pointer;border:none;background:none;transition:all .2s;font-weight:600}
+.tab-btn.active{background:#c0392b;color:#fff}
+.tab-btn:hover:not(.active){background:#ffeaea}
+.container{max-width:820px;margin:0 auto;padding:20px}
+.mode{display:none}
+.mode.active{display:block}
+.section{background:#fff;border-radius:12px;padding:22px;margin-bottom:22px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.section h2{font-size:1.2em;margin-bottom:16px;color:#c0392b;display:flex;align-items:center;gap:8px}
+.vocab-table{width:100%;border-collapse:collapse}
+.vocab-table th{background:#c0392b;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
+.vocab-table td{padding:10px 12px;border-bottom:1px solid #f0f0f0;font-size:.95em}
+.vocab-table tr:hover{background:#fdf2f2}
+.vocab-table .kanji{font-size:1.15em;font-weight:700}
+.badge{display:inline-block;padding:2px 9px;border-radius:12px;font-size:.72em;font-weight:700;color:#fff}
+.badge-sushi{background:#3498db}
+.badge-adv{background:#e67e22}
+.quiz-item{margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid #f5f5f5}
+.quiz-item:last-of-type{border-bottom:none}
+.quiz-item .question{font-weight:700;margin-bottom:10px;font-size:1em}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice-btn{padding:10px 14px;border:2px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;transition:all .2s;font-size:.92em;text-align:left}
+.choice-btn:hover{border-color:#c0392b;background:#ffeaea}
+.choice-btn.ok{background:#d5f5e3;border-color:#27ae60;color:#1a6b3a;font-weight:700}
+.choice-btn.bad{background:#fadbd8;border-color:#e74c3c;color:#a93226}
+.fill-item{margin-bottom:13px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.95em}
+.fill-item select{padding:6px 10px;border:2px solid #ddd;border-radius:6px;font-size:.92em;cursor:pointer;background:#fff;min-width:120px}
+.fill-item select.ok{border-color:#27ae60;background:#d5f5e3}
+.fill-item select.bad{border-color:#e74c3c;background:#fadbd8}
+.btn{padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:.93em;font-weight:700;transition:all .2s}
+.btn-check{background:#c0392b;color:#fff}
+.btn-check:hover{background:#922b21}
+.btn-reset{background:#95a5a6;color:#fff}
+.btn-reset:hover{background:#7f8c8d}
+.btn-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.progress-bar-wrap{background:#eee;border-radius:10px;margin:12px 0 4px;height:10px;overflow:hidden}
+.progress-bar{background:linear-gradient(90deg,#c0392b,#e74c3c);height:10px;border-radius:10px;transition:width .5s;width:0%}
+.score-banner{display:none;padding:10px 16px;border-radius:8px;margin-top:6px;font-weight:700;font-size:.95em}
+.score-banner.show{display:block}
+.score-banner.good{background:#d5f5e3;color:#1a6b3a;border:2px solid #27ae60}
+.score-banner.ok-score{background:#fef9e7;color:#9a7d0a;border:2px solid #f1c40f}
+.score-banner.bad{background:#fadbd8;color:#a93226;border:2px solid #e74c3c}
+.tts-block{margin-bottom:22px}
+.tts-item{display:flex;align-items:center;gap:10px;padding:13px;background:#f9f9f9;border-radius:10px;margin-bottom:8px;border:1px solid #eee}
+.tts-text{flex:1;filter:blur(5px);transition:filter .3s;cursor:pointer;font-size:1.05em;line-height:1.5}
+.tts-text.revealed{filter:none}
+.tts-play-btn{padding:8px 14px;background:#3498db;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.9em;white-space:nowrap;min-width:70px}
+.tts-play-btn:hover{background:#2980b9}
+.reveal-btn{padding:7px 11px;background:#bdc3c7;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.8em;white-space:nowrap}
+.reveal-btn:hover{background:#95a5a6}
+.reading-text{background:#fdf8f0;border-left:4px solid #c0392b;padding:16px;margin-bottom:20px;border-radius:0 10px 10px 0;line-height:1.9;font-size:1.05em}
+.section-label{color:#c0392b;font-weight:700;font-size:.9em;margin:16px 0 10px;display:block}
+.section-divider{height:1px;background:#f0f0f0;margin:18px 0}
+.exam-section{background:#fff;border-radius:12px;padding:22px;margin-bottom:22px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.exam-section h2{font-size:1.1em;margin-bottom:6px;color:#c0392b;border-bottom:2px solid #c0392b;padding-bottom:10px}
+.exam-section .subtitle{color:#666;font-size:.88em;margin-bottom:18px}
+.exam-q{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f5f5f5}
+.exam-q:last-of-type{border-bottom:none}
+.exam-q .q-text{font-weight:700;margin-bottom:10px;line-height:1.6}
+.exam-choices{display:flex;flex-direction:column;gap:7px}
+.exam-choice{padding:10px 15px;border:2px solid #ddd;border-radius:8px;cursor:pointer;background:#fff;text-align:left;font-size:.93em;transition:all .2s}
+.exam-choice:hover{border-color:#c0392b;background:#ffeaea}
+.exam-choice.ok{background:#d5f5e3;border-color:#27ae60;font-weight:700}
+.exam-choice.bad{background:#fadbd8;border-color:#e74c3c}
+.hint{display:none;margin-top:8px;padding:9px 12px;background:#ebf5fb;border-radius:8px;font-size:.83em;color:#444;line-height:1.6;border-left:3px solid #3498db}
+body.hints-on .hint{display:block}
+.hint-toggle-btn{position:fixed;bottom:22px;right:22px;padding:11px 18px;background:#3498db;color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.88em;font-weight:700;box-shadow:0 3px 12px rgba(0,0,0,.2);z-index:200;transition:all .2s}
+.hint-toggle-btn:hover{background:#2980b9;transform:scale(1.04)}
+.hidden{display:none!important}
+@media(max-width:600px){
+  .choices{grid-template-columns:1fr}
+  .header h1{font-size:1.4em}
+  .fill-item{flex-direction:column;align-items:flex-start}
+  .tts-item{flex-wrap:wrap}
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>🇯🇵 N5 日本語練習</h1>
-  <div class="meta">📅 2026年7月17日 ｜ Day 198 ｜ 📚 テーマ：い形容詞</div>
-</header>
-
-<div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('study')">📖 學習模式</button>
-  <button class="tab-btn" onclick="switchTab('test')">📝 試験モード</button>
+<div class="header">
+  <h1>&#x1F1EF;&#x1F1F5; &#x65E5;&#x672C;&#x8A9E; N5 &#x7DF4;&#x7FD2;</h1>
+  <div class="meta">2026-07-20 &nbsp;|&nbsp; Day 201 &nbsp;|&nbsp; &#x30C6;&#x30FC;&#x30DE;&#xFF1A;&#x6578;&#x5B57;&#xFF08;&#x3059;&#x3046;&#x3058;&#xFF09;</div>
 </div>
 
-<div class="content">
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('study',this)">&#x1F4D6; &#x5B78;&#x7FD2;&#x6A21;&#x5F0F;</button>
+  <button class="tab-btn" onclick="switchTab('exam',this)">&#x1F4DD; &#x8A66;&#x9A13;&#x30E2;&#x30FC;&#x30C9;</button>
+</div>
 
-  <!-- ====== STUDY MODE ====== -->
-  <div id="study-mode">
+<!-- STUDY MODE -->
+<div id="study-mode" class="mode active">
+<div class="container">
 
-    <!-- Section 1: 詞彙表 -->
-    <div class="section">
-      <h2>📚 詞彙表</h2>
-      <table class="vocab-table">
-        <thead>
-          <tr>
-            <th>漢字</th>
-            <th>読み仮名</th>
-            <th>ローマ字</th>
-            <th>中文</th>
-            <th>品詞</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="kanji">大きい</td><td class="kana">おおきい</td><td class="romaji">ōkii</td><td class="zh">大的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">小さい</td><td class="kana">ちいさい</td><td class="romaji">chiisai</td><td class="zh">小的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">高い</td><td class="kana">たかい</td><td class="romaji">takai</td><td class="zh">高的・貴的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">安い</td><td class="kana">やすい</td><td class="romaji">yasui</td><td class="zh">便宜的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">新しい</td><td class="kana">あたらしい</td><td class="romaji">atarashii</td><td class="zh">新的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">古い</td><td class="kana">ふるい</td><td class="romaji">furui</td><td class="zh">舊的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">良い</td><td class="kana">よい / いい</td><td class="romaji">yoi / ii</td><td class="zh">好的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">悪い</td><td class="kana">わるい</td><td class="romaji">warui</td><td class="zh">壞的・不好的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">難しい</td><td class="kana">むずかしい</td><td class="romaji">muzukashii</td><td class="zh">困難的</td><td><span class="badge">い形</span></td></tr>
-          <tr><td class="kanji">易しい</td><td class="kana">やさしい</td><td class="romaji">yasashii</td><td class="zh">容易的</td><td><span class="badge">い形</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section">
+    <h2>&#x1F4DA; &#x8A5E;&#x5F59;&#x8868;</h2>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>#</th><th>&#x6F22;&#x5B57;</th><th>&#x8AAD;&#x307F;&#x4EEE;&#x540D;</th><th>&#x4E2D;&#x56FD;&#x8A9E;&#x8A33;</th><th>&#x54C1;&#x8A5E;</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td class="kanji">&#x4E00;</td><td>&#x3044;&#x3061;</td><td>&#x4E00; (1)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>2</td><td class="kanji">&#x4E8C;</td><td>&#x306B;</td><td>&#x4E8C; (2)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>3</td><td class="kanji">&#x4E09;</td><td>&#x3055;&#x3093;</td><td>&#x4E09; (3)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>4</td><td class="kanji">&#x56DB;</td><td>&#x3057;&#x30FB;&#x3088;&#x3093;</td><td>&#x56DB; (4)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>5</td><td class="kanji">&#x4E94;</td><td>&#x3054;</td><td>&#x4E94; (5)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>6</td><td class="kanji">&#x516D;</td><td>&#x308D;&#x304F;</td><td>&#x516D; (6)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>7</td><td class="kanji">&#x4E03;</td><td>&#x306A;&#x306A;&#x30FB;&#x3057;&#x3061;</td><td>&#x4E03; (7)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>8</td><td class="kanji">&#x767E;</td><td>&#x3072;&#x3083;&#x304F;</td><td>&#x767E; (100)</td><td><span class="badge badge-sushi">&#x6570;&#x8A5E;</span></td></tr>
+        <tr><td>9</td><td class="kanji">&#x5C11;&#x3057;</td><td>&#x3059;&#x3053;&#x3057;</td><td>&#x4E00;&#x9EDE;&#x9EDE;&#x3001;&#x5C11;&#x8A31;</td><td><span class="badge badge-adv">&#x526F;&#x8A5E;</span></td></tr>
+        <tr><td>10</td><td class="kanji">&#x305F;&#x304F;&#x3055;&#x3093;</td><td>&#x305F;&#x304F;&#x3055;&#x3093;</td><td>&#x5F88;&#x591A;&#x3001;&#x5927;&#x91CF;</td><td><span class="badge badge-adv">&#x526F;&#x8A5E;</span></td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <!-- Section 2: 單字選擇題 -->
-    <div class="section">
-      <h2>🔤 單字選擇題</h2>
+  <div class="section">
+    <h2>&#x1F524; &#x55AE;&#x5B57;&#x9078;&#x64C7;&#x984C;</h2>
 
-      <div class="q-block" id="vq1">
-        <div class="q-text">Q1. 「大きい」の意味はどれですか？</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="c" onclick="answerVQ(this,'vq1')">大的</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq1')">小的</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq1')">高的</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq1')">便宜的</button>
-        </div>
-      </div>
-
-      <div class="q-block" id="vq2">
-        <div class="q-text">Q2. 「ちいさい」の漢字はどれですか？</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq2')">高い</button>
-          <button class="quiz-btn" data-v="c" onclick="answerVQ(this,'vq2')">小さい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq2')">古い</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq2')">良い</button>
-        </div>
-      </div>
-
-      <div class="q-block" id="vq3">
-        <div class="q-text">Q3. 「新しい」の読み方はどれですか？</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq3')">ふるい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq3')">やすい</button>
-          <button class="quiz-btn" data-v="c" onclick="answerVQ(this,'vq3')">あたらしい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq3')">よい</button>
-        </div>
-      </div>
-
-      <div class="q-block" id="vq4">
-        <div class="q-text">Q4. 「むずかしい」の漢字はどれですか？</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq4')">易しい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq4')">悪い</button>
-          <button class="quiz-btn" data-v="c" onclick="answerVQ(this,'vq4')">難しい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq4')">良い</button>
-        </div>
-      </div>
-
-      <div class="q-block" id="vq5">
-        <div class="q-text">Q5. 「安い」の意味はどれですか？</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq5')">高的・貴的</button>
-          <button class="quiz-btn" data-v="c" onclick="answerVQ(this,'vq5')">便宜的</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq5')">舊的</button>
-          <button class="quiz-btn" data-v="w" onclick="answerVQ(this,'vq5')">新的</button>
-        </div>
-      </div>
-
-      <div class="prog-wrap"><div class="prog-bar" id="vq-bar"></div></div>
-      <div id="vq-score" class="score-banner"></div>
-      <div>
-        <button class="btn btn-primary" onclick="checkVQ()">確認答案</button>
-        <button class="btn btn-secondary" onclick="resetVQ()">重新作答</button>
+    <div class="quiz-item" id="mc1">
+      <div class="question">1. &#x300C;&#x4E00;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="c" onclick="checkMC('mc1',this)">&#x3044;&#x3061;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc1',this)">&#x306B;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc1',this)">&#x3055;&#x3093;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc1',this)">&#x3057;</button>
       </div>
     </div>
 
-    <!-- Section 3: 語法練習 -->
-    <div class="section">
-      <h2>✏️ 語法練習</h2>
-      <p class="note">【填空 4問 ・ 読み 3問 ・ 中翻日 3問】選択肢を選んでください。</p>
-
-      <div class="q-block">
-        <div class="q-text">【填空】Q1. このかばんは（　）です。とても大きいです。</div>
-        <select id="gq1">
-          <option value="">-- 選択 --</option>
-          <option value="c">大きい</option>
-          <option value="w">安い</option>
-          <option value="w">新しい</option>
-          <option value="w">古い</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【填空】Q2. このりんごは（　）です。五十円です。</div>
-        <select id="gq2">
-          <option value="">-- 選択 --</option>
-          <option value="w">高い</option>
-          <option value="c">安い</option>
-          <option value="w">新しい</option>
-          <option value="w">難しい</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【填空】Q3. このほんは（　）です。よくわかりません。</div>
-        <select id="gq3">
-          <option value="">-- 選択 --</option>
-          <option value="c">難しい</option>
-          <option value="w">易しい</option>
-          <option value="w">良い</option>
-          <option value="w">古い</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【填空】Q4. きょうのてんきは（　）です。ありがとうございます。</div>
-        <select id="gq4">
-          <option value="">-- 選択 --</option>
-          <option value="c">良い</option>
-          <option value="w">悪い</option>
-          <option value="w">大きい</option>
-          <option value="w">小さい</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【読み】Q5. 「高い」の読み方は？</div>
-        <select id="gq5">
-          <option value="">-- 選択 --</option>
-          <option value="c">たかい</option>
-          <option value="w">やすい</option>
-          <option value="w">ふるい</option>
-          <option value="w">あたらしい</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【読み】Q6. 「悪い」の読み方は？</div>
-        <select id="gq6">
-          <option value="">-- 選択 --</option>
-          <option value="w">よい</option>
-          <option value="c">わるい</option>
-          <option value="w">むずかしい</option>
-          <option value="w">やさしい</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【読み】Q7. 「古い」の読み方は？</div>
-        <select id="gq7">
-          <option value="">-- 選択 --</option>
-          <option value="c">ふるい</option>
-          <option value="w">あたらしい</option>
-          <option value="w">おおきい</option>
-          <option value="w">ちいさい</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【中翻日】Q8. 「新的」を日本語にすると？</div>
-        <select id="gq8">
-          <option value="">-- 選択 --</option>
-          <option value="c">新しい</option>
-          <option value="w">古い</option>
-          <option value="w">良い</option>
-          <option value="w">悪い</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【中翻日】Q9. 「小的」を日本語にすると？</div>
-        <select id="gq9">
-          <option value="">-- 選択 --</option>
-          <option value="w">大きい</option>
-          <option value="c">小さい</option>
-          <option value="w">高い</option>
-          <option value="w">安い</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">【中翻日】Q10. 「好的」を日本語にすると？</div>
-        <select id="gq10">
-          <option value="">-- 選択 --</option>
-          <option value="c">良い</option>
-          <option value="w">悪い</option>
-          <option value="w">難しい</option>
-          <option value="w">易しい</option>
-        </select>
-      </div>
-
-      <div class="prog-wrap"><div class="prog-bar" id="gq-bar"></div></div>
-      <div id="gq-score" class="score-banner"></div>
-      <div>
-        <button class="btn btn-primary" onclick="checkGQ()">確認答案</button>
-        <button class="btn btn-secondary" onclick="resetGQ()">重新作答</button>
+    <div class="quiz-item" id="mc2">
+      <div class="question">2. &#x300C;&#x4E09;&#x300D;&#x306F;&#x4E2D;&#x56FD;&#x8A9E;&#x3067;&#x4F55;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc2',this)">&#x4E00;</button>
+        <button class="choice-btn" data-v="c" onclick="checkMC('mc2',this)">&#x4E09;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc2',this)">&#x4E94;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc2',this)">&#x4E03;</button>
       </div>
     </div>
 
-    <!-- Section 4: 文章閱讀 -->
-    <div class="section">
-      <h2>📖 文章閱讀</h2>
-      <div style="background:#fff8f8;padding:18px;border-radius:10px;margin-bottom:18px;line-height:2.2;border-left:4px solid var(--r1);">
-        <p>たなかさんの うちは <strong>大きい</strong> うちです。へやが たくさん あります。たなかさんは きのう <strong>新しい</strong> かばんを かいました。そのかばんは <strong>高い</strong> ですが、とても <strong>良い</strong> かばんです。</p>
-        <br>
-        <p>たなかさんは まいにち にほんごを べんきょうします。にほんごは <strong>難しい</strong> ですが、たのしいです。かんじは <strong>易しく</strong> ないですが、たなかさんは まいにち がんばっています。</p>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">Q1. たなかさんの うちは どんな うちですか？</div>
-        <select id="rq1">
-          <option value="">-- 選択 --</option>
-          <option value="w">小さい うち</option>
-          <option value="w">古い うち</option>
-          <option value="c">大きい うち</option>
-          <option value="w">悪い うち</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">Q2. たなかさんが かった かばんは どんな かばんですか？</div>
-        <select id="rq2">
-          <option value="">-- 選択 --</option>
-          <option value="w">古くて 悪い</option>
-          <option value="c">高くて 良い</option>
-          <option value="w">安くて 小さい</option>
-          <option value="w">新しくて 悪い</option>
-        </select>
-      </div>
-
-      <div class="q-block">
-        <div class="q-text">Q3. にほんごの べんきょうは どうですか？</div>
-        <select id="rq3">
-          <option value="">-- 選択 --</option>
-          <option value="w">易しいです</option>
-          <option value="c">難しいですが、たのしいです</option>
-          <option value="w">つまらないです</option>
-          <option value="w">わるいです</option>
-        </select>
-      </div>
-
-      <div class="prog-wrap"><div class="prog-bar" id="rq-bar"></div></div>
-      <div id="rq-score" class="score-banner"></div>
-      <div>
-        <button class="btn btn-primary" onclick="checkRQ()">確認答案</button>
-        <button class="btn btn-secondary" onclick="resetRQ()">重新作答</button>
+    <div class="quiz-item" id="mc3">
+      <div class="question">3. &#x300C;&#x3059;&#x3053;&#x3057;&#x300D;&#x306E;&#x6F22;&#x5B57;&#x306F;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc3',this)">&#x767E;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc3',this)">&#x516D;</button>
+        <button class="choice-btn" data-v="c" onclick="checkMC('mc3',this)">&#x5C11;&#x3057;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc3',this)">&#x4E03;</button>
       </div>
     </div>
 
-    <!-- Section 5: 聽力練習 -->
-    <div class="section">
-      <h2>🎧 聽力練習</h2>
-      <p class="note">▶ボタンで音声を再生。テキストをクリック または 👁ボタンで表示/非表示。</p>
-
-      <div class="listen-item">
-        <button class="play-btn" onclick="speak('このりんごは おおきいです。')">▶ 再生</button>
-        <div class="listen-text" id="lt1" onclick="toggleBlur('lt1')">このりんごは おおきいです。</div>
-        <button class="reveal-btn" onclick="toggleBlur('lt1')">👁</button>
-      </div>
-
-      <div class="listen-item">
-        <button class="play-btn" onclick="speak('あのかばんは たかいですが、あたらしいです。')">▶ 再生</button>
-        <div class="listen-text" id="lt2" onclick="toggleBlur('lt2')">あのかばんは たかいですが、あたらしいです。</div>
-        <button class="reveal-btn" onclick="toggleBlur('lt2')">👁</button>
-      </div>
-
-      <div class="listen-item">
-        <button class="play-btn" onclick="speak('にほんごは むずかしいですが、たのしいです。')">▶ 再生</button>
-        <div class="listen-text" id="lt3" onclick="toggleBlur('lt3')">にほんごは むずかしいですが、たのしいです。</div>
-        <button class="reveal-btn" onclick="toggleBlur('lt3')">👁</button>
-      </div>
-
-      <div class="listen-item">
-        <button class="play-btn" onclick="speak('このほんは やさしいです。')">▶ 再生</button>
-        <div class="listen-text" id="lt4" onclick="toggleBlur('lt4')">このほんは やさしいです。</div>
-        <button class="reveal-btn" onclick="toggleBlur('lt4')">👁</button>
-      </div>
-
-      <div style="margin-top:18px;">
-        <div class="q-block">
-          <div class="q-text">Q1. だいいちぶんの りんごは どんな りんごですか？</div>
-          <select id="lq1">
-            <option value="">-- 選択 --</option>
-            <option value="c">大きい</option>
-            <option value="w">小さい</option>
-            <option value="w">古い</option>
-            <option value="w">高い</option>
-          </select>
-        </div>
-
-        <div class="q-block">
-          <div class="q-text">Q2. かばんは どうですか？（だいにぶん）</div>
-          <select id="lq2">
-            <option value="">-- 選択 --</option>
-            <option value="w">安くて 古い</option>
-            <option value="c">高くて 新しい</option>
-            <option value="w">小さくて 良い</option>
-            <option value="w">悪くて 難しい</option>
-          </select>
-        </div>
-
-        <div class="q-block">
-          <div class="q-text">Q3. にほんごは どうですか？（だいさんぶん）</div>
-          <select id="lq3">
-            <option value="">-- 選択 --</option>
-            <option value="w">易しいです</option>
-            <option value="c">難しくて、たのしいです</option>
-            <option value="w">大きいです</option>
-            <option value="w">良いです</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="prog-wrap"><div class="prog-bar" id="lq-bar"></div></div>
-      <div id="lq-score" class="score-banner"></div>
-      <div>
-        <button class="btn btn-primary" onclick="checkLQ()">確認答案</button>
-        <button class="btn btn-secondary" onclick="resetLQ()">重新作答</button>
+    <div class="quiz-item" id="mc4">
+      <div class="question">4. &#x300C;&#x4E03;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc4',this)">&#x308D;&#x304F;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc4',this)">&#x306F;&#x3061;</button>
+        <button class="choice-btn" data-v="c" onclick="checkMC('mc4',this)">&#x306A;&#x306A;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc4',this)">&#x304D;&#x3085;&#x3046;</button>
       </div>
     </div>
 
-  </div><!-- /study-mode -->
-
-  <!-- ====== TEST MODE ====== -->
-  <div id="test-mode" class="hidden">
-
-    <button class="hint-toggle-btn" onclick="toggleHints(this)">🔤 顯示中文＋羅馬拼音</button>
-
-    <!-- もんだい1: よみかた -->
-    <div class="mondai-section">
-      <div class="mondai-title">もんだい１　よみかた ― 漢字の読み方を えらんでください。</div>
-
-      <div class="q-block" id="tq1">
-        <div class="q-text">① 大きい</div>
-        <div class="hint">漢字：大きい ／ 中文：大的 ／ ローマ字：ōkii</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq1')">おおきい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq1')">ちいさい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq1')">たかい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq1')">やすい</button>
-        </div>
-        <div class="hint">おおきい (ōkii) 大的 ／ ちいさい (chiisai) 小的 ／ たかい (takai) 高的 ／ やすい (yasui) 便宜的</div>
-      </div>
-
-      <div class="q-block" id="tq2">
-        <div class="q-text">② 難しい</div>
-        <div class="hint">漢字：難しい ／ 中文：困難的 ／ ローマ字：muzukashii</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq2')">やさしい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq2')">わるい</button>
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq2')">むずかしい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq2')">よい</button>
-        </div>
-        <div class="hint">やさしい (yasashii) 容易的 ／ わるい (warui) 壞的 ／ むずかしい (muzukashii) 困難的✓ ／ よい (yoi) 好的</div>
-      </div>
-
-      <div class="q-block" id="tq3">
-        <div class="q-text">③ 新しい</div>
-        <div class="hint">漢字：新しい ／ 中文：新的 ／ ローマ字：atarashii</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq3')">ふるい</button>
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq3')">あたらしい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq3')">おおきい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq3')">やすい</button>
-        </div>
-        <div class="hint">ふるい (furui) 舊的 ／ あたらしい (atarashii) 新的✓ ／ おおきい (ōkii) 大的 ／ やすい (yasui) 便宜的</div>
+    <div class="quiz-item" id="mc5">
+      <div class="question">5. &#x300C;&#x5F88;&#x591A;&#x300D;&#x3092;&#x65E5;&#x672C;&#x8A9E;&#x3067;&#x8A00;&#x3046;&#x3068;&#xFF1F;</div>
+      <div class="choices">
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc5',this)">&#x3059;&#x3053;&#x3057;</button>
+        <button class="choice-btn" data-v="c" onclick="checkMC('mc5',this)">&#x305F;&#x304F;&#x3055;&#x3093;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc5',this)">&#x3072;&#x3083;&#x304F;</button>
+        <button class="choice-btn" data-v="w" onclick="checkMC('mc5',this)">&#x305B;&#x3093;</button>
       </div>
     </div>
 
-    <!-- もんだい2: 文法穴埋め -->
-    <div class="mondai-section">
-      <div class="mondai-title">もんだい２　つぎの（　）に 入る ものを えらんでください。</div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="mc-progress"></div></div>
+    <div id="mc-score" class="score-banner"></div>
+  </div>
 
-      <div class="q-block" id="tq4">
-        <div class="q-text">① あのくるまは（　）です。</div>
-        <div class="hint">That car is ___. → い形容詞の基本形＋です（現在肯定）</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq4')">大きい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq4')">大きく</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq4')">大きくて</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq4')">大きければ</button>
-        </div>
-        <div class="hint">大きい (ōkii) 大的✓ ／ 大きく (ōkiku) 副詞形 ／ 大きくて (ōkikute) て形接続 ／ 大きければ (ōkikereba) 假設形</div>
+  <div class="section">
+    <h2>&#x270F;&#xFE0F; &#x8A9E;&#x6CD5;&#x7DF4;&#x7FD2;</h2>
+
+    <span class="section-label">&#x3010;&#x586B;&#x7A7A; x 4&#x3011;</span>
+
+    <div class="fill-item">
+      <span>1. &#x308A;&#x3093;&#x3054;&#x304C;</span>
+      <select id="g1">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x4E03;&#x3064;</option>
+        <option value="c">&#x56DB;&#x3064;</option>
+        <option value="w">&#x767E;&#x3064;</option>
+        <option value="w">&#x4E00;&#x3064;</option>
+      </select>
+      <span>&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="fill-item">
+      <span>2. &#x3053;&#x306E;&#x5B66;&#x6821;&#x306B;&#x5B66;&#x751F;&#x304C;</span>
+      <select id="g2">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="c">&#x305F;&#x304F;&#x3055;&#x3093;</option>
+        <option value="w">&#x5C11;&#x3057;</option>
+        <option value="w">&#x767E;</option>
+        <option value="w">&#x56DB;</option>
+      </select>
+      <span>&#x3044;&#x307E;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="fill-item">
+      <span>3. &#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x3092;</span>
+      <select id="g3">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x4E03;</option>
+        <option value="w">&#x767E;</option>
+        <option value="c">&#x5C11;&#x3057;</option>
+        <option value="w">&#x305F;&#x304F;&#x3055;&#x3093;</option>
+      </select>
+      <span>&#x98F2;&#x307F;&#x307E;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="fill-item">
+      <span>4. &#x3053;&#x306E;&#x30B1;&#x30FC;&#x30AD;&#x306F;</span>
+      <select id="g4">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x4E03;</option>
+        <option value="c">&#x516D;</option>
+        <option value="w">&#x4E09;</option>
+        <option value="w">&#x767E;</option>
+      </select>
+      <span>&#x767E;&#x5186;&#x3067;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="section-divider"></div>
+    <span class="section-label">&#x3010;&#x8AAD;&#x307F;&#x65B9; x 3&#x3011;</span>
+
+    <div class="fill-item">
+      <span>5. &#x300C;&#x4E00;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;</span>
+      <select id="g5">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="c">&#x3044;&#x3061;</option>
+        <option value="w">&#x306B;</option>
+        <option value="w">&#x3055;&#x3093;</option>
+        <option value="w">&#x3057;</option>
+      </select>
+      <span>&#x3067;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="fill-item">
+      <span>6. &#x300C;&#x767E;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;</span>
+      <select id="g6">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x305B;&#x3093;</option>
+        <option value="w">&#x307E;&#x3093;</option>
+        <option value="c">&#x3072;&#x3083;&#x304F;</option>
+        <option value="w">&#x3058;&#x3085;&#x3046;</option>
+      </select>
+      <span>&#x3067;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="fill-item">
+      <span>7. &#x300C;&#x5C11;&#x3057;&#x300D;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x306F;</span>
+      <select id="g7">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x305F;&#x304F;&#x3055;&#x3093;</option>
+        <option value="c">&#x3059;&#x3053;&#x3057;</option>
+        <option value="w">&#x3061;&#x3087;&#x3063;&#x3068;</option>
+        <option value="w">&#x3042;&#x307E;&#x308A;</option>
+      </select>
+      <span>&#x3067;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="section-divider"></div>
+    <span class="section-label">&#x3010;&#x4E2D;&#x7FFB;&#x65E5; x 3&#x3011;</span>
+
+    <div class="fill-item">
+      <span>8. &#x4E2D;&#x6587;&#x300C;&#x4E8C;&#x300D;&#x3092;&#x65E5;&#x672C;&#x8A9E;&#x3067;&#x8A00;&#x3046;&#x3068;</span>
+      <select id="g8">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x3044;&#x3061;</option>
+        <option value="c">&#x306B;</option>
+        <option value="w">&#x3055;&#x3093;</option>
+        <option value="w">&#x3057;</option>
+      </select>
+      <span>&#x3067;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="fill-item">
+      <span>9. &#x4E2D;&#x6587;&#x300C;&#x4E03;&#x300D;&#x3092;&#x65E5;&#x672C;&#x8A9E;&#x3067;&#x8AAD;&#x3080;&#x3068;</span>
+      <select id="g9">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x308D;&#x304F;</option>
+        <option value="c">&#x306A;&#x306A;</option>
+        <option value="w">&#x306F;&#x3061;</option>
+        <option value="w">&#x304D;&#x3085;&#x3046;</option>
+      </select>
+      <span>&#xFF08;&#x306A;&#x306A;&#xFF09;&#x3067;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="fill-item">
+      <span>10. &#x4E2D;&#x6587;&#x300C;&#x5F88;&#x591A;&#x300D;&#x3092;&#x65E5;&#x672C;&#x8A9E;&#x3067;&#x8A00;&#x3046;&#x3068;</span>
+      <select id="g10">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x3059;&#x3053;&#x3057;</option>
+        <option value="c">&#x305F;&#x304F;&#x3055;&#x3093;</option>
+        <option value="w">&#x3072;&#x3083;&#x304F;</option>
+        <option value="w">&#x305B;&#x3093;</option>
+      </select>
+      <span>&#x3067;&#x3059;&#x3002;</span>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-check" onclick="checkGrammar()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+      <button class="btn btn-reset" onclick="resetGrammar()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="g-progress"></div></div>
+    <div id="g-score" class="score-banner"></div>
+  </div>
+
+  <div class="section">
+    <h2>&#x1F4D6; &#x6587;&#x7AE0;&#x95B1;&#x8B80;</h2>
+    <div class="reading-text">
+      &#x308F;&#x305F;&#x3057;&#x306F; &#x307E;&#x3044;&#x306B;&#x3061; &#x306B;&#x307B;&#x3093;&#x3054;&#x3092; <strong>&#x5C11;&#x3057;</strong> &#x3079;&#x3093;&#x304D;&#x3087;&#x3046; &#x3057;&#x307E;&#x3059;&#x3002;<br>
+      &#x304D;&#x3087;&#x3046;&#x306F; &#x304B;&#x3093;&#x3058;&#x3092; <strong>&#x4E09;</strong>&#x3064; &#x3079;&#x3093;&#x304D;&#x3087;&#x3046; &#x3057;&#x307E;&#x3057;&#x305F;&#x3002;<br>
+      &#x308F;&#x305F;&#x3057;&#x306E; &#x30AF;&#x30E9;&#x30B9;&#x306B;&#x306F; &#x3068;&#x3082;&#x3060;&#x3061;&#x304C; <strong>&#x305F;&#x304F;&#x3055;&#x3093;</strong> &#x3044;&#x307E;&#x3059;&#x3002;<br>
+      &#x3048;&#x3093;&#x3074;&#x3064;&#x3092; <strong>&#x516D;</strong>&#x307B;&#x3093; &#x3082;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
+    </div>
+
+    <div class="fill-item">
+      <span>1. &#x308F;&#x305F;&#x3057;&#x306F;&#x6BCE;&#x65E5;&#x4F55;&#x3092;&#x52C9;&#x5F37;&#x3057;&#x307E;&#x3059;&#x304B;&#xFF1F;</span>
+      <select id="r1">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x3048;&#x3044;&#x3054;</option>
+        <option value="c">&#x306B;&#x307B;&#x3093;&#x3054;</option>
+        <option value="w">&#x3059;&#x3046;&#x304C;&#x304F;</option>
+        <option value="w">&#x304A;&#x3093;&#x304C;&#x304F;</option>
+      </select>
+    </div>
+
+    <div class="fill-item">
+      <span>2. &#x304D;&#x3087;&#x3046;&#x3001;&#x304B;&#x3093;&#x3058;&#x3092;&#x3044;&#x304F;&#x3064;&#x52C9;&#x5F37;&#x3057;&#x307E;&#x3057;&#x305F;&#x304B;&#xFF1F;</span>
+      <select id="r2">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x4E00;&#x3064;</option>
+        <option value="w">&#x4E8C;&#x3064;</option>
+        <option value="c">&#x4E09;&#x3064;</option>
+        <option value="w">&#x4E03;&#x3064;</option>
+      </select>
+    </div>
+
+    <div class="fill-item">
+      <span>3. &#x3048;&#x3093;&#x3074;&#x3064;&#x3092;&#x4F55;&#x672C;&#x3082;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</span>
+      <select id="r3">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x4E09;&#x672C;</option>
+        <option value="w">&#x56DB;&#x672C;</option>
+        <option value="w">&#x4E94;&#x672C;</option>
+        <option value="c">&#x516D;&#x672C;</option>
+      </select>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-check" onclick="checkReading()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+      <button class="btn btn-reset" onclick="resetReading()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="r-progress"></div></div>
+    <div id="r-score" class="score-banner"></div>
+  </div>
+
+  <div class="section">
+    <h2>&#x1F3A7; &#x807D;&#x529B;&#x7DF4;&#x7FD2;</h2>
+    <p style="color:#666;font-size:.88em;margin-bottom:16px">&#x25B6; &#x30DC;&#x30BF;&#x30F3;&#x3067;&#x97F3;&#x58F0;&#x518D;&#x751F; &#xFF0F; &#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x3092;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x307E;&#x305F;&#x306F;&#x300C;&#x8868;&#x793A;&#x300D;&#x3067;&#x6587;&#x5B57;&#x8868;&#x793A;</p>
+
+    <div class="tts-block">
+      <div class="tts-item">
+        <button class="tts-play-btn" onclick="speak('&#x308A;&#x3093;&#x3054;&#x304C;&#x4E09;&#x3064;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;',this)">&#x25B6; &#x518D;&#x751F;</button>
+        <span class="tts-text" onclick="this.classList.toggle('revealed')">&#x308A;&#x3093;&#x3054;&#x304C;&#x4E09;&#x3064;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</span>
+        <button class="reveal-btn" onclick="this.previousElementSibling.classList.toggle('revealed')">&#x8868;&#x793A;</button>
       </div>
-
-      <div class="q-block" id="tq5">
-        <div class="q-text">② このかばんは（　）、きれいです。</div>
-        <div class="hint">This bag is expensive AND beautiful. → い形容詞のて形で接続する</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq5')">高い</button>
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq5')">高くて</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq5')">高く</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq5')">高ければ</button>
-        </div>
-        <div class="hint">高い (takai) 基本形 ／ 高くて (takakute) て形接続✓ ／ 高く (takaku) 副詞形 ／ 高ければ (takakereba) 假設形</div>
+      <div class="tts-item">
+        <button class="tts-play-btn" onclick="speak('&#x3048;&#x3093;&#x3074;&#x3064;&#x3092;&#x5C11;&#x3057;&#x304B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;',this)">&#x25B6; &#x518D;&#x751F;</button>
+        <span class="tts-text" onclick="this.classList.toggle('revealed')">&#x3048;&#x3093;&#x3074;&#x3064;&#x3092;&#x5C11;&#x3057;&#x304B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</span>
+        <button class="reveal-btn" onclick="this.previousElementSibling.classList.toggle('revealed')">&#x8868;&#x793A;</button>
       </div>
-
-      <div class="q-block" id="tq6">
-        <div class="q-text">③ きのう このかばんは（　）。</div>
-        <div class="hint">Yesterday this bag was cheap. → い形容詞の過去形：語幹＋かったです</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq6')">やすかったです</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq6')">やすいでした</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq6')">やすいです</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq6')">やすくないです</button>
-        </div>
-        <div class="hint">やすかったです (yasukatta desu) 過去肯定✓ ／ やすいでした (×誤り) ／ やすいです 現在形 ／ やすくないです 現在否定</div>
+      <div class="tts-item">
+        <button class="tts-play-btn" onclick="speak('&#x3053;&#x306E;&#x307F;&#x305B;&#x306B;&#x306F; &#x3072;&#x3083;&#x304F;&#x3048;&#x3093;&#x306E; &#x3082;&#x306E;&#x304C; &#x305F;&#x304F;&#x3055;&#x3093; &#x3042;&#x308A;&#x307E;&#x3059;&#x3002;',this)">&#x25B6; &#x518D;&#x751F;</button>
+        <span class="tts-text" onclick="this.classList.toggle('revealed')">&#x3053;&#x306E;&#x5E97;&#x306B;&#x306F;&#x767E;&#x5186;&#x306E;&#x3082;&#x306E;&#x304C;&#x305F;&#x304F;&#x3055;&#x3093;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</span>
+        <button class="reveal-btn" onclick="this.previousElementSibling.classList.toggle('revealed')">&#x8868;&#x793A;</button>
+      </div>
+      <div class="tts-item">
+        <button class="tts-play-btn" onclick="speak('&#x3057;&#x3061;&#x3058;&#x306B; &#x304A;&#x304D;&#x307E;&#x3059;&#x3002;',this)">&#x25B6; &#x518D;&#x751F;</button>
+        <span class="tts-text" onclick="this.classList.toggle('revealed')">&#x4E03;&#x6642;&#x306B;&#x8D77;&#x304D;&#x307E;&#x3059;&#x3002;</span>
+        <button class="reveal-btn" onclick="this.previousElementSibling.classList.toggle('revealed')">&#x8868;&#x793A;</button>
       </div>
     </div>
 
-    <!-- もんだい3: 場面 -->
-    <div class="mondai-section">
-      <div class="mondai-title">もんだい３　★の人は 何と 言いますか。えらんでください。</div>
+    <span class="section-label">&#x3010;&#x8CEA;&#x554F;&#x306B;&#x7B54;&#x3048;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3011;</span>
 
-      <div class="q-block" id="tq7">
-        <div class="q-text">① ★あなたは ともだちに じぶんの へやが 大きいと つたえます。どう いいますか。</div>
-        <div class="hint">You want to tell your friend your room is big.</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq7')">わたしのへやは おおきいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq7')">わたしのへやは たかいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq7')">わたしのへやは ふるいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq7')">わたしのへやは あたらしいです。</button>
-        </div>
-        <div class="hint">おおきい (ōkii) 大的✓ ／ たかい (takai) 貴的 ／ ふるい (furui) 舊的 ／ あたらしい (atarashii) 新的</div>
-      </div>
-
-      <div class="q-block" id="tq8">
-        <div class="q-text">② ★あなたは にほんごの べんきょうが むずかしいと つたえます。どう いいますか。</div>
-        <div class="hint">You want to tell someone Japanese study is difficult.</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq8')">にほんごは やさしいです。</button>
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq8')">にほんごは むずかしいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq8')">にほんごは たかいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq8')">にほんごは わるいです。</button>
-        </div>
-        <div class="hint">やさしい (yasashii) 容易的 ／ むずかしい (muzukashii) 困難的✓ ／ たかい (takai) 貴的 ／ わるい (warui) 壞的</div>
-      </div>
-
-      <div class="q-block" id="tq9">
-        <div class="q-text">③ ★あなたは みせで やすいかばんを みつけて、ともだちに つたえます。どう いいますか。</div>
-        <div class="hint">You found a cheap bag at the store. Tell your friend!</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq9')">このかばんは おおきいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq9')">このかばんは ふるいです。</button>
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq9')">このかばんは やすいです。</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq9')">このかばんは わるいです。</button>
-        </div>
-        <div class="hint">おおきい (ōkii) 大的 ／ ふるい (furui) 舊的 ／ やすい (yasui) 便宜的✓ ／ わるい (warui) 壞的</div>
-      </div>
+    <div class="fill-item">
+      <span>1. &#x308A;&#x3093;&#x3054;&#x306F;&#x3044;&#x304F;&#x3064;&#x3042;&#x308A;&#x307E;&#x3059;&#x304B;&#xFF1F;</span>
+      <select id="l1">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x4E00;&#x3064;</option>
+        <option value="w">&#x4E8C;&#x3064;</option>
+        <option value="c">&#x4E09;&#x3064;</option>
+        <option value="w">&#x4E03;&#x3064;</option>
+      </select>
     </div>
 
-    <!-- もんだい4: 語彙 -->
-    <div class="mondai-section">
-      <div class="mondai-title">もんだい４　＿＿の ことばに いちばん ちかい いみの ものを えらんでください。</div>
+    <div class="fill-item">
+      <span>2. &#x4F55;&#x3092;&#x5C11;&#x3057;&#x304B;&#x3057;&#x3066;&#x307B;&#x3057;&#x3044;&#x3067;&#x3059;&#x304B;&#xFF1F;</span>
+      <select id="l2">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="c">&#x3048;&#x3093;&#x3074;&#x3064;</option>
+        <option value="w">&#x304D;&#x3063;&#x3066;</option>
+        <option value="w">&#x307B;&#x3093;</option>
+        <option value="w">&#x30CE;&#x30FC;&#x30C8;</option>
+      </select>
+    </div>
 
-      <div class="q-block" id="tq10">
-        <div class="q-text">① にほんごは <u>むずかしい</u> です。</div>
-        <div class="hint">むずかしい (muzukashii) = 困難的。いちばん ちかい いみは？</div>
-        <div class="quiz-grid">
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq10')">やさしい</button>
-          <button class="quiz-btn" data-v="c" onclick="answerTQ(this,'tq10')">たいへんだ</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq10')">わるい</button>
-          <button class="quiz-btn" data-v="w" onclick="answerTQ(this,'tq10')">ふるい</button>
-        </div>
-        <div class="hint">やさしい (yasashii) 容易的（反義） ／ たいへんだ (taihen da) 辛苦・困難✓ ／ わるい (warui) 壞的 ／ ふるい (furui) 舊的</div>
+    <div class="fill-item">
+      <span>3. &#x4F55;&#x6642;&#x306B;&#x8D77;&#x304D;&#x307E;&#x3059;&#x304B;&#xFF1F;</span>
+      <select id="l3">
+        <option value="">&#x9078;&#x629E;...</option>
+        <option value="w">&#x516D;&#x6642;</option>
+        <option value="c">&#x4E03;&#x6642;</option>
+        <option value="w">&#x516B;&#x6642;</option>
+        <option value="w">&#x4E5D;&#x6642;</option>
+      </select>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-check" onclick="checkListening()">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+      <button class="btn btn-reset" onclick="resetListening()">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="l-progress"></div></div>
+    <div id="l-score" class="score-banner"></div>
+  </div>
+
+</div>
+</div>
+
+<!-- EXAM MODE -->
+<div id="exam-mode" class="mode">
+<div class="container">
+
+  <div class="exam-section">
+    <h2>&#x3082;&#x3093;&#x3060;&#x3044;1&#x3000;&#x3088;&#x307F;&#x304B;&#x305F;</h2>
+    <p class="subtitle">&#xFF3F;&#xFF3F;&#x306E;&#x3053;&#x3068;&#x3070;&#x306E;&#x8AAD;&#x307F;&#x65B9;&#x3092;1&#x30FB;2&#x30FB;3&#x30FB;4&#x304B;&#x3089;&#x3048;&#x3089;&#x3093;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
+
+    <div class="exam-q" id="e1">
+      <div class="q-text">1. &#x308A;&#x3093;&#x3054;&#x304C; <u>&#x4E09;</u>&#x3064; &#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="checkExam('e1',this)">1. &#x306B;</button>
+        <button class="exam-choice" data-v="c" onclick="checkExam('e1',this)">2. &#x3055;&#x3093;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e1',this)">3. &#x3057;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e1',this)">4. &#x3054;</button>
       </div>
+      <div class="hint">&#x30ED;&#x30FC;&#x30DE;&#x5B57;&#xFF1A;san&#x3000;|&#x3000;&#x4E2D;&#x56FD;&#x8A9E;&#xFF1A;&#x4E09;&#xFF083&#xFF09;<br>1.&#x306B;(ni)=2&#x3000;2.&#x3055;&#x3093;(san)=3 &#x2713;&#x3000;3.&#x3057;(shi)=4&#x3000;4.&#x3054;(go)=5</div>
     </div>
 
-    <div class="prog-wrap"><div class="prog-bar" id="tq-bar"></div></div>
-    <div id="tq-score" class="score-banner"></div>
-    <div>
-      <button class="btn btn-primary" onclick="checkTQ()">確認答案</button>
-      <button class="btn btn-secondary" onclick="resetTQ()">重新作答</button>
+    <div class="exam-q" id="e2">
+      <div class="q-text">2. &#x304D;&#x306E;&#x3046;&#x306F; <u>&#x767E;</u>&#x3048;&#x3093;&#x306E;&#x3082;&#x306E;&#x3092;&#x304B;&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="w" onclick="checkExam('e2',this)">1. &#x305B;&#x3093;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e2',this)">2. &#x307E;&#x3093;</button>
+        <button class="exam-choice" data-v="c" onclick="checkExam('e2',this)">3. &#x3072;&#x3083;&#x304F;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e2',this)">4. &#x3058;&#x3085;&#x3046;</button>
+      </div>
+      <div class="hint">&#x30ED;&#x30FC;&#x30DE;&#x5B57;&#xFF1A;hyaku&#x3000;|&#x3000;&#x4E2D;&#x56FD;&#x8A9E;&#xFF1A;&#x767E;&#xFF08;100&#xFF09;<br>1.&#x305B;&#x3093;(sen)=1000&#x3000;2.&#x307E;&#x3093;(man)=10000&#x3000;3.&#x3072;&#x3083;&#x304F;(hyaku)=100 &#x2713;&#x3000;4.&#x3058;&#x3085;&#x3046;(juu)=10</div>
     </div>
 
-  </div><!-- /test-mode -->
+    <div class="exam-q" id="e3">
+      <div class="q-text">3. &#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x3092; <u>&#x5C11;&#x3057;</u> &#x306E;&#x307F;&#x307E;&#x3059;&#x3002;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e3',this)">1. &#x3059;&#x3053;&#x3057;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e3',this)">2. &#x305F;&#x304F;&#x3055;&#x3093;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e3',this)">3. &#x3061;&#x3087;&#x3063;&#x3068;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e3',this)">4. &#x3042;&#x307E;&#x308A;</button>
+      </div>
+      <div class="hint">&#x30ED;&#x30FC;&#x30DE;&#x5B57;&#xFF1A;sukoshi&#x3000;|&#x3000;&#x4E2D;&#x56FD;&#x8A9E;&#xFF1A;&#x4E00;&#x9EDE;&#x9EDE;&#xFF08;a little&#xFF09;<br>1.&#x3059;&#x3053;&#x3057;(sukoshi) &#x2713;&#x3000;2.&#x305F;&#x304F;&#x3055;&#x3093;=many&#x3000;3.&#x3061;&#x3087;&#x3063;&#x3068;=a bit&#x3000;4.&#x3042;&#x307E;&#x308A;=not much</div>
+    </div>
 
-</div><!-- /content -->
+    <div class="btn-actions">
+      <button class="btn btn-check" onclick="checkExamSection('&#x3082;&#x3093;&#x3060;&#x3044;1',['e1','e2','e3'],'es1-score','es1-progress')">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+      <button class="btn btn-reset" onclick="resetExamSection(['e1','e2','e3'],'es1-score','es1-progress')">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="es1-progress"></div></div>
+    <div id="es1-score" class="score-banner"></div>
+  </div>
+
+  <div class="exam-section">
+    <h2>&#x3082;&#x3093;&#x3060;&#x3044;2&#x3000;&#x6587;&#x6CD5;&#x7A74;&#x57CB;&#x3081;</h2>
+    <p class="subtitle">&#xFF08;&#x3000;&#xFF09;&#x306B;&#x4F55;&#x3092;&#x3044;&#x308C;&#x307E;&#x3059;&#x304B;&#x3002;1&#x30FB;2&#x30FB;3&#x30FB;4&#x304B;&#x3089;&#x3048;&#x3089;&#x3093;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
+
+    <div class="exam-q" id="e4">
+      <div class="q-text">1. &#x308A;&#x3093;&#x3054;&#x304C;&#xFF08;&#x3000;&#xFF09;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e4',this)">1. &#x4E09;&#x3064;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e4',this)">2. &#x4E09;&#x306B;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e4',this)">3. &#x4E09;&#x3067;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e4',this)">4. &#x4E09;&#x304C;</button>
+      </div>
+      <div class="hint">&#x6570;&#x91CF;&#x8A5E;&#x306E;&#x6B63;&#x3057;&#x3044;&#x5F62;&#xFF1A;&#x4E09;&#x3064;(mittsu)=3&#x500B;&#x306E;&#x3082;&#x306E;<br>1.&#x4E09;&#x3064;(mittsu) &#x2713;&#x3000;2&#xFF5E;4&#x306F;&#x52A9;&#x8A5E;&#x4E0D;&#x8981; &#x2717;</div>
+    </div>
+
+    <div class="exam-q" id="e5">
+      <div class="q-text">2. &#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x3092;&#xFF08;&#x3000;&#xFF09;&#x306E;&#x307F;&#x307E;&#x3059;&#x3002;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e5',this)">1. &#x5C11;&#x3057;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e5',this)">2. &#x5C11;&#x3057;&#x304C;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e5',this)">3. &#x5C11;&#x3057;&#x3092;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e5',this)">4. &#x5C11;&#x3057;&#x306B;</button>
+      </div>
+      <div class="hint">&#x526F;&#x8A5E;&#x306F;&#x52A9;&#x8A5E;&#x306A;&#x3057;&#x3067;&#x52D5;&#x8A5E;&#x3092;&#x4FEE;&#x98FE;&#x3059;&#x308B;&#xFF1A;&#x5C11;&#x3057;(sukoshi)=a little<br>1.&#x5C11;&#x3057; &#x2713;&#x3000;2&#xFF5E;4&#x306F;&#x52A9;&#x8A5E;&#x4E0D;&#x8981; &#x2717;</div>
+    </div>
+
+    <div class="exam-q" id="e6">
+      <div class="q-text">3. &#x3042;&#x306E;&#x5B66;&#x6821;&#x306B;&#x5B66;&#x751F;&#x304C;&#xFF08;&#x3000;&#xFF09;&#x3044;&#x307E;&#x3059;&#x3002;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e6',this)">1. &#x305F;&#x304F;&#x3055;&#x3093;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e6',this)">2. &#x305F;&#x304F;&#x3055;&#x3093;&#x304C;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e6',this)">3. &#x305F;&#x304F;&#x3055;&#x3093;&#x306F;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e6',this)">4. &#x305F;&#x304F;&#x3055;&#x3093;&#x306B;</button>
+      </div>
+      <div class="hint">&#x526F;&#x8A5E;&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x4F7F;&#x3046;&#xFF1A;&#x305F;&#x304F;&#x3055;&#x3093;(takusan)=many/a lot<br>1.&#x305F;&#x304F;&#x3055;&#x3093; &#x2713;&#x3000;2&#xFF5E;4&#x306F;&#x52A9;&#x8A5E;&#x4E0D;&#x8981; &#x2717;</div>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-check" onclick="checkExamSection('&#x3082;&#x3093;&#x3060;&#x3044;2',['e4','e5','e6'],'es2-score','es2-progress')">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+      <button class="btn btn-reset" onclick="resetExamSection(['e4','e5','e6'],'es2-score','es2-progress')">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="es2-progress"></div></div>
+    <div id="es2-score" class="score-banner"></div>
+  </div>
+
+  <div class="exam-section">
+    <h2>&#x3082;&#x3093;&#x3060;&#x3044;3&#x3000;&#x5834;&#x9762;</h2>
+    <p class="subtitle">&#x2605;&#x306E;&#x4EBA;&#x306F;&#x4F55;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#x3002;1&#x30FB;2&#x30FB;3&#x30FB;4&#x304B;&#x3089;&#x3048;&#x3089;&#x3093;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
+
+    <div class="exam-q" id="e7">
+      <div class="q-text">1. &#x3068;&#x3082;&#x3060;&#x3061;&#x306B;&#x308A;&#x3093;&#x3054;&#x30925;&#x3064;&#x3042;&#x3052;&#x305F;&#x3044;&#x3067;&#x3059;&#x3002;&#x2605;&#x306E;&#x4EBA;&#x306F;&#x4F55;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e7',this)">1. &#x308A;&#x3093;&#x3054;&#x30925;&#x4E94;&#x3064;&#x3069;&#x3046;&#x305E;&#x3002;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e7',this)">2. &#x308A;&#x3093;&#x3054;&#x3092;&#x767E;&#x3069;&#x3046;&#x305E;&#x3002;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e7',this)">3. &#x308A;&#x3093;&#x3054;&#x3092;&#x3059;&#x3053;&#x3057;&#x3069;&#x3046;&#x305E;&#x3002;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e7',this)">4. &#x308A;&#x3093;&#x3054;&#x3092;&#x5343;&#x3069;&#x3046;&#x305E;&#x3002;</button>
+      </div>
+      <div class="hint">&#x4E94;(go)=5 &#x2192; &#x4E94;&#x3064;(itsutsu)=5&#x500B;&#x306E;&#x3082;&#x306E;<br>1.&#x4E94;&#x3064;(itsutsu) &#x2713;&#x3000;2.&#x767E;=100&#x3000;3.&#x3059;&#x3053;&#x3057;=a little&#x3000;4.&#x5343;=1000</div>
+    </div>
+
+    <div class="exam-q" id="e8">
+      <div class="q-text">2. &#x304A;&#x5E97;&#x3067;&#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x306E;&#x306D;&#x3060;&#x3093;&#x3092;&#x805E;&#x304D;&#x305F;&#x3044;&#x3067;&#x3059;&#x3002;&#x2605;&#x306E;&#x4EBA;&#x306F;&#x4F55;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e8',this)">1. &#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x306F;&#x3044;&#x304F;&#x3089;&#x3067;&#x3059;&#x304B;&#xFF1F;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e8',this)">2. &#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x306F;&#x306A;&#x3093;&#x3067;&#x3059;&#x304B;&#xFF1F;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e8',this)">3. &#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x306F;&#x3069;&#x3053;&#x3067;&#x3059;&#x304B;&#xFF1F;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e8',this)">4. &#x30B3;&#x30FC;&#x30D2;&#x30FC;&#x306F;&#x3060;&#x308C;&#x3067;&#x3059;&#x304B;&#xFF1F;</button>
+      </div>
+      <div class="hint">&#x3044;&#x304F;&#x3089;(ikura)=how much&#xFF08;&#x5024;&#x6BB5;&#x3092;&#x5C0B;&#x306D;&#x308B;&#xFF09;<br>1.&#x3044;&#x304F;&#x3089;(ikura) &#x2713;&#x3000;2.&#x306A;&#x3093;=what&#x3000;3.&#x3069;&#x3053;=where&#x3000;4.&#x3060;&#x308C;=who</div>
+    </div>
+
+    <div class="exam-q" id="e9">
+      <div class="q-text">3. &#x5148;&#x751F;&#x306B;&#x6559;&#x5BA4;&#x306B;&#x5B66;&#x751F;&#x304C;7&#x4EBA;&#x3044;&#x308B;&#x3053;&#x3068;&#x3092;&#x4F1D;&#x3048;&#x307E;&#x3059;&#x3002;&#x2605;&#x306E;&#x4EBA;&#x306F;&#x4F55;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e9',this)">1. &#x4E03;&#x4EBA;&#x3044;&#x307E;&#x3059;&#x3002;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e9',this)">2. &#x767E;&#x4EBA;&#x3044;&#x307E;&#x3059;&#x3002;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e9',this)">3. &#x305F;&#x304F;&#x3055;&#x3093;&#x3044;&#x307E;&#x3059;&#x3002;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e9',this)">4. &#x5C11;&#x3057;&#x3044;&#x307E;&#x3059;&#x3002;</button>
+      </div>
+      <div class="hint">&#x4E03;(nana/shichi)=7 &#x2192; &#x4E03;&#x4EBA;(shichi-nin)=7&#x4EBA;<br>1.&#x4E03;&#x4EBA;(shichi-nin) &#x2713;&#x3000;2.&#x767E;=100&#x3000;3.&#x305F;&#x304F;&#x3055;&#x3093;=many&#xFF08;&#x4E0D;&#x6B63;&#x78BA;&#xFF09;&#x3000;4.&#x5C11;&#x3057;=a little</div>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-check" onclick="checkExamSection('&#x3082;&#x3093;&#x3060;&#x3044;3',['e7','e8','e9'],'es3-score','es3-progress')">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+      <button class="btn btn-reset" onclick="resetExamSection(['e7','e8','e9'],'es3-score','es3-progress')">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="es3-progress"></div></div>
+    <div id="es3-score" class="score-banner"></div>
+  </div>
+
+  <div class="exam-section">
+    <h2>&#x3082;&#x3093;&#x3060;&#x3044;4&#x3000;&#x8A9E;&#x5F59;</h2>
+    <p class="subtitle">&#xFF3F;&#xFF3F;&#x306E;&#x3053;&#x3068;&#x3070;&#x3068;&#x3060;&#x3044;&#x305F;&#x3044;&#x304A;&#x306A;&#x3058;&#x3044;&#x307F;&#x306E;&#x3082;&#x306E;&#x30921&#x30FB;2&#x30FB;3&#x30FB;4&#x304B;&#x3089;&#x3048;&#x3089;&#x3093;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
+
+    <div class="exam-q" id="e10">
+      <div class="q-text">1. &#x300C;<u>&#x3059;&#x3053;&#x3057;</u>&#x300D;&#x306B;&#x3044;&#x307F;&#x304C;&#x3061;&#x304B;&#x3044;&#x306E;&#x306F;&#x3069;&#x308C;&#x3067;&#x3059;&#x304B;&#xFF1F;</div>
+      <div class="exam-choices">
+        <button class="exam-choice" data-v="c" onclick="checkExam('e10',this)">1. &#x3061;&#x3087;&#x3063;&#x3068;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e10',this)">2. &#x305F;&#x304F;&#x3055;&#x3093;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e10',this)">3. &#x305C;&#x3093;&#x3076;</button>
+        <button class="exam-choice" data-v="w" onclick="checkExam('e10',this)">4. &#x307E;&#x3063;&#x305F;&#x304F;</button>
+      </div>
+      <div class="hint">&#x3059;&#x3053;&#x3057;(sukoshi)=&#x4E00;&#x9EDE;&#x9EDE; &#x2248; &#x3061;&#x3087;&#x3063;&#x3068;(chotto)=a bit&#xFF08;&#x3069;&#x3061;&#x3089;&#x3082;&#x5C11;&#x91CF;&#xFF09;<br>1.&#x3061;&#x3087;&#x3063;&#x3068;(chotto) &#x2713;&#x3000;2.&#x305F;&#x304F;&#x3055;&#x3093;=many&#x3000;3.&#x305C;&#x3093;&#x3076;=all&#x3000;4.&#x307E;&#x3063;&#x305F;&#x304F;&#x301C;&#x306A;&#x3044;=not at all</div>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-check" onclick="checkExamSection('&#x3082;&#x3093;&#x3060;&#x3044;4',['e10'],'es4-score','es4-progress')">&#x78BA;&#x8A8D;&#x7B54;&#x6848;</button>
+      <button class="btn btn-reset" onclick="resetExamSection(['e10'],'es4-score','es4-progress')">&#x91CD;&#x65B0;&#x4F5C;&#x7B54;</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="es4-progress"></div></div>
+    <div id="es4-score" class="score-banner"></div>
+  </div>
+
+</div>
+</div>
+
+<button class="hint-toggle-btn hidden" id="hint-btn" onclick="toggleHints()">&#x1F524; &#x986F;&#x793A;&#x4E2D;&#x6587;&#xFF0B;&#x30ED;&#x30FC;&#x30DE;&#x62FC;&#x97F3;</button>
 
 <script>
-  function switchTab(tab) {
-    document.getElementById('study-mode').classList.toggle('hidden', tab !== 'study');
-    document.getElementById('test-mode').classList.toggle('hidden', tab !== 'test');
-    document.querySelectorAll('.tab-btn').forEach(function(btn, i) {
-      btn.classList.toggle('active', (i === 0 && tab === 'study') || (i === 1 && tab === 'test'));
-    });
-  }
+function switchTab(mode,btn){
+  document.querySelectorAll('.mode').forEach(function(m){m.classList.remove('active')});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  document.getElementById(mode+'-mode').classList.add('active');
+  btn.classList.add('active');
+  var hb=document.getElementById('hint-btn');
+  if(mode==='exam'){hb.classList.remove('hidden')}else{hb.classList.add('hidden')}
+}
 
-  function speak(text) {
-    if (!window.speechSynthesis) return;
-    speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(text);
-    u.lang = 'ja-JP';
-    u.rate = 0.85;
-    speechSynthesis.speak(u);
+var mcAnswered={};
+function checkMC(id,btn){
+  if(mcAnswered[id])return;
+  mcAnswered[id]=true;
+  var c=document.getElementById(id);
+  if(btn.dataset.v==='c'){btn.classList.add('ok')}
+  else{btn.classList.add('bad');c.querySelectorAll('.choice-btn').forEach(function(b){if(b.dataset.v==='c')b.classList.add('ok')})}
+  var ids=['mc1','mc2','mc3','mc4','mc5'],done=Object.keys(mcAnswered).length,correct=0;
+  ids.forEach(function(id){
+    if(!mcAnswered[id])return;
+    var el=document.getElementById(id);
+    if(el.querySelector('.choice-btn.ok')&&!el.querySelector('.choice-btn.bad'))correct++;
+  });
+  document.getElementById('mc-progress').style.width=(done/ids.length*100)+'%';
+  if(done===ids.length){
+    var s=document.getElementById('mc-score');
+    s.textContent='スコア: '+correct+'/'+ids.length+(correct>=4?' 🎉 すばらしい！':correct>=3?' 👍 もう少し！':' 😅 復習しよう！');
+    s.className='score-banner show '+(correct>=4?'good':correct>=3?'ok-score':'bad');
   }
+}
 
-  function toggleBlur(id) {
-    document.getElementById(id).classList.toggle('revealed');
-  }
+function checkDropdowns(ids,progressId,scoreId){
+  var correct=0;
+  ids.forEach(function(id){
+    var sel=document.getElementById(id);
+    sel.classList.remove('ok','bad');
+    if(sel.value==='c'){sel.classList.add('ok');correct++}
+    else if(sel.value==='w'){sel.classList.add('bad')}
+  });
+  document.getElementById(progressId).style.width=(correct/ids.length*100)+'%';
+  var s=document.getElementById(scoreId);
+  s.textContent='スコア: '+correct+'/'+ids.length+(correct>=Math.ceil(ids.length*.8)?' 🎉':correct>=Math.ceil(ids.length*.6)?' 👍':' 😅');
+  s.className='score-banner show '+(correct>=Math.ceil(ids.length*.8)?'good':correct>=Math.ceil(ids.length*.6)?'ok-score':'bad');
+}
 
-  function toggleHints(btn) {
-    document.body.classList.toggle('hints-on');
-    btn.textContent = document.body.classList.contains('hints-on')
-      ? '🔤 隱藏中文＋羅馬拼音'
-      : '🔤 顯示中文＋羅馬拼音';
-  }
+function resetDropdowns(ids,progressId,scoreId){
+  ids.forEach(function(id){var sel=document.getElementById(id);sel.value='';sel.classList.remove('ok','bad')});
+  document.getElementById(progressId).style.width='0%';
+  document.getElementById(scoreId).className='score-banner';
+}
 
-  function answerVQ(btn, qid) {
-    var block = document.getElementById(qid);
-    if (block.querySelector('.ok')) return;
-    var correct = btn.dataset.v === 'c';
-    btn.classList.add(correct ? 'ok' : 'bad');
-    if (!correct) block.querySelector('[data-v="c"]').classList.add('ok');
-    block.querySelectorAll('.quiz-btn').forEach(function(b) { b.disabled = true; });
-  }
+function checkGrammar(){checkDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'],'g-progress','g-score')}
+function resetGrammar(){resetDropdowns(['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'],'g-progress','g-score')}
+function checkReading(){checkDropdowns(['r1','r2','r3'],'r-progress','r-score')}
+function resetReading(){resetDropdowns(['r1','r2','r3'],'r-progress','r-score')}
+function checkListening(){checkDropdowns(['l1','l2','l3'],'l-progress','l-score')}
+function resetListening(){resetDropdowns(['l1','l2','l3'],'l-progress','l-score')}
 
-  function checkVQ() {
-    var ids = ['vq1','vq2','vq3','vq4','vq5'];
-    var correct = 0;
-    ids.forEach(function(id) {
-      var ok = document.getElementById(id).querySelector('.ok');
-      if (ok && ok.dataset.v === 'c') correct++;
-    });
-    updateScore('vq-bar', 'vq-score', correct, ids.length, 3);
-  }
+function speak(text,btn){
+  if(!('speechSynthesis' in window)){alert('このブラウザはTTSをサポートしていません。');return}
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang='ja-JP';u.rate=0.85;
+  var orig=btn.textContent;btn.textContent='▶ 再生中';
+  u.onend=function(){btn.textContent=orig};
+  window.speechSynthesis.speak(u);
+}
 
-  function resetVQ() {
-    ['vq1','vq2','vq3','vq4','vq5'].forEach(function(id) {
-      document.getElementById(id).querySelectorAll('.quiz-btn').forEach(function(b) {
-        b.className = 'quiz-btn'; b.disabled = false;
-      });
-    });
-    clearScore('vq-bar','vq-score');
-  }
+var examAnswered={};
+function checkExam(qid,btn){
+  if(examAnswered[qid])return;
+  examAnswered[qid]=true;
+  var c=document.getElementById(qid);
+  if(btn.dataset.v==='c'){btn.classList.add('ok')}
+  else{btn.classList.add('bad');c.querySelectorAll('.exam-choice').forEach(function(b){if(b.dataset.v==='c')b.classList.add('ok')})}
+}
 
-  function checkGQ() {
-    var ids = ['gq1','gq2','gq3','gq4','gq5','gq6','gq7','gq8','gq9','gq10'];
-    var correct = 0;
-    ids.forEach(function(id) {
-      var sel = document.getElementById(id);
-      sel.classList.remove('ok','bad');
-      if (sel.value === 'c') { sel.classList.add('ok'); correct++; }
-      else if (sel.value !== '') sel.classList.add('bad');
-    });
-    updateScore('gq-bar','gq-score', correct, ids.length, 7);
-  }
+function checkExamSection(name,ids,scoreId,progressId){
+  var correct=0;
+  ids.forEach(function(id){
+    var c=document.getElementById(id);
+    if(!examAnswered[id]){c.querySelectorAll('.exam-choice').forEach(function(b){if(b.dataset.v==='c')b.classList.add('ok')})}
+    if(c.querySelector('.exam-choice.ok')&&!c.querySelector('.exam-choice.bad'))correct++;
+  });
+  document.getElementById(progressId).style.width=(correct/ids.length*100)+'%';
+  var s=document.getElementById(scoreId);
+  s.textContent=name+': '+correct+'/'+ids.length+(correct===ids.length?' 🎉 満点！':correct>=Math.ceil(ids.length*.6)?' 👍':' 😅');
+  s.className='score-banner show '+(correct===ids.length?'good':correct>=Math.ceil(ids.length*.6)?'ok-score':'bad');
+}
 
-  function resetGQ() {
-    ['gq1','gq2','gq3','gq4','gq5','gq6','gq7','gq8','gq9','gq10'].forEach(function(id) {
-      var s = document.getElementById(id); s.value = ''; s.className = '';
-    });
-    clearScore('gq-bar','gq-score');
-  }
+function resetExamSection(ids,scoreId,progressId){
+  ids.forEach(function(id){
+    delete examAnswered[id];
+    document.getElementById(id).querySelectorAll('.exam-choice').forEach(function(b){b.classList.remove('ok','bad')});
+  });
+  document.getElementById(progressId).style.width='0%';
+  document.getElementById(scoreId).className='score-banner';
+}
 
-  function checkRQ() {
-    var ids = ['rq1','rq2','rq3'];
-    var correct = 0;
-    ids.forEach(function(id) {
-      var sel = document.getElementById(id);
-      sel.classList.remove('ok','bad');
-      if (sel.value === 'c') { sel.classList.add('ok'); correct++; }
-      else if (sel.value !== '') sel.classList.add('bad');
-    });
-    updateScore('rq-bar','rq-score', correct, ids.length, 2);
-  }
-
-  function resetRQ() {
-    ['rq1','rq2','rq3'].forEach(function(id) {
-      var s = document.getElementById(id); s.value = ''; s.className = '';
-    });
-    clearScore('rq-bar','rq-score');
-  }
-
-  function checkLQ() {
-    var ids = ['lq1','lq2','lq3'];
-    var correct = 0;
-    ids.forEach(function(id) {
-      var sel = document.getElementById(id);
-      sel.classList.remove('ok','bad');
-      if (sel.value === 'c') { sel.classList.add('ok'); correct++; }
-      else if (sel.value !== '') sel.classList.add('bad');
-    });
-    updateScore('lq-bar','lq-score', correct, ids.length, 2);
-  }
-
-  function resetLQ() {
-    ['lq1','lq2','lq3'].forEach(function(id) {
-      var s = document.getElementById(id); s.value = ''; s.className = '';
-    });
-    ['lt1','lt2','lt3','lt4'].forEach(function(id) {
-      document.getElementById(id).classList.remove('revealed');
-    });
-    clearScore('lq-bar','lq-score');
-  }
-
-  function answerTQ(btn, qid) {
-    var block = document.getElementById(qid);
-    if (block.querySelector('.ok')) return;
-    var correct = btn.dataset.v === 'c';
-    btn.classList.add(correct ? 'ok' : 'bad');
-    if (!correct) block.querySelector('[data-v="c"]').classList.add('ok');
-    block.querySelectorAll('.quiz-btn').forEach(function(b) { b.disabled = true; });
-  }
-
-  function checkTQ() {
-    var ids = ['tq1','tq2','tq3','tq4','tq5','tq6','tq7','tq8','tq9','tq10'];
-    var correct = 0;
-    ids.forEach(function(id) {
-      var ok = document.getElementById(id).querySelector('.ok');
-      if (ok && ok.dataset.v === 'c') correct++;
-    });
-    updateScore('tq-bar','tq-score', correct, ids.length, 7);
-  }
-
-  function resetTQ() {
-    ['tq1','tq2','tq3','tq4','tq5','tq6','tq7','tq8','tq9','tq10'].forEach(function(id) {
-      document.getElementById(id).querySelectorAll('.quiz-btn').forEach(function(b) {
-        b.className = 'quiz-btn'; b.disabled = false;
-      });
-    });
-    clearScore('tq-bar','tq-score');
-  }
-
-  function updateScore(barId, scoreId, correct, total, pass) {
-    var pct = Math.round(correct / total * 100);
-    document.getElementById(barId).style.width = pct + '%';
-    var banner = document.getElementById(scoreId);
-    banner.textContent = '得点：' + correct + '/' + total + '（' + pct + '%）' + (correct >= pass ? ' 🎉 合格！' : ' もう一度がんばりましょう！');
-    banner.className = 'score-banner show ' + (correct >= pass ? 'score-good' : 'score-bad');
-  }
-
-  function clearScore(barId, scoreId) {
-    document.getElementById(barId).style.width = '0%';
-    var b = document.getElementById(scoreId); b.className = 'score-banner'; b.textContent = '';
-  }
+var hintsOn=false;
+function toggleHints(){
+  hintsOn=!hintsOn;
+  document.body.classList.toggle('hints-on',hintsOn);
+  document.getElementById('hint-btn').textContent=hintsOn?'🔤 ヒントを隠す':'🔤 顯示中文＋羅馬拼音';
+}
 </script>
 </body>
 </html>
